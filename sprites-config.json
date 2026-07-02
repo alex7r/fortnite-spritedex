@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "sourceDir": "sprites",
   "outputDir": "sprites_named",
   "defaultMaterial": "base",
@@ -154,14 +154,29 @@
   },
   "meta": {
     "raritySummonCost": {
-      "rare": { "base": 100, "variant": 4000 },
-      "epic": { "base": 3000, "variant": 6000 },
-      "legendary": { "base": 5000, "variant": 10000 },
-      "mythic": { "base": 7500, "variant": 15000 }
+      "rare": {
+        "base": 100,
+        "variant": 4000
+      },
+      "epic": {
+        "base": 3000,
+        "variant": 6000
+      },
+      "legendary": {
+        "base": 5000,
+        "variant": 10000
+      },
+      "mythic": {
+        "base": 7500,
+        "variant": 15000
+      }
     },
     "materials": {
       "base": {
-        "bonus": { "en": "", "ru": "" }
+        "bonus": {
+          "en": "",
+          "ru": ""
+        }
       },
       "gold": {
         "bonus": {
@@ -399,7 +414,7 @@
       },
       "grim": {
         "rarity": "mythic",
-        "dropRate": 9.8e-7,
+        "dropRate": 9.8e-07,
         "ability": {
           "en": "Attackers who damage you are marked for your squad.",
           "ru": "Атакующие вас враги помечаются для сквада."
@@ -497,8 +512,8 @@
         {
           "id": "row02_col05",
           "source": "row02_col05.png",
-          "materialId": "holofoil",
-          "output": "Earth_Holofoil.png"
+          "materialId": "gem",
+          "output": "Earth_Gem.png"
         }
       ]
     },
@@ -533,8 +548,8 @@
         {
           "id": "row03_col05",
           "source": "row03_col05.png",
-          "materialId": "gem",
-          "output": "Fire_Gem.png"
+          "materialId": "holofoil",
+          "output": "Fire_Holofoil.png"
         }
       ]
     },
@@ -565,12 +580,6 @@
           "source": "row04_col04.png",
           "materialId": "galaxy",
           "output": "Duck_Galaxy.png"
-        },
-        {
-          "id": "row04_col05",
-          "source": "row04_col05.png",
-          "materialId": "holofoil",
-          "output": "Duck_Holofoil.png"
         },
         {
           "id": "row04_col06",
@@ -611,8 +620,8 @@
         {
           "id": "row05_col05",
           "source": "row05_col05.png",
-          "materialId": "gem",
-          "output": "Ghost_Gem.png"
+          "materialId": "holofoil",
+          "output": "Ghost_Holofoil.png"
         }
       ]
     },
@@ -647,8 +656,8 @@
         {
           "id": "row06_col05",
           "source": "row06_col05.png",
-          "materialId": "gem",
-          "output": "King_Gem.png"
+          "materialId": "holofoil",
+          "output": "King_Holofoil.png"
         }
       ]
     },
@@ -679,12 +688,6 @@
           "source": "row07_col04.png",
           "materialId": "galaxy",
           "output": "ZeroPoint_Galaxy.png"
-        },
-        {
-          "id": "row07_col05",
-          "source": "row07_col05.png",
-          "materialId": "holofoil",
-          "output": "ZeroPoint_Holofoil.png"
         },
         {
           "id": "row07_col06",
@@ -787,12 +790,6 @@
           "source": "row02_col09.png",
           "materialId": "galaxy",
           "output": "Dream_Galaxy.png"
-        },
-        {
-          "id": "row02_col10",
-          "source": "row02_col10.png",
-          "materialId": "gem",
-          "output": "Dream_Gem.png"
         },
         {
           "id": "row02_col12",
@@ -917,8 +914,8 @@
         {
           "id": "row06_col10",
           "source": "row06_col10.png",
-          "materialId": "holofoil",
-          "output": "Aura_Holofoil.png"
+          "materialId": "gem",
+          "output": "Aura_Gem.png"
         }
       ]
     },
@@ -983,8 +980,8 @@
         {
           "id": "row05_col14",
           "source": "row05_col14.png",
-          "materialId": "gem",
-          "output": "Striker_Gem.png"
+          "materialId": "holofoil",
+          "output": "Striker_Holofoil.png"
         }
       ]
     },
@@ -1049,8 +1046,8 @@
         {
           "id": "row04_col11",
           "source": "row04_col11.png",
-          "materialId": "holofoil",
-          "output": "Demon_Holofoil.png"
+          "materialId": "gem",
+          "output": "Demon_Gem.png"
         }
       ]
     }
@@ -1171,11 +1168,11 @@
       "id": "row02_col05",
       "spriteId": "earth",
       "sprite": "Earth",
-      "materialId": "holofoil",
-      "material": "Holofoil",
+      "materialId": "gem",
+      "material": "Gem",
       "source": "sprites/row02_col05.png",
-      "output": "sprites_named/Earth_Holofoil.png",
-      "filename": "Earth_Holofoil.png",
+      "output": "sprites_named/Earth_Gem.png",
+      "filename": "Earth_Gem.png",
       "group_id": "group-02"
     },
     {
@@ -1226,11 +1223,11 @@
       "id": "row03_col05",
       "spriteId": "fire",
       "sprite": "Fire",
-      "materialId": "gem",
-      "material": "Gem",
+      "materialId": "holofoil",
+      "material": "Holofoil",
       "source": "sprites/row03_col05.png",
-      "output": "sprites_named/Fire_Gem.png",
-      "filename": "Fire_Gem.png",
+      "output": "sprites_named/Fire_Holofoil.png",
+      "filename": "Fire_Holofoil.png",
       "group_id": "group-03"
     },
     {
@@ -1275,17 +1272,6 @@
       "source": "sprites/row04_col04.png",
       "output": "sprites_named/Duck_Galaxy.png",
       "filename": "Duck_Galaxy.png",
-      "group_id": "group-04"
-    },
-    {
-      "id": "row04_col05",
-      "spriteId": "duck",
-      "sprite": "Duck",
-      "materialId": "holofoil",
-      "material": "Holofoil",
-      "source": "sprites/row04_col05.png",
-      "output": "sprites_named/Duck_Holofoil.png",
-      "filename": "Duck_Holofoil.png",
       "group_id": "group-04"
     },
     {
@@ -1347,11 +1333,11 @@
       "id": "row05_col05",
       "spriteId": "ghost",
       "sprite": "Ghost",
-      "materialId": "gem",
-      "material": "Gem",
+      "materialId": "holofoil",
+      "material": "Holofoil",
       "source": "sprites/row05_col05.png",
-      "output": "sprites_named/Ghost_Gem.png",
-      "filename": "Ghost_Gem.png",
+      "output": "sprites_named/Ghost_Holofoil.png",
+      "filename": "Ghost_Holofoil.png",
       "group_id": "group-05"
     },
     {
@@ -1402,11 +1388,11 @@
       "id": "row06_col05",
       "spriteId": "king",
       "sprite": "King",
-      "materialId": "gem",
-      "material": "Gem",
+      "materialId": "holofoil",
+      "material": "Holofoil",
       "source": "sprites/row06_col05.png",
-      "output": "sprites_named/King_Gem.png",
-      "filename": "King_Gem.png",
+      "output": "sprites_named/King_Holofoil.png",
+      "filename": "King_Holofoil.png",
       "group_id": "group-06"
     },
     {
@@ -1454,17 +1440,6 @@
       "group_id": "group-07"
     },
     {
-      "id": "row07_col05",
-      "spriteId": "zero-point",
-      "sprite": "Zero Point",
-      "materialId": "holofoil",
-      "material": "Holofoil",
-      "source": "sprites/row07_col05.png",
-      "output": "sprites_named/ZeroPoint_Holofoil.png",
-      "filename": "ZeroPoint_Holofoil.png",
-      "group_id": "group-07"
-    },
-    {
       "id": "row07_col06",
       "spriteId": "zero-point",
       "sprite": "Zero Point",
@@ -1473,6 +1448,17 @@
       "source": "sprites/row07_col06.png",
       "output": "sprites_named/ZeroPoint_Gem.png",
       "filename": "ZeroPoint_Gem.png",
+      "group_id": "group-07"
+    },
+    {
+      "id": "row07_col11",
+      "spriteId": "zero-point",
+      "sprite": "Zero Point",
+      "materialId": "quack",
+      "material": "Quack",
+      "source": "sprites/row07_col11.png",
+      "output": "sprites_named/ZeroPoint_Quack.png",
+      "filename": "ZeroPoint_Quack.png",
       "group_id": "group-07"
     },
     {
@@ -1608,14 +1594,14 @@
       "group_id": "group-mqz39sxq"
     },
     {
-      "id": "row02_col10",
+      "id": "row02_col12",
       "spriteId": "dream",
       "sprite": "Dream",
-      "materialId": "gem",
-      "material": "Gem",
-      "source": "sprites/row02_col10.png",
-      "output": "sprites_named/Dream_Gem.png",
-      "filename": "Dream_Gem.png",
+      "materialId": "cube",
+      "material": "Cube",
+      "source": "sprites/row02_col12.png",
+      "output": "sprites_named/Dream_Cube.png",
+      "filename": "Dream_Cube.png",
       "group_id": "group-mqz39sxq"
     },
     {
@@ -1682,6 +1668,17 @@
       "source": "sprites/row03_col10.png",
       "output": "sprites_named/Punk_Gem.png",
       "filename": "Punk_Gem.png",
+      "group_id": "group-mqz3bjv9"
+    },
+    {
+      "id": "row03_col11",
+      "spriteId": "punk",
+      "sprite": "Punk",
+      "materialId": "cube",
+      "material": "Cube",
+      "source": "sprites/row03_col11.png",
+      "output": "sprites_named/Punk_Cube.png",
+      "filename": "Punk_Cube.png",
       "group_id": "group-mqz3bjv9"
     },
     {
@@ -1776,11 +1773,11 @@
       "id": "row06_col10",
       "spriteId": "aura",
       "sprite": "Aura",
-      "materialId": "holofoil",
-      "material": "Holofoil",
+      "materialId": "gem",
+      "material": "Gem",
       "source": "sprites/row06_col10.png",
-      "output": "sprites_named/Aura_Holofoil.png",
-      "filename": "Aura_Holofoil.png",
+      "output": "sprites_named/Aura_Gem.png",
+      "filename": "Aura_Gem.png",
       "group_id": "group-mqz3gb7o"
     },
     {
@@ -1875,11 +1872,11 @@
       "id": "row05_col14",
       "spriteId": "striker",
       "sprite": "Striker",
-      "materialId": "gem",
-      "material": "Gem",
+      "materialId": "holofoil",
+      "material": "Holofoil",
       "source": "sprites/row05_col14.png",
-      "output": "sprites_named/Striker_Gem.png",
-      "filename": "Striker_Gem.png",
+      "output": "sprites_named/Striker_Holofoil.png",
+      "filename": "Striker_Holofoil.png",
       "group_id": "group-mqz3hc53"
     },
     {
@@ -1974,46 +1971,13 @@
       "id": "row04_col11",
       "spriteId": "demon",
       "sprite": "Demon",
-      "materialId": "holofoil",
-      "material": "Holofoil",
+      "materialId": "gem",
+      "material": "Gem",
       "source": "sprites/row04_col11.png",
-      "output": "sprites_named/Demon_Holofoil.png",
-      "filename": "Demon_Holofoil.png",
+      "output": "sprites_named/Demon_Gem.png",
+      "filename": "Demon_Gem.png",
       "group_id": "group-mqz3ib7v"
-    },
-    {
-      "id": "row02_col12",
-      "spriteId": "dream",
-      "sprite": "Dream",
-      "materialId": "cube",
-      "material": "Cube",
-      "source": "sprites/row02_col12.png",
-      "output": "sprites_named/Dream_Cube.png",
-      "filename": "Dream_Cube.png",
-      "group_id": "group-mqz39sxq"
-    },
-    {
-      "id": "row03_col11",
-      "spriteId": "punk",
-      "sprite": "Punk",
-      "materialId": "cube",
-      "material": "Cube",
-      "source": "sprites/row03_col11.png",
-      "output": "sprites_named/Punk_Cube.png",
-      "filename": "Punk_Cube.png",
-      "group_id": "group-mqz3bjv9"
-    },
-    {
-      "id": "row07_col11",
-      "spriteId": "zero-point",
-      "sprite": "Zero Point",
-      "materialId": "quack",
-      "material": "Quack",
-      "source": "sprites/row07_col11.png",
-      "output": "sprites_named/ZeroPoint_Quack.png",
-      "filename": "ZeroPoint_Quack.png",
-      "group_id": "group-07"
     }
   ],
-  "total": 87
+  "total": 84
 }

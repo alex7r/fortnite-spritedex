@@ -285,12 +285,17 @@
 
     .character-header {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
-      gap: 8px;
+      gap: 10px;
       margin-bottom: 10px;
       padding: 0 4px 0 10px;
       border-left: 3px solid var(--accent-2);
+    }
+
+    .character-title-wrap {
+      flex: 1;
+      min-width: 0;
     }
 
     .character-header h2 {
@@ -302,7 +307,17 @@
       text-transform: uppercase;
     }
 
+    .character-ability {
+      margin: 5px 0 0;
+      font-size: 0.72rem;
+      line-height: 1.4;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
     .character-stats {
+      flex: 0 0 auto;
+      margin-top: 2px;
       font-size: 0.72rem;
       color: var(--muted);
       white-space: nowrap;
@@ -1519,14 +1534,35 @@
         const doneInGroup = sprites.filter((s) => collected.has(s.id)).length;
         const header = document.createElement("div");
         header.className = "character-header";
+
+        const titleWrap = document.createElement("div");
+        titleWrap.className = "character-title-wrap";
+
+        const h2 = document.createElement("h2");
+        h2.append(document.createTextNode(displaySprite({ spriteId }) + " "));
         const rarity = rarityForSprite(spriteId);
-        const rarityHtml = rarity
-          ? `<span class="rarity-pill" data-rarity="${rarity}">${SpritedexI18n.rarityLabel(rarity)}</span>`
-          : "";
-        header.innerHTML = `
-          <h2>${displaySprite({ spriteId })} ${rarityHtml}</h2>
-          <span class="character-stats${doneInGroup === sprites.length ? " done" : ""}">${doneInGroup}/${sprites.length}</span>
-        `;
+        if (rarity) {
+          const pill = document.createElement("span");
+          pill.className = "rarity-pill";
+          pill.dataset.rarity = rarity;
+          pill.textContent = SpritedexI18n.rarityLabel(rarity);
+          h2.appendChild(pill);
+        }
+        titleWrap.appendChild(h2);
+
+        const abilityText = SpritedexI18n.spriteAbility(spriteId);
+        if (abilityText) {
+          const abilityEl = document.createElement("p");
+          abilityEl.className = "character-ability";
+          abilityEl.textContent = abilityText;
+          titleWrap.appendChild(abilityEl);
+        }
+
+        const stats = document.createElement("span");
+        stats.className = `character-stats${doneInGroup === sprites.length ? " done" : ""}`;
+        stats.textContent = `${doneInGroup}/${sprites.length}`;
+
+        header.append(titleWrap, stats);
 
         const grid = document.createElement("div");
         grid.className = "grid";

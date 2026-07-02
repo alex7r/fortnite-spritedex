@@ -44,6 +44,11 @@ MATERIAL_SLUG = {
     "quack": "quack",
 }
 
+# spritelocker.com uses non-standard slugs for some holofoil assets.
+HOLOFOIL_SLUG_OVERRIDE = {
+    "ghost": "holo",
+}
+
 
 def scrape_paths() -> list[str]:
     req = urllib.request.Request(f"{BASE_URL}/", headers={"User-Agent": "sprites-tracker/1.0"})
@@ -54,8 +59,13 @@ def scrape_paths() -> list[str]:
 
 def spritelocker_path(sprite_id: str, material_id: str) -> str | None:
     slug = SPRITE_SLUG.get(sprite_id)
-    variant = MATERIAL_SLUG.get(material_id)
-    if not slug or not variant:
+    if not slug:
+        return None
+    if material_id == "holofoil":
+        variant = HOLOFOIL_SLUG_OVERRIDE.get(sprite_id, "holofoil")
+    else:
+        variant = MATERIAL_SLUG.get(material_id)
+    if not variant:
         return None
     path = f"/sprites/{slug}_{variant}.webp"
     return path
