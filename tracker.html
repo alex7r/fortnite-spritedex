@@ -4,21 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="theme-color" content="#0f1117" />
+  <meta name="theme-color" content="#1a1040" />
   <title>Fortnite Sprites Pocket Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0f1117;
-      --surface: #1a1d27;
-      --surface-2: #242836;
-      --border: #343a4a;
-      --text: #e8eaef;
-      --muted: #9aa3b5;
-      --accent: #6c8cff;
-      --success: #4ade80;
-      --success-dim: rgba(74, 222, 128, 0.15);
-      --danger: #f87171;
-      --radius: 12px;
+      --bg-deep: #0a0618;
+      --bg-mid: #14102e;
+      --surface: rgba(28, 22, 58, 0.72);
+      --surface-2: rgba(40, 32, 78, 0.85);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #f4f0ff;
+      --muted: #a89fd4;
+      --accent: #5ee7ff;
+      --accent-2: #a855f7;
+      --danger: #ff6b8a;
+      --radius: 14px;
+      --font-display: "Russo One", "Segoe UI", system-ui, sans-serif;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -26,27 +30,40 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(88, 28, 180, 0.45), transparent 55%),
+        radial-gradient(ellipse 80% 50% at 100% 0%, rgba(37, 99, 235, 0.25), transparent 50%),
+        radial-gradient(ellipse 70% 60% at 0% 100%, rgba(168, 85, 247, 0.2), transparent 55%),
+        linear-gradient(165deg, var(--bg-deep) 0%, var(--bg-mid) 45%, #0d0820 100%);
+      background-attachment: fixed;
       color: var(--text);
       line-height: 1.4;
       padding-bottom: env(safe-area-inset-bottom, 12px);
+      min-height: 100vh;
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(15, 17, 23, 0.94);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(12, 8, 28, 0.82);
+      backdrop-filter: blur(16px) saturate(1.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
       padding: 12px 14px 10px;
       padding-top: max(12px, env(safe-area-inset-top));
     }
 
     header h1 {
       margin: 0;
-      font-size: 1.1rem;
-      font-weight: 700;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(94, 231, 255, 0.35);
+      line-height: 1.2;
+      max-width: 11rem;
     }
 
     .progress-wrap { margin-top: 10px; }
@@ -54,26 +71,35 @@
     .progress-meta {
       display: flex;
       justify-content: space-between;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--muted);
       margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
     }
 
-    .progress-meta strong { color: var(--success); }
+    .progress-meta strong {
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(94, 231, 255, 0.5);
+    }
 
     .progress-bar {
-      height: 8px;
-      background: var(--surface-2);
+      height: 10px;
+      background: rgba(0, 0, 0, 0.35);
       border-radius: 99px;
       overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
     }
 
     .progress-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #4ade80, #6c8cff);
+      background: linear-gradient(90deg, #22d3ee, #a855f7, #f472b6);
       border-radius: 99px;
-      transition: width 0.25s ease;
+      transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 0 16px rgba(168, 85, 247, 0.65);
     }
 
     .filters {
@@ -89,36 +115,46 @@
 
     .chip {
       flex: 0 0 auto;
-      border: 1px solid var(--border);
-      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--muted);
       border-radius: 99px;
       padding: 7px 14px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       cursor: pointer;
       white-space: nowrap;
+      transition: all 0.2s ease;
     }
 
     .chip.active {
-      background: var(--accent);
-      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(94, 231, 255, 0.25), rgba(168, 85, 247, 0.35));
+      border-color: rgba(94, 231, 255, 0.55);
       color: #fff;
+      box-shadow: 0 0 18px rgba(94, 231, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
     }
 
     .search {
       margin-top: 8px;
       width: 100%;
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       color: var(--text);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 10px 12px;
       font-size: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .search:focus { outline: none; border-color: var(--accent); }
+    .search:focus {
+      outline: none;
+      border-color: rgba(94, 231, 255, 0.5);
+      box-shadow: 0 0 0 3px rgba(94, 231, 255, 0.12);
+    }
 
-    main { padding: 12px 10px; max-width: 720px; margin: 0 auto; }
+    main { padding: 14px 10px 24px; max-width: 720px; margin: 0 auto; }
 
     .loading, .error-box {
       text-align: center;
@@ -128,126 +164,216 @@
 
     .error-box { color: var(--danger); }
 
-    .character-section {
-      margin-bottom: 18px;
-    }
+    .character-section { margin-bottom: 22px; }
 
     .character-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
-      margin-bottom: 8px;
-      padding: 0 4px;
+      margin-bottom: 10px;
+      padding: 0 4px 0 10px;
+      border-left: 3px solid var(--accent-2);
     }
 
     .character-header h2 {
       margin: 0;
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .character-stats {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--muted);
       white-space: nowrap;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .character-stats.done { color: var(--success); }
+    .character-stats.done {
+      color: #fff;
+      border-color: rgba(94, 231, 255, 0.4);
+      background: rgba(94, 231, 255, 0.12);
+      box-shadow: 0 0 12px rgba(94, 231, 255, 0.2);
+    }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 10px;
     }
 
     @media (min-width: 480px) {
-      .grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+      .grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
     }
 
     @media (min-width: 640px) {
       .grid { grid-template-columns: repeat(5, 1fr); }
+      header h1 { max-width: none; font-size: 0.95rem; }
     }
 
     .sprite-card {
+      --mat-accent: #94a3b8;
+      --mat-glow: rgba(148, 163, 184, 0.35);
+      --mat-fill: rgba(148, 163, 184, 0.12);
+      --mat-gradient: linear-gradient(145deg, rgba(148, 163, 184, 0.1), rgba(30, 41, 59, 0.2));
+      --mat-fill-strength: 40%;
       position: relative;
-      background: var(--surface);
-      border: 2px solid var(--border);
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.25));
+      border: 2px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--radius);
       padding: 6px;
       cursor: pointer;
       user-select: none;
-      transition: border-color 0.15s, opacity 0.15s, transform 0.1s;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       touch-action: manipulation;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
     }
 
-    .sprite-card:active { transform: scale(0.97); }
+    .sprite-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: var(--mat-gradient);
+      opacity: 0.35;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .sprite-card:active:not(.readonly) { transform: scale(0.96); }
 
     .sprite-card.collected {
-      border-color: var(--success);
-      background: var(--success-dim);
+      --mat-fill-strength: 100%;
+      border-color: var(--mat-accent);
+      box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--mat-accent) 60%, transparent),
+        0 0 22px var(--mat-glow),
+        0 10px 24px rgba(0, 0, 0, 0.45);
     }
 
-    .sprite-card.collected .sprite-img {
-      opacity: 0.45;
-      filter: grayscale(0.6);
+    .sprite-card.collected::before { opacity: 0.85; }
+
+    .sprite-card.collected::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      border: 1px solid color-mix(in srgb, var(--mat-accent) 45%, transparent);
+      box-shadow: inset 0 0 20px color-mix(in srgb, var(--mat-glow) 50%, transparent);
+      pointer-events: none;
+    }
+
+    .sprite-card[data-material="holofoil"].collected::before {
+      animation: holo-shimmer 2.8s linear infinite;
+    }
+
+    @keyframes holo-shimmer {
+      0% { filter: hue-rotate(0deg); opacity: 0.75; }
+      50% { filter: hue-rotate(35deg); opacity: 1; }
+      100% { filter: hue-rotate(0deg); opacity: 0.75; }
     }
 
     .check-badge {
       position: absolute;
-      top: 4px;
-      right: 4px;
+      top: 5px;
+      right: 5px;
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: var(--surface-2);
-      border: 2px solid var(--border);
+      background: rgba(0, 0, 0, 0.45);
+      border: 2px solid rgba(255, 255, 255, 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
+      font-weight: 800;
       color: transparent;
-      z-index: 2;
-      transition: all 0.15s;
+      z-index: 3;
+      transition: all 0.2s ease;
     }
 
     .sprite-card.collected .check-badge {
-      background: var(--success);
-      border-color: var(--success);
-      color: #0f2918;
+      background: var(--mat-accent);
+      border-color: #fff;
+      color: #0a0618;
+      box-shadow: 0 0 12px var(--mat-glow);
     }
 
     .sprite-img-wrap {
+      position: relative;
+      z-index: 1;
       aspect-ratio: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: repeating-conic-gradient(#1e2230 0% 25%, #181b26 0% 50%) 50% / 12px 12px;
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 28%, color-mix(in srgb, var(--mat-fill) var(--mat-fill-strength), transparent) 0%, rgba(8, 6, 20, 0.92) 68%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.2));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .sprite-card.collected .sprite-img-wrap {
+      background:
+        radial-gradient(circle at 50% 25%, color-mix(in srgb, var(--mat-fill) 180%, white) 0%, color-mix(in srgb, var(--mat-fill) 80%, transparent) 42%, rgba(6, 4, 18, 0.88) 72%);
+      box-shadow:
+        inset 0 0 28px color-mix(in srgb, var(--mat-glow) 55%, transparent),
+        0 0 14px color-mix(in srgb, var(--mat-glow) 40%, transparent);
     }
 
     .sprite-img {
-      width: 100%;
-      height: 100%;
+      width: 88%;
+      height: 88%;
       object-fit: contain;
-      transition: opacity 0.15s, filter 0.15s;
+      transition: transform 0.2s ease, filter 0.2s ease;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.45));
+    }
+
+    .sprite-card.collected .sprite-img {
+      transform: scale(1.04);
+      filter: drop-shadow(0 0 10px var(--mat-glow)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+    }
+
+    .sprite-card:not(.collected) .sprite-img {
+      opacity: 0.92;
     }
 
     .sprite-label {
-      margin-top: 5px;
+      position: relative;
+      z-index: 1;
+      margin-top: 6px;
       text-align: center;
-      font-size: 0.62rem;
-      line-height: 1.2;
-      color: var(--muted);
-      word-break: break-word;
     }
 
     .sprite-label strong {
-      display: block;
-      color: var(--text);
-      font-size: 0.68rem;
-      font-weight: 600;
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 2px 7px;
+      border-radius: 99px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.2s ease;
+    }
+
+    .sprite-card.collected .sprite-label strong {
+      color: #fff;
+      background: color-mix(in srgb, var(--mat-accent) 35%, rgba(0, 0, 0, 0.4));
+      border-color: color-mix(in srgb, var(--mat-accent) 50%, transparent);
+      box-shadow: 0 0 10px color-mix(in srgb, var(--mat-glow) 35%, transparent);
     }
 
     .hidden { display: none !important; }
@@ -261,31 +387,60 @@
 
     .header-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
     .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+
     .btn-share {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
+      border: 1px solid rgba(94, 231, 255, 0.35);
+      background: rgba(94, 231, 255, 0.1);
+      color: #dffaff;
       border-radius: 8px;
       padding: 5px 10px;
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
       cursor: pointer;
       white-space: nowrap;
+      box-shadow: 0 0 12px rgba(94, 231, 255, 0.15);
     }
-    .btn-share:active { opacity: 0.85; }
-    .lang-switch { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 2px; }
-    .lang-switch button { border: none; background: transparent; color: var(--muted); border-radius: 6px; padding: 5px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
-    .lang-switch button.active { background: var(--accent); color: #fff; }
+
+    .btn-share:active { transform: scale(0.97); }
+
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 2px;
+    }
+
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      border-radius: 6px;
+      padding: 5px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .lang-switch button.active {
+      background: linear-gradient(135deg, #5ee7ff, #a855f7);
+      color: #0a0618;
+    }
 
     .shared-banner {
       margin-top: 8px;
       padding: 8px 10px;
-      background: rgba(108, 140, 255, 0.12);
-      border: 1px solid rgba(108, 140, 255, 0.35);
-      border-radius: 8px;
-      font-size: 0.78rem;
-      color: #a8bcff;
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      border-radius: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #e9d5ff;
       text-align: center;
+      box-shadow: 0 0 16px rgba(168, 85, 247, 0.15);
     }
 
     .toast {
@@ -294,24 +449,26 @@
       bottom: calc(16px + env(safe-area-inset-bottom, 0px));
       transform: translateX(-50%);
       z-index: 50;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
+      background: rgba(28, 22, 58, 0.95);
+      border: 1px solid rgba(94, 231, 255, 0.35);
       color: var(--text);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 10px 16px;
       font-size: 0.85rem;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(94, 231, 255, 0.15);
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.2s;
     }
+
     .toast.visible { opacity: 1; }
 
     .save-prompt-overlay {
       position: fixed;
       inset: 0;
       z-index: 40;
-      background: rgba(0, 0, 0, 0.55);
+      background: rgba(5, 3, 15, 0.72);
+      backdrop-filter: blur(6px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -319,13 +476,14 @@
     }
 
     .save-prompt {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px 16px;
+      background: linear-gradient(160deg, rgba(40, 32, 78, 0.95), rgba(20, 14, 42, 0.98));
+      border: 1px solid rgba(168, 85, 247, 0.45);
+      border-radius: 16px;
+      padding: 20px 16px;
       max-width: 320px;
       width: 100%;
       text-align: center;
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.25);
     }
 
     .save-prompt p {
@@ -336,17 +494,20 @@
 
     .save-prompt button.primary {
       width: 100%;
-      background: var(--accent);
-      color: #fff;
+      background: linear-gradient(135deg, #22d3ee, #a855f7);
+      color: #0a0618;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 12px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
       cursor: pointer;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
     }
 
-    .save-prompt button.primary:active { opacity: 0.9; }
+    .save-prompt button.primary:active { transform: scale(0.98); }
 
     .sprite-card.readonly { cursor: default; }
   </style>
@@ -392,10 +553,12 @@
 
   <script>
     const CONFIG_URL = "sprites-config.json";
+    const HD_MAP_URL = "sprites-hd-map.json";
     const STORAGE_KEY = "klombo-tracker-collected-v1";
     const SHARE_PARAM = "s";
 
     let config = null;
+    let hdMap = null;
     let catalog = [];
     let collected = new Set();
     let filter = "all";
@@ -415,6 +578,54 @@
     const $toast = document.getElementById("toast");
 
     let toastTimer = null;
+
+    const MATERIAL_THEME = {
+      base: {
+        accent: "#b8c2d4",
+        glow: "rgba(184, 194, 212, 0.55)",
+        fill: "rgba(148, 163, 184, 0.22)",
+        gradient: "linear-gradient(145deg, rgba(148,163,184,0.28), rgba(51,65,85,0.12))",
+      },
+      gold: {
+        accent: "#fbbf24",
+        glow: "rgba(251, 191, 36, 0.7)",
+        fill: "rgba(251, 191, 36, 0.32)",
+        gradient: "linear-gradient(145deg, rgba(251,191,36,0.42), rgba(245,158,11,0.15))",
+      },
+      gummy: {
+        accent: "#f472b6",
+        glow: "rgba(244, 114, 182, 0.65)",
+        fill: "rgba(244, 114, 182, 0.3)",
+        gradient: "linear-gradient(145deg, rgba(244,114,182,0.4), rgba(219,39,119,0.12))",
+      },
+      galaxy: {
+        accent: "#818cf8",
+        glow: "rgba(129, 140, 248, 0.7)",
+        fill: "rgba(129, 140, 248, 0.32)",
+        gradient: "linear-gradient(145deg, rgba(129,140,248,0.42), rgba(79,70,229,0.15))",
+      },
+      holofoil: {
+        accent: "#22d3ee",
+        glow: "rgba(34, 211, 238, 0.75)",
+        fill: "rgba(34, 211, 238, 0.28)",
+        gradient: "linear-gradient(145deg, rgba(34,211,238,0.38), rgba(6,182,212,0.12))",
+      },
+      gem: {
+        accent: "#c084fc",
+        glow: "rgba(192, 132, 252, 0.7)",
+        fill: "rgba(192, 132, 252, 0.3)",
+        gradient: "linear-gradient(145deg, rgba(192,132,252,0.4), rgba(147,51,234,0.14))",
+      },
+    };
+
+    function applyMaterialTheme(card, materialId) {
+      const theme = MATERIAL_THEME[materialId] || MATERIAL_THEME.base;
+      card.dataset.material = materialId;
+      card.style.setProperty("--mat-accent", theme.accent);
+      card.style.setProperty("--mat-glow", theme.glow);
+      card.style.setProperty("--mat-fill", theme.fill);
+      card.style.setProperty("--mat-gradient", theme.gradient);
+    }
 
     function applyStaticI18n() {
       document.title = SpritedexI18n.t("appTitle");
@@ -569,23 +780,43 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify([...collected]));
     }
 
-    function imagePath(item) {
+    function namedImagePath(item) {
       if (item.output) {
-        return item.output.startsWith("sprites_named/")
-          ? item.output
-          : `sprites_named/${item.output}`;
+        const out = item.output.replace(/^sprites_named\//, "");
+        return `sprites_named/${out}`;
       }
-      return `sprites_named/${item.filename}`;
+      if (item.filename) return `sprites_named/${item.filename}`;
+      return null;
+    }
+
+    function imagePath(item) {
+      if (item.hdImage) return item.hdImage;
+      return namedImagePath(item) || `sprites/${item.source?.replace(/^sprites\//, "") || item.id}.png`;
+    }
+
+    function resolveHdImage(item) {
+      if (!hdMap) return null;
+      return hdMap.byId?.[item.id]
+        ?? hdMap.byKey?.[`${item.spriteId}:${item.materialId}`]
+        ?? null;
     }
 
     function buildCatalog(cfg) {
       if (Array.isArray(cfg.catalog) && cfg.catalog.length) {
-        return cfg.catalog.map((item) => ({
-          id: item.id,
-          spriteId: item.spriteId || item.character,
-          materialId: item.materialId || item.material || cfg.defaultMaterial || "base",
-          image: imagePath(item),
-        }));
+        return cfg.catalog.map((item) => {
+          const entry = {
+            id: item.id,
+            spriteId: item.spriteId || item.character,
+            materialId: item.materialId || item.material || cfg.defaultMaterial || "base",
+            filename: item.filename,
+            output: item.output,
+            source: item.source,
+            fallbackImage: namedImagePath(item),
+          };
+          entry.hdImage = resolveHdImage(entry);
+          entry.image = entry.hdImage || entry.fallbackImage;
+          return entry;
+        });
       }
 
       const items = [];
@@ -598,14 +829,19 @@
             || sprite.type
             || cfg.defaultMaterial
             || "base";
-          items.push({
+          const fallback = sprite.output
+            ? `sprites_named/${sprite.output}`
+            : namedImagePath(sprite);
+          const entry = {
             id: sprite.id || sprite.source?.replace(/\.png$/i, ""),
             spriteId,
             materialId,
-            image: sprite.output
-              ? `sprites_named/${sprite.output}`
-              : imagePath(sprite),
-          });
+            filename: sprite.output,
+            fallbackImage: fallback,
+          };
+          entry.hdImage = resolveHdImage(entry);
+          entry.image = entry.hdImage || entry.fallbackImage;
+          items.push(entry);
         }
       }
       return items;
@@ -676,6 +912,7 @@
       const card = document.createElement("button");
       card.type = "button";
       card.className = `sprite-card${isCollected ? " collected" : ""}${readOnly ? " readonly" : ""}`;
+      applyMaterialTheme(card, item.materialId);
       card.setAttribute("aria-pressed", isCollected ? "true" : "false");
       card.setAttribute(
         "aria-label",
@@ -694,7 +931,11 @@
 
       card.querySelector("img").addEventListener("error", function onErr() {
         this.removeEventListener("error", onErr);
-        const src = item.image;
+        const src = this.src;
+        if (item.fallbackImage && src !== item.fallbackImage) {
+          this.src = item.fallbackImage;
+          return;
+        }
         if (src.includes("sprites_named/")) {
           this.src = src.replace("sprites_named/", "sprites/");
         }
@@ -747,9 +988,13 @@
 
     async function init() {
       try {
-        const res = await fetch(CONFIG_URL, { cache: "no-store" });
-        if (!res.ok) throw new Error(SpritedexI18n.t("loadError"));
-        config = await res.json();
+        const [configRes, hdRes] = await Promise.all([
+          fetch(CONFIG_URL, { cache: "no-store" }),
+          fetch(HD_MAP_URL, { cache: "no-store" }).catch(() => null),
+        ]);
+        if (!configRes.ok) throw new Error(SpritedexI18n.t("loadError"));
+        config = await configRes.json();
+        if (hdRes?.ok) hdMap = await hdRes.json();
         SpritedexI18n.init(config);
         SpritedexI18n.createLanguageSwitcher(document.getElementById("lang-slot"));
         applyStaticI18n();

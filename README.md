@@ -27,6 +27,16 @@
 
 ---
 
+## HD-спрайты (Sprite Locker)
+
+Часть картинок взята с [spritelocker.com](https://spritelocker.com/) — там они заметно чётче. Скрипт скачивает доступные варианты (Base/Gold/Gummy/Galaxy); Gem, Holofoil, Air, Seven и прочие отсутствующие — из локального `sprites_named/`.
+
+```bash
+python3 fetch_spritelocker.py
+```
+
+---
+
 ## Локальный запуск
 
 Нужен HTTP-сервер (из-за `fetch` конфига):
@@ -51,7 +61,10 @@ python3 -m http.server 8765
 | `tracker.html` | Трекер коллекции |
 | `labeler.html` | Редактор меток (для своего конфига) |
 | `sprites-config.json` | Список спрайтов и вариантов |
-| `sprites_named/` | PNG с английскими именами |
+| `sprites_named/` | PNG с английскими именами (fallback) |
+| `sprites_hd/` | HD WebP с [Sprite Locker](https://spritelocker.com/) |
+| `sprites-hd-map.json` | Маппинг catalog id → HD файл |
+| `fetch_spritelocker.py` | Скачать HD-спрайты с spritelocker.com |
 | `i18n.js` | Переводы EN/RU |
 | `apply_labels.py` | Пересборка `sprites_named/` из конфига |
 
