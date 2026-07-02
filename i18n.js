@@ -53,6 +53,11 @@ const SpritedexI18n = (() => {
       groupsNamed: "groups named",
       configFile: "sprites-config.json",
       collectedAria: "collected",
+      share: "Share",
+      shareCopied: "Link copied",
+      sharedViewBanner: "Shared collection — view only",
+      saveAndEdit: "Save to memory and edit",
+      shareError: "Could not create share link",
     },
     ru: {
       appTitle: "Fortnite Sprites Pocket Tracker",
@@ -100,6 +105,11 @@ const SpritedexI18n = (() => {
       groupsNamed: "групп с названием",
       configFile: "sprites-config.json",
       collectedAria: "собран",
+      share: "Поделиться",
+      shareCopied: "Ссылка скопирована",
+      sharedViewBanner: "Чужая коллекция — только просмотр",
+      saveAndEdit: "Сохранить в память и редактировать",
+      shareError: "Не удалось создать ссылку",
     },
   };
 

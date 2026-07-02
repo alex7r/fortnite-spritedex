@@ -260,9 +260,95 @@
     }
 
     .header-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .btn-share {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-share:active { opacity: 0.85; }
     .lang-switch { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 2px; }
     .lang-switch button { border: none; background: transparent; color: var(--muted); border-radius: 6px; padding: 5px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
     .lang-switch button.active { background: var(--accent); color: #fff; }
+
+    .shared-banner {
+      margin-top: 8px;
+      padding: 8px 10px;
+      background: rgba(108, 140, 255, 0.12);
+      border: 1px solid rgba(108, 140, 255, 0.35);
+      border-radius: 8px;
+      font-size: 0.78rem;
+      color: #a8bcff;
+      text-align: center;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+      transform: translateX(-50%);
+      z-index: 50;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .toast.visible { opacity: 1; }
+
+    .save-prompt-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background: rgba(0, 0, 0, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .save-prompt {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 16px;
+      max-width: 320px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .save-prompt p {
+      margin: 0 0 14px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .save-prompt button.primary {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .save-prompt button.primary:active { opacity: 0.9; }
+
+    .sprite-card.readonly { cursor: default; }
   </style>
   <script src="i18n.js"></script>
 </head>
@@ -270,8 +356,12 @@
   <header>
     <div class="header-top">
       <h1 id="title">Fortnite Sprites Pocket Tracker</h1>
-      <div id="lang-slot"></div>
+      <div class="header-actions">
+        <button type="button" id="btn-share" class="btn-share" data-i18n="share" hidden>Share</button>
+        <div id="lang-slot"></div>
+      </div>
     </div>
+    <div class="shared-banner hidden" id="shared-banner" hidden></div>
     <div class="progress-wrap">
       <div class="progress-meta">
         <span><span id="progress-label">Collected</span>: <strong id="progress-text">0 / 0</strong></span>
@@ -291,15 +381,26 @@
     <div class="loading" id="loading" data-i18n="loading">Loading</div>
   </main>
 
+  <div class="save-prompt-overlay hidden" id="save-prompt" hidden>
+    <div class="save-prompt">
+      <p id="save-prompt-text" data-i18n="saveAndEdit">Save to memory and edit</p>
+      <button type="button" class="primary" id="btn-adopt" data-i18n="saveAndEdit">Save to memory and edit</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" aria-live="polite"></div>
+
   <script>
     const CONFIG_URL = "sprites-config.json";
     const STORAGE_KEY = "klombo-tracker-collected-v1";
+    const SHARE_PARAM = "s";
 
     let config = null;
     let catalog = [];
     let collected = new Set();
     let filter = "all";
     let searchQuery = "";
+    let readOnly = false;
 
     const $app = document.getElementById("app");
     const $title = document.getElementById("title");
@@ -308,6 +409,12 @@
     const $progressPct = document.getElementById("progress-pct");
     const $progressFill = document.getElementById("progress-fill");
     const $search = document.getElementById("search");
+    const $btnShare = document.getElementById("btn-share");
+    const $sharedBanner = document.getElementById("shared-banner");
+    const $savePrompt = document.getElementById("save-prompt");
+    const $toast = document.getElementById("toast");
+
+    let toastTimer = null;
 
     function applyStaticI18n() {
       document.title = SpritedexI18n.t("appTitle");
@@ -319,6 +426,132 @@
       document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
         el.placeholder = SpritedexI18n.t(el.dataset.i18nPlaceholder);
       });
+      updateSharedBanner();
+    }
+
+    function showToast(message) {
+      $toast.textContent = message;
+      $toast.classList.add("visible");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => $toast.classList.remove("visible"), 2200);
+    }
+
+    function updateSharedBanner() {
+      if (!readOnly) {
+        $sharedBanner.hidden = true;
+        $sharedBanner.classList.add("hidden");
+        return;
+      }
+      $sharedBanner.textContent = SpritedexI18n.t("sharedViewBanner");
+      $sharedBanner.hidden = false;
+      $sharedBanner.classList.remove("hidden");
+    }
+
+    function showSavePrompt() {
+      $savePrompt.hidden = false;
+      $savePrompt.classList.remove("hidden");
+    }
+
+    function hideSavePrompt() {
+      $savePrompt.hidden = true;
+      $savePrompt.classList.add("hidden");
+    }
+
+    function toBase64Url(bytes) {
+      let binary = "";
+      for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+      return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+    }
+
+    function fromBase64Url(str) {
+      const padded = str.replace(/-/g, "+").replace(/_/g, "/");
+      const pad = padded.length % 4 ? "=".repeat(4 - (padded.length % 4)) : "";
+      const binary = atob(padded + pad);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+      return bytes;
+    }
+
+    function encodeShareBitmap(items, set) {
+      const n = items.length;
+      const header = new Uint8Array(2);
+      header[0] = (n >> 8) & 0xff;
+      header[1] = n & 0xff;
+      const bitmap = new Uint8Array(Math.ceil(n / 8));
+      items.forEach((item, i) => {
+        if (set.has(item.id)) bitmap[Math.floor(i / 8)] |= 1 << (i % 8);
+      });
+      const packed = new Uint8Array(header.length + bitmap.length);
+      packed.set(header);
+      packed.set(bitmap, header.length);
+      return toBase64Url(packed);
+    }
+
+    function decodeShareBitmap(items, encoded) {
+      const packed = fromBase64Url(encoded);
+      if (packed.length < 2) return null;
+      const count = (packed[0] << 8) | packed[1];
+      if (count !== items.length) return null;
+      const bitmap = packed.subarray(2);
+      const needed = Math.ceil(count / 8);
+      if (bitmap.length < needed) return null;
+      const set = new Set();
+      items.forEach((item, i) => {
+        if (bitmap[Math.floor(i / 8)] & (1 << (i % 8))) set.add(item.id);
+      });
+      return set;
+    }
+
+    function buildShareUrl() {
+      const token = encodeShareBitmap(catalog, collected);
+      const url = new URL(location.href);
+      url.search = "";
+      url.searchParams.set(SHARE_PARAM, token);
+      return url.toString();
+    }
+
+    function parseShareFromUrl(items) {
+      const token = new URLSearchParams(location.search).get(SHARE_PARAM);
+      if (!token) return null;
+      return decodeShareBitmap(items, token);
+    }
+
+    function clearShareFromUrl() {
+      const url = new URL(location.href);
+      if (!url.searchParams.has(SHARE_PARAM)) return;
+      url.searchParams.delete(SHARE_PARAM);
+      history.replaceState(null, "", url.pathname + url.hash);
+    }
+
+    async function shareCollection() {
+      if (!catalog.length) return;
+      try {
+        const shareUrl = buildShareUrl();
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: SpritedexI18n.t("appTitle"),
+              url: shareUrl,
+            });
+            return;
+          } catch (err) {
+            if (err?.name === "AbortError") return;
+          }
+        }
+        await navigator.clipboard.writeText(shareUrl);
+        showToast(SpritedexI18n.t("shareCopied"));
+      } catch (_) {
+        showToast(SpritedexI18n.t("shareError"));
+      }
+    }
+
+    function adoptSharedCollection() {
+      readOnly = false;
+      saveCollected();
+      clearShareFromUrl();
+      hideSavePrompt();
+      updateSharedBanner();
+      render();
     }
 
     function loadCollected() {
@@ -425,6 +658,10 @@
     }
 
     function toggleSprite(id) {
+      if (readOnly) {
+        showSavePrompt();
+        return;
+      }
       if (collected.has(id)) collected.delete(id);
       else collected.add(id);
       saveCollected();
@@ -438,7 +675,7 @@
       const materialLabel = displayMaterial(item);
       const card = document.createElement("button");
       card.type = "button";
-      card.className = `sprite-card${isCollected ? " collected" : ""}`;
+      card.className = `sprite-card${isCollected ? " collected" : ""}${readOnly ? " readonly" : ""}`;
       card.setAttribute("aria-pressed", isCollected ? "true" : "false");
       card.setAttribute(
         "aria-label",
@@ -517,7 +754,16 @@
         SpritedexI18n.createLanguageSwitcher(document.getElementById("lang-slot"));
         applyStaticI18n();
         catalog = buildCatalog(config);
-        collected = loadCollected();
+        const shared = parseShareFromUrl(catalog);
+        if (shared) {
+          collected = shared;
+          readOnly = true;
+        } else {
+          collected = loadCollected();
+          readOnly = false;
+        }
+        $btnShare.hidden = false;
+        updateSharedBanner();
         render();
       } catch (err) {
         $app.innerHTML = `<div class="error-box">${err.message}</div>`;
@@ -535,6 +781,12 @@
     $search.addEventListener("input", (e) => {
       searchQuery = e.target.value.trim();
       render();
+    });
+
+    $btnShare.addEventListener("click", () => shareCollection());
+    document.getElementById("btn-adopt").addEventListener("click", () => adoptSharedCollection());
+    $savePrompt.addEventListener("click", (e) => {
+      if (e.target === $savePrompt) hideSavePrompt();
     });
 
     window.addEventListener("spritedex:localechange", () => {
