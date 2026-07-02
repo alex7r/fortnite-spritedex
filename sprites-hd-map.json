@@ -64,7 +64,7 @@
     "sprites/zeropoint_galaxy.webp",
     "sprites/zeropoint_gold.webp"
   ],
-  "downloaded": 87,
+  "downloaded": 86,
   "fallbackDir": "sprites_named",
   "byId": {
     "row01_col01": "sprites_hd/water_basic.webp",
@@ -77,7 +77,6 @@
     "row01_col08": "sprites_hd/air_gold.webp",
     "row01_col09": "sprites_hd/air_candy.webp",
     "row01_col10": "sprites_hd/air_galaxy.webp",
-    "row01_col11": "sprites_hd/air_gem.webp",
     "row01_col12": "sprites_hd/fishy_basic.webp",
     "row01_col13": "sprites_hd/fishy_gold.webp",
     "row01_col14": "sprites_hd/fishy_galaxy.webp",
@@ -158,7 +157,6 @@
   "byKey": {
     "air:base": "sprites_hd/air_basic.webp",
     "air:galaxy": "sprites_hd/air_galaxy.webp",
-    "air:gem": "sprites_hd/air_gem.webp",
     "air:gold": "sprites_hd/air_gold.webp",
     "air:gummy": "sprites_hd/air_candy.webp",
     "aura:base": "sprites_hd/drifter_basic.webp",
