@@ -86,7 +86,7 @@
       "id": "group-mqz37r2e",
       "name": "Беляшь",
       "sprites": [
-        {"file": "row01_col07.png", "name": "Кристал", "type": ""},
+        {"file": "row01_col07.png", "name": "", "type": ""},
         {"file": "row01_col08.png", "name": "", "type": "Золото"},
         {"file": "row01_col09.png", "name": "", "type": "Мармелад"},
         {"file": "row01_col10.png", "name": "", "type": "Галактика"},

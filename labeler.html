@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Klombo Sprites — Labeler</title>
+  <title>Fortnite Sprites Pocket Tracker — Sprite Labeler</title>
   <style>
     :root {
       --bg: #0f1117;
@@ -39,8 +39,13 @@
       padding: 14px 20px;
     }
 
+    .header-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
     header h1 { margin: 0 0 4px; font-size: 1.15rem; font-weight: 600; }
     header p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+
+    .lang-switch { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 2px; }
+    .lang-switch button { border: none; background: transparent; color: var(--muted); border-radius: 6px; padding: 5px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+    .lang-switch button.active { background: var(--accent); color: #fff; }
 
     .toolbar {
       display: flex;
@@ -116,6 +121,12 @@
       padding: 8px 12px;
       font-size: 0.95rem;
       font-weight: 600;
+    }
+
+    .group-display-name {
+      font-size: 0.85rem;
+      color: var(--accent);
+      white-space: nowrap;
     }
 
     .group-count { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
@@ -231,29 +242,33 @@
       .status { margin-left: 0; width: 100%; }
     }
   </style>
+  <script src="i18n.js"></script>
 </head>
 <body>
   <header>
-    <h1>Klombo Sprites — Labeler</h1>
-    <p>Конфиг: <code>sprites-config.json</code>. Группа = название персонажа, тип = материал. Пустой тип → «обычный».</p>
+    <div class="header-top">
+      <h1 id="title">Fortnite Sprites Pocket Tracker — Sprite Labeler</h1>
+      <div id="lang-slot"></div>
+    </div>
+    <p id="hint">Group = sprite name, field = variant. Empty variant → Base.</p>
     <div class="toolbar">
-      <button type="button" id="btn-add-group">+ Группа</button>
-      <button type="button" id="btn-reload">Обновить из конфига</button>
-      <button type="button" class="primary" id="btn-copy">Копировать JSON</button>
-      <button type="button" id="btn-download">Скачать JSON</button>
-      <button type="button" id="btn-reset" class="danger">Сбросить черновик</button>
+      <button type="button" id="btn-add-group">+ Group</button>
+      <button type="button" id="btn-reload">Reload config</button>
+      <button type="button" class="primary" id="btn-copy">Copy JSON</button>
+      <button type="button" id="btn-download">Download JSON</button>
+      <button type="button" id="btn-reset" class="danger">Reset draft</button>
       <span class="status" id="status"></span>
     </div>
   </header>
 
   <main>
     <div id="app">
-      <div class="loading">Загрузка sprites-config.json…</div>
+      <div class="loading" id="loading">Loading…</div>
     </div>
 
     <section class="export-panel" id="export-panel" hidden>
-      <h2>Экспорт JSON</h2>
-      <p>Сохраните как <code>sprites-config.json</code> и запустите <code>python apply_labels.py</code> для пересборки файлов в <code>sprites_named/</code>.</p>
+      <h2 id="export-title">Export JSON</h2>
+      <p id="export-hint">Save as sprites-config.json, then run: python apply_labels.py</p>
       <textarea id="json-output" readonly></textarea>
     </section>
   </main>
@@ -262,7 +277,7 @@
 
   <script>
     const CONFIG_URL = "sprites-config.json";
-    const STORAGE_KEY = "sprites-tracker-labeler-v2";
+    const STORAGE_KEY = "sprites-tracker-labeler-v3";
 
     let baseConfig = null;
     let state = null;
@@ -274,71 +289,101 @@
     const $status = document.getElementById("status");
     const $toast = document.getElementById("toast");
 
+    function t(key) {
+      return SpritedexI18n.t(key);
+    }
+
+    function loadingMessage() {
+      return `${t("loading")} ${t("configFile")}…`;
+    }
+
+    function applyStaticI18n() {
+      document.title = `${t("appTitle")} — ${t("labelerTitle")}`;
+      document.getElementById("title").textContent = `${t("appTitle")} — ${t("labelerTitle")}`;
+      document.getElementById("hint").textContent = t("labelerHint");
+      document.getElementById("btn-add-group").textContent = t("addGroup");
+      document.getElementById("btn-reload").textContent = t("reloadConfig");
+      document.getElementById("btn-copy").textContent = t("copyJson");
+      document.getElementById("btn-download").textContent = t("downloadJson");
+      document.getElementById("btn-reset").textContent = t("resetDraft");
+      document.getElementById("export-title").textContent = t("exportPanelTitle");
+      document.getElementById("export-hint").textContent = t("exportPanelHint");
+      const $loading = document.getElementById("loading");
+      if ($loading) $loading.textContent = loadingMessage();
+    }
+
     function showToast(msg) {
       $toast.textContent = msg;
       $toast.classList.add("show");
       setTimeout(() => $toast.classList.remove("show"), 2000);
     }
 
-    function normalizeMaterial(value, aliases, fallback) {
-      const raw = (value || "").trim();
-      if (!raw) return fallback;
-      const key = raw.toLocaleLowerCase("ru");
-      return aliases?.[key] || aliases?.[raw.toLowerCase()] || raw;
+    function sanitize(part) {
+      part = (part || "").trim();
+      part = part.replace(/[<>:"/\\|?*\x00]/g, "_");
+      return part || "unnamed";
     }
 
-    function computeMaterial(sprite) {
-      return normalizeMaterial(
-        sprite.type,
-        baseConfig?.materialAliases,
-        baseConfig?.defaultMaterial || "обычный"
-      );
+    function englishSpriteLabel(spriteId) {
+      return baseConfig?.i18n?.sprites?.[spriteId]?.en || spriteId;
     }
 
-    function computeOutputName(character, material) {
-      const sep = baseConfig?.nameSeparator || "_";
-      return `${character.trim()}${sep}${material}.png`;
+    function englishMaterialLabel(materialId) {
+      return baseConfig?.i18n?.materials?.[materialId]?.en || materialId;
+    }
+
+    function computeOutputName(spriteId, materialId) {
+      const sep = state?.nameSeparator || "_";
+      const sprite = sanitize(englishSpriteLabel(spriteId).replace(/\s+/g, ""));
+      const material = sanitize(englishMaterialLabel(materialId || "base").replace(/\s+/g, ""));
+      return `${sprite}${sep}${material}.png`;
+    }
+
+    function spriteMaterialId(sprite) {
+      return sprite.materialId || state?.defaultMaterial || "base";
     }
 
     function spriteImageUrl(sprite) {
-      const outputDir = baseConfig?.outputDir || "sprites_named";
-      const sourceDir = baseConfig?.sourceDir || "sprites";
+      const outputDir = state?.outputDir || "sprites_named";
       if (sprite.output) return `${outputDir}/${sprite.output}`;
       const group = state.groups.find((g) => g.sprites.includes(sprite));
-      const character = group?.name?.trim() || "unnamed";
-      const material = computeMaterial(sprite);
-      return `${outputDir}/${computeOutputName(character, material)}`;
+      const spriteId = group?.spriteId?.trim() || "unnamed";
+      return `${outputDir}/${computeOutputName(spriteId, spriteMaterialId(sprite))}`;
+    }
+
+    function resolveMaterialId(value) {
+      if (baseConfig) return SpritedexI18n.materialIdFromInput(value);
+      const raw = (value || "").trim().toLowerCase();
+      return raw || "base";
     }
 
     function cloneGroupsFromConfig(config) {
       return config.groups.map((g) => ({
         id: g.id,
-        name: g.name || "",
+        spriteId: g.spriteId || g.name || "",
         sprites: g.sprites.map((s) => ({
           id: s.id || s.source?.replace(/\.png$/i, "") || s.file?.replace(/\.png$/i, ""),
           source: s.source || s.file,
           output: s.output || "",
-          type: s.type || "",
+          materialId: s.materialId || resolveMaterialId(s.type || ""),
         })),
       }));
     }
 
     function stateFromConfig(config) {
       return {
-        version: config.version || 2,
+        version: config.version || 3,
         sourceDir: config.sourceDir || "sprites",
         outputDir: config.outputDir || "sprites_named",
-        defaultMaterial: config.defaultMaterial || "обычный",
+        defaultMaterial: config.defaultMaterial || "base",
         nameSeparator: config.nameSeparator || "_",
-        materialAliases: config.materialAliases || {},
-        typeSuggestions: config.typeSuggestions || [],
         groups: cloneGroupsFromConfig(config),
       };
     }
 
     async function loadConfigFromFile() {
       const res = await fetch(CONFIG_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error(`Не удалось загрузить ${CONFIG_URL} (${res.status})`);
+      if (!res.ok) throw new Error(`${t("loadError")} (${res.status})`);
       return res.json();
     }
 
@@ -373,33 +418,42 @@
       let n = 0;
       for (const g of state.groups) {
         for (const s of g.sprites) {
-          if ((s.type || "").trim()) n++;
+          const mid = spriteMaterialId(s);
+          if (mid && mid !== "base") n++;
         }
       }
       return n;
     }
 
+    function groupLabel(group) {
+      return group.spriteId?.trim()
+        ? SpritedexI18n.spriteName(group.spriteId)
+        : t("unnamedGroup");
+    }
+
     function buildExport() {
       return {
-        version: state.version || 2,
+        version: 3,
         exportedAt: new Date().toISOString(),
         sourceDir: state.sourceDir,
         outputDir: state.outputDir,
         defaultMaterial: state.defaultMaterial,
         nameSeparator: state.nameSeparator,
-        materialAliases: state.materialAliases,
-        typeSuggestions: state.typeSuggestions,
+        defaultLocale: baseConfig?.defaultLocale || "en",
+        materialAliases: baseConfig?.materialAliases || {},
+        typeSuggestions: baseConfig?.typeSuggestions || [],
+        i18n: baseConfig?.i18n || {},
         groups: state.groups.map((g) => ({
           id: g.id,
-          name: g.name.trim(),
+          spriteId: g.spriteId.trim(),
           sprites: g.sprites.map((s) => {
-            const material = computeMaterial(s);
-            const character = g.name.trim() || "unnamed";
+            const materialId = spriteMaterialId(s);
+            const spriteId = g.spriteId.trim() || "unnamed";
             return {
               id: s.id,
               source: s.source,
-              output: computeOutputName(character, material),
-              type: (s.type || "").trim(),
+              materialId,
+              output: computeOutputName(spriteId, materialId),
             };
           }),
         })),
@@ -411,10 +465,11 @@
     }
 
     function updateStatus() {
-      const namedGroups = state.groups.filter((g) => g.name.trim()).length;
+      const namedGroups = state.groups.filter((g) => g.spriteId?.trim()).length;
       $status.textContent =
-        `${state.groups.length} групп (${namedGroups} с названием) · ` +
-        `${totalSprites()} спрайтов · материалов ${materialCount()}/${totalSprites()}`;
+        `${state.groups.length} (${namedGroups} ${t("groupsNamed")}) · ` +
+        `${totalSprites()} ${t("sprites")} · ` +
+        `${materialCount()}/${totalSprites()} ${t("materialsCount")}`;
       updateJson();
       refreshOutputLabels();
     }
@@ -428,7 +483,36 @@
         if (!sprite || !group) return;
         const out = card.querySelector(".output-name");
         if (out) {
-          out.textContent = computeOutputName(group.name.trim() || "unnamed", computeMaterial(sprite));
+          out.textContent = computeOutputName(
+            group.spriteId?.trim() || "unnamed",
+            spriteMaterialId(sprite)
+          );
+        }
+        const matInput = card.querySelector(".material-input");
+        if (matInput && document.activeElement !== matInput) {
+          matInput.value = SpritedexI18n.materialInputValue(spriteMaterialId(sprite));
+        }
+      });
+      document.querySelectorAll(".group").forEach((section) => {
+        const group = state.groups.find((g) => g.id === section.dataset.groupId);
+        if (!group) return;
+        const display = section.querySelector(".group-display-name");
+        if (display) {
+          display.textContent = group.spriteId?.trim()
+            ? SpritedexI18n.spriteName(group.spriteId)
+            : "";
+        }
+      });
+      document.querySelectorAll(".group-select").forEach((select) => {
+        const currentGroupId = select.closest(".card")?.dataset.groupId;
+        const selected = select.value;
+        select.innerHTML = "";
+        for (const g of state.groups) {
+          const opt = document.createElement("option");
+          opt.value = g.id;
+          opt.textContent = groupLabel(g);
+          if (g.id === selected) opt.selected = true;
+          select.appendChild(opt);
         }
       });
     }
@@ -474,8 +558,8 @@
       const outputName = document.createElement("div");
       outputName.className = "output-name";
       outputName.textContent = computeOutputName(
-        group.name.trim() || "unnamed",
-        computeMaterial(sprite)
+        group.spriteId?.trim() || "unnamed",
+        spriteMaterialId(sprite)
       );
 
       const sourceName = document.createElement("div");
@@ -484,35 +568,39 @@
 
       const typeField = document.createElement("div");
       typeField.className = "field";
-      typeField.innerHTML = "<label>Материал</label>";
+      const typeLabel = document.createElement("label");
+      typeLabel.textContent = t("materialLabel");
       const typeInput = document.createElement("input");
       typeInput.type = "text";
-      typeInput.placeholder = state.defaultMaterial;
-      typeInput.value = sprite.type;
+      typeInput.className = "material-input";
+      typeInput.placeholder = SpritedexI18n.materialName("base");
+      typeInput.value = SpritedexI18n.materialInputValue(spriteMaterialId(sprite));
       typeInput.setAttribute("list", "type-suggestions");
       typeInput.addEventListener("input", () => {
-        sprite.type = typeInput.value;
+        sprite.materialId = SpritedexI18n.materialIdFromInput(typeInput.value);
         outputName.textContent = computeOutputName(
-          group.name.trim() || "unnamed",
-          computeMaterial(sprite)
+          group.spriteId?.trim() || "unnamed",
+          spriteMaterialId(sprite)
         );
         saveState();
       });
-      typeField.appendChild(typeInput);
+      typeField.append(typeLabel, typeInput);
 
       const groupField = document.createElement("div");
       groupField.className = "field";
-      groupField.innerHTML = "<label>Группа</label>";
+      const groupLabelEl = document.createElement("label");
+      groupLabelEl.textContent = t("groupField");
       const groupSelect = document.createElement("select");
+      groupSelect.className = "group-select";
       for (const g of state.groups) {
         const opt = document.createElement("option");
         opt.value = g.id;
-        opt.textContent = g.name.trim() || "(без названия)";
+        opt.textContent = groupLabel(g);
         if (g.id === group.id) opt.selected = true;
         groupSelect.appendChild(opt);
       }
       groupSelect.addEventListener("change", () => moveSprite(sprite.id, groupSelect.value));
-      groupField.appendChild(groupSelect);
+      groupField.append(groupLabelEl, groupSelect);
 
       card.append(img, outputName, sourceName, typeField, groupField);
       return card;
@@ -531,30 +619,41 @@
         header.className = "group-header";
 
         const label = document.createElement("label");
-        label.textContent = "Название";
+        label.textContent = t("groupLabel");
 
         const nameInput = document.createElement("input");
         nameInput.className = "group-name-input";
         nameInput.type = "text";
-        nameInput.placeholder = "Персонаж";
-        nameInput.value = group.name;
+        nameInput.placeholder = "water";
+        nameInput.value = group.spriteId || "";
+        nameInput.setAttribute("list", "sprite-suggestions");
         nameInput.addEventListener("input", () => {
-          group.name = nameInput.value;
+          group.spriteId = nameInput.value;
+          const display = header.querySelector(".group-display-name");
+          if (display) {
+            display.textContent = group.spriteId.trim()
+              ? SpritedexI18n.spriteName(group.spriteId)
+              : "";
+          }
           saveState();
-          document.querySelectorAll(`select option[value="${group.id}"]`).forEach((opt) => {
-            opt.textContent = group.name.trim() || "(без названия)";
-          });
           refreshOutputLabels();
         });
 
+        const displayName = document.createElement("span");
+        displayName.className = "group-display-name";
+        displayName.textContent = group.spriteId?.trim()
+          ? SpritedexI18n.spriteName(group.spriteId)
+          : "";
+
         const count = document.createElement("span");
         count.className = "group-count";
-        count.textContent = `${group.sprites.length} шт.`;
+        count.textContent = `${group.sprites.length} ${t("sprites")}`;
 
         const deleteBtn = document.createElement("button");
         deleteBtn.type = "button";
         deleteBtn.className = "danger";
-        deleteBtn.textContent = "Удалить";
+        deleteBtn.textContent = t("deleteGroup");
+        deleteBtn.title = t("deleteGroupTitle");
         deleteBtn.addEventListener("click", () => {
           if (state.groups.length <= 1) return;
           const target = state.groups.find((g) => g.id !== group.id);
@@ -564,7 +663,7 @@
           saveState();
         });
 
-        header.append(label, nameInput, count, deleteBtn);
+        header.append(label, nameInput, displayName, count, deleteBtn);
 
         const grid = document.createElement("div");
         grid.className = "grid";
@@ -582,47 +681,70 @@
       updateStatus();
     }
 
-    function setupTypeSuggestions() {
-      let dl = document.getElementById("type-suggestions");
-      if (!dl) {
-        dl = document.createElement("datalist");
-        dl.id = "type-suggestions";
-        document.body.appendChild(dl);
+    function setupSuggestions() {
+      let matDl = document.getElementById("type-suggestions");
+      if (!matDl) {
+        matDl = document.createElement("datalist");
+        matDl.id = "type-suggestions";
+        document.body.appendChild(matDl);
       }
-      dl.innerHTML = "";
-      (state.typeSuggestions || []).forEach((t) => {
+      matDl.innerHTML = "";
+      SpritedexI18n.materialSuggestions().forEach((name) => {
         const opt = document.createElement("option");
-        opt.value = t;
-        dl.appendChild(opt);
+        opt.value = name;
+        matDl.appendChild(opt);
+      });
+
+      let spriteDl = document.getElementById("sprite-suggestions");
+      if (!spriteDl) {
+        spriteDl = document.createElement("datalist");
+        spriteDl.id = "sprite-suggestions";
+        document.body.appendChild(spriteDl);
+      }
+      spriteDl.innerHTML = "";
+      const spriteIds = Object.keys(baseConfig?.i18n?.sprites || {});
+      spriteIds.forEach((id) => {
+        const opt = document.createElement("option");
+        opt.value = id;
+        opt.label = SpritedexI18n.spriteName(id);
+        spriteDl.appendChild(opt);
       });
     }
 
     async function init(fromFileOnly = false) {
+      $app.innerHTML = `<div class="loading" id="loading">${loadingMessage()}</div>`;
       try {
         baseConfig = await loadConfigFromFile();
+        SpritedexI18n.init(baseConfig);
+        const $langSlot = document.getElementById("lang-slot");
+        if (!$langSlot.childElementCount) {
+          SpritedexI18n.createLanguageSwitcher($langSlot);
+        }
+        applyStaticI18n();
         if (fromFileOnly) {
           localStorage.removeItem(STORAGE_KEY);
           state = stateFromConfig(baseConfig);
         } else {
           state = loadDraftOrConfig(baseConfig);
         }
-        setupTypeSuggestions();
+        setupSuggestions();
         render();
-        showToast(fromFileOnly ? "Загружено из конфига" : "Готово");
+        showToast(fromFileOnly ? t("reloadDone") : t("ready"));
       } catch (err) {
-        $app.innerHTML = `<div class="error-box">${err.message}<br><br>Запустите сервер из корня проекта:<br><code>python3 -m http.server 8765</code></div>`;
+        $app.innerHTML =
+          `<div class="error-box">${err.message}<br><br>${t("loadHint")}<br><code>python3 -m http.server 8765</code></div>`;
         $exportPanel.hidden = true;
       }
     }
 
     document.getElementById("btn-add-group").addEventListener("click", () => {
-      state.groups.push({ id: newGroupId(), name: "Новая группа", sprites: [] });
+      state.groups.push({ id: newGroupId(), spriteId: "", sprites: [] });
       render();
       saveState();
     });
 
     document.getElementById("btn-reload").addEventListener("click", () => {
-      if (!confirm("Перезагрузить из sprites-config.json? Несохранённый черновик будет потерян.")) return;
+      if (!confirm(t("reloadConfirm"))) return;
       init(true);
     });
 
@@ -630,11 +752,11 @@
       const text = $jsonOutput.value;
       try {
         await navigator.clipboard.writeText(text);
-        showToast("JSON скопирован");
+        showToast(t("copyDone"));
       } catch (_) {
         $jsonOutput.select();
         document.execCommand("copy");
-        showToast("JSON скопирован");
+        showToast(t("copyDone"));
       }
     });
 
@@ -642,15 +764,23 @@
       const blob = new Blob([$jsonOutput.value], { type: "application/json" });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = "sprites-config.json";
+      a.download = t("configFile");
       a.click();
       URL.revokeObjectURL(a.href);
-      showToast("sprites-config.json скачан");
+      showToast(t("downloadDone"));
     });
 
     document.getElementById("btn-reset").addEventListener("click", () => {
-      if (!confirm("Сбросить черновик и загрузить sprites-config.json заново?")) return;
+      if (!confirm(t("reloadConfirm"))) return;
       init(true);
+    });
+
+    window.addEventListener("spritedex:localechange", () => {
+      applyStaticI18n();
+      if (state) {
+        setupSuggestions();
+        render();
+      }
     });
 
     init(false);

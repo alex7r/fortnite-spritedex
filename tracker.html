@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="theme-color" content="#0f1117" />
-  <title>Klombo Tracker</title>
+  <title>Fortnite Sprites Pocket Tracker</title>
   <style>
     :root {
       --bg: #0f1117;
@@ -19,7 +19,6 @@
       --success-dim: rgba(74, 222, 128, 0.15);
       --danger: #f87171;
       --radius: 12px;
-      --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -30,7 +29,7 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.4;
-      padding-bottom: calc(72px + var(--safe-bottom));
+      padding-bottom: env(safe-area-inset-bottom, 12px);
     }
 
     header {
@@ -251,34 +250,6 @@
       font-weight: 600;
     }
 
-    .bottom-bar {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 30;
-      display: flex;
-      gap: 8px;
-      padding: 10px 12px calc(10px + var(--safe-bottom));
-      background: rgba(15, 17, 23, 0.96);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid var(--border);
-    }
-
-    .bottom-bar button {
-      flex: 1;
-      border: 1px solid var(--border);
-      background: var(--surface-2);
-      color: var(--text);
-      border-radius: 10px;
-      padding: 12px 8px;
-      font-size: 0.82rem;
-      cursor: pointer;
-      touch-action: manipulation;
-    }
-
-    .bottom-bar button.danger { color: var(--danger); }
-
     .hidden { display: none !important; }
 
     .empty-state {
@@ -287,52 +258,68 @@
       color: var(--muted);
       font-size: 0.9rem;
     }
+
+    .header-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .lang-switch { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 2px; }
+    .lang-switch button { border: none; background: transparent; color: var(--muted); border-radius: 6px; padding: 5px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+    .lang-switch button.active { background: var(--accent); color: #fff; }
   </style>
+  <script src="i18n.js"></script>
 </head>
 <body>
   <header>
-    <h1>Klombo Tracker</h1>
+    <div class="header-top">
+      <h1 id="title">Fortnite Sprites Pocket Tracker</h1>
+      <div id="lang-slot"></div>
+    </div>
     <div class="progress-wrap">
       <div class="progress-meta">
-        <span>Собрано: <strong id="progress-text">0 / 0</strong></span>
+        <span><span id="progress-label">Collected</span>: <strong id="progress-text">0 / 0</strong></span>
         <span id="progress-pct">0%</span>
       </div>
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     </div>
     <div class="filters" id="filters">
-      <button type="button" class="chip active" data-filter="all">Все</button>
-      <button type="button" class="chip" data-filter="missing">Нет</button>
-      <button type="button" class="chip" data-filter="collected">Есть</button>
+      <button type="button" class="chip active" data-filter="all" data-i18n="filterAll">All</button>
+      <button type="button" class="chip" data-filter="missing" data-i18n="filterMissing">Missing</button>
+      <button type="button" class="chip" data-filter="collected" data-i18n="filterCollected">Collected</button>
     </div>
-    <input class="search" type="search" id="search" placeholder="Поиск персонажа или материала…" autocomplete="off" />
+    <input class="search" type="search" id="search" data-i18n-placeholder="searchPlaceholder" placeholder="Search sprite or variant…" autocomplete="off" />
   </header>
 
   <main id="app">
-    <div class="loading">Загрузка…</div>
+    <div class="loading" id="loading" data-i18n="loading">Loading</div>
   </main>
-
-  <div class="bottom-bar" id="bottom-bar" hidden>
-    <button type="button" id="btn-export">Экспорт</button>
-    <button type="button" id="btn-import">Импорт</button>
-    <button type="button" id="btn-reset" class="danger">Сброс</button>
-  </div>
-
-  <input type="file" id="import-file" accept="application/json,.json" hidden />
 
   <script>
     const CONFIG_URL = "sprites-config.json";
     const STORAGE_KEY = "klombo-tracker-collected-v1";
 
+    let config = null;
     let catalog = [];
     let collected = new Set();
     let filter = "all";
     let searchQuery = "";
 
     const $app = document.getElementById("app");
+    const $title = document.getElementById("title");
+    const $progressLabel = document.getElementById("progress-label");
     const $progressText = document.getElementById("progress-text");
     const $progressPct = document.getElementById("progress-pct");
     const $progressFill = document.getElementById("progress-fill");
-    const $bottomBar = document.getElementById("bottom-bar");
+    const $search = document.getElementById("search");
+
+    function applyStaticI18n() {
+      document.title = SpritedexI18n.t("appTitle");
+      $title.textContent = SpritedexI18n.t("trackerTitle");
+      $progressLabel.textContent = SpritedexI18n.t("collected");
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        el.textContent = SpritedexI18n.t(el.dataset.i18n);
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+        el.placeholder = SpritedexI18n.t(el.dataset.i18nPlaceholder);
+      });
+    }
 
     function loadCollected() {
       try {
@@ -358,49 +345,66 @@
       return `sprites_named/${item.filename}`;
     }
 
-    function buildCatalog(config) {
-      if (Array.isArray(config.catalog) && config.catalog.length) {
-        return config.catalog.map((item) => ({
+    function buildCatalog(cfg) {
+      if (Array.isArray(cfg.catalog) && cfg.catalog.length) {
+        return cfg.catalog.map((item) => ({
           id: item.id,
-          character: item.character || item.group_name,
-          material: item.material,
+          spriteId: item.spriteId || item.character,
+          materialId: item.materialId || item.material || cfg.defaultMaterial || "base",
           image: imagePath(item),
         }));
       }
 
       const items = [];
-      for (const group of config.groups || []) {
+      for (const group of cfg.groups || []) {
+        const spriteId = group.spriteId || group.name;
         for (const sprite of group.sprites || []) {
-          const character = group.name || sprite.character;
-          const material = sprite.material || sprite.type || config.defaultMaterial || "обычный";
+          const materialId = sprite.materialId
+            || cfg.materialAliases?.[sprite.type || sprite.material || ""]
+            || sprite.material
+            || sprite.type
+            || cfg.defaultMaterial
+            || "base";
           items.push({
             id: sprite.id || sprite.source?.replace(/\.png$/i, ""),
-            character,
-            material,
+            spriteId,
+            materialId,
             image: sprite.output
               ? `sprites_named/${sprite.output}`
-              : `sprites_named/${character}_${material}.png`,
+              : imagePath(sprite),
           });
         }
       }
       return items;
     }
 
+    function displaySprite(item) {
+      return SpritedexI18n.spriteName(item.spriteId);
+    }
+
+    function displayMaterial(item) {
+      return SpritedexI18n.materialName(item.materialId);
+    }
+
     function groupCatalog(items) {
       const map = new Map();
       for (const item of items) {
-        if (!map.has(item.character)) map.set(item.character, []);
-        map.get(item.character).push(item);
+        const key = item.spriteId;
+        if (!map.has(key)) map.set(key, []);
+        map.get(key).push(item);
       }
-      return [...map.entries()].sort((a, b) => a[0].localeCompare(b[0], "ru"));
+      const locale = SpritedexI18n.getLocale() === "ru" ? "ru" : "en";
+      return [...map.entries()].sort((a, b) =>
+        displaySprite({ spriteId: a[0] }).localeCompare(displaySprite({ spriteId: b[0] }), locale)
+      );
     }
 
     function matchesSearch(item) {
       if (!searchQuery) return true;
-      const q = searchQuery.toLocaleLowerCase("ru");
+      const q = searchQuery.toLocaleLowerCase();
       return (
-        item.character.toLocaleLowerCase("ru").includes(q) ||
-        item.material.toLocaleLowerCase("ru").includes(q)
+        displaySprite(item).toLocaleLowerCase().includes(q) ||
+        displayMaterial(item).toLocaleLowerCase().includes(q)
       );
     }
 
@@ -430,11 +434,16 @@
 
     function renderCard(item) {
       const isCollected = collected.has(item.id);
+      const spriteLabel = displaySprite(item);
+      const materialLabel = displayMaterial(item);
       const card = document.createElement("button");
       card.type = "button";
       card.className = `sprite-card${isCollected ? " collected" : ""}`;
       card.setAttribute("aria-pressed", isCollected ? "true" : "false");
-      card.setAttribute("aria-label", `${item.character}, ${item.material}${isCollected ? ", собран" : ""}`);
+      card.setAttribute(
+        "aria-label",
+        `${spriteLabel}, ${materialLabel}${isCollected ? `, ${SpritedexI18n.t("collectedAria")}` : ""}`
+      );
 
       card.innerHTML = `
         <span class="check-badge" aria-hidden="true">✓</span>
@@ -442,7 +451,7 @@
           <img class="sprite-img" src="${item.image}" alt="" loading="lazy" decoding="async" />
         </div>
         <div class="sprite-label">
-          <strong>${item.material}</strong>
+          <strong>${materialLabel}</strong>
         </div>
       `;
 
@@ -463,7 +472,7 @@
       const frag = document.createDocumentFragment();
       let visibleCount = 0;
 
-      for (const [character, sprites] of grouped) {
+      for (const [spriteId, sprites] of grouped) {
         const visible = sprites.filter((s) => matchesSearch(s) && matchesFilter(s));
         if (!visible.length) continue;
         visibleCount += visible.length;
@@ -475,7 +484,7 @@
         const header = document.createElement("div");
         header.className = "character-header";
         header.innerHTML = `
-          <h2>${character}</h2>
+          <h2>${displaySprite({ spriteId })}</h2>
           <span class="character-stats${doneInGroup === sprites.length ? " done" : ""}">${doneInGroup}/${sprites.length}</span>
         `;
 
@@ -491,7 +500,7 @@
 
       $app.innerHTML = "";
       if (!visibleCount) {
-        $app.innerHTML = '<div class="empty-state">Ничего не найдено</div>';
+        $app.innerHTML = `<div class="empty-state">${SpritedexI18n.t("noResults")}</div>`;
       } else {
         $app.appendChild(frag);
       }
@@ -502,11 +511,13 @@
     async function init() {
       try {
         const res = await fetch(CONFIG_URL, { cache: "no-store" });
-        if (!res.ok) throw new Error(`Не удалось загрузить ${CONFIG_URL}`);
-        const config = await res.json();
+        if (!res.ok) throw new Error(SpritedexI18n.t("loadError"));
+        config = await res.json();
+        SpritedexI18n.init(config);
+        SpritedexI18n.createLanguageSwitcher(document.getElementById("lang-slot"));
+        applyStaticI18n();
         catalog = buildCatalog(config);
         collected = loadCollected();
-        $bottomBar.hidden = false;
         render();
       } catch (err) {
         $app.innerHTML = `<div class="error-box">${err.message}</div>`;
@@ -521,50 +532,14 @@
       render();
     });
 
-    document.getElementById("search").addEventListener("input", (e) => {
+    $search.addEventListener("input", (e) => {
       searchQuery = e.target.value.trim();
       render();
     });
 
-    document.getElementById("btn-reset").addEventListener("click", () => {
-      if (!confirm("Сбросить весь прогресс на этом устройстве?")) return;
-      collected = new Set();
-      saveCollected();
+    window.addEventListener("spritedex:localechange", () => {
+      applyStaticI18n();
       render();
-    });
-
-    document.getElementById("btn-export").addEventListener("click", () => {
-      const data = {
-        version: 1,
-        exportedAt: new Date().toISOString(),
-        collected: [...collected],
-      };
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "klombo-progress.json";
-      a.click();
-      URL.revokeObjectURL(a.href);
-    });
-
-    document.getElementById("btn-import").addEventListener("click", () => {
-      document.getElementById("import-file").click();
-    });
-
-    document.getElementById("import-file").addEventListener("change", async (e) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
-      try {
-        const data = JSON.parse(await file.text());
-        if (!Array.isArray(data.collected)) throw new Error("Неверный формат");
-        collected = new Set(data.collected);
-        saveCollected();
-        render();
-        alert(`Импортировано: ${collected.size} спрайтов`);
-      } catch (err) {
-        alert("Ошибка импорта: " + err.message);
-      }
-      e.target.value = "";
     });
 
     init();

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply sprite labels: flat filenames from sprites-config.json."""
+"""Apply sprite labels: flat English filenames from sprites-config.json."""
 
 from __future__ import annotations
 
@@ -11,27 +11,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 CONFIG_FILE = Path("sprites-config.json")
-LEGACY_LABELS_FILE = Path("sprites-labels.json")
+SOURCE_DIR = Path("sprites")
+OUTPUT_DIR = Path("sprites_named")
+MANIFEST_OUT = OUTPUT_DIR / "catalog.json"
 
-DEFAULT_MATERIAL = "обычный"
+DEFAULT_MATERIAL = "base"
 INVALID_CHARS = re.compile(r'[<>:"/\\|?*\x00]')
-
-MATERIAL_ALIASES = {
-    "золотой": "Золото",
-    "золото": "Золото",
-    "кристалл": "Кристал",
-    "кристал": "Кристал",
-    "мармелад": "Мармелад",
-    "галактика": "Галактика",
-    "пурпур": "Пурпур",
-    "пурпру": "Пурпур",
-    "обычный": "обычный",
-}
-
-
-def normalize_material(material: str) -> str:
-    key = material.strip().casefold()
-    return MATERIAL_ALIASES.get(key, material.strip())
 
 
 def sanitize(part: str) -> str:
@@ -40,133 +25,67 @@ def sanitize(part: str) -> str:
     return part or "unnamed"
 
 
-def sprite_id_from_source(source: str) -> str:
-    return Path(source).stem
+def sprite_label(config: dict, sprite_id: str) -> str:
+    return config["i18n"]["sprites"][sprite_id]["en"]
 
 
-def material_for(sprite: dict) -> str:
-    material = sprite.get("type", "").strip()
-    if not material:
-        material = sprite.get("name", "").strip()
-    material = material or DEFAULT_MATERIAL
-    return sanitize(normalize_material(material))
+def material_label(config: dict, material_id: str) -> str:
+    return config["i18n"]["materials"][material_id]["en"]
 
 
-def default_config() -> dict:
-    return {
-        "version": 2,
-        "sourceDir": "sprites",
-        "outputDir": "sprites_named",
-        "defaultMaterial": DEFAULT_MATERIAL,
-        "nameSeparator": "_",
-        "materialAliases": MATERIAL_ALIASES,
-        "typeSuggestions": [
-            "обычный",
-            "Золото",
-            "Мармелад",
-            "Галактика",
-            "Кристал",
-            "Пурпур",
-        ],
-        "groups": [],
-    }
-
-
-def migrate_legacy_labels() -> dict:
-    data = json.loads(LEGACY_LABELS_FILE.read_text(encoding="utf-8"))
-    config = default_config()
-    config["groups"] = data.get("groups", [])
-    return config
-
-
-def load_config() -> dict:
-    if CONFIG_FILE.exists():
-        return json.loads(CONFIG_FILE.read_text(encoding="utf-8"))
-    if LEGACY_LABELS_FILE.exists():
-        config = migrate_legacy_labels()
-        save_config(config)
-        return config
-    raise SystemExit(f"No config found: {CONFIG_FILE}")
-
-
-def save_config(config: dict) -> None:
-    CONFIG_FILE.write_text(
-        json.dumps(config, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
+def output_filename(config: dict, sprite_id: str, material_id: str) -> str:
+    sep = config.get("nameSeparator", "_")
+    sprite = sanitize(sprite_label(config, sprite_id).replace(" ", ""))
+    material = sanitize(material_label(config, material_id).replace(" ", ""))
+    return f"{sprite}{sep}{material}.png"
 
 
 def build_entries(config: dict) -> list[dict]:
     entries: list[dict] = []
     for group in config["groups"]:
-        character = sanitize(group["name"])
+        gid = group["spriteId"]
         for sprite in group["sprites"]:
-            source = sprite.get("source") or sprite.get("file")
-            if not source:
-                continue
+            material_id = sprite.get("materialId", DEFAULT_MATERIAL)
             entries.append(
                 {
                     "sprite": sprite,
                     "group": group,
-                    "source": Path(source).name,
-                    "character": character,
-                    "material": material_for(sprite),
-                    "sprite_id": sprite.get("id") or sprite_id_from_source(source),
+                    "source": sprite["source"],
+                    "sprite_id": gid,
+                    "material_id": material_id,
+                    "group_row_id": group["id"],
                 }
             )
     return entries
 
 
-def assign_output_names(entries: list[dict], separator: str) -> None:
+def assign_output_names(config: dict, entries: list[dict]) -> None:
     used: dict[str, int] = defaultdict(int)
-
     for entry in entries:
-        base = f"{entry['character']}{separator}{entry['material']}"
+        base = output_filename(config, entry["sprite_id"], entry["material_id"]).removesuffix(".png")
         used[base] += 1
         count = used[base]
         filename = f"{base}.png" if count == 1 else f"{base}_{count:02d}.png"
         entry["output"] = filename
 
 
-def sync_sprite_fields(entry: dict) -> None:
-    sprite = entry["sprite"]
-    sprite["id"] = entry["sprite_id"]
-    sprite["source"] = entry["source"]
-    sprite["output"] = entry["output"]
-    sprite["character"] = entry["character"]
-    sprite["material"] = entry["material"]
-    if sprite.get("type", "").strip():
-        sprite["type"] = entry["material"] if sprite["type"].strip().casefold() in MATERIAL_ALIASES else sprite["type"].strip()
-    sprite.pop("file", None)
-    sprite.pop("name", None)
-
-
-def remove_legacy_outputs() -> None:
-    for path in (Path("sprites_organized"), Path("sprites_by_material")):
-        if path.exists():
-            shutil.rmtree(path)
-
-
 def main() -> None:
-    config = load_config()
-    source_dir = Path(config.get("sourceDir", "sprites"))
-    output_dir = Path(config.get("outputDir", "sprites_named"))
-    separator = config.get("nameSeparator", "_")
-
+    config = json.loads(CONFIG_FILE.read_text(encoding="utf-8"))
     entries = build_entries(config)
-    assign_output_names(entries, separator)
+    assign_output_names(config, entries)
 
-    if output_dir.exists():
-        shutil.rmtree(output_dir)
-    output_dir.mkdir()
+    if OUTPUT_DIR.exists():
+        shutil.rmtree(OUTPUT_DIR)
+    OUTPUT_DIR.mkdir()
 
-    missing: list[str] = []
     catalog: list[dict] = []
+    missing: list[str] = []
 
     for entry in entries:
-        src = source_dir / entry["source"]
-        dest = output_dir / entry["output"]
-        sync_sprite_fields(entry)
+        src = SOURCE_DIR / entry["source"]
+        dest = OUTPUT_DIR / entry["output"]
+        entry["sprite"]["output"] = entry["output"]
+        entry["sprite"]["materialId"] = entry["material_id"]
 
         if not src.exists():
             missing.append(entry["source"])
@@ -175,37 +94,42 @@ def main() -> None:
         shutil.copy2(src, dest)
         catalog.append(
             {
-                "id": entry["sprite_id"],
-                "character": entry["character"],
-                "material": entry["material"],
-                "source": str(source_dir / entry["source"]),
+                "id": entry["sprite"]["id"],
+                "spriteId": entry["sprite_id"],
+                "sprite": sprite_label(config, entry["sprite_id"]),
+                "materialId": entry["material_id"],
+                "material": material_label(config, entry["material_id"]),
+                "source": str(src),
                 "output": str(dest),
                 "filename": entry["output"],
-                "group_id": entry["group"]["id"],
-                "group_name": entry["group"]["name"],
+                "group_id": entry["group_row_id"],
             }
         )
 
     config["updatedAt"] = datetime.now(timezone.utc).isoformat()
     config["catalog"] = catalog
     config["total"] = len(catalog)
-    save_config(config)
-    remove_legacy_outputs()
+    CONFIG_FILE.write_text(json.dumps(config, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
-    characters = sorted({e["character"] for e in catalog})
-    materials = sorted({e["material"] for e in catalog})
+    MANIFEST_OUT.write_text(
+        json.dumps(
+            {
+                "version": config.get("version", 3),
+                "total": len(catalog),
+                "sprites": catalog,
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
 
-    print(f"Saved {len(catalog)} sprites to {output_dir}/")
-    print(f"Config updated: {CONFIG_FILE}")
-    print(f"Characters: {len(characters)}, Materials: {len(materials)}")
-    print("Examples:")
+    print(f"Saved {len(catalog)} sprites to {OUTPUT_DIR}/")
     for item in catalog[:5]:
         print(f"  {item['filename']}  <-  {Path(item['source']).name}")
-
     if missing:
-        print(f"\nMissing source files ({len(missing)}):")
-        for name in missing:
-            print(f"  {name}")
+        print(f"Missing ({len(missing)}):", ", ".join(missing))
 
 
 if __name__ == "__main__":
