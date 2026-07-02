@@ -735,12 +735,6 @@
           "id": "air-holofoil",
           "materialId": "holofoil",
           "output": "Air_Holofoil.png"
-        },
-        {
-          "id": "row01_col11",
-          "source": "row01_col11.png",
-          "materialId": "gem",
-          "output": "Air_Gem.png"
         }
       ]
     },
@@ -1532,17 +1526,6 @@
       "group_id": "group-mqz37r2e"
     },
     {
-      "id": "row01_col11",
-      "spriteId": "air",
-      "sprite": "Air",
-      "materialId": "gem",
-      "material": "Gem",
-      "source": "sprites/row01_col11.png",
-      "output": "sprites_named/Air_Gem.png",
-      "filename": "Air_Gem.png",
-      "group_id": "group-mqz37r2e"
-    },
-    {
       "id": "row01_col12",
       "spriteId": "fishy",
       "sprite": "Fishy",
@@ -2027,5 +2010,5 @@
       "group_id": "group-mqz3ib7v"
     }
   ],
-  "total": 87
+  "total": 86
 }
