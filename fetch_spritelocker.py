@@ -38,6 +38,10 @@ MATERIAL_SLUG = {
     "gold": "gold",
     "gummy": "candy",
     "galaxy": "galaxy",
+    "gem": "gem",
+    "holofoil": "holofoil",
+    "cube": "cube",
+    "quack": "quack",
 }
 
 
@@ -76,13 +80,14 @@ def main() -> None:
     config = json.loads(CONFIG_FILE.read_text(encoding="utf-8"))
     catalog = config.get("catalog") or []
 
-    if OUTPUT_DIR.exists():
-        for old in OUTPUT_DIR.glob("*.webp"):
-            old.unlink()
+    existing_map: dict = {}
+    if MAP_FILE.exists():
+        existing_map = json.loads(MAP_FILE.read_text(encoding="utf-8"))
+
     OUTPUT_DIR.mkdir(exist_ok=True)
 
-    by_id: dict[str, str] = {}
-    by_key: dict[str, str] = {}
+    by_id: dict[str, str] = dict(existing_map.get("byId") or {})
+    by_key: dict[str, str] = dict(existing_map.get("byKey") or {})
     downloaded = 0
     missing = 0
 
@@ -91,7 +96,7 @@ def main() -> None:
         material_id = item.get("materialId", "base")
         sprite_key = f"{sprite_id}:{material_id}"
         remote = spritelocker_path(sprite_id, material_id)
-        if not remote or remote not in available:
+        if not remote:
             missing += 1
             continue
 
@@ -110,8 +115,8 @@ def main() -> None:
     manifest = {
         "version": 1,
         "source": BASE_URL,
-        "scraped": sorted(p.lstrip("/") for p in available),
-        "downloaded": downloaded,
+        "scraped": sorted(set(existing_map.get("scraped") or []) | available),
+        "downloaded": len(by_id),
         "fallbackDir": "sprites_named",
         "byId": by_id,
         "byKey": by_key,

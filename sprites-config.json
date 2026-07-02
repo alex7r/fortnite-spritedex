@@ -26,7 +26,11 @@
     "gem": "gem",
     "пурпур": "gem",
     "пурпру": "gem",
-    "purple": "gem"
+    "purple": "gem",
+    "cube": "cube",
+    "куб": "cube",
+    "quack": "quack",
+    "кря": "quack"
   },
   "typeSuggestions": [
     "base",
@@ -34,7 +38,9 @@
     "gummy",
     "galaxy",
     "holofoil",
-    "gem"
+    "gem",
+    "cube",
+    "quack"
   ],
   "i18n": {
     "sprites": {
@@ -135,6 +141,14 @@
       "gem": {
         "en": "Gem",
         "ru": "Самоцвет"
+      },
+      "cube": {
+        "en": "Cube",
+        "ru": "Куб"
+      },
+      "quack": {
+        "en": "Quack",
+        "ru": "Кря"
       }
     }
   },
@@ -177,6 +191,18 @@
         "bonus": {
           "en": "−30% fall damage",
           "ru": "−30% урона от падения"
+        }
+      },
+      "cube": {
+        "bonus": {
+          "en": "Unique Cube cosmetic (Dream & Punk only)",
+          "ru": "Уникальный Cube-вариант (только Dream и Punk)"
+        }
+      },
+      "quack": {
+        "bonus": {
+          "en": "Unique Quack cosmetic (Zero Point only)",
+          "ru": "Уникальный Quack-вариант (только Zero Point)"
         }
       }
     },
@@ -320,8 +346,8 @@
           "ru": "Случайный предмет за уровень; на 5 lvl — легендарный лут и авто-экстракция."
         },
         "spawnHint": {
-          "en": "Rare Sprite Chests and loot.",
-          "ru": "Редкие Sprite Chest и лут."
+          "en": "Rare Sprite Chests and loot. Cube variant is exclusive to Dream.",
+          "ru": "Редкие Sprite Chest и лут. Cube — только у Dream."
         }
       },
       "punk": {
@@ -332,8 +358,8 @@
           "ru": "Случайные баффы при прокачке; на 5 lvl — бесконечные патроны."
         },
         "spawnHint": {
-          "en": "Rare Sprite Chests and loot.",
-          "ru": "Редкие Sprite Chest и лут."
+          "en": "Rare Sprite Chests and loot. Cube variant is exclusive to Punk.",
+          "ru": "Редкие Sprite Chest и лут. Cube — только у Punk."
         }
       },
       "boss": {
@@ -367,8 +393,8 @@
           "ru": "Shield Bubble Jr. при использовании лечения на себе."
         },
         "spawnHint": {
-          "en": "Very rare loot; Gummy/Galaxy variants are among the rarest.",
-          "ru": "Очень редкий лут; Gummy/Galaxy — среди самых редких."
+          "en": "Very rare loot; Gummy/Galaxy among the rarest. Quack variant is ultra-rare.",
+          "ru": "Очень редкий лут; Gummy/Galaxy — среди самых редких. Quack — ультра-редкий."
         }
       },
       "grim": {
@@ -665,6 +691,12 @@
           "source": "row07_col06.png",
           "materialId": "gem",
           "output": "ZeroPoint_Gem.png"
+        },
+        {
+          "id": "row07_col11",
+          "source": "row07_col11.png",
+          "materialId": "quack",
+          "output": "ZeroPoint_Quack.png"
         }
       ]
     },
@@ -761,6 +793,12 @@
           "source": "row02_col10.png",
           "materialId": "gem",
           "output": "Dream_Gem.png"
+        },
+        {
+          "id": "row02_col12",
+          "source": "row02_col12.png",
+          "materialId": "cube",
+          "output": "Dream_Cube.png"
         }
       ]
     },
@@ -809,6 +847,12 @@
           "source": "row03_col10.png",
           "materialId": "gem",
           "output": "Punk_Gem.png"
+        },
+        {
+          "id": "row03_col11",
+          "source": "row03_col11.png",
+          "materialId": "cube",
+          "output": "Punk_Cube.png"
         }
       ]
     },
@@ -1936,7 +1980,40 @@
       "output": "sprites_named/Demon_Holofoil.png",
       "filename": "Demon_Holofoil.png",
       "group_id": "group-mqz3ib7v"
+    },
+    {
+      "id": "row02_col12",
+      "spriteId": "dream",
+      "sprite": "Dream",
+      "materialId": "cube",
+      "material": "Cube",
+      "source": "sprites/row02_col12.png",
+      "output": "sprites_named/Dream_Cube.png",
+      "filename": "Dream_Cube.png",
+      "group_id": "group-mqz39sxq"
+    },
+    {
+      "id": "row03_col11",
+      "spriteId": "punk",
+      "sprite": "Punk",
+      "materialId": "cube",
+      "material": "Cube",
+      "source": "sprites/row03_col11.png",
+      "output": "sprites_named/Punk_Cube.png",
+      "filename": "Punk_Cube.png",
+      "group_id": "group-mqz3bjv9"
+    },
+    {
+      "id": "row07_col11",
+      "spriteId": "zero-point",
+      "sprite": "Zero Point",
+      "materialId": "quack",
+      "material": "Quack",
+      "source": "sprites/row07_col11.png",
+      "output": "sprites_named/ZeroPoint_Quack.png",
+      "filename": "ZeroPoint_Quack.png",
+      "group_id": "group-07"
     }
   ],
-  "total": 84
+  "total": 87
 }

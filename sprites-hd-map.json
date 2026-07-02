@@ -64,7 +64,7 @@
     "sprites/zeropoint_galaxy.webp",
     "sprites/zeropoint_gold.webp"
   ],
-  "downloaded": 84,
+  "downloaded": 87,
   "fallbackDir": "sprites_named",
   "byId": {
     "row01_col01": "sprites_hd/water_basic.webp",
@@ -150,7 +150,10 @@
     "row07_col07": "sprites_hd/seven_basic.webp",
     "row07_col08": "sprites_hd/seven_gold.webp",
     "row07_col09": "sprites_hd/seven_candy.webp",
-    "row07_col10": "sprites_hd/seven_galaxy.webp"
+    "row07_col10": "sprites_hd/seven_galaxy.webp",
+    "row02_col12": "sprites_hd/dream_cube.webp",
+    "row03_col11": "sprites_hd/punk_cube.webp",
+    "row07_col11": "sprites_hd/zeropoint_quack.webp"
   },
   "byKey": {
     "air:base": "sprites_hd/air_basic.webp",
@@ -236,7 +239,10 @@
     "zero-point:gem": "sprites_hd/zeropoint_gem.webp",
     "zero-point:gold": "sprites_hd/zeropoint_gold.webp",
     "zero-point:gummy": "sprites_hd/zeropoint_candy.webp",
-    "zero-point:holofoil": "sprites_hd/zeropoint_holofoil.webp"
+    "zero-point:holofoil": "sprites_hd/zeropoint_holofoil.webp",
+    "dream:cube": "sprites_hd/dream_cube.webp",
+    "punk:cube": "sprites_hd/punk_cube.webp",
+    "zero-point:quack": "sprites_hd/zeropoint_quack.webp"
   },
   "enhancedLocal": 24
 }
