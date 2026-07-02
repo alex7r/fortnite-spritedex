@@ -677,6 +677,179 @@
 
     .btn-compare:active { transform: scale(0.97); }
 
+    .btn-guide {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(94, 231, 255, 0.35);
+      background: rgba(94, 231, 255, 0.08);
+      color: #a5f3fc;
+      font-size: 0.85rem;
+      font-weight: 900;
+      cursor: pointer;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(94, 231, 255, 0.12);
+    }
+
+    .btn-guide:active { transform: scale(0.94); }
+
+    .guide-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 46;
+      background: rgba(5, 3, 15, 0.78);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0;
+    }
+
+    @media (min-width: 520px) {
+      .guide-overlay { align-items: center; padding: 20px; }
+    }
+
+    .guide-sheet {
+      width: 100%;
+      max-width: 440px;
+      max-height: min(90vh, 680px);
+      overflow: auto;
+      background: linear-gradient(165deg, rgba(36, 28, 72, 0.98), rgba(14, 10, 32, 0.99));
+      border: 1px solid rgba(94, 231, 255, 0.35);
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(34, 211, 238, 0.15);
+      padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+    }
+
+    @media (min-width: 520px) {
+      .guide-sheet { border-radius: 20px; }
+    }
+
+    .guide-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .guide-head h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.25;
+    }
+
+    .guide-close {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .guide-body {
+      display: grid;
+      gap: 14px;
+    }
+
+    .guide-section {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 12px;
+    }
+
+    .guide-section h3 {
+      margin: 0 0 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--accent);
+    }
+
+    .guide-section p {
+      margin: 0 0 8px;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .guide-section p:last-child { margin-bottom: 0; }
+
+    .guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.76rem;
+    }
+
+    .guide-table th,
+    .guide-table td {
+      padding: 6px 4px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      vertical-align: top;
+    }
+
+    .guide-table th {
+      color: var(--muted);
+      font-size: 0.64rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .guide-table tr:last-child td { border-bottom: none; }
+
+    .guide-table .rarity-pill-inline {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 2px 6px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .guide-table .rarity-pill-inline[data-rarity="rare"] { color: #60a5fa; background: rgba(96, 165, 250, 0.12); }
+    .guide-table .rarity-pill-inline[data-rarity="epic"] { color: #c084fc; background: rgba(192, 132, 252, 0.12); }
+    .guide-table .rarity-pill-inline[data-rarity="legendary"] { color: #fbbf24; background: rgba(251, 191, 36, 0.12); }
+    .guide-table .rarity-pill-inline[data-rarity="mythic"] { color: #f472b6; background: rgba(244, 114, 182, 0.12); }
+
+    .guide-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .guide-list li {
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--text);
+    }
+
+    .guide-list strong {
+      color: #fff;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .guide-list .muted {
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+
     .compare-banner {
       margin-top: 10px;
       padding: 10px 12px;
@@ -1196,6 +1369,7 @@
         <button type="button" id="btn-share" class="btn-share" data-i18n="share" hidden>Share</button>
         <button type="button" id="btn-export-png" class="btn-export" data-i18n="exportPng" hidden>Export PNG</button>
         <button type="button" id="btn-compare" class="btn-compare" data-i18n="compare" hidden>Compare</button>
+        <button type="button" id="btn-guide" class="btn-guide" aria-label="Guide" title="Guide" hidden>?</button>
         <div id="lang-slot"></div>
       </div>
     </div>
@@ -1275,6 +1449,16 @@
     </div>
   </div>
 
+  <div class="guide-overlay hidden" id="guide-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="guide-title">
+    <div class="guide-sheet">
+      <div class="guide-head">
+        <h2 id="guide-title" data-i18n="guideTitle">How Sprites Work</h2>
+        <button type="button" class="guide-close" id="guide-close" data-i18n="guideClose">Close</button>
+      </div>
+      <div class="guide-body" id="guide-body"></div>
+    </div>
+  </div>
+
   <div class="detail-overlay hidden" id="detail-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="detail-title">
     <div class="detail-sheet" id="detail-sheet">
       <div class="detail-head">
@@ -1339,6 +1523,9 @@
     const $compareInputA = document.getElementById("compare-input-a");
     const $compareInputB = document.getElementById("compare-input-b");
     const $compareUseMine = document.getElementById("compare-use-mine");
+    const $guideOverlay = document.getElementById("guide-overlay");
+    const $guideBody = document.getElementById("guide-body");
+    const $btnGuide = document.getElementById("btn-guide");
     const $savePrompt = document.getElementById("save-prompt");
     const $toast = document.getElementById("toast");
     const $detailOverlay = document.getElementById("detail-overlay");
@@ -1425,6 +1612,8 @@
       document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
         el.placeholder = SpritedexI18n.t(el.dataset.i18nPlaceholder);
       });
+      $btnGuide.setAttribute("aria-label", SpritedexI18n.t("guide"));
+      $btnGuide.title = SpritedexI18n.t("guide");
       updateSharedBanner();
     }
 
@@ -2286,6 +2475,98 @@
       return field[locale] ?? field.en ?? "";
     }
 
+    const GUIDE_RARITY_ORDER = ["rare", "epic", "legendary", "mythic"];
+    const GUIDE_MATERIAL_ORDER = ["base", "gold", "gummy", "galaxy", "holofoil", "gem", "cube", "quack"];
+
+    function rarityLabel(rarity) {
+      const key = {
+        rare: "rarityRare",
+        epic: "rarityEpic",
+        legendary: "rarityLegendary",
+        mythic: "rarityMythic",
+      }[rarity];
+      return key ? SpritedexI18n.t(key) : rarity;
+    }
+
+    function buildGuideRarityTable() {
+      const costs = config?.meta?.raritySummonCost;
+      if (!costs) return "";
+      const rows = GUIDE_RARITY_ORDER
+        .filter((rarity) => costs[rarity])
+        .map((rarity) => {
+          const entry = costs[rarity];
+          return `<tr>
+            <td><span class="rarity-pill-inline" data-rarity="${rarity}">${rarityLabel(rarity)}</span></td>
+            <td>${formatDust(entry.base)}</td>
+            <td>${formatDust(entry.variant)}</td>
+          </tr>`;
+        })
+        .join("");
+      return `<table class="guide-table">
+        <thead><tr>
+          <th></th>
+          <th>${SpritedexI18n.t("guideRarityBase")}</th>
+          <th>${SpritedexI18n.t("guideRarityVariant")}</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+    }
+
+    function buildGuideMaterialList() {
+      const materials = config?.meta?.materials || {};
+      const items = GUIDE_MATERIAL_ORDER.map((materialId) => {
+        const bonus = localizedField(materials[materialId]?.bonus);
+        const name = SpritedexI18n.materialName(materialId);
+        const text = bonus || (materialId === "base" ? SpritedexI18n.t("guideVariantsBaseNote") : "");
+        if (!text) return "";
+        return `<li><strong>${name}</strong><span class="muted"> — ${text}</span></li>`;
+      }).filter(Boolean);
+      return `<ul class="guide-list">${items.join("")}</ul>`;
+    }
+
+    function renderGuideContent() {
+      $guideBody.innerHTML = `
+        <section class="guide-section">
+          <p>${SpritedexI18n.t("guideIntro")}</p>
+        </section>
+        <section class="guide-section">
+          <h3>${SpritedexI18n.t("guideRaritiesTitle")}</h3>
+          <p>${SpritedexI18n.t("guideRaritiesIntro")}</p>
+          ${buildGuideRarityTable()}
+        </section>
+        <section class="guide-section">
+          <h3>${SpritedexI18n.t("guideVariantsTitle")}</h3>
+          <p>${SpritedexI18n.t("guideVariantsIntro")}</p>
+          ${buildGuideMaterialList()}
+        </section>
+        <section class="guide-section">
+          <h3>${SpritedexI18n.t("guideCollectionTitle")}</h3>
+          <p>${SpritedexI18n.t("guideCollectionText")}</p>
+        </section>
+        <section class="guide-section">
+          <h3>${SpritedexI18n.t("guideMasteryTitle")}</h3>
+          <p>${SpritedexI18n.t("guideMasteryText")}</p>
+        </section>
+        <section class="guide-section">
+          <h3>${SpritedexI18n.t("guideTrackerTitle")}</h3>
+          <p>${SpritedexI18n.t("guideTrackerText")}</p>
+        </section>
+      `;
+    }
+
+    function openGuide() {
+      renderGuideContent();
+      $guideOverlay.hidden = false;
+      $guideOverlay.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeGuide() {
+      $guideOverlay.hidden = true;
+      $guideOverlay.classList.add("hidden");
+      if ($detailOverlay.hidden && $compareOverlay.hidden) document.body.style.overflow = "";
+    }
+
     function rarityForSprite(spriteId) {
       return config?.meta?.sprites?.[spriteId]?.rarity ?? null;
     }
@@ -2535,6 +2816,7 @@
         $btnShare.hidden = false;
         $btnExportPng.hidden = false;
         $btnCompare.hidden = false;
+        $btnGuide.hidden = false;
         updateSharedBanner();
         updateCompareBanner();
         render();
@@ -2575,6 +2857,11 @@
     $btnShare.addEventListener("click", () => shareCollection());
     $btnExportPng.addEventListener("click", () => exportCollectionPng());
     $btnCompare.addEventListener("click", () => openCompareModal());
+    $btnGuide.addEventListener("click", () => openGuide());
+    document.getElementById("guide-close").addEventListener("click", () => closeGuide());
+    $guideOverlay.addEventListener("click", (e) => {
+      if (e.target === $guideOverlay) closeGuide();
+    });
     document.getElementById("btn-compare-exit").addEventListener("click", () => exitCompareMode());
     document.getElementById("compare-cancel").addEventListener("click", () => closeCompareModal());
     document.getElementById("compare-run").addEventListener("click", () => startCompareMode());
@@ -2630,13 +2917,15 @@
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
-        if (!$compareOverlay.hidden) closeCompareModal();
+        if (!$guideOverlay.hidden) closeGuide();
+        else if (!$compareOverlay.hidden) closeCompareModal();
         else if (!$detailOverlay.hidden) closeDetail();
       }
     });
 
     window.addEventListener("spritedex:localechange", () => {
       if (detailItem) openDetail(detailItem);
+      if (!$guideOverlay.hidden) renderGuideContent();
       applyStaticI18n();
       updateProgress();
       updateCompareBanner();
