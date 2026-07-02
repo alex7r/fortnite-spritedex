@@ -335,6 +335,101 @@
       box-shadow: 0 0 12px rgba(94, 231, 255, 0.2);
     }
 
+    .character-header-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      flex: 0 0 auto;
+    }
+
+    .character-stats.mastery-stats {
+      font-size: 0.66rem;
+      color: #fde68a;
+      border-color: rgba(251, 191, 36, 0.25);
+      background: rgba(251, 191, 36, 0.08);
+    }
+
+    .character-stats.mastery-stats.done {
+      color: #fff;
+      border-color: rgba(251, 191, 36, 0.55);
+      background: rgba(251, 191, 36, 0.18);
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.25);
+    }
+
+    .mastery-badge {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      z-index: 4;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.5);
+      color: rgba(255, 255, 255, 0.25);
+      font-size: 0.72rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+
+    .mastery-badge.active {
+      color: #fbbf24;
+      border-color: rgba(251, 191, 36, 0.65);
+      background: rgba(251, 191, 36, 0.15);
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.45);
+      text-shadow: 0 0 6px rgba(251, 191, 36, 0.8);
+    }
+
+    .mastery-badge.locked {
+      opacity: 0.3;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .mastery-badge:active { transform: scale(0.92); }
+
+    .detail-actions .btn-mastery:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .sprite-card.mastered {
+      box-shadow:
+        0 0 0 1px rgba(251, 191, 36, 0.35),
+        0 6px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .sprite-card.mastered.collected {
+      box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--mat-accent) 60%, transparent),
+        0 0 0 2px rgba(251, 191, 36, 0.45),
+        0 0 22px var(--mat-glow),
+        0 10px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    .character-section.all-mastered .character-header {
+      border-left-color: #fbbf24;
+    }
+
+    .detail-actions .btn-mastery {
+      background: rgba(251, 191, 36, 0.15);
+      color: #fde68a;
+      border: 1px solid rgba(251, 191, 36, 0.45);
+    }
+
+    .detail-actions .btn-mastery.active {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #1a1040;
+      border: none;
+      box-shadow: 0 0 18px rgba(251, 191, 36, 0.4);
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -852,6 +947,8 @@
       <button type="button" class="chip active" data-filter="all" data-i18n="filterAll">All</button>
       <button type="button" class="chip" data-filter="missing" data-i18n="filterMissing">Missing</button>
       <button type="button" class="chip" data-filter="collected" data-i18n="filterCollected">Collected</button>
+      <button type="button" class="chip" data-filter="mastered" data-i18n="filterMastered">Mastered</button>
+      <button type="button" class="chip" data-filter="not-mastered" data-i18n="filterNotMastered">Not mastered</button>
     </div>
     <div class="filters filters-rarity" id="filters-rarity">
       <button type="button" class="chip active" data-rarity-filter="all" data-i18n="filterRarityAll">Any rarity</button>
@@ -891,6 +988,7 @@
       <dl class="detail-meta" id="detail-meta"></dl>
       <div class="detail-actions">
         <button type="button" class="btn-toggle" id="detail-toggle"></button>
+        <button type="button" class="btn-mastery" id="detail-mastery"></button>
         <button type="button" class="btn-close" id="detail-close" data-i18n="detailClose">Close</button>
       </div>
     </div>
@@ -900,12 +998,14 @@
     const CONFIG_URL = "sprites-config.json";
     const HD_MAP_URL = "sprites-hd-map.json";
     const STORAGE_KEY = "klombo-tracker-collected-v1";
+    const MASTERY_STORAGE_KEY = "klombo-tracker-mastered-v2";
     const SHARE_PARAM = "s";
 
     let config = null;
     let hdMap = null;
     let catalog = [];
     let collected = new Set();
+    let mastered = new Set();
     let filter = "all";
     let rarityFilter = "all";
     let searchQuery = "";
@@ -931,6 +1031,7 @@
     const $detailRarity = document.getElementById("detail-rarity");
     const $detailMeta = document.getElementById("detail-meta");
     const $detailToggle = document.getElementById("detail-toggle");
+    const $detailMastery = document.getElementById("detail-mastery");
     const $detailClose = document.getElementById("detail-close");
 
     let toastTimer = null;
@@ -1145,6 +1246,50 @@
       }
     }
 
+    function loadMastered() {
+      try {
+        const raw = localStorage.getItem(MASTERY_STORAGE_KEY);
+        if (!raw) return new Set();
+        const arr = JSON.parse(raw);
+        return new Set(Array.isArray(arr) ? arr : []);
+      } catch (_) {
+        return new Set();
+      }
+    }
+
+    function saveMastered() {
+      localStorage.setItem(MASTERY_STORAGE_KEY, JSON.stringify([...mastered]));
+    }
+
+    function pruneMastered() {
+      let changed = false;
+      for (const id of mastered) {
+        if (!collected.has(id)) {
+          mastered.delete(id);
+          changed = true;
+        }
+      }
+      if (changed) saveMastered();
+    }
+
+    function toggleMastered(id) {
+      if (readOnly) {
+        showSavePrompt();
+        return false;
+      }
+      if (mastered.has(id)) {
+        mastered.delete(id);
+      } else {
+        if (!collected.has(id)) collected.add(id);
+        mastered.add(id);
+        saveCollected();
+      }
+      saveMastered();
+      updateProgress();
+      render();
+      return true;
+    }
+
     function saveCollected() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify([...collected]));
     }
@@ -1339,8 +1484,11 @@
 
     function matchesFilter(item) {
       const isCollected = collected.has(item.id);
+      const isMastered = mastered.has(item.id);
       if (filter === "collected") return isCollected;
       if (filter === "missing") return !isCollected;
+      if (filter === "mastered") return isMastered;
+      if (filter === "not-mastered") return !isMastered;
       return true;
     }
 
@@ -1367,9 +1515,11 @@
 
       const bases = countBaseSpritesProgress();
       const loadout = computeSummonLoadout();
+      const masteredCount = catalog.filter((item) => mastered.has(item.id)).length;
       $progressBreakdown.innerHTML = `
         <span>${SpritedexI18n.t("progressSprites")}: <strong>${bases.done}/${bases.total}</strong></span>
         <span>${SpritedexI18n.t("progressVariants")}: <strong>${done}/${total}</strong></span>
+        <span>${SpritedexI18n.t("progressMastered")}: <strong>${masteredCount}/${total}</strong></span>
         <span>${SpritedexI18n.t("summonLoadout")}: <strong>${loadout.toLocaleString()} ${SpritedexI18n.t("dust")}</strong></span>
       `;
     }
@@ -1379,8 +1529,15 @@
         showSavePrompt();
         return false;
       }
-      if (collected.has(id)) collected.delete(id);
-      else collected.add(id);
+      if (collected.has(id)) {
+        collected.delete(id);
+        if (mastered.has(id)) {
+          mastered.delete(id);
+          saveMastered();
+        }
+      } else {
+        collected.add(id);
+      }
       saveCollected();
       updateProgress();
       render();
@@ -1415,6 +1572,17 @@
       row.className = "detail-row";
       row.innerHTML = `<dt>${label}</dt><dd>${value}</dd>`;
       $detailMeta.appendChild(row);
+    }
+
+    function updateDetailMastery() {
+      if (!detailItem) return;
+      const isCollected = collected.has(detailItem.id);
+      const isMastered = mastered.has(detailItem.id);
+      $detailMastery.textContent = isMastered
+        ? SpritedexI18n.t("masteryUnmark")
+        : SpritedexI18n.t("masteryMark");
+      $detailMastery.classList.toggle("active", isMastered);
+      $detailMastery.disabled = !isCollected;
     }
 
     function updateDetailToggle() {
@@ -1457,8 +1625,10 @@
       if (item.materialId === "base") {
         addDetailRow(SpritedexI18n.t("detailDropRate"), formatDropRate(item.dropRate));
       }
+      addDetailRow(SpritedexI18n.t("detailMastery"), SpritedexI18n.t("masteryHint"));
 
       updateDetailToggle();
+      updateDetailMastery();
       $detailOverlay.hidden = false;
       $detailOverlay.classList.remove("hidden");
       document.body.style.overflow = "hidden";
@@ -1473,22 +1643,24 @@
 
     function renderCard(item) {
       const isCollected = collected.has(item.id);
+      const isMastered = mastered.has(item.id);
       const spriteLabel = displaySprite(item);
       const materialLabel = displayMaterial(item);
       const card = document.createElement("button");
       card.type = "button";
-      card.className = `sprite-card${isCollected ? " collected" : ""}${readOnly ? " readonly" : ""}`;
+      card.className = `sprite-card${isCollected ? " collected" : ""}${isMastered ? " mastered" : ""}${readOnly ? " readonly" : ""}`;
       card.dataset.spriteId = item.id;
       applyMaterialTheme(card, item.materialId);
       card.setAttribute("aria-pressed", isCollected ? "true" : "false");
       card.setAttribute(
         "aria-label",
-        `${spriteLabel}, ${materialLabel}${isCollected ? `, ${SpritedexI18n.t("collectedAria")}` : ""}`
+        `${spriteLabel}, ${materialLabel}${isCollected ? `, ${SpritedexI18n.t("collectedAria")}` : ""}${isMastered ? `, ${SpritedexI18n.t("masteredAria")}` : ""}`
       );
 
       card.innerHTML = `
         <button type="button" class="info-btn" aria-label="${SpritedexI18n.t("detailInfo")}">i</button>
         <span class="check-badge" aria-hidden="true">✓</span>
+        <button type="button" class="mastery-badge${isMastered ? " active" : ""}${isCollected ? "" : " locked"}" aria-label="${SpritedexI18n.t("masteryAria")}" aria-pressed="${isMastered ? "true" : "false"}"${isCollected ? "" : " disabled"}>★</button>
         <div class="sprite-img-wrap">
           <img class="sprite-img" src="${item.image}" alt="" loading="lazy" decoding="async" />
         </div>
@@ -1500,6 +1672,16 @@
       card.querySelector(".info-btn").addEventListener("click", (e) => {
         e.stopPropagation();
         openDetail(item);
+      });
+
+      card.querySelector(".mastery-badge").addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (readOnly) {
+          showSavePrompt();
+          return;
+        }
+        if (!collected.has(item.id) && !mastered.has(item.id)) return;
+        toggleMastered(item.id);
       });
 
       card.querySelector("img").addEventListener("error", function onErr() {
@@ -1528,8 +1710,10 @@
         if (!visible.length) continue;
         visibleCount += visible.length;
 
+        const masteredInGroup = sprites.filter((s) => mastered.has(s.id)).length;
+        const allMastered = masteredInGroup === sprites.length;
         const section = document.createElement("section");
-        section.className = "character-section";
+        section.className = `character-section${allMastered ? " all-mastered" : ""}`;
 
         const doneInGroup = sprites.filter((s) => collected.has(s.id)).length;
         const header = document.createElement("div");
@@ -1558,11 +1742,19 @@
           titleWrap.appendChild(abilityEl);
         }
 
+        const side = document.createElement("div");
+        side.className = "character-header-side";
+
         const stats = document.createElement("span");
         stats.className = `character-stats${doneInGroup === sprites.length ? " done" : ""}`;
         stats.textContent = `${doneInGroup}/${sprites.length}`;
 
-        header.append(titleWrap, stats);
+        const masteryStats = document.createElement("span");
+        masteryStats.className = `character-stats mastery-stats${allMastered ? " done" : ""}`;
+        masteryStats.textContent = `★ ${masteredInGroup}/${sprites.length}`;
+
+        side.append(stats, masteryStats);
+        header.append(titleWrap, side);
 
         const grid = document.createElement("div");
         grid.className = "grid";
@@ -1607,6 +1799,8 @@
           readOnly = true;
         } else {
           collected = loadCollected();
+          mastered = loadMastered();
+          pruneMastered();
           readOnly = false;
         }
         $btnShare.hidden = false;
@@ -1665,11 +1859,23 @@
       }
       toggleSprite(detailItem.id);
       updateDetailToggle();
+      updateDetailMastery();
       const card = document.querySelector(`[data-sprite-id="${detailItem.id}"]`);
       if (card) {
         card.classList.toggle("collected", collected.has(detailItem.id));
         card.setAttribute("aria-pressed", collected.has(detailItem.id) ? "true" : "false");
       }
+    });
+
+    $detailMastery.addEventListener("click", () => {
+      if (!detailItem) return;
+      if (readOnly) {
+        showSavePrompt();
+        return;
+      }
+      const item = detailItem;
+      toggleMastered(item.id);
+      if (!$detailOverlay.hidden) openDetail(item);
     });
 
     document.addEventListener("keydown", (e) => {
