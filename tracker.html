@@ -510,6 +510,191 @@
     .save-prompt button.primary:active { transform: scale(0.98); }
 
     .sprite-card.readonly { cursor: default; }
+
+    .rarity-pill {
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 7px;
+      border-radius: 99px;
+      border: 1px solid currentColor;
+      opacity: 0.95;
+    }
+
+    .rarity-pill[data-rarity="rare"] { color: #60a5fa; background: rgba(96, 165, 250, 0.12); }
+    .rarity-pill[data-rarity="epic"] { color: #c084fc; background: rgba(192, 132, 252, 0.12); }
+    .rarity-pill[data-rarity="legendary"] { color: #fbbf24; background: rgba(251, 191, 36, 0.12); }
+    .rarity-pill[data-rarity="mythic"] { color: #f472b6; background: rgba(244, 114, 182, 0.12); }
+
+    .character-header h2 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .info-btn {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      z-index: 4;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.5);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 800;
+      font-style: italic;
+      font-family: Georgia, serif;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      box-shadow: 0 0 8px rgba(94, 231, 255, 0.2);
+    }
+
+    .info-btn:active { transform: scale(0.92); }
+
+    .detail-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 45;
+      background: rgba(5, 3, 15, 0.78);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0;
+    }
+
+    @media (min-width: 520px) {
+      .detail-overlay { align-items: center; padding: 20px; }
+    }
+
+    .detail-sheet {
+      width: 100%;
+      max-width: 400px;
+      max-height: min(88vh, 640px);
+      overflow: auto;
+      background: linear-gradient(165deg, rgba(36, 28, 72, 0.98), rgba(14, 10, 32, 0.99));
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(168, 85, 247, 0.2);
+      padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+    }
+
+    @media (min-width: 520px) {
+      .detail-sheet { border-radius: 20px; }
+    }
+
+    .detail-head {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .detail-img-wrap {
+      flex: 0 0 88px;
+      width: 88px;
+      height: 88px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .detail-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+    }
+
+    .detail-titles { flex: 1; min-width: 0; }
+
+    .detail-titles h3 {
+      margin: 0 0 4px;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .detail-titles p {
+      margin: 0;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .detail-meta {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .detail-row {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .detail-row dt {
+      margin: 0 0 4px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .detail-row dd {
+      margin: 0;
+      font-size: 0.84rem;
+      line-height: 1.45;
+      color: var(--text);
+    }
+
+    .detail-actions {
+      display: grid;
+      gap: 8px;
+    }
+
+    .detail-actions button {
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      border: none;
+    }
+
+    .detail-actions .btn-toggle {
+      background: linear-gradient(135deg, #22d3ee, #a855f7);
+      color: #0a0618;
+      box-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
+    }
+
+    .detail-actions .btn-close {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .detail-actions button:active { transform: scale(0.98); }
   </style>
   <script src="i18n.js"></script>
 </head>
@@ -551,6 +736,26 @@
 
   <div class="toast" id="toast" aria-live="polite"></div>
 
+  <div class="detail-overlay hidden" id="detail-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="detail-title">
+    <div class="detail-sheet" id="detail-sheet">
+      <div class="detail-head">
+        <div class="detail-img-wrap">
+          <img id="detail-img" src="" alt="" />
+        </div>
+        <div class="detail-titles">
+          <h3 id="detail-title"></h3>
+          <p id="detail-subtitle"></p>
+          <span class="rarity-pill" id="detail-rarity" hidden></span>
+        </div>
+      </div>
+      <dl class="detail-meta" id="detail-meta"></dl>
+      <div class="detail-actions">
+        <button type="button" class="btn-toggle" id="detail-toggle"></button>
+        <button type="button" class="btn-close" id="detail-close" data-i18n="detailClose">Close</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const CONFIG_URL = "sprites-config.json";
     const HD_MAP_URL = "sprites-hd-map.json";
@@ -576,8 +781,18 @@
     const $sharedBanner = document.getElementById("shared-banner");
     const $savePrompt = document.getElementById("save-prompt");
     const $toast = document.getElementById("toast");
+    const $detailOverlay = document.getElementById("detail-overlay");
+    const $detailSheet = document.getElementById("detail-sheet");
+    const $detailImg = document.getElementById("detail-img");
+    const $detailTitle = document.getElementById("detail-title");
+    const $detailSubtitle = document.getElementById("detail-subtitle");
+    const $detailRarity = document.getElementById("detail-rarity");
+    const $detailMeta = document.getElementById("detail-meta");
+    const $detailToggle = document.getElementById("detail-toggle");
+    const $detailClose = document.getElementById("detail-close");
 
     let toastTimer = null;
+    let detailItem = null;
 
     const MATERIAL_THEME = {
       base: {
@@ -801,10 +1016,28 @@
         ?? null;
     }
 
+    function enrichCatalogEntry(entry, cfg) {
+      const sm = cfg.meta?.sprites?.[entry.spriteId];
+      if (sm) {
+        entry.rarity = sm.rarity;
+        entry.ability = sm.ability;
+        entry.spawnHint = sm.spawnHint;
+        entry.dropRate = sm.dropRate ?? null;
+      }
+      const mm = cfg.meta?.materials?.[entry.materialId];
+      if (mm?.bonus) entry.variantBonus = mm.bonus;
+      const rarity = sm?.rarity;
+      const costTable = rarity && cfg.meta?.raritySummonCost?.[rarity];
+      if (costTable) {
+        entry.summonCost = entry.materialId === "base" ? costTable.base : costTable.variant;
+      }
+      return entry;
+    }
+
     function buildCatalog(cfg) {
       if (Array.isArray(cfg.catalog) && cfg.catalog.length) {
         return cfg.catalog.map((item) => {
-          const entry = {
+          const entry = enrichCatalogEntry({
             id: item.id,
             spriteId: item.spriteId || item.character,
             materialId: item.materialId || item.material || cfg.defaultMaterial || "base",
@@ -812,7 +1045,7 @@
             output: item.output,
             source: item.source,
             fallbackImage: namedImagePath(item),
-          };
+          }, cfg);
           entry.hdImage = resolveHdImage(entry);
           entry.image = entry.hdImage || entry.fallbackImage;
           return entry;
@@ -832,13 +1065,13 @@
           const fallback = sprite.output
             ? `sprites_named/${sprite.output}`
             : namedImagePath(sprite);
-          const entry = {
+          const entry = enrichCatalogEntry({
             id: sprite.id || sprite.source?.replace(/\.png$/i, ""),
             spriteId,
             materialId,
             filename: sprite.output,
             fallbackImage: fallback,
-          };
+          }, cfg);
           entry.hdImage = resolveHdImage(entry);
           entry.image = entry.hdImage || entry.fallbackImage;
           items.push(entry);
@@ -896,13 +1129,98 @@
     function toggleSprite(id) {
       if (readOnly) {
         showSavePrompt();
-        return;
+        return false;
       }
       if (collected.has(id)) collected.delete(id);
       else collected.add(id);
       saveCollected();
       updateProgress();
       render();
+      return true;
+    }
+
+    function formatDropRate(rate) {
+      if (rate == null || Number.isNaN(rate)) return null;
+      if (rate < 0.0001) return "<0.01%";
+      if (rate < 0.01) return `${(rate * 100).toFixed(3)}%`;
+      return `${(rate * 100).toFixed(2)}%`;
+    }
+
+    function formatDust(amount) {
+      if (amount == null) return null;
+      return `${amount.toLocaleString()} ${SpritedexI18n.t("dust")}`;
+    }
+
+    function localizedField(field) {
+      if (!field) return "";
+      const locale = SpritedexI18n.getLocale();
+      return field[locale] ?? field.en ?? "";
+    }
+
+    function rarityForSprite(spriteId) {
+      return config?.meta?.sprites?.[spriteId]?.rarity ?? null;
+    }
+
+    function addDetailRow(label, value) {
+      if (!value) return;
+      const row = document.createElement("div");
+      row.className = "detail-row";
+      row.innerHTML = `<dt>${label}</dt><dd>${value}</dd>`;
+      $detailMeta.appendChild(row);
+    }
+
+    function updateDetailToggle() {
+      if (!detailItem) return;
+      const isCollected = collected.has(detailItem.id);
+      $detailToggle.textContent = isCollected
+        ? SpritedexI18n.t("detailMarkMissing")
+        : SpritedexI18n.t("detailMarkCollected");
+    }
+
+    function openDetail(item) {
+      detailItem = item;
+      const spriteLabel = displaySprite(item);
+      const materialLabel = displayMaterial(item);
+      $detailTitle.textContent = spriteLabel;
+      $detailSubtitle.textContent = materialLabel;
+      $detailImg.src = item.image;
+      $detailImg.onerror = function onDetailImgErr() {
+        this.onerror = null;
+        if (item.fallbackImage) this.src = item.fallbackImage;
+      };
+
+      const rarity = item.rarity;
+      if (rarity) {
+        $detailRarity.hidden = false;
+        $detailRarity.dataset.rarity = rarity;
+        $detailRarity.textContent = SpritedexI18n.rarityLabel(rarity);
+      } else {
+        $detailRarity.hidden = true;
+      }
+
+      $detailMeta.innerHTML = "";
+      addDetailRow(SpritedexI18n.t("detailAbility"), localizedField(item.ability));
+      const bonus = localizedField(item.variantBonus);
+      if (bonus && item.materialId !== "base") {
+        addDetailRow(SpritedexI18n.t("detailVariantBonus"), bonus);
+      }
+      addDetailRow(SpritedexI18n.t("detailHowToFind"), localizedField(item.spawnHint));
+      addDetailRow(SpritedexI18n.t("detailSummonCost"), formatDust(item.summonCost));
+      if (item.materialId === "base") {
+        addDetailRow(SpritedexI18n.t("detailDropRate"), formatDropRate(item.dropRate));
+      }
+
+      updateDetailToggle();
+      $detailOverlay.hidden = false;
+      $detailOverlay.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeDetail() {
+      detailItem = null;
+      $detailOverlay.hidden = true;
+      $detailOverlay.classList.add("hidden");
+      document.body.style.overflow = "";
     }
 
     function renderCard(item) {
@@ -912,6 +1230,7 @@
       const card = document.createElement("button");
       card.type = "button";
       card.className = `sprite-card${isCollected ? " collected" : ""}${readOnly ? " readonly" : ""}`;
+      card.dataset.spriteId = item.id;
       applyMaterialTheme(card, item.materialId);
       card.setAttribute("aria-pressed", isCollected ? "true" : "false");
       card.setAttribute(
@@ -920,6 +1239,7 @@
       );
 
       card.innerHTML = `
+        <button type="button" class="info-btn" aria-label="${SpritedexI18n.t("detailInfo")}">i</button>
         <span class="check-badge" aria-hidden="true">✓</span>
         <div class="sprite-img-wrap">
           <img class="sprite-img" src="${item.image}" alt="" loading="lazy" decoding="async" />
@@ -928,6 +1248,11 @@
           <strong>${materialLabel}</strong>
         </div>
       `;
+
+      card.querySelector(".info-btn").addEventListener("click", (e) => {
+        e.stopPropagation();
+        openDetail(item);
+      });
 
       card.querySelector("img").addEventListener("error", function onErr() {
         this.removeEventListener("error", onErr);
@@ -961,8 +1286,12 @@
         const doneInGroup = sprites.filter((s) => collected.has(s.id)).length;
         const header = document.createElement("div");
         header.className = "character-header";
+        const rarity = rarityForSprite(spriteId);
+        const rarityHtml = rarity
+          ? `<span class="rarity-pill" data-rarity="${rarity}">${SpritedexI18n.rarityLabel(rarity)}</span>`
+          : "";
         header.innerHTML = `
-          <h2>${displaySprite({ spriteId })}</h2>
+          <h2>${displaySprite({ spriteId })} ${rarityHtml}</h2>
           <span class="character-stats${doneInGroup === sprites.length ? " done" : ""}">${doneInGroup}/${sprites.length}</span>
         `;
 
@@ -1034,7 +1363,32 @@
       if (e.target === $savePrompt) hideSavePrompt();
     });
 
+    $detailClose.addEventListener("click", () => closeDetail());
+    $detailOverlay.addEventListener("click", (e) => {
+      if (e.target === $detailOverlay) closeDetail();
+    });
+    $detailSheet.addEventListener("click", (e) => e.stopPropagation());
+    $detailToggle.addEventListener("click", () => {
+      if (!detailItem) return;
+      if (readOnly) {
+        showSavePrompt();
+        return;
+      }
+      toggleSprite(detailItem.id);
+      updateDetailToggle();
+      const card = document.querySelector(`[data-sprite-id="${detailItem.id}"]`);
+      if (card) {
+        card.classList.toggle("collected", collected.has(detailItem.id));
+        card.setAttribute("aria-pressed", collected.has(detailItem.id) ? "true" : "false");
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !$detailOverlay.hidden) closeDetail();
+    });
+
     window.addEventListener("spritedex:localechange", () => {
+      if (detailItem) openDetail(detailItem);
       applyStaticI18n();
       render();
     });

@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "sourceDir": "sprites",
   "outputDir": "sprites_named",
   "defaultMaterial": "base",
@@ -135,6 +135,265 @@
       "gem": {
         "en": "Gem",
         "ru": "Самоцвет"
+      }
+    }
+  },
+  "meta": {
+    "raritySummonCost": {
+      "rare": { "base": 100, "variant": 4000 },
+      "epic": { "base": 3000, "variant": 6000 },
+      "legendary": { "base": 5000, "variant": 10000 },
+      "mythic": { "base": 7500, "variant": 15000 }
+    },
+    "materials": {
+      "base": {
+        "bonus": { "en": "", "ru": "" }
+      },
+      "gold": {
+        "bonus": {
+          "en": "3× bonus XP from eliminations",
+          "ru": "×3 бонусного XP за элиминации"
+        }
+      },
+      "gummy": {
+        "bonus": {
+          "en": "+10–20% Sprite Dust when extracting",
+          "ru": "+10–20% Sprite Dust при экстракции"
+        }
+      },
+      "galaxy": {
+        "bonus": {
+          "en": "+20–30% ammo when looting",
+          "ru": "+20–30% патронов при луте"
+        }
+      },
+      "holofoil": {
+        "bonus": {
+          "en": "~30% chance for your squad to find rare Sprites in containers",
+          "ru": "~30% шанс, что сквад найдёт редкий спрайт в контейнерах"
+        }
+      },
+      "gem": {
+        "bonus": {
+          "en": "−30% fall damage",
+          "ru": "−30% урона от падения"
+        }
+      }
+    },
+    "sprites": {
+      "water": {
+        "rarity": "rare",
+        "dropRate": 0.1392,
+        "ability": {
+          "en": "Replenishes shields for you and nearby squadmates while in water.",
+          "ru": "Восстанавливает щиты вам и союзникам рядом, пока вы в воде."
+        },
+        "spawnHint": {
+          "en": "Sprite Chests and random loot.",
+          "ru": "Sprite Chest и случайный лут."
+        }
+      },
+      "earth": {
+        "rarity": "rare",
+        "dropRate": 0.1392,
+        "ability": {
+          "en": "Higher chance to find rare items when opening chests.",
+          "ru": "Выше шанс найти редкий лут при открытии сундуков."
+        },
+        "spawnHint": {
+          "en": "Starter choice or Sprite Chests.",
+          "ru": "Стартовый выбор или Sprite Chest."
+        }
+      },
+      "fire": {
+        "rarity": "rare",
+        "dropRate": 0.1392,
+        "ability": {
+          "en": "Creates a fiery burst after dealing enough damage to an enemy.",
+          "ru": "Огненный взрыв после достаточного урона по врагу."
+        },
+        "spawnHint": {
+          "en": "Starter choice or Sprite Chests.",
+          "ru": "Стартовый выбор или Sprite Chest."
+        }
+      },
+      "air": {
+        "rarity": "rare",
+        "ability": {
+          "en": "Increases sprint speed and jump height.",
+          "ru": "Увеличивает скорость бега и высоту прыжка."
+        },
+        "spawnHint": {
+          "en": "Sprite Chests and random loot.",
+          "ru": "Sprite Chest и случайный лут."
+        }
+      },
+      "fishy": {
+        "rarity": "rare",
+        "dropRate": 0.1379,
+        "ability": {
+          "en": "Swim faster and gain a brief speed boost when you take damage.",
+          "ru": "Быстрее плаваете и получаете краткий буст скорости при уроне."
+        },
+        "spawnHint": {
+          "en": "Higher chance when fishing.",
+          "ru": "Повышенный шанс при рыбалке."
+        }
+      },
+      "duck": {
+        "rarity": "epic",
+        "dropRate": 0.0522,
+        "ability": {
+          "en": "Emoting or using Jam Tracks replenishes shields.",
+          "ru": "Эмоции и Jam Tracks восстанавливают щиты."
+        },
+        "spawnHint": {
+          "en": "Sprite Chests and random loot.",
+          "ru": "Sprite Chest и случайный лут."
+        }
+      },
+      "ghost": {
+        "rarity": "epic",
+        "dropRate": 0.0522,
+        "ability": {
+          "en": "Grants a short cloak when you reload.",
+          "ru": "Краткая невидимость при перезарядке."
+        },
+        "spawnHint": {
+          "en": "Only spawns at night on the island.",
+          "ru": "Появляется только ночью на острове."
+        }
+      },
+      "king": {
+        "rarity": "epic",
+        "dropRate": 0.0522,
+        "ability": {
+          "en": "Your pickaxe deals more damage.",
+          "ru": "Кирка наносит больше урона."
+        },
+        "spawnHint": {
+          "en": "Sprite Chests and random loot.",
+          "ru": "Sprite Chest и случайный лут."
+        }
+      },
+      "demon": {
+        "rarity": "epic",
+        "dropRate": 0.0522,
+        "ability": {
+          "en": "Siphons health and shields when you eliminate an opponent.",
+          "ru": "Восстанавливает HP и щиты за элиминацию."
+        },
+        "spawnHint": {
+          "en": "Sprite Chests and random loot.",
+          "ru": "Sprite Chest и случайный лут."
+        }
+      },
+      "striker": {
+        "rarity": "epic",
+        "dropRate": 0.0574,
+        "ability": {
+          "en": "Gain Overdrive when you mantle, hurdle, or wall scramble.",
+          "ru": "Overdrive при перелезании, перепрыгивании или скалолазании."
+        },
+        "spawnHint": {
+          "en": "Score a goal at the Soccer Pitch POI.",
+          "ru": "Забейте гол на Soccer Pitch POI."
+        }
+      },
+      "aura": {
+        "rarity": "epic",
+        "dropRate": 0.0574,
+        "ability": {
+          "en": "Gain a Shock Rock charge when you deal enough damage to enemies.",
+          "ru": "Заряд Shock Rock после достаточного урона по врагам."
+        },
+        "spawnHint": {
+          "en": "Sprite Chests and random loot.",
+          "ru": "Sprite Chest и случайный лут."
+        }
+      },
+      "dream": {
+        "rarity": "legendary",
+        "dropRate": 0.02436,
+        "ability": {
+          "en": "Random item on each level-up; at max level drops Legendary loot and auto-extracts.",
+          "ru": "Случайный предмет за уровень; на 5 lvl — легендарный лут и авто-экстракция."
+        },
+        "spawnHint": {
+          "en": "Rare Sprite Chests and loot.",
+          "ru": "Редкие Sprite Chest и лут."
+        }
+      },
+      "punk": {
+        "rarity": "legendary",
+        "dropRate": 0.02436,
+        "ability": {
+          "en": "Random buffs while leveling; at max level grants unlimited ammo.",
+          "ru": "Случайные баффы при прокачке; на 5 lvl — бесконечные патроны."
+        },
+        "spawnHint": {
+          "en": "Rare Sprite Chests and loot.",
+          "ru": "Редкие Sprite Chest и лут."
+        }
+      },
+      "boss": {
+        "rarity": "legendary",
+        "dropRate": 0.0263,
+        "ability": {
+          "en": "Boosts your maximum health and shields.",
+          "ru": "Увеличивает максимум HP и щитов."
+        },
+        "spawnHint": {
+          "en": "Always drops when you defeat any boss.",
+          "ru": "Выпадает с любого побеждённого босса."
+        }
+      },
+      "seven": {
+        "rarity": "legendary",
+        "ability": {
+          "en": "Enemy player foot trails are visible to your squad.",
+          "ru": "Следы врагов видны всему скваду."
+        },
+        "spawnHint": {
+          "en": "Sprite Chests and random loot.",
+          "ru": "Sprite Chest и случайный лут."
+        }
+      },
+      "zero-point": {
+        "rarity": "mythic",
+        "dropRate": 0.01044,
+        "ability": {
+          "en": "Spawns a Shield Bubble Jr. when you use a healing item on yourself.",
+          "ru": "Shield Bubble Jr. при использовании лечения на себе."
+        },
+        "spawnHint": {
+          "en": "Very rare loot; Gummy/Galaxy variants are among the rarest.",
+          "ru": "Очень редкий лут; Gummy/Galaxy — среди самых редких."
+        }
+      },
+      "grim": {
+        "rarity": "mythic",
+        "dropRate": 9.8e-7,
+        "ability": {
+          "en": "Attackers who damage you are marked for your squad.",
+          "ru": "Атакующие вас враги помечаются для сквада."
+        },
+        "spawnHint": {
+          "en": "Extremely rare random loot.",
+          "ru": "Крайне редкий случайный лут."
+        }
+      },
+      "burnt-peanut": {
+        "rarity": "mythic",
+        "dropRate": 0.015,
+        "ability": {
+          "en": "Low chance for bonus loot from eliminations, including Mythic items.",
+          "ru": "Шанс бонусного лута за элиминации, включая мифик."
+        },
+        "spawnHint": {
+          "en": "Mythic loot only; no Gold/Gummy/Galaxy variants.",
+          "ru": "Только мифик-лут; без вариантов Gold/Gummy/Galaxy."
+        }
       }
     }
   },

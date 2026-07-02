@@ -58,6 +58,21 @@ const SpritedexI18n = (() => {
       sharedViewBanner: "Shared collection — view only",
       saveAndEdit: "Save to memory and edit",
       shareError: "Could not create share link",
+      detailTitle: "Sprite details",
+      detailAbility: "Ability",
+      detailVariantBonus: "Variant bonus",
+      detailHowToFind: "How to find",
+      detailSummonCost: "Re-summon cost",
+      detailDropRate: "Base drop rate (est.)",
+      detailMarkCollected: "Mark collected",
+      detailMarkMissing: "Remove from collection",
+      detailClose: "Close",
+      detailInfo: "Details",
+      rarityRare: "Rare",
+      rarityEpic: "Epic",
+      rarityLegendary: "Legendary",
+      rarityMythic: "Mythic",
+      dust: "Sprite Dust",
     },
     ru: {
       appTitle: "Fortnite Sprites Pocket Tracker",
@@ -110,6 +125,21 @@ const SpritedexI18n = (() => {
       sharedViewBanner: "Чужая коллекция — только просмотр",
       saveAndEdit: "Сохранить в память и редактировать",
       shareError: "Не удалось создать ссылку",
+      detailTitle: "О спрайте",
+      detailAbility: "Способность",
+      detailVariantBonus: "Бонус варианта",
+      detailHowToFind: "Как найти",
+      detailSummonCost: "Стоимость пересаммона",
+      detailDropRate: "Шанс дропа base (оценка)",
+      detailMarkCollected: "Отметить собранным",
+      detailMarkMissing: "Убрать из коллекции",
+      detailClose: "Закрыть",
+      detailInfo: "Подробнее",
+      rarityRare: "Редкий",
+      rarityEpic: "Эпический",
+      rarityLegendary: "Легендарный",
+      rarityMythic: "Мифический",
+      dust: "Sprite Dust",
     },
   };
 
@@ -178,6 +208,51 @@ const SpritedexI18n = (() => {
     return materialName(materialId);
   }
 
+  function localized(metaField) {
+    if (!metaField) return "";
+    return metaField[locale] ?? metaField.en ?? "";
+  }
+
+  function spriteMeta(spriteId) {
+    return config?.meta?.sprites?.[spriteId] ?? null;
+  }
+
+  function materialMeta(materialId) {
+    return config?.meta?.materials?.[materialId] ?? null;
+  }
+
+  function rarityLabel(rarity) {
+    const labels = {
+      rare: { en: "Rare", ru: "Редкий" },
+      epic: { en: "Epic", ru: "Эпический" },
+      legendary: { en: "Legendary", ru: "Легендарный" },
+      mythic: { en: "Mythic", ru: "Мифический" },
+    };
+    return labels[rarity]?.[locale] ?? labels[rarity]?.en ?? rarity ?? "";
+  }
+
+  function summonCost(spriteId, materialId = "base") {
+    const sm = spriteMeta(spriteId);
+    if (!sm?.rarity) return null;
+    const table = config?.meta?.raritySummonCost?.[sm.rarity];
+    if (!table) return null;
+    const isBase = !materialId || materialId === "base";
+    return isBase ? table.base : table.variant;
+  }
+
+  function variantBonus(materialId) {
+    const bonus = materialMeta(materialId)?.bonus;
+    return localized(bonus);
+  }
+
+  function spriteAbility(spriteId) {
+    return localized(spriteMeta(spriteId)?.ability);
+  }
+
+  function spriteSpawnHint(spriteId) {
+    return localized(spriteMeta(spriteId)?.spawnHint);
+  }
+
   function createLanguageSwitcher(container) {
     const wrap = document.createElement("div");
     wrap.className = "lang-switch";
@@ -212,6 +287,14 @@ const SpritedexI18n = (() => {
     materialSuggestions,
     materialIdFromInput,
     materialInputValue,
+    localized,
+    spriteMeta,
+    materialMeta,
+    rarityLabel,
+    summonCost,
+    variantBonus,
+    spriteAbility,
+    spriteSpawnHint,
     createLanguageSwitcher,
     SUPPORTED,
   };
