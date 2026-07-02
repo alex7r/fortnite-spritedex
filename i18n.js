@@ -88,6 +88,12 @@ const SpritedexI18n = (() => {
       masteryAria: "Toggle variant mastery",
       masteredAria: "mastered",
       detailMastery: "Mastery",
+      exportPng: "Export PNG",
+      exportPngGenerating: "Generating image…",
+      exportPngDone: "Image downloaded",
+      exportPngError: "Could not export image",
+      exportPngHeader: "Fortnite Sprites Collection",
+      exportPngWatermark: "fortnite-spritedex",
     },
     ru: {
       appTitle: "Fortnite Sprites Pocket Tracker",
@@ -170,6 +176,12 @@ const SpritedexI18n = (() => {
       masteryAria: "Переключить освоение варианта",
       masteredAria: "освоен",
       detailMastery: "Освоение",
+      exportPng: "Экспорт PNG",
+      exportPngGenerating: "Генерация картинки…",
+      exportPngDone: "Картинка скачана",
+      exportPngError: "Не удалось экспортировать",
+      exportPngHeader: "Коллекция спрайтов Fortnite",
+      exportPngWatermark: "fortnite-spritedex",
     },
   };
 
