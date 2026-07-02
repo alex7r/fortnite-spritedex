@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Spritedex" />
   <meta name="application-name" content="Spritedex" />
-  <meta name="theme-color" content="#1a1040" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0a0618" />
   <title>Fortnite Sprites Pocket Tracker</title>
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
@@ -31,6 +33,11 @@
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html {
+      background-color: var(--bg-deep);
+      color-scheme: dark;
+    }
 
     body {
       margin: 0;
