@@ -654,6 +654,247 @@
 
     .btn-export:active:not(:disabled) { transform: scale(0.97); }
 
+    .btn-compare {
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      background: rgba(168, 85, 247, 0.1);
+      color: #e9d5ff;
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 0 12px rgba(168, 85, 247, 0.12);
+    }
+
+    .btn-compare.active {
+      border-color: rgba(168, 85, 247, 0.65);
+      background: rgba(168, 85, 247, 0.22);
+      box-shadow: 0 0 16px rgba(168, 85, 247, 0.28);
+    }
+
+    .btn-compare:active { transform: scale(0.97); }
+
+    .compare-banner {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      background: rgba(168, 85, 247, 0.1);
+      display: grid;
+      gap: 8px;
+    }
+
+    .compare-banner-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .compare-banner-head strong {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #e9d5ff;
+    }
+
+    .compare-banner button {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.25);
+      color: #f5f0ff;
+      border-radius: 8px;
+      padding: 4px 8px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .compare-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .compare-stats span strong {
+      color: #fff;
+    }
+
+    .compare-stats .stat-a strong { color: #67e8f9; }
+    .compare-stats .stat-b strong { color: #f9a8d4; }
+    .compare-stats .stat-both strong { color: #fde68a; }
+
+    .filters.compare-filters { margin-top: 8px; }
+
+    .compare-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      background: rgba(6, 4, 16, 0.82);
+      backdrop-filter: blur(8px);
+      display: grid;
+      place-items: center;
+      padding: 16px;
+    }
+
+    .compare-sheet {
+      width: min(100%, 420px);
+      border-radius: 16px;
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      background: linear-gradient(160deg, #1a1038, #0d0820);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+      padding: 18px;
+    }
+
+    .compare-sheet h2 {
+      margin: 0 0 6px;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .compare-sheet p {
+      margin: 0 0 14px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .compare-field {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .compare-field label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #c4b5fd;
+    }
+
+    .compare-field input[type="text"],
+    .compare-field input[type="search"] {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.35);
+      color: var(--text);
+      padding: 10px 12px;
+      font-size: 0.82rem;
+    }
+
+    .compare-field input:disabled {
+      opacity: 0.45;
+    }
+
+    .compare-use-mine {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .compare-use-mine input {
+      accent-color: #a855f7;
+    }
+
+    .compare-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .compare-actions button {
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      border: none;
+    }
+
+    .compare-actions .btn-run {
+      background: linear-gradient(135deg, #a855f7, #22d3ee);
+      color: #0a0618;
+    }
+
+    .compare-actions .btn-cancel {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .compare-markers {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      z-index: 3;
+      display: flex;
+      gap: 3px;
+      pointer-events: none;
+    }
+
+    .compare-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.45);
+      color: rgba(255, 255, 255, 0.25);
+      font-size: 0.5rem;
+      font-weight: 900;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .compare-dot.on-a {
+      color: #0a0618;
+      background: #22d3ee;
+      border-color: rgba(34, 211, 238, 0.8);
+      box-shadow: 0 0 8px rgba(34, 211, 238, 0.45);
+    }
+
+    .compare-dot.on-b {
+      color: #0a0618;
+      background: #f472b6;
+      border-color: rgba(244, 114, 182, 0.8);
+      box-shadow: 0 0 8px rgba(244, 114, 182, 0.45);
+    }
+
+    .sprite-card.compare-both {
+      box-shadow:
+        0 0 0 1px rgba(34, 211, 238, 0.45),
+        0 0 0 2px rgba(244, 114, 182, 0.45),
+        0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .sprite-card.compare-only-a {
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.55), 0 8px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .sprite-card.compare-only-b {
+      box-shadow: 0 0 0 1px rgba(244, 114, 182, 0.55), 0 8px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .sprite-card.compare-neither {
+      opacity: 0.55;
+    }
+
     .lang-switch {
       display: flex;
       gap: 4px;
@@ -954,10 +1195,18 @@
       <div class="header-actions">
         <button type="button" id="btn-share" class="btn-share" data-i18n="share" hidden>Share</button>
         <button type="button" id="btn-export-png" class="btn-export" data-i18n="exportPng" hidden>Export PNG</button>
+        <button type="button" id="btn-compare" class="btn-compare" data-i18n="compare" hidden>Compare</button>
         <div id="lang-slot"></div>
       </div>
     </div>
     <div class="shared-banner hidden" id="shared-banner" hidden></div>
+    <div class="compare-banner hidden" id="compare-banner" hidden>
+      <div class="compare-banner-head">
+        <strong id="compare-banner-title"></strong>
+        <button type="button" id="btn-compare-exit" data-i18n="compareClose">Exit compare</button>
+      </div>
+      <div class="compare-stats" id="compare-stats"></div>
+    </div>
     <div class="progress-wrap">
       <div class="progress-meta">
         <span><span id="progress-label">Collected</span>: <strong id="progress-text">0 / 0</strong></span>
@@ -972,6 +1221,13 @@
       <button type="button" class="chip" data-filter="collected" data-i18n="filterCollected">Collected</button>
       <button type="button" class="chip" data-filter="mastered" data-i18n="filterMastered">Mastered</button>
       <button type="button" class="chip" data-filter="not-mastered" data-i18n="filterNotMastered">Not mastered</button>
+    </div>
+    <div class="filters compare-filters hidden" id="filters-compare" hidden>
+      <button type="button" class="chip active" data-compare-filter="all" data-i18n="compareFilterAll">All</button>
+      <button type="button" class="chip" data-compare-filter="both" data-i18n="compareFilterBoth">Both have</button>
+      <button type="button" class="chip" data-compare-filter="only-a" data-i18n="compareFilterOnlyA">Only A</button>
+      <button type="button" class="chip" data-compare-filter="only-b" data-i18n="compareFilterOnlyB">Only B</button>
+      <button type="button" class="chip" data-compare-filter="neither" data-i18n="compareFilterNeither">Neither</button>
     </div>
     <div class="filters filters-rarity" id="filters-rarity">
       <button type="button" class="chip active" data-rarity-filter="all" data-i18n="filterRarityAll">Any rarity</button>
@@ -995,6 +1251,29 @@
   </div>
 
   <div class="toast" id="toast" aria-live="polite"></div>
+
+  <div class="compare-overlay hidden" id="compare-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="compare-title">
+    <div class="compare-sheet">
+      <h2 id="compare-title" data-i18n="compareTitle">Compare collections</h2>
+      <p data-i18n="compareHint">Paste share links or the ?s= token from each collection.</p>
+      <div class="compare-field">
+        <label for="compare-input-a" data-i18n="compareLabelA">Collection A</label>
+        <input type="text" id="compare-input-a" data-i18n-placeholder="comparePlaceholder" placeholder="Share link or ?s= token…" autocomplete="off" />
+        <label class="compare-use-mine">
+          <input type="checkbox" id="compare-use-mine" checked />
+          <span data-i18n="compareUseMine">Use my collection</span>
+        </label>
+      </div>
+      <div class="compare-field">
+        <label for="compare-input-b" data-i18n="compareLabelB">Collection B</label>
+        <input type="text" id="compare-input-b" data-i18n-placeholder="comparePlaceholder" placeholder="Share link or ?s= token…" autocomplete="off" />
+      </div>
+      <div class="compare-actions">
+        <button type="button" class="btn-cancel" id="compare-cancel" data-i18n="compareCancel">Cancel</button>
+        <button type="button" class="btn-run" id="compare-run" data-i18n="compareRun">Compare</button>
+      </div>
+    </div>
+  </div>
 
   <div class="detail-overlay hidden" id="detail-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="detail-title">
     <div class="detail-sheet" id="detail-sheet">
@@ -1033,6 +1312,11 @@
     let rarityFilter = "all";
     let searchQuery = "";
     let readOnly = false;
+    let compareMode = false;
+    let compareFilter = "all";
+    let compareSetA = null;
+    let compareSetB = null;
+    let compareUseMineA = true;
 
     const $app = document.getElementById("app");
     const $title = document.getElementById("title");
@@ -1044,7 +1328,17 @@
     const $search = document.getElementById("search");
     const $btnShare = document.getElementById("btn-share");
     const $btnExportPng = document.getElementById("btn-export-png");
+    const $btnCompare = document.getElementById("btn-compare");
     const $sharedBanner = document.getElementById("shared-banner");
+    const $compareBanner = document.getElementById("compare-banner");
+    const $compareStats = document.getElementById("compare-stats");
+    const $compareBannerTitle = document.getElementById("compare-banner-title");
+    const $filters = document.getElementById("filters");
+    const $filtersCompare = document.getElementById("filters-compare");
+    const $compareOverlay = document.getElementById("compare-overlay");
+    const $compareInputA = document.getElementById("compare-input-a");
+    const $compareInputB = document.getElementById("compare-input-b");
+    const $compareUseMine = document.getElementById("compare-use-mine");
     const $savePrompt = document.getElementById("save-prompt");
     const $toast = document.getElementById("toast");
     const $detailOverlay = document.getElementById("detail-overlay");
@@ -1226,6 +1520,159 @@
       if (!url.searchParams.has(SHARE_PARAM)) return;
       url.searchParams.delete(SHARE_PARAM);
       history.replaceState(null, "", url.pathname + url.hash);
+    }
+
+    function extractShareToken(input) {
+      const trimmed = String(input || "").trim();
+      if (!trimmed) return null;
+      try {
+        if (trimmed.includes("://") || trimmed.startsWith("?") || trimmed.startsWith("/")) {
+          const url = new URL(trimmed, location.href);
+          return url.searchParams.get(SHARE_PARAM);
+        }
+      } catch (_) {
+        /* fall through to raw token */
+      }
+      return trimmed;
+    }
+
+    function parseShareInput(items, input) {
+      const token = extractShareToken(input);
+      if (!token) return null;
+      return decodeShareBitmap(items, token);
+    }
+
+    function getCompareSetA() {
+      if (compareUseMineA) return collected;
+      return compareSetA || new Set();
+    }
+
+    function getCompareSetB() {
+      return compareSetB || new Set();
+    }
+
+    function getCompareState(item) {
+      const inA = getCompareSetA().has(item.id);
+      const inB = getCompareSetB().has(item.id);
+      if (inA && inB) return "both";
+      if (inA) return "only-a";
+      if (inB) return "only-b";
+      return "neither";
+    }
+
+    function countCompareStats() {
+      let a = 0;
+      let b = 0;
+      let both = 0;
+      let onlyA = 0;
+      let onlyB = 0;
+      let neither = 0;
+      for (const item of catalog) {
+        const state = getCompareState(item);
+        if (getCompareSetA().has(item.id)) a += 1;
+        if (getCompareSetB().has(item.id)) b += 1;
+        if (state === "both") both += 1;
+        else if (state === "only-a") onlyA += 1;
+        else if (state === "only-b") onlyB += 1;
+        else neither += 1;
+      }
+      return { a, b, both, onlyA, onlyB, neither, total: catalog.length };
+    }
+
+    function updateCompareBanner() {
+      if (!compareMode) {
+        $compareBanner.hidden = true;
+        $compareBanner.classList.add("hidden");
+        $btnCompare.classList.remove("active");
+        $filters.hidden = false;
+        $filtersCompare.hidden = true;
+        $filtersCompare.classList.add("hidden");
+        return;
+      }
+
+      const stats = countCompareStats();
+      $compareBannerTitle.textContent = SpritedexI18n.t("compareBanner");
+      $compareStats.innerHTML = `
+        <span class="stat-a">${SpritedexI18n.t("compareStatA")}: <strong>${stats.a}/${stats.total}</strong></span>
+        <span class="stat-b">${SpritedexI18n.t("compareStatB")}: <strong>${stats.b}/${stats.total}</strong></span>
+        <span class="stat-both">${SpritedexI18n.t("compareStatBoth")}: <strong>${stats.both}</strong></span>
+        <span>${SpritedexI18n.t("compareStatOnlyA")}: <strong>${stats.onlyA}</strong></span>
+        <span>${SpritedexI18n.t("compareStatOnlyB")}: <strong>${stats.onlyB}</strong></span>
+      `;
+      $compareBanner.hidden = false;
+      $compareBanner.classList.remove("hidden");
+      $btnCompare.classList.add("active");
+      $filters.hidden = true;
+      $filtersCompare.hidden = false;
+      $filtersCompare.classList.remove("hidden");
+    }
+
+    function syncCompareUseMineInput() {
+      const useMine = $compareUseMine.checked;
+      $compareInputA.disabled = useMine;
+      if (useMine) $compareInputA.value = "";
+    }
+
+    function openCompareModal() {
+      $compareUseMine.checked = !readOnly;
+      $compareUseMine.disabled = readOnly && !collected.size;
+      if (readOnly) {
+        $compareUseMine.checked = false;
+        $compareInputA.value = location.href;
+      }
+      $compareInputB.value = "";
+      syncCompareUseMineInput();
+      $compareOverlay.hidden = false;
+      $compareOverlay.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+      $compareInputB.focus();
+    }
+
+    function closeCompareModal() {
+      $compareOverlay.hidden = true;
+      $compareOverlay.classList.add("hidden");
+      if ($detailOverlay.hidden) document.body.style.overflow = "";
+    }
+
+    function exitCompareMode() {
+      compareMode = false;
+      compareSetA = null;
+      compareSetB = null;
+      compareFilter = "all";
+      document.querySelectorAll("#filters-compare .chip").forEach((chip) => {
+        chip.classList.toggle("active", chip.dataset.compareFilter === "all");
+      });
+      updateCompareBanner();
+      render();
+    }
+
+    function startCompareMode() {
+      const useMine = $compareUseMine.checked;
+      let setA = null;
+      if (useMine) {
+        setA = collected;
+      } else {
+        setA = parseShareInput(catalog, $compareInputA.value);
+        if (!setA) {
+          showToast(SpritedexI18n.t("compareError"));
+          return;
+        }
+      }
+
+      const setB = parseShareInput(catalog, $compareInputB.value);
+      if (!setB) {
+        showToast(SpritedexI18n.t("compareError"));
+        return;
+      }
+
+      compareUseMineA = useMine;
+      compareSetA = useMine ? null : setA;
+      compareSetB = setB;
+      compareMode = true;
+      compareFilter = "all";
+      closeCompareModal();
+      updateCompareBanner();
+      render();
     }
 
     const EXPORT_MATERIAL_ORDER = ["base", "gold", "gummy", "galaxy", "gem", "holofoil", "cube", "quack"];
@@ -1754,6 +2201,14 @@
     function matchesFilter(item) {
       const isCollected = collected.has(item.id);
       const isMastered = mastered.has(item.id);
+      if (compareMode) {
+        const state = getCompareState(item);
+        if (compareFilter === "both") return state === "both";
+        if (compareFilter === "only-a") return state === "only-a";
+        if (compareFilter === "only-b") return state === "only-b";
+        if (compareFilter === "neither") return state === "neither";
+        return true;
+      }
       if (filter === "collected") return isCollected;
       if (filter === "missing") return !isCollected;
       if (filter === "mastered") return isMastered;
@@ -1913,11 +2368,14 @@
     function renderCard(item) {
       const isCollected = collected.has(item.id);
       const isMastered = mastered.has(item.id);
+      const compareState = compareMode ? getCompareState(item) : null;
+      const inCompareA = compareMode && getCompareSetA().has(item.id);
+      const inCompareB = compareMode && getCompareSetB().has(item.id);
       const spriteLabel = displaySprite(item);
       const materialLabel = displayMaterial(item);
       const card = document.createElement("button");
       card.type = "button";
-      card.className = `sprite-card${isCollected ? " collected" : ""}${isMastered ? " mastered" : ""}${readOnly ? " readonly" : ""}`;
+      card.className = `sprite-card${isCollected ? " collected" : ""}${isMastered ? " mastered" : ""}${readOnly ? " readonly" : ""}${compareState ? ` compare-${compareState}` : ""}`;
       card.dataset.spriteId = item.id;
       applyMaterialTheme(card, item.materialId);
       card.setAttribute("aria-pressed", isCollected ? "true" : "false");
@@ -1928,6 +2386,7 @@
 
       card.innerHTML = `
         <button type="button" class="info-btn" aria-label="${SpritedexI18n.t("detailInfo")}">i</button>
+        ${compareMode ? `<span class="compare-markers" aria-hidden="true"><span class="compare-dot${inCompareA ? " on-a" : ""}">A</span><span class="compare-dot${inCompareB ? " on-b" : ""}">B</span></span>` : ""}
         <span class="check-badge" aria-hidden="true">✓</span>
         <button type="button" class="mastery-badge${isMastered ? " active" : ""}${isCollected ? "" : " locked"}" aria-label="${SpritedexI18n.t("masteryAria")}" aria-pressed="${isMastered ? "true" : "false"}"${isCollected ? "" : " disabled"}>★</button>
         <div class="sprite-img-wrap">
@@ -2047,6 +2506,7 @@
       }
 
       updateProgress();
+      if (compareMode) updateCompareBanner();
     }
 
     async function init() {
@@ -2074,7 +2534,9 @@
         }
         $btnShare.hidden = false;
         $btnExportPng.hidden = false;
+        $btnCompare.hidden = false;
         updateSharedBanner();
+        updateCompareBanner();
         render();
       } catch (err) {
         $app.innerHTML = `<div class="error-box">${err.message}</div>`;
@@ -2112,6 +2574,23 @@
 
     $btnShare.addEventListener("click", () => shareCollection());
     $btnExportPng.addEventListener("click", () => exportCollectionPng());
+    $btnCompare.addEventListener("click", () => openCompareModal());
+    document.getElementById("btn-compare-exit").addEventListener("click", () => exitCompareMode());
+    document.getElementById("compare-cancel").addEventListener("click", () => closeCompareModal());
+    document.getElementById("compare-run").addEventListener("click", () => startCompareMode());
+    $compareUseMine.addEventListener("change", () => syncCompareUseMineInput());
+    $compareOverlay.addEventListener("click", (e) => {
+      if (e.target === $compareOverlay) closeCompareModal();
+    });
+    document.getElementById("filters-compare").addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip || !chip.dataset.compareFilter) return;
+      compareFilter = chip.dataset.compareFilter;
+      document.querySelectorAll("#filters-compare .chip").forEach((c) => {
+        c.classList.toggle("active", c.dataset.compareFilter === compareFilter);
+      });
+      render();
+    });
     document.getElementById("btn-adopt").addEventListener("click", () => adoptSharedCollection());
     $savePrompt.addEventListener("click", (e) => {
       if (e.target === $savePrompt) hideSavePrompt();
@@ -2150,13 +2629,17 @@
     });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !$detailOverlay.hidden) closeDetail();
+      if (e.key === "Escape") {
+        if (!$compareOverlay.hidden) closeCompareModal();
+        else if (!$detailOverlay.hidden) closeDetail();
+      }
     });
 
     window.addEventListener("spritedex:localechange", () => {
       if (detailItem) openDetail(detailItem);
       applyStaticI18n();
       updateProgress();
+      updateCompareBanner();
       render();
     });
 
