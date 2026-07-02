@@ -4,8 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Spritedex" />
+  <meta name="application-name" content="Spritedex" />
   <meta name="theme-color" content="#1a1040" />
   <title>Fortnite Sprites Pocket Tracker</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet" />
@@ -63,7 +68,9 @@
       text-transform: uppercase;
       text-shadow: 0 0 20px rgba(94, 231, 255, 0.35);
       line-height: 1.2;
-      max-width: 11rem;
+      max-width: none;
+      flex: 1;
+      min-width: 0;
     }
 
     .progress-wrap { margin-top: 10px; }
@@ -443,6 +450,13 @@
     @media (min-width: 640px) {
       .grid { grid-template-columns: repeat(5, 1fr); }
       header h1 { max-width: none; font-size: 0.95rem; }
+      .header-head {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .header-toolbar { flex-wrap: nowrap; }
     }
 
     .sprite-card {
@@ -612,8 +626,20 @@
       font-size: 0.9rem;
     }
 
+    .header-head {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
     .header-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+
+    .header-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
 
     .btn-share {
       border: 1px solid rgba(94, 231, 255, 0.35);
@@ -1363,14 +1389,16 @@
 </head>
 <body>
   <header>
-    <div class="header-top">
-      <h1 id="title">Fortnite Sprites Pocket Tracker</h1>
-      <div class="header-actions">
+    <div class="header-head">
+      <div class="header-top">
+        <h1 id="title">Fortnite Sprites Pocket Tracker</h1>
+        <div id="lang-slot"></div>
+      </div>
+      <div class="header-toolbar">
         <button type="button" id="btn-share" class="btn-share" data-i18n="share" hidden>Share</button>
         <button type="button" id="btn-export-png" class="btn-export" data-i18n="exportPng" hidden>Export PNG</button>
         <button type="button" id="btn-compare" class="btn-compare" data-i18n="compare" hidden>Compare</button>
         <button type="button" id="btn-guide" class="btn-guide" aria-label="Guide" title="Guide" hidden>?</button>
-        <div id="lang-slot"></div>
       </div>
     </div>
     <div class="shared-banner hidden" id="shared-banner" hidden></div>
@@ -2944,6 +2972,12 @@
       updateCompareBanner();
       render();
     });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js", { scope: "./" }).catch(() => {});
+      });
+    }
 
     init();
   </script>
