@@ -64,7 +64,7 @@
     "sprites/zeropoint_galaxy.webp",
     "sprites/zeropoint_gold.webp"
   ],
-  "downloaded": 84,
+  "downloaded": 87,
   "fallbackDir": "sprites_named",
   "byId": {
     "row01_col01": "sprites_hd/water_basic.webp",
@@ -150,7 +150,10 @@
     "row07_col10": "sprites_hd/seven_galaxy.webp",
     "row02_col12": "sprites_hd/dream_cube.webp",
     "row03_col11": "sprites_hd/punk_cube.webp",
-    "row07_col11": "sprites_hd/zeropoint_quack.webp"
+    "row07_col11": "sprites_hd/zeropoint_quack.webp",
+    "fishy-gummy": "sprites_hd/fishy_candy.webp",
+    "air-holofoil": "sprites_hd/air_holo.webp",
+    "seven-holofoil": "sprites_hd/seven_holofoil.webp"
   },
   "byKey": {
     "air:base": "sprites_hd/air_basic.webp",
@@ -236,7 +239,10 @@
     "aura:gem": "sprites_hd/drifter_gem.webp",
     "striker:holofoil": "sprites_hd/soccer_holofoil.webp",
     "demon:gem": "sprites_hd/demon_gem.webp",
-    "ghost:holofoil": "sprites_hd/ghost_holo.webp"
+    "ghost:holofoil": "sprites_hd/ghost_holo.webp",
+    "fishy:gummy": "sprites_hd/fishy_candy.webp",
+    "air:holofoil": "sprites_hd/air_holo.webp",
+    "seven:holofoil": "sprites_hd/seven_holofoil.webp"
   },
   "enhancedLocal": 24
 }

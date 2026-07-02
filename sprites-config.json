@@ -732,6 +732,11 @@
           "output": "Air_Galaxy.png"
         },
         {
+          "id": "air-holofoil",
+          "materialId": "holofoil",
+          "output": "Air_Holofoil.png"
+        },
+        {
           "id": "row01_col11",
           "source": "row01_col11.png",
           "materialId": "gem",
@@ -754,6 +759,11 @@
           "source": "row01_col13.png",
           "materialId": "gold",
           "output": "Fishy_Gold.png"
+        },
+        {
+          "id": "fishy-gummy",
+          "materialId": "gummy",
+          "output": "Fishy_Gummy.png"
         },
         {
           "id": "row01_col14",
@@ -880,6 +890,11 @@
           "source": "row07_col10.png",
           "materialId": "galaxy",
           "output": "Seven_Galaxy.png"
+        },
+        {
+          "id": "seven-holofoil",
+          "materialId": "holofoil",
+          "output": "Seven_Holofoil.png"
         }
       ]
     },
@@ -1506,6 +1521,17 @@
       "group_id": "group-mqz37r2e"
     },
     {
+      "id": "air-holofoil",
+      "spriteId": "air",
+      "sprite": "Air",
+      "materialId": "holofoil",
+      "material": "Holofoil",
+      "source": null,
+      "output": "sprites_named/Air_Holofoil.png",
+      "filename": "Air_Holofoil.png",
+      "group_id": "group-mqz37r2e"
+    },
+    {
       "id": "row01_col11",
       "spriteId": "air",
       "sprite": "Air",
@@ -1536,6 +1562,17 @@
       "source": "sprites/row01_col13.png",
       "output": "sprites_named/Fishy_Gold.png",
       "filename": "Fishy_Gold.png",
+      "group_id": "group-mqz38mfk"
+    },
+    {
+      "id": "fishy-gummy",
+      "spriteId": "fishy",
+      "sprite": "Fishy",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": null,
+      "output": "sprites_named/Fishy_Gummy.png",
+      "filename": "Fishy_Gummy.png",
       "group_id": "group-mqz38mfk"
     },
     {
@@ -1723,6 +1760,17 @@
       "source": "sprites/row07_col10.png",
       "output": "sprites_named/Seven_Galaxy.png",
       "filename": "Seven_Galaxy.png",
+      "group_id": "group-mqz3fy5d"
+    },
+    {
+      "id": "seven-holofoil",
+      "spriteId": "seven",
+      "sprite": "Seven",
+      "materialId": "holofoil",
+      "material": "Holofoil",
+      "source": null,
+      "output": "sprites_named/Seven_Holofoil.png",
+      "filename": "Seven_Holofoil.png",
       "group_id": "group-mqz3fy5d"
     },
     {
@@ -1979,5 +2027,5 @@
       "group_id": "group-mqz3ib7v"
     }
   ],
-  "total": 84
+  "total": 87
 }

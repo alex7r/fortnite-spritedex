@@ -23,6 +23,8 @@ SPRITE_SLUG = {
     "ghost": "ghost",
     "king": "king",
     "zero-point": "zeropoint",
+    "air": "air",
+    "seven": "seven",
     "fishy": "fishy",
     "dream": "dream",
     "burnt-peanut": "theburntpeanut",
@@ -32,8 +34,6 @@ SPRITE_SLUG = {
     "striker": "soccer",
     "grim": "grimreaper",
     "demon": "demon",
-    "air": "air",
-    "seven": "seven",
 }
 
 MATERIAL_SLUG = {

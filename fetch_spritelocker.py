@@ -22,6 +22,8 @@ SPRITE_SLUG = {
     "ghost": "ghost",
     "king": "king",
     "zero-point": "zeropoint",
+    "air": "air",
+    "seven": "seven",
     "fishy": "fishy",
     "dream": "dream",
     "burnt-peanut": "theburntpeanut",
@@ -47,6 +49,7 @@ MATERIAL_SLUG = {
 # spritelocker.com uses non-standard slugs for some holofoil assets.
 HOLOFOIL_SLUG_OVERRIDE = {
     "ghost": "holo",
+    "air": "holo",
 }
 
 
