@@ -78,6 +78,7 @@ const SpritedexI18n = (() => {
       rarestMissing: "Rarest still missing",
       rarestMissingDone: "No missing variants — nice!",
       filterRarityAll: "Any rarity",
+      summonLoadout: "Re-summon collected",
     },
     ru: {
       appTitle: "Fortnite Sprites Pocket Tracker",
@@ -150,6 +151,7 @@ const SpritedexI18n = (() => {
       rarestMissing: "Самые редкие из недостающих",
       rarestMissingDone: "Ничего не осталось — отлично!",
       filterRarityAll: "Любая редкость",
+      summonLoadout: "Пересаммон собранных",
     },
   };
 

@@ -1334,6 +1334,14 @@
       return item.rarity === rarityFilter;
     }
 
+    function computeSummonLoadout() {
+      let total = 0;
+      for (const item of catalog) {
+        if (collected.has(item.id) && item.summonCost) total += item.summonCost;
+      }
+      return total;
+    }
+
     function updateProgress() {
       const total = catalog.length;
       const done = catalog.filter((s) => collected.has(s.id)).length;
@@ -1343,9 +1351,11 @@
       $progressFill.style.width = `${pct}%`;
 
       const bases = countBaseSpritesProgress();
+      const loadout = computeSummonLoadout();
       $progressBreakdown.innerHTML = `
         <span>${SpritedexI18n.t("progressSprites")}: <strong>${bases.done}/${bases.total}</strong></span>
         <span>${SpritedexI18n.t("progressVariants")}: <strong>${done}/${total}</strong></span>
+        <span>${SpritedexI18n.t("summonLoadout")}: <strong>${loadout.toLocaleString()} ${SpritedexI18n.t("dust")}</strong></span>
       `;
     }
 
