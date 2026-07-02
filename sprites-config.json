@@ -1,0 +1,1652 @@
+{
+  "version": 2,
+  "sourceDir": "sprites",
+  "outputDir": "sprites_named",
+  "defaultMaterial": "обычный",
+  "nameSeparator": "_",
+  "materialAliases": {
+    "золотой": "Золото",
+    "золото": "Золото",
+    "кристалл": "Кристал",
+    "кристал": "Кристал",
+    "мармелад": "Мармелад",
+    "галактика": "Галактика",
+    "пурпур": "Пурпур",
+    "пурпру": "Пурпур",
+    "обычный": "обычный"
+  },
+  "typeSuggestions": [
+    "обычный",
+    "Золото",
+    "Мармелад",
+    "Галактика",
+    "Кристал",
+    "Пурпур"
+  ],
+  "groups": [
+    {
+      "id": "group-01",
+      "name": "Водный",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row01_col01",
+          "source": "row01_col01.png",
+          "output": "Водный_обычный.png",
+          "character": "Водный",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row01_col02",
+          "source": "row01_col02.png",
+          "output": "Водный_Золото.png",
+          "character": "Водный",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row01_col03",
+          "source": "row01_col03.png",
+          "output": "Водный_Мармелад.png",
+          "character": "Водный",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row01_col04",
+          "source": "row01_col04.png",
+          "output": "Водный_Галактика.png",
+          "character": "Водный",
+          "material": "Галактика"
+        },
+        {
+          "type": "Кристал",
+          "id": "row01_col05",
+          "source": "row01_col05.png",
+          "output": "Водный_Кристал.png",
+          "character": "Водный",
+          "material": "Кристал"
+        },
+        {
+          "type": "Пурпур",
+          "id": "row01_col06",
+          "source": "row01_col06.png",
+          "output": "Водный_Пурпур.png",
+          "character": "Водный",
+          "material": "Пурпур"
+        }
+      ]
+    },
+    {
+      "id": "group-02",
+      "name": "Земля",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row02_col01",
+          "source": "row02_col01.png",
+          "output": "Земля_обычный.png",
+          "character": "Земля",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row02_col02",
+          "source": "row02_col02.png",
+          "output": "Земля_Золото.png",
+          "character": "Земля",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row02_col03",
+          "source": "row02_col03.png",
+          "output": "Земля_Мармелад.png",
+          "character": "Земля",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row02_col04",
+          "source": "row02_col04.png",
+          "output": "Земля_Галактика.png",
+          "character": "Земля",
+          "material": "Галактика"
+        },
+        {
+          "type": "Кристал",
+          "id": "row02_col05",
+          "source": "row02_col05.png",
+          "output": "Земля_Кристал.png",
+          "character": "Земля",
+          "material": "Кристал"
+        }
+      ]
+    },
+    {
+      "id": "group-03",
+      "name": "Огонь",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row03_col01",
+          "source": "row03_col01.png",
+          "output": "Огонь_обычный.png",
+          "character": "Огонь",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row03_col02",
+          "source": "row03_col02.png",
+          "output": "Огонь_Золото.png",
+          "character": "Огонь",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row03_col03",
+          "source": "row03_col03.png",
+          "output": "Огонь_Мармелад.png",
+          "character": "Огонь",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row03_col04",
+          "source": "row03_col04.png",
+          "output": "Огонь_Галактика.png",
+          "character": "Огонь",
+          "material": "Галактика"
+        },
+        {
+          "type": "Пурпур",
+          "id": "row03_col05",
+          "source": "row03_col05.png",
+          "output": "Огонь_Пурпур.png",
+          "character": "Огонь",
+          "material": "Пурпур"
+        }
+      ]
+    },
+    {
+      "id": "group-04",
+      "name": "Утка",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row04_col01",
+          "source": "row04_col01.png",
+          "output": "Утка_обычный.png",
+          "character": "Утка",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row04_col02",
+          "source": "row04_col02.png",
+          "output": "Утка_Золото.png",
+          "character": "Утка",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row04_col03",
+          "source": "row04_col03.png",
+          "output": "Утка_Мармелад.png",
+          "character": "Утка",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row04_col04",
+          "source": "row04_col04.png",
+          "output": "Утка_Галактика.png",
+          "character": "Утка",
+          "material": "Галактика"
+        },
+        {
+          "type": "Кристал",
+          "id": "row04_col05",
+          "source": "row04_col05.png",
+          "output": "Утка_Кристал.png",
+          "character": "Утка",
+          "material": "Кристал"
+        },
+        {
+          "type": "Пурпур",
+          "id": "row04_col06",
+          "source": "row04_col06.png",
+          "output": "Утка_Пурпур.png",
+          "character": "Утка",
+          "material": "Пурпур"
+        }
+      ]
+    },
+    {
+      "id": "group-05",
+      "name": "Призрак",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row05_col01",
+          "source": "row05_col01.png",
+          "output": "Призрак_обычный.png",
+          "character": "Призрак",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row05_col02",
+          "source": "row05_col02.png",
+          "output": "Призрак_Золото.png",
+          "character": "Призрак",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row05_col03",
+          "source": "row05_col03.png",
+          "output": "Призрак_Мармелад.png",
+          "character": "Призрак",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row05_col04",
+          "source": "row05_col04.png",
+          "output": "Призрак_Галактика.png",
+          "character": "Призрак",
+          "material": "Галактика"
+        },
+        {
+          "type": "Пурпур",
+          "id": "row05_col05",
+          "source": "row05_col05.png",
+          "output": "Призрак_Пурпур.png",
+          "character": "Призрак",
+          "material": "Пурпур"
+        }
+      ]
+    },
+    {
+      "id": "group-06",
+      "name": "Король",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row06_col01",
+          "source": "row06_col01.png",
+          "output": "Король_обычный.png",
+          "character": "Король",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row06_col02",
+          "source": "row06_col02.png",
+          "output": "Король_Золото.png",
+          "character": "Король",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row06_col03",
+          "source": "row06_col03.png",
+          "output": "Король_Мармелад.png",
+          "character": "Король",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row06_col04",
+          "source": "row06_col04.png",
+          "output": "Король_Галактика.png",
+          "character": "Король",
+          "material": "Галактика"
+        },
+        {
+          "type": "Пурпур",
+          "id": "row06_col05",
+          "source": "row06_col05.png",
+          "output": "Король_Пурпур.png",
+          "character": "Король",
+          "material": "Пурпур"
+        }
+      ]
+    },
+    {
+      "id": "group-07",
+      "name": "Нулевой",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row07_col01",
+          "source": "row07_col01.png",
+          "output": "Нулевой_обычный.png",
+          "character": "Нулевой",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row07_col02",
+          "source": "row07_col02.png",
+          "output": "Нулевой_Золото.png",
+          "character": "Нулевой",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row07_col03",
+          "source": "row07_col03.png",
+          "output": "Нулевой_Мармелад.png",
+          "character": "Нулевой",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row07_col04",
+          "source": "row07_col04.png",
+          "output": "Нулевой_Галактика.png",
+          "character": "Нулевой",
+          "material": "Галактика"
+        },
+        {
+          "type": "Кристал",
+          "id": "row07_col05",
+          "source": "row07_col05.png",
+          "output": "Нулевой_Кристал.png",
+          "character": "Нулевой",
+          "material": "Кристал"
+        },
+        {
+          "type": "Пурпур",
+          "id": "row07_col06",
+          "source": "row07_col06.png",
+          "output": "Нулевой_Пурпур.png",
+          "character": "Нулевой",
+          "material": "Пурпур"
+        }
+      ]
+    },
+    {
+      "id": "group-mqz37r2e",
+      "name": "Беляшь",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row01_col07",
+          "source": "row01_col07.png",
+          "output": "Беляшь_Кристал.png",
+          "character": "Беляшь",
+          "material": "Кристал"
+        },
+        {
+          "type": "Золото",
+          "id": "row01_col08",
+          "source": "row01_col08.png",
+          "output": "Беляшь_Золото.png",
+          "character": "Беляшь",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row01_col09",
+          "source": "row01_col09.png",
+          "output": "Беляшь_Мармелад.png",
+          "character": "Беляшь",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row01_col10",
+          "source": "row01_col10.png",
+          "output": "Беляшь_Галактика.png",
+          "character": "Беляшь",
+          "material": "Галактика"
+        },
+        {
+          "type": "Пурпур",
+          "id": "row01_col11",
+          "source": "row01_col11.png",
+          "output": "Беляшь_Пурпур.png",
+          "character": "Беляшь",
+          "material": "Пурпур"
+        }
+      ]
+    },
+    {
+      "id": "group-mqz38mfk",
+      "name": "Карась",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row01_col12",
+          "source": "row01_col12.png",
+          "output": "Карась_обычный.png",
+          "character": "Карась",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row01_col13",
+          "source": "row01_col13.png",
+          "output": "Карась_Золото.png",
+          "character": "Карась",
+          "material": "Золото"
+        },
+        {
+          "type": "Галактика",
+          "id": "row01_col14",
+          "source": "row01_col14.png",
+          "output": "Карась_Галактика.png",
+          "character": "Карась",
+          "material": "Галактика"
+        }
+      ]
+    },
+    {
+      "id": "group-mqz39sxq",
+      "name": "Сонливый",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row02_col06",
+          "source": "row02_col06.png",
+          "output": "Сонливый_обычный.png",
+          "character": "Сонливый",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row02_col07",
+          "source": "row02_col07.png",
+          "output": "Сонливый_Золото.png",
+          "character": "Сонливый",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row02_col08",
+          "source": "row02_col08.png",
+          "output": "Сонливый_Мармелад.png",
+          "character": "Сонливый",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row02_col09",
+          "source": "row02_col09.png",
+          "output": "Сонливый_Галактика.png",
+          "character": "Сонливый",
+          "material": "Галактика"
+        },
+        {
+          "type": "Пурпур",
+          "id": "row02_col10",
+          "source": "row02_col10.png",
+          "output": "Сонливый_Пурпур.png",
+          "character": "Сонливый",
+          "material": "Пурпур"
+        }
+      ]
+    },
+    {
+      "id": "group-mqz3ag0q",
+      "name": "Орех",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row02_col11",
+          "source": "row02_col11.png",
+          "output": "Орех_обычный.png",
+          "character": "Орех",
+          "material": "обычный"
+        }
+      ]
+    },
+    {
+      "id": "group-mqz3bjv9",
+      "name": "Панк",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row03_col06",
+          "source": "row03_col06.png",
+          "output": "Панк_обычный.png",
+          "character": "Панк",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row03_col07",
+          "source": "row03_col07.png",
+          "output": "Панк_Золото.png",
+          "character": "Панк",
+          "material": "Золото"
+        },
+        {
+          "type": "Галактика",
+          "id": "row03_col09",
+          "source": "row03_col09.png",
+          "output": "Панк_Галактика.png",
+          "character": "Панк",
+          "material": "Галактика"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row03_col08",
+          "source": "row03_col08.png",
+          "output": "Панк_Мармелад.png",
+          "character": "Панк",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Пурпур",
+          "id": "row03_col10",
+          "source": "row03_col10.png",
+          "output": "Панк_Пурпур.png",
+          "character": "Панк",
+          "material": "Пурпур"
+        }
+      ]
+    },
+    {
+      "id": "group-mqz3fy5d",
+      "name": "Страж",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row07_col07",
+          "source": "row07_col07.png",
+          "output": "Страж_обычный.png",
+          "character": "Страж",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row07_col08",
+          "source": "row07_col08.png",
+          "output": "Страж_Золото.png",
+          "character": "Страж",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row07_col09",
+          "source": "row07_col09.png",
+          "output": "Страж_Мармелад.png",
+          "character": "Страж",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row07_col10",
+          "source": "row07_col10.png",
+          "output": "Страж_Галактика.png",
+          "character": "Страж",
+          "material": "Галактика"
+        }
+      ]
+    },
+    {
+      "id": "group-mqz3gb7o",
+      "name": "Аура",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row06_col06",
+          "source": "row06_col06.png",
+          "output": "Аура_обычный.png",
+          "character": "Аура",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row06_col07",
+          "source": "row06_col07.png",
+          "output": "Аура_Золото.png",
+          "character": "Аура",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row06_col08",
+          "source": "row06_col08.png",
+          "output": "Аура_Мармелад.png",
+          "character": "Аура",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row06_col09",
+          "source": "row06_col09.png",
+          "output": "Аура_Галактика.png",
+          "character": "Аура",
+          "material": "Галактика"
+        },
+        {
+          "type": "Кристал",
+          "id": "row06_col10",
+          "source": "row06_col10.png",
+          "output": "Аура_Кристал.png",
+          "character": "Аура",
+          "material": "Кристал"
+        }
+      ]
+    },
+    {
+      "id": "group-mqz3gwlg",
+      "name": "Босс",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row05_col06",
+          "source": "row05_col06.png",
+          "output": "Босс_обычный.png",
+          "character": "Босс",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row05_col07",
+          "source": "row05_col07.png",
+          "output": "Босс_Золото.png",
+          "character": "Босс",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row05_col08",
+          "source": "row05_col08.png",
+          "output": "Босс_Мармелад.png",
+          "character": "Босс",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row05_col09",
+          "source": "row05_col09.png",
+          "output": "Босс_Галактика.png",
+          "character": "Босс",
+          "material": "Галактика"
+        }
+      ]
+    },
+    {
+      "id": "group-mqz3hc53",
+      "name": "Мяч",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row05_col10",
+          "source": "row05_col10.png",
+          "output": "Мяч_обычный.png",
+          "character": "Мяч",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row05_col11",
+          "source": "row05_col11.png",
+          "output": "Мяч_Золото.png",
+          "character": "Мяч",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row05_col12",
+          "source": "row05_col12.png",
+          "output": "Мяч_Мармелад.png",
+          "character": "Мяч",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row05_col13",
+          "source": "row05_col13.png",
+          "output": "Мяч_Галактика.png",
+          "character": "Мяч",
+          "material": "Галактика"
+        },
+        {
+          "type": "Пурпур",
+          "id": "row05_col14",
+          "source": "row05_col14.png",
+          "output": "Мяч_Пурпур.png",
+          "character": "Мяч",
+          "material": "Пурпур"
+        }
+      ]
+    },
+    {
+      "id": "group-mqz3htul",
+      "name": "Гримм",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row04_col12",
+          "source": "row04_col12.png",
+          "output": "Гримм_обычный.png",
+          "character": "Гримм",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row04_col13",
+          "source": "row04_col13.png",
+          "output": "Гримм_Золото.png",
+          "character": "Гримм",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row04_col14",
+          "source": "row04_col14.png",
+          "output": "Гримм_Мармелад.png",
+          "character": "Гримм",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row04_col15",
+          "source": "row04_col15.png",
+          "output": "Гримм_Галактика.png",
+          "character": "Гримм",
+          "material": "Галактика"
+        }
+      ]
+    },
+    {
+      "id": "group-mqz3ib7v",
+      "name": "Демон",
+      "sprites": [
+        {
+          "type": "",
+          "id": "row04_col07",
+          "source": "row04_col07.png",
+          "output": "Демон_обычный.png",
+          "character": "Демон",
+          "material": "обычный"
+        },
+        {
+          "type": "Золото",
+          "id": "row04_col08",
+          "source": "row04_col08.png",
+          "output": "Демон_Золото.png",
+          "character": "Демон",
+          "material": "Золото"
+        },
+        {
+          "type": "Мармелад",
+          "id": "row04_col09",
+          "source": "row04_col09.png",
+          "output": "Демон_Мармелад.png",
+          "character": "Демон",
+          "material": "Мармелад"
+        },
+        {
+          "type": "Галактика",
+          "id": "row04_col10",
+          "source": "row04_col10.png",
+          "output": "Демон_Галактика.png",
+          "character": "Демон",
+          "material": "Галактика"
+        },
+        {
+          "type": "Кристал",
+          "id": "row04_col11",
+          "source": "row04_col11.png",
+          "output": "Демон_Кристал.png",
+          "character": "Демон",
+          "material": "Кристал"
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-06-29T11:01:42.555338+00:00",
+  "catalog": [
+    {
+      "id": "row01_col01",
+      "character": "Водный",
+      "material": "обычный",
+      "source": "sprites/row01_col01.png",
+      "output": "sprites_named/Водный_обычный.png",
+      "filename": "Водный_обычный.png",
+      "group_id": "group-01",
+      "group_name": "Водный"
+    },
+    {
+      "id": "row01_col02",
+      "character": "Водный",
+      "material": "Золото",
+      "source": "sprites/row01_col02.png",
+      "output": "sprites_named/Водный_Золото.png",
+      "filename": "Водный_Золото.png",
+      "group_id": "group-01",
+      "group_name": "Водный"
+    },
+    {
+      "id": "row01_col03",
+      "character": "Водный",
+      "material": "Мармелад",
+      "source": "sprites/row01_col03.png",
+      "output": "sprites_named/Водный_Мармелад.png",
+      "filename": "Водный_Мармелад.png",
+      "group_id": "group-01",
+      "group_name": "Водный"
+    },
+    {
+      "id": "row01_col04",
+      "character": "Водный",
+      "material": "Галактика",
+      "source": "sprites/row01_col04.png",
+      "output": "sprites_named/Водный_Галактика.png",
+      "filename": "Водный_Галактика.png",
+      "group_id": "group-01",
+      "group_name": "Водный"
+    },
+    {
+      "id": "row01_col05",
+      "character": "Водный",
+      "material": "Кристал",
+      "source": "sprites/row01_col05.png",
+      "output": "sprites_named/Водный_Кристал.png",
+      "filename": "Водный_Кристал.png",
+      "group_id": "group-01",
+      "group_name": "Водный"
+    },
+    {
+      "id": "row01_col06",
+      "character": "Водный",
+      "material": "Пурпур",
+      "source": "sprites/row01_col06.png",
+      "output": "sprites_named/Водный_Пурпур.png",
+      "filename": "Водный_Пурпур.png",
+      "group_id": "group-01",
+      "group_name": "Водный"
+    },
+    {
+      "id": "row02_col01",
+      "character": "Земля",
+      "material": "обычный",
+      "source": "sprites/row02_col01.png",
+      "output": "sprites_named/Земля_обычный.png",
+      "filename": "Земля_обычный.png",
+      "group_id": "group-02",
+      "group_name": "Земля"
+    },
+    {
+      "id": "row02_col02",
+      "character": "Земля",
+      "material": "Золото",
+      "source": "sprites/row02_col02.png",
+      "output": "sprites_named/Земля_Золото.png",
+      "filename": "Земля_Золото.png",
+      "group_id": "group-02",
+      "group_name": "Земля"
+    },
+    {
+      "id": "row02_col03",
+      "character": "Земля",
+      "material": "Мармелад",
+      "source": "sprites/row02_col03.png",
+      "output": "sprites_named/Земля_Мармелад.png",
+      "filename": "Земля_Мармелад.png",
+      "group_id": "group-02",
+      "group_name": "Земля"
+    },
+    {
+      "id": "row02_col04",
+      "character": "Земля",
+      "material": "Галактика",
+      "source": "sprites/row02_col04.png",
+      "output": "sprites_named/Земля_Галактика.png",
+      "filename": "Земля_Галактика.png",
+      "group_id": "group-02",
+      "group_name": "Земля"
+    },
+    {
+      "id": "row02_col05",
+      "character": "Земля",
+      "material": "Кристал",
+      "source": "sprites/row02_col05.png",
+      "output": "sprites_named/Земля_Кристал.png",
+      "filename": "Земля_Кристал.png",
+      "group_id": "group-02",
+      "group_name": "Земля"
+    },
+    {
+      "id": "row03_col01",
+      "character": "Огонь",
+      "material": "обычный",
+      "source": "sprites/row03_col01.png",
+      "output": "sprites_named/Огонь_обычный.png",
+      "filename": "Огонь_обычный.png",
+      "group_id": "group-03",
+      "group_name": "Огонь"
+    },
+    {
+      "id": "row03_col02",
+      "character": "Огонь",
+      "material": "Золото",
+      "source": "sprites/row03_col02.png",
+      "output": "sprites_named/Огонь_Золото.png",
+      "filename": "Огонь_Золото.png",
+      "group_id": "group-03",
+      "group_name": "Огонь"
+    },
+    {
+      "id": "row03_col03",
+      "character": "Огонь",
+      "material": "Мармелад",
+      "source": "sprites/row03_col03.png",
+      "output": "sprites_named/Огонь_Мармелад.png",
+      "filename": "Огонь_Мармелад.png",
+      "group_id": "group-03",
+      "group_name": "Огонь"
+    },
+    {
+      "id": "row03_col04",
+      "character": "Огонь",
+      "material": "Галактика",
+      "source": "sprites/row03_col04.png",
+      "output": "sprites_named/Огонь_Галактика.png",
+      "filename": "Огонь_Галактика.png",
+      "group_id": "group-03",
+      "group_name": "Огонь"
+    },
+    {
+      "id": "row03_col05",
+      "character": "Огонь",
+      "material": "Пурпур",
+      "source": "sprites/row03_col05.png",
+      "output": "sprites_named/Огонь_Пурпур.png",
+      "filename": "Огонь_Пурпур.png",
+      "group_id": "group-03",
+      "group_name": "Огонь"
+    },
+    {
+      "id": "row04_col01",
+      "character": "Утка",
+      "material": "обычный",
+      "source": "sprites/row04_col01.png",
+      "output": "sprites_named/Утка_обычный.png",
+      "filename": "Утка_обычный.png",
+      "group_id": "group-04",
+      "group_name": "Утка"
+    },
+    {
+      "id": "row04_col02",
+      "character": "Утка",
+      "material": "Золото",
+      "source": "sprites/row04_col02.png",
+      "output": "sprites_named/Утка_Золото.png",
+      "filename": "Утка_Золото.png",
+      "group_id": "group-04",
+      "group_name": "Утка"
+    },
+    {
+      "id": "row04_col03",
+      "character": "Утка",
+      "material": "Мармелад",
+      "source": "sprites/row04_col03.png",
+      "output": "sprites_named/Утка_Мармелад.png",
+      "filename": "Утка_Мармелад.png",
+      "group_id": "group-04",
+      "group_name": "Утка"
+    },
+    {
+      "id": "row04_col04",
+      "character": "Утка",
+      "material": "Галактика",
+      "source": "sprites/row04_col04.png",
+      "output": "sprites_named/Утка_Галактика.png",
+      "filename": "Утка_Галактика.png",
+      "group_id": "group-04",
+      "group_name": "Утка"
+    },
+    {
+      "id": "row04_col05",
+      "character": "Утка",
+      "material": "Кристал",
+      "source": "sprites/row04_col05.png",
+      "output": "sprites_named/Утка_Кристал.png",
+      "filename": "Утка_Кристал.png",
+      "group_id": "group-04",
+      "group_name": "Утка"
+    },
+    {
+      "id": "row04_col06",
+      "character": "Утка",
+      "material": "Пурпур",
+      "source": "sprites/row04_col06.png",
+      "output": "sprites_named/Утка_Пурпур.png",
+      "filename": "Утка_Пурпур.png",
+      "group_id": "group-04",
+      "group_name": "Утка"
+    },
+    {
+      "id": "row05_col01",
+      "character": "Призрак",
+      "material": "обычный",
+      "source": "sprites/row05_col01.png",
+      "output": "sprites_named/Призрак_обычный.png",
+      "filename": "Призрак_обычный.png",
+      "group_id": "group-05",
+      "group_name": "Призрак"
+    },
+    {
+      "id": "row05_col02",
+      "character": "Призрак",
+      "material": "Золото",
+      "source": "sprites/row05_col02.png",
+      "output": "sprites_named/Призрак_Золото.png",
+      "filename": "Призрак_Золото.png",
+      "group_id": "group-05",
+      "group_name": "Призрак"
+    },
+    {
+      "id": "row05_col03",
+      "character": "Призрак",
+      "material": "Мармелад",
+      "source": "sprites/row05_col03.png",
+      "output": "sprites_named/Призрак_Мармелад.png",
+      "filename": "Призрак_Мармелад.png",
+      "group_id": "group-05",
+      "group_name": "Призрак"
+    },
+    {
+      "id": "row05_col04",
+      "character": "Призрак",
+      "material": "Галактика",
+      "source": "sprites/row05_col04.png",
+      "output": "sprites_named/Призрак_Галактика.png",
+      "filename": "Призрак_Галактика.png",
+      "group_id": "group-05",
+      "group_name": "Призрак"
+    },
+    {
+      "id": "row05_col05",
+      "character": "Призрак",
+      "material": "Пурпур",
+      "source": "sprites/row05_col05.png",
+      "output": "sprites_named/Призрак_Пурпур.png",
+      "filename": "Призрак_Пурпур.png",
+      "group_id": "group-05",
+      "group_name": "Призрак"
+    },
+    {
+      "id": "row06_col01",
+      "character": "Король",
+      "material": "обычный",
+      "source": "sprites/row06_col01.png",
+      "output": "sprites_named/Король_обычный.png",
+      "filename": "Король_обычный.png",
+      "group_id": "group-06",
+      "group_name": "Король"
+    },
+    {
+      "id": "row06_col02",
+      "character": "Король",
+      "material": "Золото",
+      "source": "sprites/row06_col02.png",
+      "output": "sprites_named/Король_Золото.png",
+      "filename": "Король_Золото.png",
+      "group_id": "group-06",
+      "group_name": "Король"
+    },
+    {
+      "id": "row06_col03",
+      "character": "Король",
+      "material": "Мармелад",
+      "source": "sprites/row06_col03.png",
+      "output": "sprites_named/Король_Мармелад.png",
+      "filename": "Король_Мармелад.png",
+      "group_id": "group-06",
+      "group_name": "Король"
+    },
+    {
+      "id": "row06_col04",
+      "character": "Король",
+      "material": "Галактика",
+      "source": "sprites/row06_col04.png",
+      "output": "sprites_named/Король_Галактика.png",
+      "filename": "Король_Галактика.png",
+      "group_id": "group-06",
+      "group_name": "Король"
+    },
+    {
+      "id": "row06_col05",
+      "character": "Король",
+      "material": "Пурпур",
+      "source": "sprites/row06_col05.png",
+      "output": "sprites_named/Король_Пурпур.png",
+      "filename": "Король_Пурпур.png",
+      "group_id": "group-06",
+      "group_name": "Король"
+    },
+    {
+      "id": "row07_col01",
+      "character": "Нулевой",
+      "material": "обычный",
+      "source": "sprites/row07_col01.png",
+      "output": "sprites_named/Нулевой_обычный.png",
+      "filename": "Нулевой_обычный.png",
+      "group_id": "group-07",
+      "group_name": "Нулевой"
+    },
+    {
+      "id": "row07_col02",
+      "character": "Нулевой",
+      "material": "Золото",
+      "source": "sprites/row07_col02.png",
+      "output": "sprites_named/Нулевой_Золото.png",
+      "filename": "Нулевой_Золото.png",
+      "group_id": "group-07",
+      "group_name": "Нулевой"
+    },
+    {
+      "id": "row07_col03",
+      "character": "Нулевой",
+      "material": "Мармелад",
+      "source": "sprites/row07_col03.png",
+      "output": "sprites_named/Нулевой_Мармелад.png",
+      "filename": "Нулевой_Мармелад.png",
+      "group_id": "group-07",
+      "group_name": "Нулевой"
+    },
+    {
+      "id": "row07_col04",
+      "character": "Нулевой",
+      "material": "Галактика",
+      "source": "sprites/row07_col04.png",
+      "output": "sprites_named/Нулевой_Галактика.png",
+      "filename": "Нулевой_Галактика.png",
+      "group_id": "group-07",
+      "group_name": "Нулевой"
+    },
+    {
+      "id": "row07_col05",
+      "character": "Нулевой",
+      "material": "Кристал",
+      "source": "sprites/row07_col05.png",
+      "output": "sprites_named/Нулевой_Кристал.png",
+      "filename": "Нулевой_Кристал.png",
+      "group_id": "group-07",
+      "group_name": "Нулевой"
+    },
+    {
+      "id": "row07_col06",
+      "character": "Нулевой",
+      "material": "Пурпур",
+      "source": "sprites/row07_col06.png",
+      "output": "sprites_named/Нулевой_Пурпур.png",
+      "filename": "Нулевой_Пурпур.png",
+      "group_id": "group-07",
+      "group_name": "Нулевой"
+    },
+    {
+      "id": "row01_col07",
+      "character": "Беляшь",
+      "material": "Кристал",
+      "source": "sprites/row01_col07.png",
+      "output": "sprites_named/Беляшь_Кристал.png",
+      "filename": "Беляшь_Кристал.png",
+      "group_id": "group-mqz37r2e",
+      "group_name": "Беляшь"
+    },
+    {
+      "id": "row01_col08",
+      "character": "Беляшь",
+      "material": "Золото",
+      "source": "sprites/row01_col08.png",
+      "output": "sprites_named/Беляшь_Золото.png",
+      "filename": "Беляшь_Золото.png",
+      "group_id": "group-mqz37r2e",
+      "group_name": "Беляшь"
+    },
+    {
+      "id": "row01_col09",
+      "character": "Беляшь",
+      "material": "Мармелад",
+      "source": "sprites/row01_col09.png",
+      "output": "sprites_named/Беляшь_Мармелад.png",
+      "filename": "Беляшь_Мармелад.png",
+      "group_id": "group-mqz37r2e",
+      "group_name": "Беляшь"
+    },
+    {
+      "id": "row01_col10",
+      "character": "Беляшь",
+      "material": "Галактика",
+      "source": "sprites/row01_col10.png",
+      "output": "sprites_named/Беляшь_Галактика.png",
+      "filename": "Беляшь_Галактика.png",
+      "group_id": "group-mqz37r2e",
+      "group_name": "Беляшь"
+    },
+    {
+      "id": "row01_col11",
+      "character": "Беляшь",
+      "material": "Пурпур",
+      "source": "sprites/row01_col11.png",
+      "output": "sprites_named/Беляшь_Пурпур.png",
+      "filename": "Беляшь_Пурпур.png",
+      "group_id": "group-mqz37r2e",
+      "group_name": "Беляшь"
+    },
+    {
+      "id": "row01_col12",
+      "character": "Карась",
+      "material": "обычный",
+      "source": "sprites/row01_col12.png",
+      "output": "sprites_named/Карась_обычный.png",
+      "filename": "Карась_обычный.png",
+      "group_id": "group-mqz38mfk",
+      "group_name": "Карась"
+    },
+    {
+      "id": "row01_col13",
+      "character": "Карась",
+      "material": "Золото",
+      "source": "sprites/row01_col13.png",
+      "output": "sprites_named/Карась_Золото.png",
+      "filename": "Карась_Золото.png",
+      "group_id": "group-mqz38mfk",
+      "group_name": "Карась"
+    },
+    {
+      "id": "row01_col14",
+      "character": "Карась",
+      "material": "Галактика",
+      "source": "sprites/row01_col14.png",
+      "output": "sprites_named/Карась_Галактика.png",
+      "filename": "Карась_Галактика.png",
+      "group_id": "group-mqz38mfk",
+      "group_name": "Карась"
+    },
+    {
+      "id": "row02_col06",
+      "character": "Сонливый",
+      "material": "обычный",
+      "source": "sprites/row02_col06.png",
+      "output": "sprites_named/Сонливый_обычный.png",
+      "filename": "Сонливый_обычный.png",
+      "group_id": "group-mqz39sxq",
+      "group_name": "Сонливый"
+    },
+    {
+      "id": "row02_col07",
+      "character": "Сонливый",
+      "material": "Золото",
+      "source": "sprites/row02_col07.png",
+      "output": "sprites_named/Сонливый_Золото.png",
+      "filename": "Сонливый_Золото.png",
+      "group_id": "group-mqz39sxq",
+      "group_name": "Сонливый"
+    },
+    {
+      "id": "row02_col08",
+      "character": "Сонливый",
+      "material": "Мармелад",
+      "source": "sprites/row02_col08.png",
+      "output": "sprites_named/Сонливый_Мармелад.png",
+      "filename": "Сонливый_Мармелад.png",
+      "group_id": "group-mqz39sxq",
+      "group_name": "Сонливый"
+    },
+    {
+      "id": "row02_col09",
+      "character": "Сонливый",
+      "material": "Галактика",
+      "source": "sprites/row02_col09.png",
+      "output": "sprites_named/Сонливый_Галактика.png",
+      "filename": "Сонливый_Галактика.png",
+      "group_id": "group-mqz39sxq",
+      "group_name": "Сонливый"
+    },
+    {
+      "id": "row02_col10",
+      "character": "Сонливый",
+      "material": "Пурпур",
+      "source": "sprites/row02_col10.png",
+      "output": "sprites_named/Сонливый_Пурпур.png",
+      "filename": "Сонливый_Пурпур.png",
+      "group_id": "group-mqz39sxq",
+      "group_name": "Сонливый"
+    },
+    {
+      "id": "row02_col11",
+      "character": "Орех",
+      "material": "обычный",
+      "source": "sprites/row02_col11.png",
+      "output": "sprites_named/Орех_обычный.png",
+      "filename": "Орех_обычный.png",
+      "group_id": "group-mqz3ag0q",
+      "group_name": "Орех"
+    },
+    {
+      "id": "row03_col06",
+      "character": "Панк",
+      "material": "обычный",
+      "source": "sprites/row03_col06.png",
+      "output": "sprites_named/Панк_обычный.png",
+      "filename": "Панк_обычный.png",
+      "group_id": "group-mqz3bjv9",
+      "group_name": "Панк"
+    },
+    {
+      "id": "row03_col07",
+      "character": "Панк",
+      "material": "Золото",
+      "source": "sprites/row03_col07.png",
+      "output": "sprites_named/Панк_Золото.png",
+      "filename": "Панк_Золото.png",
+      "group_id": "group-mqz3bjv9",
+      "group_name": "Панк"
+    },
+    {
+      "id": "row03_col09",
+      "character": "Панк",
+      "material": "Галактика",
+      "source": "sprites/row03_col09.png",
+      "output": "sprites_named/Панк_Галактика.png",
+      "filename": "Панк_Галактика.png",
+      "group_id": "group-mqz3bjv9",
+      "group_name": "Панк"
+    },
+    {
+      "id": "row03_col08",
+      "character": "Панк",
+      "material": "Мармелад",
+      "source": "sprites/row03_col08.png",
+      "output": "sprites_named/Панк_Мармелад.png",
+      "filename": "Панк_Мармелад.png",
+      "group_id": "group-mqz3bjv9",
+      "group_name": "Панк"
+    },
+    {
+      "id": "row03_col10",
+      "character": "Панк",
+      "material": "Пурпур",
+      "source": "sprites/row03_col10.png",
+      "output": "sprites_named/Панк_Пурпур.png",
+      "filename": "Панк_Пурпур.png",
+      "group_id": "group-mqz3bjv9",
+      "group_name": "Панк"
+    },
+    {
+      "id": "row07_col07",
+      "character": "Страж",
+      "material": "обычный",
+      "source": "sprites/row07_col07.png",
+      "output": "sprites_named/Страж_обычный.png",
+      "filename": "Страж_обычный.png",
+      "group_id": "group-mqz3fy5d",
+      "group_name": "Страж"
+    },
+    {
+      "id": "row07_col08",
+      "character": "Страж",
+      "material": "Золото",
+      "source": "sprites/row07_col08.png",
+      "output": "sprites_named/Страж_Золото.png",
+      "filename": "Страж_Золото.png",
+      "group_id": "group-mqz3fy5d",
+      "group_name": "Страж"
+    },
+    {
+      "id": "row07_col09",
+      "character": "Страж",
+      "material": "Мармелад",
+      "source": "sprites/row07_col09.png",
+      "output": "sprites_named/Страж_Мармелад.png",
+      "filename": "Страж_Мармелад.png",
+      "group_id": "group-mqz3fy5d",
+      "group_name": "Страж"
+    },
+    {
+      "id": "row07_col10",
+      "character": "Страж",
+      "material": "Галактика",
+      "source": "sprites/row07_col10.png",
+      "output": "sprites_named/Страж_Галактика.png",
+      "filename": "Страж_Галактика.png",
+      "group_id": "group-mqz3fy5d",
+      "group_name": "Страж"
+    },
+    {
+      "id": "row06_col06",
+      "character": "Аура",
+      "material": "обычный",
+      "source": "sprites/row06_col06.png",
+      "output": "sprites_named/Аура_обычный.png",
+      "filename": "Аура_обычный.png",
+      "group_id": "group-mqz3gb7o",
+      "group_name": "Аура"
+    },
+    {
+      "id": "row06_col07",
+      "character": "Аура",
+      "material": "Золото",
+      "source": "sprites/row06_col07.png",
+      "output": "sprites_named/Аура_Золото.png",
+      "filename": "Аура_Золото.png",
+      "group_id": "group-mqz3gb7o",
+      "group_name": "Аура"
+    },
+    {
+      "id": "row06_col08",
+      "character": "Аура",
+      "material": "Мармелад",
+      "source": "sprites/row06_col08.png",
+      "output": "sprites_named/Аура_Мармелад.png",
+      "filename": "Аура_Мармелад.png",
+      "group_id": "group-mqz3gb7o",
+      "group_name": "Аура"
+    },
+    {
+      "id": "row06_col09",
+      "character": "Аура",
+      "material": "Галактика",
+      "source": "sprites/row06_col09.png",
+      "output": "sprites_named/Аура_Галактика.png",
+      "filename": "Аура_Галактика.png",
+      "group_id": "group-mqz3gb7o",
+      "group_name": "Аура"
+    },
+    {
+      "id": "row06_col10",
+      "character": "Аура",
+      "material": "Кристал",
+      "source": "sprites/row06_col10.png",
+      "output": "sprites_named/Аура_Кристал.png",
+      "filename": "Аура_Кристал.png",
+      "group_id": "group-mqz3gb7o",
+      "group_name": "Аура"
+    },
+    {
+      "id": "row05_col06",
+      "character": "Босс",
+      "material": "обычный",
+      "source": "sprites/row05_col06.png",
+      "output": "sprites_named/Босс_обычный.png",
+      "filename": "Босс_обычный.png",
+      "group_id": "group-mqz3gwlg",
+      "group_name": "Босс"
+    },
+    {
+      "id": "row05_col07",
+      "character": "Босс",
+      "material": "Золото",
+      "source": "sprites/row05_col07.png",
+      "output": "sprites_named/Босс_Золото.png",
+      "filename": "Босс_Золото.png",
+      "group_id": "group-mqz3gwlg",
+      "group_name": "Босс"
+    },
+    {
+      "id": "row05_col08",
+      "character": "Босс",
+      "material": "Мармелад",
+      "source": "sprites/row05_col08.png",
+      "output": "sprites_named/Босс_Мармелад.png",
+      "filename": "Босс_Мармелад.png",
+      "group_id": "group-mqz3gwlg",
+      "group_name": "Босс"
+    },
+    {
+      "id": "row05_col09",
+      "character": "Босс",
+      "material": "Галактика",
+      "source": "sprites/row05_col09.png",
+      "output": "sprites_named/Босс_Галактика.png",
+      "filename": "Босс_Галактика.png",
+      "group_id": "group-mqz3gwlg",
+      "group_name": "Босс"
+    },
+    {
+      "id": "row05_col10",
+      "character": "Мяч",
+      "material": "обычный",
+      "source": "sprites/row05_col10.png",
+      "output": "sprites_named/Мяч_обычный.png",
+      "filename": "Мяч_обычный.png",
+      "group_id": "group-mqz3hc53",
+      "group_name": "Мяч"
+    },
+    {
+      "id": "row05_col11",
+      "character": "Мяч",
+      "material": "Золото",
+      "source": "sprites/row05_col11.png",
+      "output": "sprites_named/Мяч_Золото.png",
+      "filename": "Мяч_Золото.png",
+      "group_id": "group-mqz3hc53",
+      "group_name": "Мяч"
+    },
+    {
+      "id": "row05_col12",
+      "character": "Мяч",
+      "material": "Мармелад",
+      "source": "sprites/row05_col12.png",
+      "output": "sprites_named/Мяч_Мармелад.png",
+      "filename": "Мяч_Мармелад.png",
+      "group_id": "group-mqz3hc53",
+      "group_name": "Мяч"
+    },
+    {
+      "id": "row05_col13",
+      "character": "Мяч",
+      "material": "Галактика",
+      "source": "sprites/row05_col13.png",
+      "output": "sprites_named/Мяч_Галактика.png",
+      "filename": "Мяч_Галактика.png",
+      "group_id": "group-mqz3hc53",
+      "group_name": "Мяч"
+    },
+    {
+      "id": "row05_col14",
+      "character": "Мяч",
+      "material": "Пурпур",
+      "source": "sprites/row05_col14.png",
+      "output": "sprites_named/Мяч_Пурпур.png",
+      "filename": "Мяч_Пурпур.png",
+      "group_id": "group-mqz3hc53",
+      "group_name": "Мяч"
+    },
+    {
+      "id": "row04_col12",
+      "character": "Гримм",
+      "material": "обычный",
+      "source": "sprites/row04_col12.png",
+      "output": "sprites_named/Гримм_обычный.png",
+      "filename": "Гримм_обычный.png",
+      "group_id": "group-mqz3htul",
+      "group_name": "Гримм"
+    },
+    {
+      "id": "row04_col13",
+      "character": "Гримм",
+      "material": "Золото",
+      "source": "sprites/row04_col13.png",
+      "output": "sprites_named/Гримм_Золото.png",
+      "filename": "Гримм_Золото.png",
+      "group_id": "group-mqz3htul",
+      "group_name": "Гримм"
+    },
+    {
+      "id": "row04_col14",
+      "character": "Гримм",
+      "material": "Мармелад",
+      "source": "sprites/row04_col14.png",
+      "output": "sprites_named/Гримм_Мармелад.png",
+      "filename": "Гримм_Мармелад.png",
+      "group_id": "group-mqz3htul",
+      "group_name": "Гримм"
+    },
+    {
+      "id": "row04_col15",
+      "character": "Гримм",
+      "material": "Галактика",
+      "source": "sprites/row04_col15.png",
+      "output": "sprites_named/Гримм_Галактика.png",
+      "filename": "Гримм_Галактика.png",
+      "group_id": "group-mqz3htul",
+      "group_name": "Гримм"
+    },
+    {
+      "id": "row04_col07",
+      "character": "Демон",
+      "material": "обычный",
+      "source": "sprites/row04_col07.png",
+      "output": "sprites_named/Демон_обычный.png",
+      "filename": "Демон_обычный.png",
+      "group_id": "group-mqz3ib7v",
+      "group_name": "Демон"
+    },
+    {
+      "id": "row04_col08",
+      "character": "Демон",
+      "material": "Золото",
+      "source": "sprites/row04_col08.png",
+      "output": "sprites_named/Демон_Золото.png",
+      "filename": "Демон_Золото.png",
+      "group_id": "group-mqz3ib7v",
+      "group_name": "Демон"
+    },
+    {
+      "id": "row04_col09",
+      "character": "Демон",
+      "material": "Мармелад",
+      "source": "sprites/row04_col09.png",
+      "output": "sprites_named/Демон_Мармелад.png",
+      "filename": "Демон_Мармелад.png",
+      "group_id": "group-mqz3ib7v",
+      "group_name": "Демон"
+    },
+    {
+      "id": "row04_col10",
+      "character": "Демон",
+      "material": "Галактика",
+      "source": "sprites/row04_col10.png",
+      "output": "sprites_named/Демон_Галактика.png",
+      "filename": "Демон_Галактика.png",
+      "group_id": "group-mqz3ib7v",
+      "group_name": "Демон"
+    },
+    {
+      "id": "row04_col11",
+      "character": "Демон",
+      "material": "Кристал",
+      "source": "sprites/row04_col11.png",
+      "output": "sprites_named/Демон_Кристал.png",
+      "filename": "Демон_Кристал.png",
+      "group_id": "group-mqz3ib7v",
+      "group_name": "Демон"
+    }
+  ],
+  "total": 84
+}

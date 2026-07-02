@@ -1,0 +1,467 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "id": "group-01",
+      "name": "Row 1",
+      "sprites": [
+        {
+          "file": "row01_col01.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col02.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col03.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col04.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col05.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col06.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col07.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col08.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col09.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col10.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col11.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col12.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col13.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row01_col14.png",
+          "name": "",
+          "type": ""
+        }
+      ]
+    },
+    {
+      "id": "group-02",
+      "name": "Row 2",
+      "sprites": [
+        {
+          "file": "row02_col01.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row02_col02.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row02_col03.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row02_col04.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row02_col05.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row02_col06.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row02_col07.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row02_col08.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row02_col09.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row02_col10.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row02_col11.png",
+          "name": "",
+          "type": ""
+        }
+      ]
+    },
+    {
+      "id": "group-03",
+      "name": "Row 3",
+      "sprites": [
+        {
+          "file": "row03_col01.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row03_col02.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row03_col03.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row03_col04.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row03_col05.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row03_col06.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row03_col07.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row03_col08.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row03_col09.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row03_col10.png",
+          "name": "",
+          "type": ""
+        }
+      ]
+    },
+    {
+      "id": "group-04",
+      "name": "Row 4",
+      "sprites": [
+        {
+          "file": "row04_col01.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col02.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col03.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col04.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col05.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col06.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col07.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col08.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col09.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col10.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col11.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col12.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col13.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col14.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row04_col15.png",
+          "name": "",
+          "type": ""
+        }
+      ]
+    },
+    {
+      "id": "group-05",
+      "name": "Row 5",
+      "sprites": [
+        {
+          "file": "row05_col01.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col02.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col03.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col04.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col05.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col06.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col07.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col08.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col09.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col10.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col11.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col12.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col13.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row05_col14.png",
+          "name": "",
+          "type": ""
+        }
+      ]
+    },
+    {
+      "id": "group-06",
+      "name": "Row 6",
+      "sprites": [
+        {
+          "file": "row06_col01.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row06_col02.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row06_col03.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row06_col04.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row06_col05.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row06_col06.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row06_col07.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row06_col08.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row06_col09.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row06_col10.png",
+          "name": "",
+          "type": ""
+        }
+      ]
+    },
+    {
+      "id": "group-07",
+      "name": "Row 7",
+      "sprites": [
+        {
+          "file": "row07_col01.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row07_col02.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row07_col03.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row07_col04.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row07_col05.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row07_col06.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row07_col07.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row07_col08.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row07_col09.png",
+          "name": "",
+          "type": ""
+        },
+        {
+          "file": "row07_col10.png",
+          "name": "",
+          "type": ""
+        }
+      ]
+    }
+  ]
+}

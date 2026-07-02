@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klombo Sprites — Labeler</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface-2: #242836;
+      --border: #343a4a;
+      --text: #e8eaef;
+      --muted: #9aa3b5;
+      --accent: #6c8cff;
+      --accent-hover: #8aa4ff;
+      --success: #4ade80;
+      --danger: #f87171;
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15, 17, 23, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+    }
+
+    header h1 { margin: 0 0 4px; font-size: 1.15rem; font-weight: 600; }
+    header p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      align-items: center;
+    }
+
+    button {
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    button:hover { background: #2d3344; border-color: #4a5268; }
+    button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    button.primary:hover { background: var(--accent-hover); }
+    button.danger { color: var(--danger); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .status { margin-left: auto; font-size: 0.8rem; color: var(--muted); }
+
+    main { padding: 20px; max-width: 1600px; margin: 0 auto; }
+
+    .loading, .error-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .error-box { color: var(--danger); border-color: #7f3a3a; }
+
+    .group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .group-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .group-header label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .group-name-input {
+      flex: 1;
+      min-width: 160px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .group-count { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 110px;
+      object-fit: contain;
+      background: repeating-conic-gradient(#1e2230 0% 25%, #181b26 0% 50%) 50% / 16px 16px;
+      border-radius: 6px;
+    }
+
+    .output-name {
+      font-size: 0.72rem;
+      color: var(--success);
+      word-break: break-all;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .source-name {
+      font-size: 0.65rem;
+      color: var(--muted);
+      word-break: break-all;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .field input, .field select {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 0.82rem;
+    }
+
+    .field input:focus, .field select:focus, .group-name-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .export-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-top: 8px;
+    }
+
+    .export-panel h2 { margin: 0 0 8px; font-size: 1rem; }
+    .export-panel p { margin: 0 0 12px; color: var(--muted); font-size: 0.85rem; }
+
+    #json-output {
+      width: 100%;
+      min-height: 220px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: #c8d0e0;
+      border-radius: 8px;
+      padding: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.78rem;
+      resize: vertical;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1f2937;
+      border: 1px solid var(--success);
+      color: var(--success);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+      .status { margin-left: 0; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Klombo Sprites — Labeler</h1>
+    <p>Конфиг: <code>sprites-config.json</code>. Группа = название персонажа, тип = материал. Пустой тип → «обычный».</p>
+    <div class="toolbar">
+      <button type="button" id="btn-add-group">+ Группа</button>
+      <button type="button" id="btn-reload">Обновить из конфига</button>
+      <button type="button" class="primary" id="btn-copy">Копировать JSON</button>
+      <button type="button" id="btn-download">Скачать JSON</button>
+      <button type="button" id="btn-reset" class="danger">Сбросить черновик</button>
+      <span class="status" id="status"></span>
+    </div>
+  </header>
+
+  <main>
+    <div id="app">
+      <div class="loading">Загрузка sprites-config.json…</div>
+    </div>
+
+    <section class="export-panel" id="export-panel" hidden>
+      <h2>Экспорт JSON</h2>
+      <p>Сохраните как <code>sprites-config.json</code> и запустите <code>python apply_labels.py</code> для пересборки файлов в <code>sprites_named/</code>.</p>
+      <textarea id="json-output" readonly></textarea>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const CONFIG_URL = "sprites-config.json";
+    const STORAGE_KEY = "sprites-tracker-labeler-v2";
+
+    let baseConfig = null;
+    let state = null;
+    let saveTimer = null;
+
+    const $app = document.getElementById("app");
+    const $exportPanel = document.getElementById("export-panel");
+    const $jsonOutput = document.getElementById("json-output");
+    const $status = document.getElementById("status");
+    const $toast = document.getElementById("toast");
+
+    function showToast(msg) {
+      $toast.textContent = msg;
+      $toast.classList.add("show");
+      setTimeout(() => $toast.classList.remove("show"), 2000);
+    }
+
+    function normalizeMaterial(value, aliases, fallback) {
+      const raw = (value || "").trim();
+      if (!raw) return fallback;
+      const key = raw.toLocaleLowerCase("ru");
+      return aliases?.[key] || aliases?.[raw.toLowerCase()] || raw;
+    }
+
+    function computeMaterial(sprite) {
+      return normalizeMaterial(
+        sprite.type,
+        baseConfig?.materialAliases,
+        baseConfig?.defaultMaterial || "обычный"
+      );
+    }
+
+    function computeOutputName(character, material) {
+      const sep = baseConfig?.nameSeparator || "_";
+      return `${character.trim()}${sep}${material}.png`;
+    }
+
+    function spriteImageUrl(sprite) {
+      const outputDir = baseConfig?.outputDir || "sprites_named";
+      const sourceDir = baseConfig?.sourceDir || "sprites";
+      if (sprite.output) return `${outputDir}/${sprite.output}`;
+      const group = state.groups.find((g) => g.sprites.includes(sprite));
+      const character = group?.name?.trim() || "unnamed";
+      const material = computeMaterial(sprite);
+      return `${outputDir}/${computeOutputName(character, material)}`;
+    }
+
+    function cloneGroupsFromConfig(config) {
+      return config.groups.map((g) => ({
+        id: g.id,
+        name: g.name || "",
+        sprites: g.sprites.map((s) => ({
+          id: s.id || s.source?.replace(/\.png$/i, "") || s.file?.replace(/\.png$/i, ""),
+          source: s.source || s.file,
+          output: s.output || "",
+          type: s.type || "",
+        })),
+      }));
+    }
+
+    function stateFromConfig(config) {
+      return {
+        version: config.version || 2,
+        sourceDir: config.sourceDir || "sprites",
+        outputDir: config.outputDir || "sprites_named",
+        defaultMaterial: config.defaultMaterial || "обычный",
+        nameSeparator: config.nameSeparator || "_",
+        materialAliases: config.materialAliases || {},
+        typeSuggestions: config.typeSuggestions || [],
+        groups: cloneGroupsFromConfig(config),
+      };
+    }
+
+    async function loadConfigFromFile() {
+      const res = await fetch(CONFIG_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Не удалось загрузить ${CONFIG_URL} (${res.status})`);
+      return res.json();
+    }
+
+    function loadDraftOrConfig(config) {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const draft = JSON.parse(saved);
+          if (draft?.groups?.length) return draft;
+        } catch (_) {}
+      }
+      return stateFromConfig(config);
+    }
+
+    function saveState() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        updateStatus();
+      }, 200);
+    }
+
+    function newGroupId() {
+      return "group-" + Date.now().toString(36);
+    }
+
+    function totalSprites() {
+      return state.groups.reduce((n, g) => n + g.sprites.length, 0);
+    }
+
+    function materialCount() {
+      let n = 0;
+      for (const g of state.groups) {
+        for (const s of g.sprites) {
+          if ((s.type || "").trim()) n++;
+        }
+      }
+      return n;
+    }
+
+    function buildExport() {
+      return {
+        version: state.version || 2,
+        exportedAt: new Date().toISOString(),
+        sourceDir: state.sourceDir,
+        outputDir: state.outputDir,
+        defaultMaterial: state.defaultMaterial,
+        nameSeparator: state.nameSeparator,
+        materialAliases: state.materialAliases,
+        typeSuggestions: state.typeSuggestions,
+        groups: state.groups.map((g) => ({
+          id: g.id,
+          name: g.name.trim(),
+          sprites: g.sprites.map((s) => {
+            const material = computeMaterial(s);
+            const character = g.name.trim() || "unnamed";
+            return {
+              id: s.id,
+              source: s.source,
+              output: computeOutputName(character, material),
+              type: (s.type || "").trim(),
+            };
+          }),
+        })),
+      };
+    }
+
+    function updateJson() {
+      $jsonOutput.value = JSON.stringify(buildExport(), null, 2);
+    }
+
+    function updateStatus() {
+      const namedGroups = state.groups.filter((g) => g.name.trim()).length;
+      $status.textContent =
+        `${state.groups.length} групп (${namedGroups} с названием) · ` +
+        `${totalSprites()} спрайтов · материалов ${materialCount()}/${totalSprites()}`;
+      updateJson();
+      refreshOutputLabels();
+    }
+
+    function refreshOutputLabels() {
+      document.querySelectorAll(".card").forEach((card) => {
+        const spriteId = card.dataset.spriteId;
+        const groupId = card.dataset.groupId;
+        const group = state.groups.find((g) => g.id === groupId);
+        const sprite = group?.sprites.find((s) => s.id === spriteId);
+        if (!sprite || !group) return;
+        const out = card.querySelector(".output-name");
+        if (out) {
+          out.textContent = computeOutputName(group.name.trim() || "unnamed", computeMaterial(sprite));
+        }
+      });
+    }
+
+    function moveSprite(spriteId, targetGroupId) {
+      let sprite = null;
+      let sourceGroup = null;
+
+      for (const g of state.groups) {
+        const idx = g.sprites.findIndex((s) => s.id === spriteId);
+        if (idx !== -1) {
+          sprite = g.sprites.splice(idx, 1)[0];
+          sourceGroup = g;
+          break;
+        }
+      }
+      if (!sprite) return;
+
+      const target = state.groups.find((g) => g.id === targetGroupId);
+      if (!target || target === sourceGroup) {
+        sourceGroup.sprites.push(sprite);
+        return;
+      }
+      target.sprites.push(sprite);
+      render();
+      saveState();
+    }
+
+    function renderCard(sprite, group) {
+      const card = document.createElement("article");
+      card.className = "card";
+      card.dataset.spriteId = sprite.id;
+      card.dataset.groupId = group.id;
+
+      const img = document.createElement("img");
+      img.src = spriteImageUrl(sprite);
+      img.alt = sprite.source;
+      img.loading = "lazy";
+      img.addEventListener("error", () => {
+        img.src = `${state.sourceDir}/${sprite.source}`;
+      });
+
+      const outputName = document.createElement("div");
+      outputName.className = "output-name";
+      outputName.textContent = computeOutputName(
+        group.name.trim() || "unnamed",
+        computeMaterial(sprite)
+      );
+
+      const sourceName = document.createElement("div");
+      sourceName.className = "source-name";
+      sourceName.textContent = sprite.source;
+
+      const typeField = document.createElement("div");
+      typeField.className = "field";
+      typeField.innerHTML = "<label>Материал</label>";
+      const typeInput = document.createElement("input");
+      typeInput.type = "text";
+      typeInput.placeholder = state.defaultMaterial;
+      typeInput.value = sprite.type;
+      typeInput.setAttribute("list", "type-suggestions");
+      typeInput.addEventListener("input", () => {
+        sprite.type = typeInput.value;
+        outputName.textContent = computeOutputName(
+          group.name.trim() || "unnamed",
+          computeMaterial(sprite)
+        );
+        saveState();
+      });
+      typeField.appendChild(typeInput);
+
+      const groupField = document.createElement("div");
+      groupField.className = "field";
+      groupField.innerHTML = "<label>Группа</label>";
+      const groupSelect = document.createElement("select");
+      for (const g of state.groups) {
+        const opt = document.createElement("option");
+        opt.value = g.id;
+        opt.textContent = g.name.trim() || "(без названия)";
+        if (g.id === group.id) opt.selected = true;
+        groupSelect.appendChild(opt);
+      }
+      groupSelect.addEventListener("change", () => moveSprite(sprite.id, groupSelect.value));
+      groupField.appendChild(groupSelect);
+
+      card.append(img, outputName, sourceName, typeField, groupField);
+      return card;
+    }
+
+    function render() {
+      const $groups = document.createElement("div");
+      $groups.id = "groups";
+
+      for (const group of state.groups) {
+        const section = document.createElement("section");
+        section.className = "group";
+        section.dataset.groupId = group.id;
+
+        const header = document.createElement("div");
+        header.className = "group-header";
+
+        const label = document.createElement("label");
+        label.textContent = "Название";
+
+        const nameInput = document.createElement("input");
+        nameInput.className = "group-name-input";
+        nameInput.type = "text";
+        nameInput.placeholder = "Персонаж";
+        nameInput.value = group.name;
+        nameInput.addEventListener("input", () => {
+          group.name = nameInput.value;
+          saveState();
+          document.querySelectorAll(`select option[value="${group.id}"]`).forEach((opt) => {
+            opt.textContent = group.name.trim() || "(без названия)";
+          });
+          refreshOutputLabels();
+        });
+
+        const count = document.createElement("span");
+        count.className = "group-count";
+        count.textContent = `${group.sprites.length} шт.`;
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.type = "button";
+        deleteBtn.className = "danger";
+        deleteBtn.textContent = "Удалить";
+        deleteBtn.addEventListener("click", () => {
+          if (state.groups.length <= 1) return;
+          const target = state.groups.find((g) => g.id !== group.id);
+          target.sprites.push(...group.sprites);
+          state.groups = state.groups.filter((g) => g.id !== group.id);
+          render();
+          saveState();
+        });
+
+        header.append(label, nameInput, count, deleteBtn);
+
+        const grid = document.createElement("div");
+        grid.className = "grid";
+        for (const sprite of group.sprites) {
+          grid.appendChild(renderCard(sprite, group));
+        }
+
+        section.append(header, grid);
+        $groups.appendChild(section);
+      }
+
+      $app.innerHTML = "";
+      $app.appendChild($groups);
+      $exportPanel.hidden = false;
+      updateStatus();
+    }
+
+    function setupTypeSuggestions() {
+      let dl = document.getElementById("type-suggestions");
+      if (!dl) {
+        dl = document.createElement("datalist");
+        dl.id = "type-suggestions";
+        document.body.appendChild(dl);
+      }
+      dl.innerHTML = "";
+      (state.typeSuggestions || []).forEach((t) => {
+        const opt = document.createElement("option");
+        opt.value = t;
+        dl.appendChild(opt);
+      });
+    }
+
+    async function init(fromFileOnly = false) {
+      try {
+        baseConfig = await loadConfigFromFile();
+        if (fromFileOnly) {
+          localStorage.removeItem(STORAGE_KEY);
+          state = stateFromConfig(baseConfig);
+        } else {
+          state = loadDraftOrConfig(baseConfig);
+        }
+        setupTypeSuggestions();
+        render();
+        showToast(fromFileOnly ? "Загружено из конфига" : "Готово");
+      } catch (err) {
+        $app.innerHTML = `<div class="error-box">${err.message}<br><br>Запустите сервер из корня проекта:<br><code>python3 -m http.server 8765</code></div>`;
+        $exportPanel.hidden = true;
+      }
+    }
+
+    document.getElementById("btn-add-group").addEventListener("click", () => {
+      state.groups.push({ id: newGroupId(), name: "Новая группа", sprites: [] });
+      render();
+      saveState();
+    });
+
+    document.getElementById("btn-reload").addEventListener("click", () => {
+      if (!confirm("Перезагрузить из sprites-config.json? Несохранённый черновик будет потерян.")) return;
+      init(true);
+    });
+
+    document.getElementById("btn-copy").addEventListener("click", async () => {
+      const text = $jsonOutput.value;
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("JSON скопирован");
+      } catch (_) {
+        $jsonOutput.select();
+        document.execCommand("copy");
+        showToast("JSON скопирован");
+      }
+    });
+
+    document.getElementById("btn-download").addEventListener("click", () => {
+      const blob = new Blob([$jsonOutput.value], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "sprites-config.json";
+      a.click();
+      URL.revokeObjectURL(a.href);
+      showToast("sprites-config.json скачан");
+    });
+
+    document.getElementById("btn-reset").addEventListener("click", () => {
+      if (!confirm("Сбросить черновик и загрузить sprites-config.json заново?")) return;
+      init(true);
+    });
+
+    init(false);
+  </script>
+</body>
+</html>

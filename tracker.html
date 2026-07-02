@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0f1117" />
+  <title>Klombo Tracker</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface-2: #242836;
+      --border: #343a4a;
+      --text: #e8eaef;
+      --muted: #9aa3b5;
+      --accent: #6c8cff;
+      --success: #4ade80;
+      --success-dim: rgba(74, 222, 128, 0.15);
+      --danger: #f87171;
+      --radius: 12px;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.4;
+      padding-bottom: calc(72px + var(--safe-bottom));
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(15, 17, 23, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 14px 10px;
+      padding-top: max(12px, env(safe-area-inset-top));
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .progress-wrap { margin-top: 10px; }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .progress-meta strong { color: var(--success); }
+
+    .progress-bar {
+      height: 8px;
+      background: var(--surface-2);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #4ade80, #6c8cff);
+      border-radius: 99px;
+      transition: width 0.25s ease;
+    }
+
+    .filters {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .filters::-webkit-scrollbar { display: none; }
+
+    .chip {
+      flex: 0 0 auto;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      border-radius: 99px;
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .chip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .search {
+      margin-top: 8px;
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 16px;
+    }
+
+    .search:focus { outline: none; border-color: var(--accent); }
+
+    main { padding: 12px 10px; max-width: 720px; margin: 0 auto; }
+
+    .loading, .error-box {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+    }
+
+    .error-box { color: var(--danger); }
+
+    .character-section {
+      margin-bottom: 18px;
+    }
+
+    .character-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      padding: 0 4px;
+    }
+
+    .character-header h2 {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .character-stats {
+      font-size: 0.75rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .character-stats.done { color: var(--success); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    @media (min-width: 480px) {
+      .grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    }
+
+    @media (min-width: 640px) {
+      .grid { grid-template-columns: repeat(5, 1fr); }
+    }
+
+    .sprite-card {
+      position: relative;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 6px;
+      cursor: pointer;
+      user-select: none;
+      transition: border-color 0.15s, opacity 0.15s, transform 0.1s;
+      touch-action: manipulation;
+    }
+
+    .sprite-card:active { transform: scale(0.97); }
+
+    .sprite-card.collected {
+      border-color: var(--success);
+      background: var(--success-dim);
+    }
+
+    .sprite-card.collected .sprite-img {
+      opacity: 0.45;
+      filter: grayscale(0.6);
+    }
+
+    .check-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: transparent;
+      z-index: 2;
+      transition: all 0.15s;
+    }
+
+    .sprite-card.collected .check-badge {
+      background: var(--success);
+      border-color: var(--success);
+      color: #0f2918;
+    }
+
+    .sprite-img-wrap {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: repeating-conic-gradient(#1e2230 0% 25%, #181b26 0% 50%) 50% / 12px 12px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .sprite-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: opacity 0.15s, filter 0.15s;
+    }
+
+    .sprite-label {
+      margin-top: 5px;
+      text-align: center;
+      font-size: 0.62rem;
+      line-height: 1.2;
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    .sprite-label strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.68rem;
+      font-weight: 600;
+    }
+
+    .bottom-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 30;
+      display: flex;
+      gap: 8px;
+      padding: 10px 12px calc(10px + var(--safe-bottom));
+      background: rgba(15, 17, 23, 0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+    }
+
+    .bottom-bar button {
+      flex: 1;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 12px 8px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .bottom-bar button.danger { color: var(--danger); }
+
+    .hidden { display: none !important; }
+
+    .empty-state {
+      text-align: center;
+      padding: 32px 16px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Klombo Tracker</h1>
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span>Собрано: <strong id="progress-text">0 / 0</strong></span>
+        <span id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+    <div class="filters" id="filters">
+      <button type="button" class="chip active" data-filter="all">Все</button>
+      <button type="button" class="chip" data-filter="missing">Нет</button>
+      <button type="button" class="chip" data-filter="collected">Есть</button>
+    </div>
+    <input class="search" type="search" id="search" placeholder="Поиск персонажа или материала…" autocomplete="off" />
+  </header>
+
+  <main id="app">
+    <div class="loading">Загрузка…</div>
+  </main>
+
+  <div class="bottom-bar" id="bottom-bar" hidden>
+    <button type="button" id="btn-export">Экспорт</button>
+    <button type="button" id="btn-import">Импорт</button>
+    <button type="button" id="btn-reset" class="danger">Сброс</button>
+  </div>
+
+  <input type="file" id="import-file" accept="application/json,.json" hidden />
+
+  <script>
+    const CONFIG_URL = "sprites-config.json";
+    const STORAGE_KEY = "klombo-tracker-collected-v1";
+
+    let catalog = [];
+    let collected = new Set();
+    let filter = "all";
+    let searchQuery = "";
+
+    const $app = document.getElementById("app");
+    const $progressText = document.getElementById("progress-text");
+    const $progressPct = document.getElementById("progress-pct");
+    const $progressFill = document.getElementById("progress-fill");
+    const $bottomBar = document.getElementById("bottom-bar");
+
+    function loadCollected() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return new Set();
+        const arr = JSON.parse(raw);
+        return new Set(Array.isArray(arr) ? arr : []);
+      } catch (_) {
+        return new Set();
+      }
+    }
+
+    function saveCollected() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([...collected]));
+    }
+
+    function imagePath(item) {
+      if (item.output) {
+        return item.output.startsWith("sprites_named/")
+          ? item.output
+          : `sprites_named/${item.output}`;
+      }
+      return `sprites_named/${item.filename}`;
+    }
+
+    function buildCatalog(config) {
+      if (Array.isArray(config.catalog) && config.catalog.length) {
+        return config.catalog.map((item) => ({
+          id: item.id,
+          character: item.character || item.group_name,
+          material: item.material,
+          image: imagePath(item),
+        }));
+      }
+
+      const items = [];
+      for (const group of config.groups || []) {
+        for (const sprite of group.sprites || []) {
+          const character = group.name || sprite.character;
+          const material = sprite.material || sprite.type || config.defaultMaterial || "обычный";
+          items.push({
+            id: sprite.id || sprite.source?.replace(/\.png$/i, ""),
+            character,
+            material,
+            image: sprite.output
+              ? `sprites_named/${sprite.output}`
+              : `sprites_named/${character}_${material}.png`,
+          });
+        }
+      }
+      return items;
+    }
+
+    function groupCatalog(items) {
+      const map = new Map();
+      for (const item of items) {
+        if (!map.has(item.character)) map.set(item.character, []);
+        map.get(item.character).push(item);
+      }
+      return [...map.entries()].sort((a, b) => a[0].localeCompare(b[0], "ru"));
+    }
+
+    function matchesSearch(item) {
+      if (!searchQuery) return true;
+      const q = searchQuery.toLocaleLowerCase("ru");
+      return (
+        item.character.toLocaleLowerCase("ru").includes(q) ||
+        item.material.toLocaleLowerCase("ru").includes(q)
+      );
+    }
+
+    function matchesFilter(item) {
+      const isCollected = collected.has(item.id);
+      if (filter === "collected") return isCollected;
+      if (filter === "missing") return !isCollected;
+      return true;
+    }
+
+    function updateProgress() {
+      const total = catalog.length;
+      const done = catalog.filter((s) => collected.has(s.id)).length;
+      const pct = total ? Math.round((done / total) * 100) : 0;
+      $progressText.textContent = `${done} / ${total}`;
+      $progressPct.textContent = `${pct}%`;
+      $progressFill.style.width = `${pct}%`;
+    }
+
+    function toggleSprite(id) {
+      if (collected.has(id)) collected.delete(id);
+      else collected.add(id);
+      saveCollected();
+      updateProgress();
+      render();
+    }
+
+    function renderCard(item) {
+      const isCollected = collected.has(item.id);
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = `sprite-card${isCollected ? " collected" : ""}`;
+      card.setAttribute("aria-pressed", isCollected ? "true" : "false");
+      card.setAttribute("aria-label", `${item.character}, ${item.material}${isCollected ? ", собран" : ""}`);
+
+      card.innerHTML = `
+        <span class="check-badge" aria-hidden="true">✓</span>
+        <div class="sprite-img-wrap">
+          <img class="sprite-img" src="${item.image}" alt="" loading="lazy" decoding="async" />
+        </div>
+        <div class="sprite-label">
+          <strong>${item.material}</strong>
+        </div>
+      `;
+
+      card.querySelector("img").addEventListener("error", function onErr() {
+        this.removeEventListener("error", onErr);
+        const src = item.image;
+        if (src.includes("sprites_named/")) {
+          this.src = src.replace("sprites_named/", "sprites/");
+        }
+      });
+
+      card.addEventListener("click", () => toggleSprite(item.id));
+      return card;
+    }
+
+    function render() {
+      const grouped = groupCatalog(catalog);
+      const frag = document.createDocumentFragment();
+      let visibleCount = 0;
+
+      for (const [character, sprites] of grouped) {
+        const visible = sprites.filter((s) => matchesSearch(s) && matchesFilter(s));
+        if (!visible.length) continue;
+        visibleCount += visible.length;
+
+        const section = document.createElement("section");
+        section.className = "character-section";
+
+        const doneInGroup = sprites.filter((s) => collected.has(s.id)).length;
+        const header = document.createElement("div");
+        header.className = "character-header";
+        header.innerHTML = `
+          <h2>${character}</h2>
+          <span class="character-stats${doneInGroup === sprites.length ? " done" : ""}">${doneInGroup}/${sprites.length}</span>
+        `;
+
+        const grid = document.createElement("div");
+        grid.className = "grid";
+        for (const item of visible) {
+          grid.appendChild(renderCard(item));
+        }
+
+        section.append(header, grid);
+        frag.appendChild(section);
+      }
+
+      $app.innerHTML = "";
+      if (!visibleCount) {
+        $app.innerHTML = '<div class="empty-state">Ничего не найдено</div>';
+      } else {
+        $app.appendChild(frag);
+      }
+
+      updateProgress();
+    }
+
+    async function init() {
+      try {
+        const res = await fetch(CONFIG_URL, { cache: "no-store" });
+        if (!res.ok) throw new Error(`Не удалось загрузить ${CONFIG_URL}`);
+        const config = await res.json();
+        catalog = buildCatalog(config);
+        collected = loadCollected();
+        $bottomBar.hidden = false;
+        render();
+      } catch (err) {
+        $app.innerHTML = `<div class="error-box">${err.message}</div>`;
+      }
+    }
+
+    document.getElementById("filters").addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+      filter = chip.dataset.filter;
+      document.querySelectorAll(".chip").forEach((c) => c.classList.toggle("active", c === chip));
+      render();
+    });
+
+    document.getElementById("search").addEventListener("input", (e) => {
+      searchQuery = e.target.value.trim();
+      render();
+    });
+
+    document.getElementById("btn-reset").addEventListener("click", () => {
+      if (!confirm("Сбросить весь прогресс на этом устройстве?")) return;
+      collected = new Set();
+      saveCollected();
+      render();
+    });
+
+    document.getElementById("btn-export").addEventListener("click", () => {
+      const data = {
+        version: 1,
+        exportedAt: new Date().toISOString(),
+        collected: [...collected],
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "klombo-progress.json";
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    document.getElementById("btn-import").addEventListener("click", () => {
+      document.getElementById("import-file").click();
+    });
+
+    document.getElementById("import-file").addEventListener("change", async (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      try {
+        const data = JSON.parse(await file.text());
+        if (!Array.isArray(data.collected)) throw new Error("Неверный формат");
+        collected = new Set(data.collected);
+        saveCollected();
+        render();
+        alert(`Импортировано: ${collected.size} спрайтов`);
+      } catch (err) {
+        alert("Ошибка импорта: " + err.message);
+      }
+      e.target.value = "";
+    });
+
+    init();
+  </script>
+</body>
+</html>
