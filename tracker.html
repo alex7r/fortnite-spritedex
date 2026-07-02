@@ -1483,6 +1483,7 @@
   <script>
     const CONFIG_URL = "sprites-config.json";
     const HD_MAP_URL = "sprites-hd-map.json";
+    const ASSET_VERSION = "v10";
     const STORAGE_KEY = "klombo-tracker-collected-v1";
     const MASTERY_STORAGE_KEY = "klombo-tracker-mastered-v2";
     const SHARE_PARAM = "s";
@@ -1893,7 +1894,7 @@
         img.decoding = "async";
         img.onload = () => resolve(img);
         img.onerror = () => reject(new Error(`Failed: ${src}`));
-        img.src = new URL(src, location.href).href;
+        img.src = new URL(assetUrl(src), location.href).href;
       });
     }
 
@@ -2199,6 +2200,16 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify([...collected]));
     }
 
+    function assetUrl(path) {
+      if (!path) return path;
+      const base = String(path).split("?")[0];
+      return `${base}?${ASSET_VERSION}`;
+    }
+
+    function assetPath(url) {
+      return String(url || "").split("?")[0];
+    }
+
     function namedImagePath(item) {
       if (item.output) {
         const out = item.output.replace(/^sprites_named\//, "");
@@ -2209,8 +2220,10 @@
     }
 
     function imagePath(item) {
-      if (item.hdImage) return item.hdImage;
-      return namedImagePath(item) || `sprites/${item.source?.replace(/^sprites\//, "") || item.id}.png`;
+      const path = item.hdImage
+        || namedImagePath(item)
+        || `sprites/${item.source?.replace(/^sprites\//, "") || item.id}.png`;
+      return assetUrl(path);
     }
 
     function resolveHdImage(item) {
@@ -2251,7 +2264,7 @@
             fallbackImage: namedImagePath(item),
           }, cfg);
           entry.hdImage = resolveHdImage(entry);
-          entry.image = entry.hdImage || entry.fallbackImage;
+          entry.image = imagePath(entry);
           return entry;
         });
       }
@@ -2277,7 +2290,7 @@
             fallbackImage: fallback,
           }, cfg);
           entry.hdImage = resolveHdImage(entry);
-          entry.image = entry.hdImage || entry.fallbackImage;
+          entry.image = imagePath(entry);
           items.push(entry);
         }
       }
@@ -2607,7 +2620,7 @@
       $detailImg.src = item.image;
       $detailImg.onerror = function onDetailImgErr() {
         this.onerror = null;
-        if (item.fallbackImage) this.src = item.fallbackImage;
+        if (item.fallbackImage) this.src = assetUrl(item.fallbackImage);
       };
 
       const rarity = item.rarity;
@@ -2695,13 +2708,13 @@
 
       card.querySelector("img").addEventListener("error", function onErr() {
         this.removeEventListener("error", onErr);
-        const src = this.src;
-        if (item.fallbackImage && src !== item.fallbackImage) {
-          this.src = item.fallbackImage;
+        const src = assetPath(this.src);
+        if (item.fallbackImage && src !== assetPath(item.fallbackImage)) {
+          this.src = assetUrl(item.fallbackImage);
           return;
         }
         if (src.includes("sprites_named/")) {
-          this.src = src.replace("sprites_named/", "sprites/");
+          this.src = assetUrl(src.replace("sprites_named/", "sprites/"));
         }
       });
 
