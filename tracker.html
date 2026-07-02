@@ -84,6 +84,123 @@
       text-shadow: 0 0 12px rgba(94, 231, 255, 0.5);
     }
 
+    .progress-breakdown {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      margin-top: 6px;
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .progress-breakdown span strong {
+      color: #e9d5ff;
+      font-weight: 800;
+    }
+
+    .filters-rarity { margin-top: 6px; }
+
+    .chip[data-rarity="rare"].active {
+      border-color: rgba(96, 165, 250, 0.7);
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.3), rgba(37, 99, 235, 0.2));
+    }
+
+    .chip[data-rarity="epic"].active {
+      border-color: rgba(192, 132, 252, 0.7);
+      background: linear-gradient(135deg, rgba(192, 132, 252, 0.3), rgba(126, 34, 206, 0.2));
+    }
+
+    .chip[data-rarity="legendary"].active {
+      border-color: rgba(251, 191, 36, 0.7);
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.3), rgba(217, 119, 6, 0.2));
+    }
+
+    .chip[data-rarity="mythic"].active {
+      border-color: rgba(244, 114, 182, 0.7);
+      background: linear-gradient(135deg, rgba(244, 114, 182, 0.3), rgba(219, 39, 119, 0.2));
+    }
+
+    .rarest-panel {
+      margin-bottom: 20px;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: rgba(28, 22, 58, 0.55);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      box-shadow: 0 0 24px rgba(168, 85, 247, 0.08);
+    }
+
+    .rarest-panel h2 {
+      margin: 0 0 10px;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .rarest-done {
+      margin: 0;
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .rarest-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+
+    .rarest-scroll::-webkit-scrollbar { display: none; }
+
+    .rarest-card {
+      flex: 0 0 76px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 6px;
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .rarest-card:active { transform: scale(0.96); }
+
+    .rarest-card:hover {
+      border-color: rgba(94, 231, 255, 0.45);
+    }
+
+    .rarest-card img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 4px;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+    }
+
+    .rarest-card strong {
+      display: block;
+      font-size: 0.58rem;
+      line-height: 1.2;
+      color: #fff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .rarest-card span {
+      display: block;
+      font-size: 0.55rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
     .progress-bar {
       height: 10px;
       background: rgba(0, 0, 0, 0.35);
@@ -714,11 +831,19 @@
         <span id="progress-pct">0%</span>
       </div>
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="progress-breakdown" id="progress-breakdown"></div>
     </div>
     <div class="filters" id="filters">
       <button type="button" class="chip active" data-filter="all" data-i18n="filterAll">All</button>
       <button type="button" class="chip" data-filter="missing" data-i18n="filterMissing">Missing</button>
       <button type="button" class="chip" data-filter="collected" data-i18n="filterCollected">Collected</button>
+    </div>
+    <div class="filters filters-rarity" id="filters-rarity">
+      <button type="button" class="chip active" data-rarity-filter="all" data-i18n="filterRarityAll">Any rarity</button>
+      <button type="button" class="chip" data-rarity-filter="rare" data-rarity="rare" data-i18n="rarityRare">Rare</button>
+      <button type="button" class="chip" data-rarity-filter="epic" data-rarity="epic" data-i18n="rarityEpic">Epic</button>
+      <button type="button" class="chip" data-rarity-filter="legendary" data-rarity="legendary" data-i18n="rarityLegendary">Legendary</button>
+      <button type="button" class="chip" data-rarity-filter="mythic" data-rarity="mythic" data-i18n="rarityMythic">Mythic</button>
     </div>
     <input class="search" type="search" id="search" data-i18n-placeholder="searchPlaceholder" placeholder="Search sprite or variant…" autocomplete="off" />
   </header>
@@ -767,6 +892,7 @@
     let catalog = [];
     let collected = new Set();
     let filter = "all";
+    let rarityFilter = "all";
     let searchQuery = "";
     let readOnly = false;
 
@@ -776,6 +902,7 @@
     const $progressText = document.getElementById("progress-text");
     const $progressPct = document.getElementById("progress-pct");
     const $progressFill = document.getElementById("progress-fill");
+    const $progressBreakdown = document.getElementById("progress-breakdown");
     const $search = document.getElementById("search");
     const $btnShare = document.getElementById("btn-share");
     const $sharedBanner = document.getElementById("shared-banner");
@@ -1110,11 +1237,80 @@
       );
     }
 
+    const RARITY_WEIGHT = { mythic: 400, legendary: 300, epic: 200, rare: 100 };
+    const MATERIAL_WEIGHT = { holofoil: 55, gem: 52, galaxy: 45, gummy: 35, gold: 22, base: 0 };
+    const VARIANT_DROP_MULT = { base: 1, gold: 0.06, gummy: 0.008, galaxy: 0.003, holofoil: 0.002, gem: 0.002 };
+
+    function itemRarityScore(item) {
+      const rarity = RARITY_WEIGHT[item.rarity] ?? 0;
+      const material = MATERIAL_WEIGHT[item.materialId] ?? 10;
+      const baseDrop = item.dropRate
+        ?? config?.meta?.sprites?.[item.spriteId]?.dropRate
+        ?? 0.05;
+      const mult = VARIANT_DROP_MULT[item.materialId] ?? 0.01;
+      const effectiveDrop = baseDrop * mult;
+      return rarity * 1e6 + material * 1e3 + (1 / Math.max(effectiveDrop, 1e-12));
+    }
+
+    function getRarestMissing(limit = 8) {
+      return catalog
+        .filter((item) => !collected.has(item.id))
+        .sort((a, b) => itemRarityScore(b) - itemRarityScore(a))
+        .slice(0, limit);
+    }
+
+    function countBaseSpritesProgress() {
+      const spriteIds = [...new Set(catalog.map((c) => c.spriteId))];
+      let done = 0;
+      for (const spriteId of spriteIds) {
+        const baseEntry = catalog.find((c) => c.spriteId === spriteId && c.materialId === "base");
+        if (baseEntry && collected.has(baseEntry.id)) done += 1;
+      }
+      return { done, total: spriteIds.length };
+    }
+
+    function renderRarestPanel() {
+      const panel = document.createElement("section");
+      panel.className = "rarest-panel";
+      panel.innerHTML = `<h2>${SpritedexI18n.t("rarestMissing")}</h2>`;
+
+      const missing = getRarestMissing();
+      if (!missing.length) {
+        const p = document.createElement("p");
+        p.className = "rarest-done";
+        p.textContent = SpritedexI18n.t("rarestMissingDone");
+        panel.appendChild(p);
+        return panel;
+      }
+
+      const scroll = document.createElement("div");
+      scroll.className = "rarest-scroll";
+      for (const item of missing) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "rarest-card";
+        btn.innerHTML = `
+          <img src="${item.image}" alt="" loading="lazy" decoding="async" />
+          <strong>${displaySprite(item)}</strong>
+          <span>${displayMaterial(item)}</span>
+        `;
+        btn.addEventListener("click", () => openDetail(item));
+        scroll.appendChild(btn);
+      }
+      panel.appendChild(scroll);
+      return panel;
+    }
+
     function matchesFilter(item) {
       const isCollected = collected.has(item.id);
       if (filter === "collected") return isCollected;
       if (filter === "missing") return !isCollected;
       return true;
+    }
+
+    function matchesRarity(item) {
+      if (rarityFilter === "all") return true;
+      return item.rarity === rarityFilter;
     }
 
     function updateProgress() {
@@ -1124,6 +1320,12 @@
       $progressText.textContent = `${done} / ${total}`;
       $progressPct.textContent = `${pct}%`;
       $progressFill.style.width = `${pct}%`;
+
+      const bases = countBaseSpritesProgress();
+      $progressBreakdown.innerHTML = `
+        <span>${SpritedexI18n.t("progressSprites")}: <strong>${bases.done}/${bases.total}</strong></span>
+        <span>${SpritedexI18n.t("progressVariants")}: <strong>${done}/${total}</strong></span>
+      `;
     }
 
     function toggleSprite(id) {
@@ -1276,7 +1478,7 @@
       let visibleCount = 0;
 
       for (const [spriteId, sprites] of grouped) {
-        const visible = sprites.filter((s) => matchesSearch(s) && matchesFilter(s));
+        const visible = sprites.filter((s) => matchesSearch(s) && matchesFilter(s) && matchesRarity(s));
         if (!visible.length) continue;
         visibleCount += visible.length;
 
@@ -1306,8 +1508,12 @@
       }
 
       $app.innerHTML = "";
+      $app.appendChild(renderRarestPanel());
       if (!visibleCount) {
-        $app.innerHTML = `<div class="empty-state">${SpritedexI18n.t("noResults")}</div>`;
+        const empty = document.createElement("div");
+        empty.className = "empty-state";
+        empty.textContent = SpritedexI18n.t("noResults");
+        $app.appendChild(empty);
       } else {
         $app.appendChild(frag);
       }
@@ -1346,9 +1552,25 @@
 
     document.getElementById("filters").addEventListener("click", (e) => {
       const chip = e.target.closest(".chip");
-      if (!chip) return;
+      if (!chip || !chip.dataset.filter) return;
       filter = chip.dataset.filter;
-      document.querySelectorAll(".chip").forEach((c) => c.classList.toggle("active", c === chip));
+      document.querySelectorAll("#filters .chip").forEach((c) => {
+        c.classList.toggle("active", c.dataset.filter === filter);
+      });
+      render();
+    });
+
+    document.getElementById("filters-rarity").addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip || !chip.dataset.rarityFilter) return;
+      rarityFilter = chip.dataset.rarityFilter;
+      document.querySelectorAll("#filters-rarity .chip").forEach((c) => {
+        const active = c.dataset.rarityFilter === rarityFilter;
+        c.classList.toggle("active", active);
+        if (c.dataset.rarityFilter !== "all") {
+          c.dataset.rarity = c.dataset.rarityFilter;
+        }
+      });
       render();
     });
 
@@ -1390,6 +1612,7 @@
     window.addEventListener("spritedex:localechange", () => {
       if (detailItem) openDetail(detailItem);
       applyStaticI18n();
+      updateProgress();
       render();
     });
 

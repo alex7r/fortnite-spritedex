@@ -73,6 +73,11 @@ const SpritedexI18n = (() => {
       rarityLegendary: "Legendary",
       rarityMythic: "Mythic",
       dust: "Sprite Dust",
+      progressSprites: "Sprites (base)",
+      progressVariants: "Variants",
+      rarestMissing: "Rarest still missing",
+      rarestMissingDone: "No missing variants — nice!",
+      filterRarityAll: "Any rarity",
     },
     ru: {
       appTitle: "Fortnite Sprites Pocket Tracker",
@@ -140,6 +145,11 @@ const SpritedexI18n = (() => {
       rarityLegendary: "Легендарный",
       rarityMythic: "Мифический",
       dust: "Sprite Dust",
+      progressSprites: "Спрайты (base)",
+      progressVariants: "Варианты",
+      rarestMissing: "Самые редкие из недостающих",
+      rarestMissingDone: "Ничего не осталось — отлично!",
+      filterRarityAll: "Любая редкость",
     },
   };
 
