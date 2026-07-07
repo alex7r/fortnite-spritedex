@@ -131,6 +131,9 @@
     }
 
     .mat-pad {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
       min-width: 0;
       height: var(--filter-pad-h);
@@ -139,8 +142,20 @@
       border: 2px solid rgba(255, 255, 255, 0.12);
       border-radius: 8px;
       cursor: pointer;
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
       transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
       background: var(--mat-gradient, rgba(255, 255, 255, 0.08));
+    }
+
+    .mat-pad[data-material-filter="gold"],
+    .mat-pad[data-material-filter="base"] {
+      color: #1a1040;
+      text-shadow: none;
     }
 
     .mat-pad:active { transform: scale(0.94); }
@@ -1887,6 +1902,16 @@
     let lastGrouped = [];
 
     const MATERIAL_FILTER_ORDER = ["base", "gold", "gummy", "galaxy", "holofoil", "gem", "cube", "quack"];
+    const MATERIAL_PAD_LETTER = {
+      base: "B",
+      gold: "G",
+      gummy: "U",
+      galaxy: "A",
+      holofoil: "H",
+      gem: "E",
+      cube: "C",
+      quack: "Q",
+    };
 
     function catalogMaterialIds() {
       return [...new Set(catalog.map((item) => item.materialId))];
@@ -1916,7 +1941,10 @@
           : SpritedexI18n.materialName(materialId);
         chip.setAttribute("aria-label", label);
         chip.title = label;
-        if (materialId !== "all") applyMaterialChipTheme(chip, materialId);
+        if (materialId !== "all") {
+          applyMaterialChipTheme(chip, materialId);
+          chip.textContent = MATERIAL_PAD_LETTER[materialId] || materialId[0].toUpperCase();
+        }
         chip.classList.toggle("active", materialFilter === materialId);
         $filtersMaterial.appendChild(chip);
       }
