@@ -143,19 +143,13 @@
       border-radius: 8px;
       cursor: pointer;
       font-family: var(--font-display);
-      font-size: 0.62rem;
+      font-size: 0.52rem;
       font-weight: 400;
-      letter-spacing: 0.02em;
+      letter-spacing: -0.02em;
       color: #fff;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
       transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
       background: var(--mat-gradient, rgba(255, 255, 255, 0.08));
-    }
-
-    .mat-pad[data-material-filter="gold"],
-    .mat-pad[data-material-filter="base"] {
-      color: #1a1040;
-      text-shadow: none;
     }
 
     .mat-pad:active { transform: scale(0.94); }
@@ -566,10 +560,6 @@
         font-size: 14px;
         border-radius: 8px;
       }
-
-      .character-section {
-        scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 96px);
-      }
     }
 
     .loading, .error-box {
@@ -582,7 +572,7 @@
 
     .character-section {
       margin-bottom: 22px;
-      scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 118px);
+      scroll-margin-top: calc(var(--header-offset, 200px) + 8px);
     }
 
     .character-header {
@@ -1902,27 +1892,73 @@
     let lastGrouped = [];
 
     const MATERIAL_FILTER_ORDER = ["base", "gold", "gummy", "galaxy", "holofoil", "gem", "cube", "quack"];
-    const MATERIAL_PAD_LETTER = {
-      base: "B",
-      gold: "G",
-      gummy: "U",
-      galaxy: "A",
-      holofoil: "H",
-      gem: "E",
-      cube: "C",
-      quack: "Q",
+    const MATERIAL_PAD_LABEL = {
+      base: "Ba",
+      gold: "Go",
+      gummy: "Gu",
+      galaxy: "Ga",
+      holofoil: "Ho",
+      gem: "Ge",
+      cube: "Cu",
+      quack: "Qu",
+    };
+
+    const MATERIAL_PAD_STYLE = {
+      base: {
+        bg: "linear-gradient(145deg, #a8b4c8 0%, #6b7a92 100%)",
+        glow: "rgba(168, 180, 200, 0.55)",
+        ink: "#1a1040",
+      },
+      gold: {
+        bg: "linear-gradient(145deg, #ffe566 0%, #e8a317 55%, #b8740a 100%)",
+        glow: "rgba(255, 214, 74, 0.7)",
+        ink: "#3b2200",
+      },
+      gummy: {
+        bg: "linear-gradient(135deg, #ef4444 0%, #dc2626 55%, #b91c1c 70%, #22c55e 100%)",
+        glow: "rgba(239, 68, 68, 0.6)",
+        ink: "#fff",
+      },
+      galaxy: {
+        bg: "linear-gradient(145deg, #1e3a8a 0%, #312e81 42%, #6b21a8 100%)",
+        glow: "rgba(107, 33, 168, 0.68)",
+        ink: "#fff",
+      },
+      holofoil: {
+        bg: "linear-gradient(135deg, #5eead4 0%, #67b8ff 28%, #c084fc 56%, #f472b6 78%, #38bdf8 100%)",
+        glow: "rgba(94, 231, 255, 0.7)",
+        ink: "#0a0618",
+      },
+      gem: {
+        bg: "linear-gradient(145deg, #f8fafc 0%, #e2e8f0 45%, #94a3b8 100%)",
+        glow: "rgba(203, 213, 225, 0.75)",
+        ink: "#1a1040",
+      },
+      cube: {
+        bg: "linear-gradient(145deg, #1e3a8a 0%, #0f172a 58%, #020617 100%)",
+        glow: "rgba(30, 58, 138, 0.72)",
+        ink: "#fff",
+      },
+      quack: {
+        bg: "linear-gradient(145deg, #faf5ff 0%, #e9d5ff 18%, #c084fc 42%, #9333ea 68%, #5b21b6 88%, #2e1065 100%)",
+        glow: "rgba(192, 132, 252, 0.75)",
+        ink: "#fff",
+      },
     };
 
     function catalogMaterialIds() {
       return [...new Set(catalog.map((item) => item.materialId))];
     }
 
-    function applyMaterialChipTheme(chip, materialId) {
-      const theme = MATERIAL_THEME[materialId] || MATERIAL_THEME.base;
-      chip.style.setProperty("--mat-accent", theme.accent);
-      chip.style.setProperty("--mat-glow", theme.glow);
-      chip.style.setProperty("--mat-gradient", theme.gradient);
-      chip.style.background = theme.gradient;
+    function applyMaterialPadStyle(chip, materialId) {
+      const style = MATERIAL_PAD_STYLE[materialId];
+      if (!style) return;
+      chip.style.background = style.bg;
+      chip.style.color = style.ink;
+      chip.style.setProperty("--mat-glow", style.glow);
+      chip.style.textShadow = style.ink === "#fff"
+        ? "0 1px 3px rgba(0, 0, 0, 0.45)"
+        : "none";
     }
 
     function buildMaterialFilters() {
@@ -1942,8 +1978,8 @@
         chip.setAttribute("aria-label", label);
         chip.title = label;
         if (materialId !== "all") {
-          applyMaterialChipTheme(chip, materialId);
-          chip.textContent = MATERIAL_PAD_LETTER[materialId] || materialId[0].toUpperCase();
+          applyMaterialPadStyle(chip, materialId);
+          chip.textContent = MATERIAL_PAD_LABEL[materialId] || materialId.slice(0, 2);
         }
         chip.classList.toggle("active", materialFilter === materialId);
         $filtersMaterial.appendChild(chip);
@@ -1984,6 +2020,26 @@
         || catalog.find((c) => c.spriteId === spriteId);
     }
 
+    function updateHeaderOffset() {
+      const header = document.querySelector("header");
+      document.documentElement.style.setProperty(
+        "--header-offset",
+        header ? `${Math.ceil(header.getBoundingClientRect().height)}px` : "200px"
+      );
+    }
+
+    function getHeaderScrollOffset(extra = 8) {
+      const px = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-offset"));
+      return (Number.isFinite(px) ? px : 200) + extra;
+    }
+
+    function scrollToSection(section) {
+      if (!section) return;
+      updateHeaderOffset();
+      const top = section.getBoundingClientRect().top + window.scrollY - getHeaderScrollOffset();
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    }
+
     function jumpToSprite(spriteId) {
       let section = document.getElementById(`sprite-${spriteId}`);
       if (!section) {
@@ -1996,15 +2052,8 @@
         render();
         section = document.getElementById(`sprite-${spriteId}`);
       }
-      section?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
-    function updateHeaderOffset() {
-      const header = document.querySelector("header");
-      document.documentElement.style.setProperty(
-        "--header-offset",
-        header ? `${Math.ceil(header.getBoundingClientRect().height)}px` : "200px"
-      );
+      if (!section) return;
+      requestAnimationFrame(() => scrollToSection(section));
     }
 
     function updateSpriteRail(grouped) {
