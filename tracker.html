@@ -485,6 +485,29 @@
 
     .sprite-rail-btn.dimmed { opacity: 0.38; }
 
+    .sprite-rail-btn.collected {
+      border-color: var(--rail-accent, rgba(94, 231, 255, 0.85));
+      box-shadow: 0 0 10px var(--rail-glow, rgba(94, 231, 255, 0.35));
+      opacity: 1;
+    }
+
+    .sprite-rail-btn.missing img {
+      filter: grayscale(1) brightness(0.62) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+    }
+
+    .sprite-rail-btn.missing {
+      opacity: 0.72;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .sprite-rail-btn.no-variant {
+      opacity: 0.28;
+    }
+
+    .sprite-rail-btn.no-variant img {
+      filter: grayscale(1) brightness(0.45);
+    }
+
     .sprite-rail-btn.active {
       border-color: rgba(94, 231, 255, 0.75);
       box-shadow: 0 0 12px rgba(94, 231, 255, 0.25);
@@ -2056,6 +2079,17 @@
       requestAnimationFrame(() => scrollToSection(section));
     }
 
+    function spriteMaterialEntry(spriteId, materialId) {
+      return catalog.find((c) => c.spriteId === spriteId && c.materialId === materialId) || null;
+    }
+
+    function applyRailMaterialAccent(btn, materialId) {
+      const theme = MATERIAL_THEME[materialId];
+      if (!theme) return;
+      btn.style.setProperty("--rail-accent", theme.accent);
+      btn.style.setProperty("--rail-glow", theme.glow);
+    }
+
     function updateSpriteRail(grouped) {
       updateHeaderOffset();
       if (!$spriteRail) return;
@@ -2065,26 +2099,54 @@
         return;
       }
 
+      const materialActive = materialFilter !== "all";
+      $spriteRail.classList.toggle("sprite-rail--material", materialActive);
       $spriteRail.setAttribute("aria-label", SpritedexI18n.t("spriteRailLabel"));
       $spriteRail.classList.remove("hidden");
       $spriteRail.innerHTML = "";
 
       for (const [spriteId] of grouped) {
-        const base = baseSpriteEntry(spriteId);
-        if (!base) continue;
+        const materialEntry = materialActive ? spriteMaterialEntry(spriteId, materialFilter) : null;
+        const thumb = materialEntry || baseSpriteEntry(spriteId);
+        if (!thumb) continue;
+
         const section = document.getElementById(`sprite-${spriteId}`);
         const btn = document.createElement("button");
+        const classes = ["sprite-rail-btn"];
+
+        if (!materialActive && !section) {
+          classes.push("dimmed");
+        }
+
+        if (materialActive) {
+          if (!materialEntry) {
+            classes.push("no-variant");
+          } else if (collected.has(materialEntry.id)) {
+            classes.push("collected");
+            applyRailMaterialAccent(btn, materialFilter);
+          } else {
+            classes.push("missing");
+          }
+        }
+
         btn.type = "button";
-        btn.className = `sprite-rail-btn${section ? "" : " dimmed"}`;
-        btn.title = displaySprite({ spriteId });
-        btn.setAttribute("aria-label", displaySprite({ spriteId }));
+        btn.className = classes.join(" ");
+        const spriteLabel = displaySprite({ spriteId });
+        let statusHint = "";
+        if (materialActive && materialEntry) {
+          statusHint = collected.has(materialEntry.id)
+            ? ` — ${SpritedexI18n.t("filterCollectedShort")}`
+            : ` — ${SpritedexI18n.t("filterMissingShort")}`;
+        }
+        btn.title = spriteLabel + statusHint;
+        btn.setAttribute("aria-label", spriteLabel + statusHint);
         const img = document.createElement("img");
-        img.src = base.image;
+        img.src = thumb.image;
         img.alt = "";
         img.loading = "lazy";
         img.onerror = function onRailImgErr() {
           this.onerror = null;
-          if (base.fallbackImage) this.src = assetUrl(base.fallbackImage);
+          if (thumb.fallbackImage) this.src = assetUrl(thumb.fallbackImage);
         };
         btn.appendChild(img);
         btn.addEventListener("click", () => jumpToSprite(spriteId));
