@@ -99,7 +99,7 @@
     }
 
     .progress-breakdown {
-      display: flex;
+      display: none;
       flex-wrap: wrap;
       gap: 6px 12px;
       margin-top: 6px;
@@ -109,12 +109,138 @@
       letter-spacing: 0.03em;
     }
 
+    @media (min-width: 720px) {
+      .progress-breakdown { display: flex; }
+    }
+
+    .filter-bar {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      --filter-pad-h: calc((100vw - 16px - 24px) / 9);
+    }
+
+    .filters-material { margin-top: 0; }
+
+    .filters-material {
+      display: grid;
+      grid-template-columns: repeat(var(--mat-count, 9), minmax(0, 1fr));
+      gap: 3px;
+      overflow: visible;
+    }
+
+    .mat-pad {
+      width: 100%;
+      min-width: 0;
+      height: var(--filter-pad-h);
+      max-height: 34px;
+      padding: 0;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      background: var(--mat-gradient, rgba(255, 255, 255, 0.08));
+    }
+
+    .mat-pad:active { transform: scale(0.94); }
+
+    .mat-pad.active {
+      border-color: #fff;
+      box-shadow: 0 0 10px var(--mat-glow, rgba(94, 231, 255, 0.45));
+      transform: scale(1.04);
+    }
+
+    .mat-pad-all {
+      background: linear-gradient(
+        135deg,
+        #94a3b8 0%,
+        #fbbf24 16%,
+        #f472b6 32%,
+        #818cf8 48%,
+        #22d3ee 64%,
+        #c084fc 80%,
+        #38bdf8 100%
+      );
+    }
+
+    .mat-pad-all.active {
+      box-shadow: 0 0 12px rgba(168, 85, 247, 0.55);
+    }
+
+    .filters-status { margin-top: 0; }
+
+    .filters-rarity {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 3px;
+      margin-top: 0;
+      overflow: visible;
+    }
+
+    .rarity-pad {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+      height: var(--filter-pad-h);
+      max-height: 34px;
+      padding: 0;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .rarity-pad:active { transform: scale(0.94); }
+
+    .rarity-pad.active {
+      border-color: #fff;
+      box-shadow: 0 0 10px var(--rarity-glow, rgba(168, 85, 247, 0.45));
+      transform: scale(1.04);
+    }
+
+    .rarity-pad-all {
+      background: linear-gradient(135deg, #60a5fa 0%, #c084fc 33%, #fbbf24 66%, #f472b6 100%);
+      --rarity-glow: rgba(168, 85, 247, 0.55);
+    }
+
+    .rarity-pad[data-rarity-filter="rare"] {
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.75), rgba(37, 99, 235, 0.4));
+      --rarity-glow: rgba(96, 165, 250, 0.6);
+    }
+
+    .rarity-pad[data-rarity-filter="epic"] {
+      background: linear-gradient(135deg, rgba(192, 132, 252, 0.75), rgba(126, 34, 206, 0.4));
+      --rarity-glow: rgba(192, 132, 252, 0.6);
+    }
+
+    .rarity-pad[data-rarity-filter="legendary"] {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.8), rgba(217, 119, 6, 0.45));
+      --rarity-glow: rgba(251, 191, 36, 0.65);
+      color: #1a1040;
+      text-shadow: none;
+    }
+
+    .rarity-pad[data-rarity-filter="mythic"] {
+      background: linear-gradient(135deg, rgba(244, 114, 182, 0.8), rgba(219, 39, 119, 0.45));
+      --rarity-glow: rgba(244, 114, 182, 0.65);
+    }
+
+    .chip-label-short { display: none; }
+
     .progress-breakdown span strong {
       color: #e9d5ff;
       font-weight: 800;
     }
-
-    .filters-rarity { margin-top: 6px; }
 
     .chip[data-rarity="rare"].active {
       border-color: rgba(96, 165, 250, 0.7);
@@ -137,18 +263,18 @@
     }
 
     .rarest-panel {
-      margin-bottom: 20px;
-      padding: 12px;
-      border-radius: var(--radius);
+      margin-bottom: 12px;
+      padding: 6px 8px;
+      border-radius: 10px;
       background: rgba(28, 22, 58, 0.55);
       border: 1px solid rgba(168, 85, 247, 0.25);
       box-shadow: 0 0 24px rgba(168, 85, 247, 0.08);
     }
 
     .rarest-panel h2 {
-      margin: 0 0 10px;
+      margin: 0 0 4px;
       font-family: var(--font-display);
-      font-size: 0.72rem;
+      font-size: 0.58rem;
       font-weight: 400;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -157,27 +283,27 @@
 
     .rarest-done {
       margin: 0;
-      font-size: 0.82rem;
+      font-size: 0.72rem;
       color: var(--accent);
       font-weight: 600;
     }
 
     .rarest-scroll {
       display: flex;
-      gap: 8px;
+      gap: 4px;
       overflow-x: auto;
       scrollbar-width: none;
-      padding-bottom: 2px;
+      padding-bottom: 1px;
     }
 
     .rarest-scroll::-webkit-scrollbar { display: none; }
 
     .rarest-card {
-      flex: 0 0 76px;
+      flex: 0 0 46px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
+      border-radius: 8px;
       background: rgba(0, 0, 0, 0.25);
-      padding: 6px;
+      padding: 3px;
       cursor: pointer;
       text-align: center;
       transition: transform 0.15s, border-color 0.15s;
@@ -190,18 +316,18 @@
     }
 
     .rarest-card img {
-      width: 52px;
-      height: 52px;
+      width: 26px;
+      height: 26px;
       object-fit: contain;
       display: block;
-      margin: 0 auto 4px;
+      margin: 0 auto 1px;
       filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
     }
 
     .rarest-card strong {
       display: block;
-      font-size: 0.58rem;
-      line-height: 1.2;
+      font-size: 0.46rem;
+      line-height: 1.1;
       color: #fff;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -210,9 +336,13 @@
 
     .rarest-card span {
       display: block;
-      font-size: 0.55rem;
+      font-size: 0.42rem;
+      line-height: 1.05;
       color: var(--muted);
-      margin-top: 2px;
+      margin-top: 1px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .progress-bar {
@@ -236,11 +366,12 @@
     .filters {
       display: flex;
       gap: 6px;
-      margin-top: 10px;
       overflow-x: auto;
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
     }
+
+    .filter-bar > .filters { margin-top: 0; }
 
     .filters::-webkit-scrollbar { display: none; }
 
@@ -285,7 +416,146 @@
       box-shadow: 0 0 0 3px rgba(94, 231, 255, 0.12);
     }
 
-    main { padding: 14px 10px 24px; max-width: 720px; margin: 0 auto; }
+    main {
+      padding: 14px 80px 24px 10px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .sprite-rail {
+      position: fixed;
+      right: 4px;
+      top: calc(env(safe-area-inset-top, 0px) + var(--header-offset, 200px) + 6px);
+      transform: none;
+      z-index: 19;
+      display: grid;
+      grid-template-columns: repeat(2, 32px);
+      grid-auto-flow: row;
+      gap: 3px;
+      width: 67px;
+      max-height: calc(
+        100dvh - env(safe-area-inset-top, 0px) - var(--header-offset, 200px) - env(safe-area-inset-bottom, 0px) - 18px
+      );
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 4px 2px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .sprite-rail::-webkit-scrollbar { display: none; }
+
+    .sprite-rail.hidden { display: none; }
+
+    .sprite-rail-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      background: rgba(12, 8, 28, 0.88);
+      padding: 3px;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s, opacity 0.15s;
+    }
+
+    .sprite-rail-btn:active { transform: scale(0.94); }
+
+    .sprite-rail-btn:hover,
+    .sprite-rail-btn:focus-visible {
+      border-color: rgba(94, 231, 255, 0.55);
+      outline: none;
+    }
+
+    .sprite-rail-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+    }
+
+    .sprite-rail-btn.dimmed { opacity: 0.38; }
+
+    .sprite-rail-btn.active {
+      border-color: rgba(94, 231, 255, 0.75);
+      box-shadow: 0 0 12px rgba(94, 231, 255, 0.25);
+    }
+
+    @media (min-width: 720px) {
+      main { padding: 14px 10px 24px; }
+      .sprite-rail { display: none; }
+    }
+
+    .btn-label-short,
+    .chip-label-short { display: none; }
+
+    @media (max-width: 719px) {
+      header {
+        padding: 6px 8px 6px;
+        padding-top: max(6px, env(safe-area-inset-top));
+      }
+
+      header h1 { font-size: 0.65rem; letter-spacing: 0.03em; }
+
+      .header-head { gap: 4px; }
+
+      .header-toolbar { gap: 4px; }
+
+      .header-toolbar button {
+        flex: 1;
+        min-width: 0;
+        padding: 4px 3px;
+        font-size: 0.58rem;
+      }
+
+      .btn-guide { flex: 0 0 28px !important; }
+
+      .btn-label-long { display: none; }
+      .btn-label-short { display: inline; }
+
+      .progress-wrap { margin-top: 4px; }
+
+      .progress-meta {
+        margin-bottom: 3px;
+        font-size: 0.65rem;
+      }
+
+      .progress-bar { height: 6px; }
+
+      .filter-bar {
+        margin-top: 4px;
+        gap: 8px;
+      }
+
+      .filters-status {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 3px;
+        overflow: visible;
+      }
+
+      .filters-status .chip {
+        padding: 4px 2px;
+        font-size: 0.58rem;
+        text-align: center;
+        border-radius: 7px;
+        letter-spacing: 0.02em;
+      }
+
+      .chip-label-long { display: none; }
+      .chip-label-short { display: inline; }
+
+      .search {
+        margin-top: 4px;
+        padding: 6px 8px;
+        font-size: 14px;
+        border-radius: 8px;
+      }
+
+      .character-section {
+        scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 96px);
+      }
+    }
 
     .loading, .error-box {
       text-align: center;
@@ -295,7 +565,10 @@
 
     .error-box { color: var(--danger); }
 
-    .character-section { margin-bottom: 22px; }
+    .character-section {
+      margin-bottom: 22px;
+      scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 118px);
+    }
 
     .character-header {
       display: flex;
@@ -1392,7 +1665,7 @@
 
     .detail-actions button:active { transform: scale(0.98); }
   </style>
-  <script src="i18n.js"></script>
+  <script src="i18n.js?v13"></script>
 </head>
 <body>
   <header>
@@ -1402,9 +1675,18 @@
         <div id="lang-slot"></div>
       </div>
       <div class="header-toolbar">
-        <button type="button" id="btn-share" class="btn-share" data-i18n="share" hidden>Share</button>
-        <button type="button" id="btn-export-png" class="btn-export" data-i18n="exportPng" hidden>Export PNG</button>
-        <button type="button" id="btn-compare" class="btn-compare" data-i18n="compare" hidden>Compare</button>
+        <button type="button" id="btn-share" class="btn-share" hidden>
+          <span class="btn-label-long" data-i18n="share">Share</span>
+          <span class="btn-label-short" data-i18n="share">Share</span>
+        </button>
+        <button type="button" id="btn-export-png" class="btn-export" hidden>
+          <span class="btn-label-long" data-i18n="exportPng">Export PNG</span>
+          <span class="btn-label-short" data-i18n="exportPngShort">PNG</span>
+        </button>
+        <button type="button" id="btn-compare" class="btn-compare" hidden>
+          <span class="btn-label-long" data-i18n="compare">Compare</span>
+          <span class="btn-label-short" data-i18n="compareShort">Vs</span>
+        </button>
         <button type="button" id="btn-guide" class="btn-guide" aria-label="Guide" title="Guide" hidden>?</button>
       </div>
     </div>
@@ -1424,29 +1706,49 @@
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
       <div class="progress-breakdown" id="progress-breakdown"></div>
     </div>
-    <div class="filters" id="filters">
-      <button type="button" class="chip active" data-filter="all" data-i18n="filterAll">All</button>
-      <button type="button" class="chip" data-filter="missing" data-i18n="filterMissing">Missing</button>
-      <button type="button" class="chip" data-filter="collected" data-i18n="filterCollected">Collected</button>
-      <button type="button" class="chip" data-filter="mastered" data-i18n="filterMastered">Mastered</button>
-      <button type="button" class="chip" data-filter="not-mastered" data-i18n="filterNotMastered">Not mastered</button>
-    </div>
-    <div class="filters compare-filters hidden" id="filters-compare" hidden>
-      <button type="button" class="chip active" data-compare-filter="all" data-i18n="compareFilterAll">All</button>
-      <button type="button" class="chip" data-compare-filter="both" data-i18n="compareFilterBoth">Both have</button>
-      <button type="button" class="chip" data-compare-filter="only-a" data-i18n="compareFilterOnlyA">Only A</button>
-      <button type="button" class="chip" data-compare-filter="only-b" data-i18n="compareFilterOnlyB">Only B</button>
-      <button type="button" class="chip" data-compare-filter="neither" data-i18n="compareFilterNeither">Neither</button>
-    </div>
-    <div class="filters filters-rarity" id="filters-rarity">
-      <button type="button" class="chip active" data-rarity-filter="all" data-i18n="filterRarityAll">Any rarity</button>
-      <button type="button" class="chip" data-rarity-filter="rare" data-rarity="rare" data-i18n="rarityRare">Rare</button>
-      <button type="button" class="chip" data-rarity-filter="epic" data-rarity="epic" data-i18n="rarityEpic">Epic</button>
-      <button type="button" class="chip" data-rarity-filter="legendary" data-rarity="legendary" data-i18n="rarityLegendary">Legendary</button>
-      <button type="button" class="chip" data-rarity-filter="mythic" data-rarity="mythic" data-i18n="rarityMythic">Mythic</button>
+    <div class="filter-bar" id="filter-bar">
+      <div class="filters filters-status" id="filters">
+        <button type="button" class="chip active" data-filter="all">
+          <span class="chip-label-long" data-i18n="filterAll">All</span>
+          <span class="chip-label-short" data-i18n="filterAllShort">All</span>
+        </button>
+        <button type="button" class="chip" data-filter="missing">
+          <span class="chip-label-long" data-i18n="filterMissing">Missing</span>
+          <span class="chip-label-short" data-i18n="filterMissingShort">Miss</span>
+        </button>
+        <button type="button" class="chip" data-filter="collected">
+          <span class="chip-label-long" data-i18n="filterCollected">Collected</span>
+          <span class="chip-label-short" data-i18n="filterCollectedShort">Got</span>
+        </button>
+        <button type="button" class="chip" data-filter="mastered">
+          <span class="chip-label-long" data-i18n="filterMastered">Mastered</span>
+          <span class="chip-label-short" data-i18n="filterMasteredShort">★</span>
+        </button>
+        <button type="button" class="chip" data-filter="not-mastered">
+          <span class="chip-label-long" data-i18n="filterNotMastered">Not mastered</span>
+          <span class="chip-label-short" data-i18n="filterNotMasteredShort">☆</span>
+        </button>
+      </div>
+      <div class="filters compare-filters hidden" id="filters-compare" hidden>
+        <button type="button" class="chip active" data-compare-filter="all" data-i18n="compareFilterAll">All</button>
+        <button type="button" class="chip" data-compare-filter="both" data-i18n="compareFilterBoth">Both have</button>
+        <button type="button" class="chip" data-compare-filter="only-a" data-i18n="compareFilterOnlyA">Only A</button>
+        <button type="button" class="chip" data-compare-filter="only-b" data-i18n="compareFilterOnlyB">Only B</button>
+        <button type="button" class="chip" data-compare-filter="neither" data-i18n="compareFilterNeither">Neither</button>
+      </div>
+      <div class="filters filters-material" id="filters-material"></div>
+      <div class="filters filters-rarity" id="filters-rarity">
+        <button type="button" class="rarity-pad rarity-pad-all active" data-rarity-filter="all" aria-label="Any rarity"></button>
+        <button type="button" class="rarity-pad" data-rarity-filter="rare" aria-label="Rare">R</button>
+        <button type="button" class="rarity-pad" data-rarity-filter="epic" aria-label="Epic">E</button>
+        <button type="button" class="rarity-pad" data-rarity-filter="legendary" aria-label="Legendary">L</button>
+        <button type="button" class="rarity-pad" data-rarity-filter="mythic" aria-label="Mythic">M</button>
+      </div>
     </div>
     <input class="search" type="search" id="search" data-i18n-placeholder="searchPlaceholder" placeholder="Search sprite or variant…" autocomplete="off" />
   </header>
+
+  <nav class="sprite-rail hidden" id="sprite-rail" aria-label="Jump to sprite"></nav>
 
   <main id="app">
     <div class="loading" id="loading" data-i18n="loading">Loading</div>
@@ -1529,6 +1831,7 @@
     let collected = new Set();
     let mastered = new Set();
     let filter = "all";
+    let materialFilter = "all";
     let rarityFilter = "all";
     let searchQuery = "";
     let readOnly = false;
@@ -1554,7 +1857,11 @@
     const $compareStats = document.getElementById("compare-stats");
     const $compareBannerTitle = document.getElementById("compare-banner-title");
     const $filters = document.getElementById("filters");
+    const $filtersMaterial = document.getElementById("filters-material");
+    const $filtersRarity = document.getElementById("filters-rarity");
+    const $filterBar = document.getElementById("filter-bar");
     const $filtersCompare = document.getElementById("filters-compare");
+    const $spriteRail = document.getElementById("sprite-rail");
     const $compareOverlay = document.getElementById("compare-overlay");
     const $compareInputA = document.getElementById("compare-input-a");
     const $compareInputB = document.getElementById("compare-input-b");
@@ -1577,6 +1884,136 @@
 
     let toastTimer = null;
     let detailItem = null;
+    let lastGrouped = [];
+
+    const MATERIAL_FILTER_ORDER = ["base", "gold", "gummy", "galaxy", "holofoil", "gem", "cube", "quack"];
+
+    function catalogMaterialIds() {
+      return [...new Set(catalog.map((item) => item.materialId))];
+    }
+
+    function applyMaterialChipTheme(chip, materialId) {
+      const theme = MATERIAL_THEME[materialId] || MATERIAL_THEME.base;
+      chip.style.setProperty("--mat-accent", theme.accent);
+      chip.style.setProperty("--mat-glow", theme.glow);
+      chip.style.setProperty("--mat-gradient", theme.gradient);
+      chip.style.background = theme.gradient;
+    }
+
+    function buildMaterialFilters() {
+      if (!$filtersMaterial) return;
+      const present = new Set(catalogMaterialIds());
+      const materials = ["all", ...MATERIAL_FILTER_ORDER.filter((id) => present.has(id))];
+      $filtersMaterial.style.setProperty("--mat-count", String(materials.length));
+      $filtersMaterial.innerHTML = "";
+      for (const materialId of materials) {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = materialId === "all" ? "mat-pad mat-pad-all" : "mat-pad";
+        chip.dataset.materialFilter = materialId;
+        const label = materialId === "all"
+          ? SpritedexI18n.t("filterMaterialAll")
+          : SpritedexI18n.materialName(materialId);
+        chip.setAttribute("aria-label", label);
+        chip.title = label;
+        if (materialId !== "all") applyMaterialChipTheme(chip, materialId);
+        chip.classList.toggle("active", materialFilter === materialId);
+        $filtersMaterial.appendChild(chip);
+      }
+    }
+
+    function applyRarityPadLabels() {
+      const keys = {
+        all: "filterRarityAll",
+        rare: "rarityRare",
+        epic: "rarityEpic",
+        legendary: "rarityLegendary",
+        mythic: "rarityMythic",
+      };
+      document.querySelectorAll("#filters-rarity .rarity-pad").forEach((btn) => {
+        const key = keys[btn.dataset.rarityFilter];
+        if (!key) return;
+        const label = SpritedexI18n.t(key);
+        btn.setAttribute("aria-label", label);
+        btn.title = label;
+      });
+    }
+
+    function syncFilterChips() {
+      document.querySelectorAll("#filters .chip").forEach((c) => {
+        c.classList.toggle("active", c.dataset.filter === filter);
+      });
+      document.querySelectorAll("#filters-material .mat-pad").forEach((c) => {
+        c.classList.toggle("active", c.dataset.materialFilter === materialFilter);
+      });
+      document.querySelectorAll("#filters-rarity .rarity-pad").forEach((c) => {
+        c.classList.toggle("active", c.dataset.rarityFilter === rarityFilter);
+      });
+    }
+
+    function baseSpriteEntry(spriteId) {
+      return catalog.find((c) => c.spriteId === spriteId && c.materialId === "base")
+        || catalog.find((c) => c.spriteId === spriteId);
+    }
+
+    function jumpToSprite(spriteId) {
+      let section = document.getElementById(`sprite-${spriteId}`);
+      if (!section) {
+        materialFilter = "all";
+        filter = "all";
+        rarityFilter = "all";
+        searchQuery = "";
+        $search.value = "";
+        syncFilterChips();
+        render();
+        section = document.getElementById(`sprite-${spriteId}`);
+      }
+      section?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function updateHeaderOffset() {
+      const header = document.querySelector("header");
+      document.documentElement.style.setProperty(
+        "--header-offset",
+        header ? `${Math.ceil(header.getBoundingClientRect().height)}px` : "200px"
+      );
+    }
+
+    function updateSpriteRail(grouped) {
+      updateHeaderOffset();
+      if (!$spriteRail) return;
+      if (compareMode || window.matchMedia("(min-width: 720px)").matches) {
+        $spriteRail.classList.add("hidden");
+        $spriteRail.innerHTML = "";
+        return;
+      }
+
+      $spriteRail.setAttribute("aria-label", SpritedexI18n.t("spriteRailLabel"));
+      $spriteRail.classList.remove("hidden");
+      $spriteRail.innerHTML = "";
+
+      for (const [spriteId] of grouped) {
+        const base = baseSpriteEntry(spriteId);
+        if (!base) continue;
+        const section = document.getElementById(`sprite-${spriteId}`);
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = `sprite-rail-btn${section ? "" : " dimmed"}`;
+        btn.title = displaySprite({ spriteId });
+        btn.setAttribute("aria-label", displaySprite({ spriteId }));
+        const img = document.createElement("img");
+        img.src = base.image;
+        img.alt = "";
+        img.loading = "lazy";
+        img.onerror = function onRailImgErr() {
+          this.onerror = null;
+          if (base.fallbackImage) this.src = assetUrl(base.fallbackImage);
+        };
+        btn.appendChild(img);
+        btn.addEventListener("click", () => jumpToSprite(spriteId));
+        $spriteRail.appendChild(btn);
+      }
+    }
 
     const MATERIAL_THEME = {
       base: {
@@ -1650,6 +2087,7 @@
       });
       $btnGuide.setAttribute("aria-label", SpritedexI18n.t("guide"));
       $btnGuide.title = SpritedexI18n.t("guide");
+      applyRarityPadLabels();
       updateSharedBanner();
     }
 
@@ -1812,6 +2250,9 @@
         $filters.hidden = false;
         $filtersCompare.hidden = true;
         $filtersCompare.classList.add("hidden");
+        if ($filtersMaterial) $filtersMaterial.hidden = false;
+        if ($filtersRarity) $filtersRarity.hidden = false;
+        updateHeaderOffset();
         return;
       }
 
@@ -1830,6 +2271,9 @@
       $filters.hidden = true;
       $filtersCompare.hidden = false;
       $filtersCompare.classList.remove("hidden");
+      if ($filtersMaterial) $filtersMaterial.hidden = true;
+      if ($filtersRarity) $filtersRarity.hidden = true;
+      updateHeaderOffset();
     }
 
     function syncCompareUseMineInput() {
@@ -2340,6 +2784,13 @@
       return SpritedexI18n.materialName(item.materialId);
     }
 
+    function spriteOrderIndex(spriteId) {
+      const order = config?.meta?.spriteOrder;
+      if (!Array.isArray(order) || !order.length) return Number.MAX_SAFE_INTEGER;
+      const idx = order.indexOf(spriteId);
+      return idx === -1 ? Number.MAX_SAFE_INTEGER : idx;
+    }
+
     function groupCatalog(items) {
       const map = new Map();
       for (const item of items) {
@@ -2347,10 +2798,11 @@
         if (!map.has(key)) map.set(key, []);
         map.get(key).push(item);
       }
-      const locale = SpritedexI18n.getLocale() === "ru" ? "ru" : "en";
-      return [...map.entries()].sort((a, b) =>
-        displaySprite({ spriteId: a[0] }).localeCompare(displaySprite({ spriteId: b[0] }), locale)
-      );
+      return [...map.entries()].sort((a, b) => {
+        const orderDiff = spriteOrderIndex(a[0]) - spriteOrderIndex(b[0]);
+        if (orderDiff !== 0) return orderDiff;
+        return a[0].localeCompare(b[0]);
+      });
     }
 
     function matchesSearch(item) {
@@ -2456,6 +2908,11 @@
     function matchesRarity(item) {
       if (rarityFilter === "all") return true;
       return item.rarity === rarityFilter;
+    }
+
+    function matchesMaterial(item) {
+      if (materialFilter === "all") return true;
+      return item.materialId === materialFilter;
     }
 
     function computeSummonLoadout() {
@@ -2763,7 +3220,9 @@
       let visibleCount = 0;
 
       for (const [spriteId, sprites] of grouped) {
-        const visible = sprites.filter((s) => matchesSearch(s) && matchesFilter(s) && matchesRarity(s));
+        const visible = sprites.filter((s) =>
+          matchesSearch(s) && matchesFilter(s) && matchesRarity(s) && matchesMaterial(s)
+        );
         if (!visible.length) continue;
         visibleCount += visible.length;
 
@@ -2771,6 +3230,7 @@
         const allMastered = masteredInGroup === sprites.length;
         const section = document.createElement("section");
         section.className = `character-section${allMastered ? " all-mastered" : ""}`;
+        section.id = `sprite-${spriteId}`;
 
         const doneInGroup = sprites.filter((s) => collected.has(s.id)).length;
         const header = document.createElement("div");
@@ -2834,6 +3294,9 @@
         $app.appendChild(frag);
       }
 
+      lastGrouped = grouped;
+      updateSpriteRail(grouped);
+      updateHeaderOffset();
       updateProgress();
       if (compareMode) updateCompareBanner();
     }
@@ -2851,6 +3314,7 @@
         SpritedexI18n.createLanguageSwitcher(document.getElementById("lang-slot"));
         applyStaticI18n();
         catalog = buildCatalog(config);
+        buildMaterialFilters();
         const shared = parseShareFromUrl(catalog);
         if (shared) {
           collected = shared;
@@ -2877,23 +3341,23 @@
       const chip = e.target.closest(".chip");
       if (!chip || !chip.dataset.filter) return;
       filter = chip.dataset.filter;
-      document.querySelectorAll("#filters .chip").forEach((c) => {
-        c.classList.toggle("active", c.dataset.filter === filter);
-      });
+      syncFilterChips();
+      render();
+    });
+
+    $filtersMaterial?.addEventListener("click", (e) => {
+      const chip = e.target.closest(".mat-pad");
+      if (!chip || !chip.dataset.materialFilter) return;
+      materialFilter = chip.dataset.materialFilter;
+      syncFilterChips();
       render();
     });
 
     document.getElementById("filters-rarity").addEventListener("click", (e) => {
-      const chip = e.target.closest(".chip");
+      const chip = e.target.closest(".rarity-pad");
       if (!chip || !chip.dataset.rarityFilter) return;
       rarityFilter = chip.dataset.rarityFilter;
-      document.querySelectorAll("#filters-rarity .chip").forEach((c) => {
-        const active = c.dataset.rarityFilter === rarityFilter;
-        c.classList.toggle("active", active);
-        if (c.dataset.rarityFilter !== "all") {
-          c.dataset.rarity = c.dataset.rarityFilter;
-        }
-      });
+      syncFilterChips();
       render();
     });
 
@@ -2974,11 +3438,17 @@
     window.addEventListener("spritedex:localechange", () => {
       if (detailItem) openDetail(detailItem);
       if (!$guideOverlay.hidden) renderGuideContent();
+      buildMaterialFilters();
       applyStaticI18n();
       updateProgress();
       updateCompareBanner();
       render();
     });
+
+    window.addEventListener("resize", () => {
+      updateHeaderOffset();
+      if (lastGrouped.length) updateSpriteRail(lastGrouped);
+    }, { passive: true });
 
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {

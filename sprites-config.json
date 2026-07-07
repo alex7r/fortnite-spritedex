@@ -436,7 +436,27 @@
           "ru": "Только мифик-лут; без вариантов Gold/Gummy/Galaxy."
         }
       }
-    }
+    },
+    "spriteOrder": [
+      "water",
+      "earth",
+      "fire",
+      "fishy",
+      "duck",
+      "ghost",
+      "demon",
+      "king",
+      "aura",
+      "striker",
+      "punk",
+      "dream",
+      "boss",
+      "zero-point",
+      "burnt-peanut",
+      "grim",
+      "air",
+      "seven"
+    ]
   },
   "groups": [
     {
