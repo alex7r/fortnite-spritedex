@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "sourceDir": "sprites",
   "outputDir": "sprites_named",
   "defaultMaterial": "base",
@@ -115,6 +115,34 @@
       "demon": {
         "en": "Demon",
         "ru": "Демон"
+      },
+      "peely": {
+        "en": "Peeky Peely",
+        "ru": "Пики Пили"
+      },
+      "llama": {
+        "en": "Lootin' Llama",
+        "ru": "Лутин Лама"
+      },
+      "batman": {
+        "en": "Batman",
+        "ru": "Бэтмен"
+      },
+      "vini-jr": {
+        "en": "Vini Jr.",
+        "ru": "Вини Jr."
+      },
+      "pollo": {
+        "en": "Pollo",
+        "ru": "Полло"
+      },
+      "john-wick": {
+        "en": "John Wick",
+        "ru": "Джон Уик"
+      },
+      "ironmouse": {
+        "en": "Ironmouse",
+        "ru": "Айронмаус"
       }
     },
     "materials": {
@@ -180,26 +208,26 @@
       },
       "gold": {
         "bonus": {
-          "en": "3× bonus XP from eliminations",
-          "ru": "×3 бонусного XP за элиминации"
+          "en": "Bonus XP from eliminations",
+          "ru": "Бонусный XP за элиминации"
         }
       },
       "gummy": {
         "bonus": {
-          "en": "+10–20% Sprite Dust when extracting",
-          "ru": "+10–20% Sprite Dust при экстракции"
+          "en": "+10% Sprite Dust when extracting",
+          "ru": "+10% Sprite Dust при экстракции"
         }
       },
       "galaxy": {
         "bonus": {
-          "en": "+20–30% ammo when looting",
-          "ru": "+20–30% патронов при луте"
+          "en": "+20% ammo when looting",
+          "ru": "+20% патронов при луте"
         }
       },
       "holofoil": {
         "bonus": {
-          "en": "~30% chance for your squad to find rare Sprites in containers",
-          "ru": "~30% шанс, что сквад найдёт редкий спрайт в контейнерах"
+          "en": "Better squad odds to find rare sprites",
+          "ru": "Выше шанс сквада найти редкие спрайты"
         }
       },
       "gem": {
@@ -210,14 +238,14 @@
       },
       "cube": {
         "bonus": {
-          "en": "Unique Cube cosmetic (Dream & Punk only)",
-          "ru": "Уникальный Cube-вариант (только Dream и Punk)"
+          "en": "Overdrive while caught in the Storm",
+          "ru": "Overdrive, пока вы в шторме"
         }
       },
       "quack": {
         "bonus": {
-          "en": "Unique Quack cosmetic (Zero Point only)",
-          "ru": "Уникальный Quack-вариант (только Zero Point)"
+          "en": "Shares half its progress with other sprites in your match inventory (Mastery unlock)",
+          "ru": "Делится половиной прогресса с другими спрайтами в инвентаре (разблокировка Mastery)"
         }
       }
     },
@@ -230,8 +258,8 @@
           "ru": "Восстанавливает щиты вам и союзникам рядом, пока вы в воде."
         },
         "spawnHint": {
-          "en": "Sprite Chests and random loot.",
-          "ru": "Sprite Chest и случайный лут."
+          "en": "Spawns near water — lakes, rivers and the coastline.",
+          "ru": "Появляется у воды — озёра, реки и побережье."
         }
       },
       "earth": {
@@ -242,8 +270,8 @@
           "ru": "Выше шанс найти редкий лут при открытии сундуков."
         },
         "spawnHint": {
-          "en": "Starter choice or Sprite Chests.",
-          "ru": "Стартовый выбор или Sprite Chest."
+          "en": "Found around forests and wooded areas.",
+          "ru": "В лесах и зеленой местности."
         }
       },
       "fire": {
@@ -254,19 +282,19 @@
           "ru": "Огненный взрыв после достаточного урона по врагу."
         },
         "spawnHint": {
-          "en": "Starter choice or Sprite Chests.",
-          "ru": "Стартовый выбор или Sprite Chest."
+          "en": "Found around city / built-up POIs.",
+          "ru": "В городах и застроенных POI."
         }
       },
       "air": {
         "rarity": "rare",
         "ability": {
-          "en": "Increases sprint speed and jump height.",
-          "ru": "Увеличивает скорость бега и высоту прыжка."
+          "en": "Sprint faster, jump higher while sprinting, and take zero fall damage.",
+          "ru": "Быстрее спринт и выше прыжок на бегу; без урона от падения."
         },
         "spawnHint": {
-          "en": "Sprite Chests and random loot.",
-          "ru": "Sprite Chest и случайный лут."
+          "en": "Chests, Rare Chests and Sprite Chests across the map.",
+          "ru": "Сундуки, Rare Chest и Sprite Chest по карте."
         }
       },
       "fishy": {
@@ -277,8 +305,8 @@
           "ru": "Быстрее плаваете и получаете краткий буст скорости при уроне."
         },
         "spawnHint": {
-          "en": "Higher chance when fishing.",
-          "ru": "Повышенный шанс при рыбалке."
+          "en": "Found in chests across the map.",
+          "ru": "В сундуках по карте."
         }
       },
       "duck": {
@@ -289,8 +317,8 @@
           "ru": "Эмоции и Jam Tracks восстанавливают щиты."
         },
         "spawnHint": {
-          "en": "Sprite Chests and random loot.",
-          "ru": "Sprite Chest и случайный лут."
+          "en": "From Sprite Chests across the map.",
+          "ru": "Из Sprite Chest по карте."
         }
       },
       "ghost": {
@@ -313,8 +341,8 @@
           "ru": "Кирка наносит больше урона."
         },
         "spawnHint": {
-          "en": "Sprite Chests and random loot.",
-          "ru": "Sprite Chest и случайный лут."
+          "en": "From Sprite Chests across the map.",
+          "ru": "Из Sprite Chest по карте."
         }
       },
       "demon": {
@@ -325,8 +353,8 @@
           "ru": "Восстанавливает HP и щиты за элиминацию."
         },
         "spawnHint": {
-          "en": "Sprite Chests and random loot.",
-          "ru": "Sprite Chest и случайный лут."
+          "en": "From Sprite Chests across the map.",
+          "ru": "Из Sprite Chest по карте."
         }
       },
       "striker": {
@@ -349,32 +377,32 @@
           "ru": "Заряд Shock Rock после достаточного урона по врагам."
         },
         "spawnHint": {
-          "en": "Sprite Chests and random loot.",
-          "ru": "Sprite Chest и случайный лут."
+          "en": "Found in chests and Supply Drops across the map.",
+          "ru": "В сундуках и Supply Drop по карте."
         }
       },
       "dream": {
         "rarity": "legendary",
         "dropRate": 0.02436,
         "ability": {
-          "en": "Random item on each level-up; at max level drops Legendary loot and auto-extracts.",
-          "ru": "Случайный предмет за уровень; на 5 lvl — легендарный лут и авто-экстракция."
+          "en": "Grants a random item each level; legendary loot at max level.",
+          "ru": "Случайный предмет за уровень; на макс. уровне — легендарный лут."
         },
         "spawnHint": {
-          "en": "Rare Sprite Chests and loot. Cube variant is exclusive to Dream.",
-          "ru": "Редкие Sprite Chest и лут. Cube — только у Dream."
+          "en": "Chests only — a rarer spawn.",
+          "ru": "Только сундуки — более редкий спавн."
         }
       },
       "punk": {
         "rarity": "legendary",
         "dropRate": 0.02436,
         "ability": {
-          "en": "Random buffs while leveling; at max level grants unlimited ammo.",
-          "ru": "Случайные баффы при прокачке; на 5 lvl — бесконечные патроны."
+          "en": "Chance of infinite ammo — possibly nothing, or infinitely something.",
+          "ru": "Шанс бесконечных патронов — или ничего, или бесконечно чего-то."
         },
         "spawnHint": {
-          "en": "Rare Sprite Chests and loot. Cube variant is exclusive to Punk.",
-          "ru": "Редкие Sprite Chest и лут. Cube — только у Punk."
+          "en": "Chests only — a rarer spawn. Gem variant marked Soon on Sprite Locker.",
+          "ru": "Только сундуки — более редкий спавн. Gem на Sprite Locker пока Soon."
         }
       },
       "boss": {
@@ -396,8 +424,41 @@
           "ru": "Следы врагов видны всему скваду."
         },
         "spawnHint": {
-          "en": "Sprite Chests and random loot.",
-          "ru": "Sprite Chest и случайный лут."
+          "en": "Sprite Chests in unranked BR / Zero Build. A Sprite Locator helps.",
+          "ru": "Sprite Chest в unranked BR / Zero Build. Sprite Locator повышает шанс."
+        }
+      },
+      "peely": {
+        "rarity": "legendary",
+        "ability": {
+          "en": "Marks rare sprite variants and carriers nearby — but also reveals you.",
+          "ru": "Помечает редкие варианты спрайтов и носителей рядом — и вас тоже."
+        },
+        "spawnHint": {
+          "en": "High ground — mountainous parts of the map.",
+          "ru": "Высоты — гористые зоны карты."
+        }
+      },
+      "llama": {
+        "rarity": "legendary",
+        "ability": {
+          "en": "Chance of a weapon upgrade when you open an ammo box (scales with level).",
+          "ru": "Шанс апгрейда оружия при открытии ящика патронов (растёт с уровнем)."
+        },
+        "spawnHint": {
+          "en": "Relic Chests, plus Sprite/Rare Chests around Golden Grove and Calamari Canyon.",
+          "ru": "Relic Chest, а также Sprite/Rare Chest у Golden Grove и Calamari Canyon."
+        }
+      },
+      "batman": {
+        "rarity": "mythic",
+        "ability": {
+          "en": "Leap and deploy the Bat Cape to glide; find rare Sprites in chests more often.",
+          "ru": "Прыжок и Bat Cape для планирования; чаще редкие спрайты в сундуках."
+        },
+        "spawnHint": {
+          "en": "Beat DC beach NPCs / complete DC quests, or open Sprite Chests.",
+          "ru": "Победите DC NPC на пляже / квесты DC, либо Sprite Chest."
         }
       },
       "zero-point": {
@@ -408,8 +469,8 @@
           "ru": "Shield Bubble Jr. при использовании лечения на себе."
         },
         "spawnHint": {
-          "en": "Very rare loot; Gummy/Galaxy among the rarest. Quack variant is ultra-rare.",
-          "ru": "Очень редкий лут; Gummy/Galaxy — среди самых редких. Quack — ультра-редкий."
+          "en": "Vault / keycard Sprite Chests — among the rarest collectibles.",
+          "ru": "Vault / keycard Sprite Chest — одни из самых редких."
         }
       },
       "grim": {
@@ -420,20 +481,64 @@
           "ru": "Атакующие вас враги помечаются для сквада."
         },
         "spawnHint": {
-          "en": "Extremely rare random loot.",
-          "ru": "Крайне редкий случайный лут."
+          "en": "Found in chests across the map — extremely rare.",
+          "ru": "В сундуках по карте — крайне редкий."
         }
       },
       "burnt-peanut": {
         "rarity": "mythic",
         "dropRate": 0.015,
         "ability": {
-          "en": "Low chance for bonus loot from eliminations, including Mythic items.",
-          "ru": "Шанс бонусного лута за элиминации, включая мифик."
+          "en": "Chance for bonus loot from eliminations, including Mythic items when maxed.",
+          "ru": "Шанс бонусного лута за элиминации, включая мифик на макс. уровне."
         },
         "spawnHint": {
-          "en": "Mythic loot only; no Gold/Gummy/Galaxy variants.",
-          "ru": "Только мифик-лут; без вариантов Gold/Gummy/Galaxy."
+          "en": "Drops from Relic Chests (~1.5%). Normal form only — no variants.",
+          "ru": "Из Relic Chest (~1.5%). Только обычная форма — без вариантов."
+        }
+      },
+      "vini-jr": {
+        "rarity": "mythic",
+        "ability": {
+          "en": "Sprint to unlock a slidekick that damages enemies and boosts fire rate / reload.",
+          "ru": "Спринт открывает слайд-удар: урон и буст скорострельности / перезарядки."
+        },
+        "spawnHint": {
+          "en": "Sprite Chests and Rare Chests — Sprite Chests have the best odds. Normal only.",
+          "ru": "Sprite Chest и Rare Chest — лучше шанс в Sprite Chest. Только обычный."
+        }
+      },
+      "pollo": {
+        "rarity": "mythic",
+        "ability": {
+          "en": "After an elimination, you and your squad regenerate shields briefly.",
+          "ru": "После элиминации вы и сквад кратко регенерируете щиты."
+        },
+        "spawnHint": {
+          "en": "Sprite Chests and Rare Chests — Sprite Chests have the best odds. Normal only.",
+          "ru": "Sprite Chest и Rare Chest — лучше шанс в Sprite Chest. Только обычный."
+        }
+      },
+      "john-wick": {
+        "rarity": "mythic",
+        "ability": {
+          "en": "Reveals nearby enemies after you knock or eliminate a player.",
+          "ru": "Показывает врагов рядом после нокдауна или элиминации."
+        },
+        "spawnHint": {
+          "en": "The Simpsons Reload map (Springfield) — Relic/Sprite Chests, Portable Extractor, or a win. Normal only.",
+          "ru": "Карта The Simpsons Reload (Springfield) — Relic/Sprite Chest, Portable Extractor или победа. Только обычный."
+        }
+      },
+      "ironmouse": {
+        "rarity": "mythic",
+        "ability": {
+          "en": "Regenerates health when low and cloaks you with low gravity while healing.",
+          "ru": "Реген HP при низком здоровье + невидимость и низкая гравитация на время лечения."
+        },
+        "spawnHint": {
+          "en": "Relic Chests. A Sprite Locator improves Mythic odds. Normal only.",
+          "ru": "Relic Chest. Sprite Locator повышает шанс мифика. Только обычный."
         }
       }
     },
@@ -442,314 +547,230 @@
       "earth",
       "fire",
       "fishy",
+      "air",
       "duck",
       "ghost",
       "demon",
       "king",
       "aura",
       "striker",
-      "punk",
       "dream",
+      "punk",
       "boss",
+      "seven",
+      "peely",
+      "llama",
+      "batman",
+      "grim",
       "zero-point",
       "burnt-peanut",
-      "grim",
-      "air",
-      "seven"
+      "vini-jr",
+      "pollo",
+      "john-wick",
+      "ironmouse"
     ]
   },
   "groups": [
     {
-      "id": "group-01",
+      "id": "group-01-water",
       "spriteId": "water",
       "sprites": [
         {
           "id": "row01_col01",
-          "source": "row01_col01.png",
           "materialId": "base",
-          "output": "Water_Base.png"
+          "output": "Water_Base.png",
+          "source": "row01_col01.png"
         },
         {
           "id": "row01_col02",
-          "source": "row01_col02.png",
           "materialId": "gold",
-          "output": "Water_Gold.png"
+          "output": "Water_Gold.png",
+          "source": "row01_col02.png"
         },
         {
           "id": "row01_col03",
-          "source": "row01_col03.png",
           "materialId": "gummy",
-          "output": "Water_Gummy.png"
+          "output": "Water_Gummy.png",
+          "source": "row01_col03.png"
         },
         {
           "id": "row01_col04",
-          "source": "row01_col04.png",
           "materialId": "galaxy",
-          "output": "Water_Galaxy.png"
+          "output": "Water_Galaxy.png",
+          "source": "row01_col04.png"
         },
         {
           "id": "row01_col05",
-          "source": "row01_col05.png",
           "materialId": "holofoil",
-          "output": "Water_Holofoil.png"
+          "output": "Water_Holofoil.png",
+          "source": "row01_col05.png"
         },
         {
           "id": "row01_col06",
-          "source": "row01_col06.png",
           "materialId": "gem",
-          "output": "Water_Gem.png"
+          "output": "Water_Gem.png",
+          "source": "row01_col06.png"
+        },
+        {
+          "id": "water-quack",
+          "materialId": "quack",
+          "output": "Water_Quack.png"
         }
       ]
     },
     {
-      "id": "group-02",
+      "id": "group-02-earth",
       "spriteId": "earth",
       "sprites": [
         {
           "id": "row02_col01",
-          "source": "row02_col01.png",
           "materialId": "base",
-          "output": "Earth_Base.png"
+          "output": "Earth_Base.png",
+          "source": "row02_col01.png"
         },
         {
           "id": "row02_col02",
-          "source": "row02_col02.png",
           "materialId": "gold",
-          "output": "Earth_Gold.png"
+          "output": "Earth_Gold.png",
+          "source": "row02_col02.png"
         },
         {
           "id": "row02_col03",
-          "source": "row02_col03.png",
           "materialId": "gummy",
-          "output": "Earth_Gummy.png"
+          "output": "Earth_Gummy.png",
+          "source": "row02_col03.png"
         },
         {
           "id": "row02_col04",
-          "source": "row02_col04.png",
           "materialId": "galaxy",
-          "output": "Earth_Galaxy.png"
+          "output": "Earth_Galaxy.png",
+          "source": "row02_col04.png"
         },
         {
           "id": "row02_col05",
-          "source": "row02_col05.png",
           "materialId": "gem",
-          "output": "Earth_Gem.png"
+          "output": "Earth_Gem.png",
+          "source": "row02_col05.png"
+        },
+        {
+          "id": "earth-cube",
+          "materialId": "cube",
+          "output": "Earth_Cube.png"
+        },
+        {
+          "id": "earth-quack",
+          "materialId": "quack",
+          "output": "Earth_Quack.png"
         }
       ]
     },
     {
-      "id": "group-03",
+      "id": "group-03-fire",
       "spriteId": "fire",
       "sprites": [
         {
           "id": "row03_col01",
-          "source": "row03_col01.png",
           "materialId": "base",
-          "output": "Fire_Base.png"
+          "output": "Fire_Base.png",
+          "source": "row03_col01.png"
         },
         {
           "id": "row03_col02",
-          "source": "row03_col02.png",
           "materialId": "gold",
-          "output": "Fire_Gold.png"
+          "output": "Fire_Gold.png",
+          "source": "row03_col02.png"
         },
         {
           "id": "row03_col03",
-          "source": "row03_col03.png",
           "materialId": "gummy",
-          "output": "Fire_Gummy.png"
+          "output": "Fire_Gummy.png",
+          "source": "row03_col03.png"
         },
         {
           "id": "row03_col04",
-          "source": "row03_col04.png",
           "materialId": "galaxy",
-          "output": "Fire_Galaxy.png"
+          "output": "Fire_Galaxy.png",
+          "source": "row03_col04.png"
         },
         {
           "id": "row03_col05",
-          "source": "row03_col05.png",
           "materialId": "holofoil",
-          "output": "Fire_Holofoil.png"
-        }
-      ]
-    },
-    {
-      "id": "group-04",
-      "spriteId": "duck",
-      "sprites": [
-        {
-          "id": "row04_col01",
-          "source": "row04_col01.png",
-          "materialId": "base",
-          "output": "Duck_Base.png"
+          "output": "Fire_Holofoil.png",
+          "source": "row03_col05.png"
         },
         {
-          "id": "row04_col02",
-          "source": "row04_col02.png",
-          "materialId": "gold",
-          "output": "Duck_Gold.png"
+          "id": "fire-cube",
+          "materialId": "cube",
+          "output": "Fire_Cube.png"
         },
         {
-          "id": "row04_col03",
-          "source": "row04_col03.png",
-          "materialId": "gummy",
-          "output": "Duck_Gummy.png"
-        },
-        {
-          "id": "row04_col04",
-          "source": "row04_col04.png",
-          "materialId": "galaxy",
-          "output": "Duck_Galaxy.png"
-        },
-        {
-          "id": "row04_col06",
-          "source": "row04_col06.png",
-          "materialId": "gem",
-          "output": "Duck_Gem.png"
-        }
-      ]
-    },
-    {
-      "id": "group-05",
-      "spriteId": "ghost",
-      "sprites": [
-        {
-          "id": "row05_col01",
-          "source": "row05_col01.png",
-          "materialId": "base",
-          "output": "Ghost_Base.png"
-        },
-        {
-          "id": "row05_col02",
-          "source": "row05_col02.png",
-          "materialId": "gold",
-          "output": "Ghost_Gold.png"
-        },
-        {
-          "id": "row05_col03",
-          "source": "row05_col03.png",
-          "materialId": "gummy",
-          "output": "Ghost_Gummy.png"
-        },
-        {
-          "id": "row05_col04",
-          "source": "row05_col04.png",
-          "materialId": "galaxy",
-          "output": "Ghost_Galaxy.png"
-        },
-        {
-          "id": "row05_col05",
-          "source": "row05_col05.png",
-          "materialId": "holofoil",
-          "output": "Ghost_Holofoil.png"
-        }
-      ]
-    },
-    {
-      "id": "group-06",
-      "spriteId": "king",
-      "sprites": [
-        {
-          "id": "row06_col01",
-          "source": "row06_col01.png",
-          "materialId": "base",
-          "output": "King_Base.png"
-        },
-        {
-          "id": "row06_col02",
-          "source": "row06_col02.png",
-          "materialId": "gold",
-          "output": "King_Gold.png"
-        },
-        {
-          "id": "row06_col03",
-          "source": "row06_col03.png",
-          "materialId": "gummy",
-          "output": "King_Gummy.png"
-        },
-        {
-          "id": "row06_col04",
-          "source": "row06_col04.png",
-          "materialId": "galaxy",
-          "output": "King_Galaxy.png"
-        },
-        {
-          "id": "row06_col05",
-          "source": "row06_col05.png",
-          "materialId": "holofoil",
-          "output": "King_Holofoil.png"
-        }
-      ]
-    },
-    {
-      "id": "group-07",
-      "spriteId": "zero-point",
-      "sprites": [
-        {
-          "id": "row07_col01",
-          "source": "row07_col01.png",
-          "materialId": "base",
-          "output": "ZeroPoint_Base.png"
-        },
-        {
-          "id": "row07_col02",
-          "source": "row07_col02.png",
-          "materialId": "gold",
-          "output": "ZeroPoint_Gold.png"
-        },
-        {
-          "id": "row07_col03",
-          "source": "row07_col03.png",
-          "materialId": "gummy",
-          "output": "ZeroPoint_Gummy.png"
-        },
-        {
-          "id": "row07_col04",
-          "source": "row07_col04.png",
-          "materialId": "galaxy",
-          "output": "ZeroPoint_Galaxy.png"
-        },
-        {
-          "id": "row07_col06",
-          "source": "row07_col06.png",
-          "materialId": "gem",
-          "output": "ZeroPoint_Gem.png"
-        },
-        {
-          "id": "row07_col11",
-          "source": "row07_col11.png",
+          "id": "fire-quack",
           "materialId": "quack",
-          "output": "ZeroPoint_Quack.png"
+          "output": "Fire_Quack.png"
         }
       ]
     },
     {
-      "id": "group-mqz37r2e",
+      "id": "group-04-fishy",
+      "spriteId": "fishy",
+      "sprites": [
+        {
+          "id": "row01_col12",
+          "materialId": "base",
+          "output": "Fishy_Base.png",
+          "source": "row01_col12.png"
+        },
+        {
+          "id": "row01_col13",
+          "materialId": "gold",
+          "output": "Fishy_Gold.png",
+          "source": "row01_col13.png"
+        },
+        {
+          "id": "fishy-gummy",
+          "materialId": "gummy",
+          "output": "Fishy_Gummy.png"
+        },
+        {
+          "id": "row01_col14",
+          "materialId": "galaxy",
+          "output": "Fishy_Galaxy.png",
+          "source": "row01_col14.png"
+        },
+        {
+          "id": "fishy-cube",
+          "materialId": "cube",
+          "output": "Fishy_Cube.png"
+        }
+      ]
+    },
+    {
+      "id": "group-05-air",
       "spriteId": "air",
       "sprites": [
         {
           "id": "row01_col07",
-          "source": "row01_col07.png",
           "materialId": "base",
-          "output": "Air_Base.png"
+          "output": "Air_Base.png",
+          "source": "row01_col07.png"
         },
         {
           "id": "row01_col08",
-          "source": "row01_col08.png",
           "materialId": "gold",
-          "output": "Air_Gold.png"
+          "output": "Air_Gold.png",
+          "source": "row01_col08.png"
         },
         {
           "id": "row01_col09",
-          "source": "row01_col09.png",
           "materialId": "gummy",
-          "output": "Air_Gummy.png"
+          "output": "Air_Gummy.png",
+          "source": "row01_col09.png"
         },
         {
           "id": "row01_col10",
-          "source": "row01_col10.png",
           "materialId": "galaxy",
-          "output": "Air_Galaxy.png"
+          "output": "Air_Galaxy.png",
+          "source": "row01_col10.png"
         },
         {
           "id": "air-holofoil",
@@ -759,151 +780,361 @@
       ]
     },
     {
-      "id": "group-mqz38mfk",
-      "spriteId": "fishy",
+      "id": "group-06-duck",
+      "spriteId": "duck",
       "sprites": [
         {
-          "id": "row01_col12",
-          "source": "row01_col12.png",
+          "id": "row04_col01",
           "materialId": "base",
-          "output": "Fishy_Base.png"
+          "output": "Duck_Base.png",
+          "source": "row04_col01.png"
         },
         {
-          "id": "row01_col13",
-          "source": "row01_col13.png",
+          "id": "row04_col02",
           "materialId": "gold",
-          "output": "Fishy_Gold.png"
+          "output": "Duck_Gold.png",
+          "source": "row04_col02.png"
         },
         {
-          "id": "fishy-gummy",
+          "id": "row04_col03",
           "materialId": "gummy",
-          "output": "Fishy_Gummy.png"
+          "output": "Duck_Gummy.png",
+          "source": "row04_col03.png"
         },
         {
-          "id": "row01_col14",
-          "source": "row01_col14.png",
+          "id": "row04_col04",
           "materialId": "galaxy",
-          "output": "Fishy_Galaxy.png"
+          "output": "Duck_Galaxy.png",
+          "source": "row04_col04.png"
+        },
+        {
+          "id": "row04_col06",
+          "materialId": "gem",
+          "output": "Duck_Gem.png",
+          "source": "row04_col06.png"
         }
       ]
     },
     {
-      "id": "group-mqz39sxq",
+      "id": "group-07-ghost",
+      "spriteId": "ghost",
+      "sprites": [
+        {
+          "id": "row05_col01",
+          "materialId": "base",
+          "output": "Ghost_Base.png",
+          "source": "row05_col01.png"
+        },
+        {
+          "id": "row05_col02",
+          "materialId": "gold",
+          "output": "Ghost_Gold.png",
+          "source": "row05_col02.png"
+        },
+        {
+          "id": "row05_col03",
+          "materialId": "gummy",
+          "output": "Ghost_Gummy.png",
+          "source": "row05_col03.png"
+        },
+        {
+          "id": "row05_col04",
+          "materialId": "galaxy",
+          "output": "Ghost_Galaxy.png",
+          "source": "row05_col04.png"
+        },
+        {
+          "id": "row05_col05",
+          "materialId": "holofoil",
+          "output": "Ghost_Holofoil.png",
+          "source": "row05_col05.png"
+        }
+      ]
+    },
+    {
+      "id": "group-08-demon",
+      "spriteId": "demon",
+      "sprites": [
+        {
+          "id": "row04_col07",
+          "materialId": "base",
+          "output": "Demon_Base.png",
+          "source": "row04_col07.png"
+        },
+        {
+          "id": "row04_col08",
+          "materialId": "gold",
+          "output": "Demon_Gold.png",
+          "source": "row04_col08.png"
+        },
+        {
+          "id": "row04_col09",
+          "materialId": "gummy",
+          "output": "Demon_Gummy.png",
+          "source": "row04_col09.png"
+        },
+        {
+          "id": "row04_col10",
+          "materialId": "galaxy",
+          "output": "Demon_Galaxy.png",
+          "source": "row04_col10.png"
+        },
+        {
+          "id": "row04_col11",
+          "materialId": "gem",
+          "output": "Demon_Gem.png",
+          "source": "row04_col11.png"
+        }
+      ]
+    },
+    {
+      "id": "group-09-king",
+      "spriteId": "king",
+      "sprites": [
+        {
+          "id": "row06_col01",
+          "materialId": "base",
+          "output": "King_Base.png",
+          "source": "row06_col01.png"
+        },
+        {
+          "id": "row06_col02",
+          "materialId": "gold",
+          "output": "King_Gold.png",
+          "source": "row06_col02.png"
+        },
+        {
+          "id": "row06_col03",
+          "materialId": "gummy",
+          "output": "King_Gummy.png",
+          "source": "row06_col03.png"
+        },
+        {
+          "id": "row06_col04",
+          "materialId": "galaxy",
+          "output": "King_Galaxy.png",
+          "source": "row06_col04.png"
+        },
+        {
+          "id": "row06_col05",
+          "materialId": "holofoil",
+          "output": "King_Holofoil.png",
+          "source": "row06_col05.png"
+        }
+      ]
+    },
+    {
+      "id": "group-10-aura",
+      "spriteId": "aura",
+      "sprites": [
+        {
+          "id": "row06_col06",
+          "materialId": "base",
+          "output": "Aura_Base.png",
+          "source": "row06_col06.png"
+        },
+        {
+          "id": "row06_col07",
+          "materialId": "gold",
+          "output": "Aura_Gold.png",
+          "source": "row06_col07.png"
+        },
+        {
+          "id": "row06_col08",
+          "materialId": "gummy",
+          "output": "Aura_Gummy.png",
+          "source": "row06_col08.png"
+        },
+        {
+          "id": "row06_col09",
+          "materialId": "galaxy",
+          "output": "Aura_Galaxy.png",
+          "source": "row06_col09.png"
+        },
+        {
+          "id": "row06_col10",
+          "materialId": "gem",
+          "output": "Aura_Gem.png",
+          "source": "row06_col10.png"
+        }
+      ]
+    },
+    {
+      "id": "group-11-striker",
+      "spriteId": "striker",
+      "sprites": [
+        {
+          "id": "row05_col10",
+          "materialId": "base",
+          "output": "Striker_Base.png",
+          "source": "row05_col10.png"
+        },
+        {
+          "id": "row05_col11",
+          "materialId": "gold",
+          "output": "Striker_Gold.png",
+          "source": "row05_col11.png"
+        },
+        {
+          "id": "row05_col12",
+          "materialId": "gummy",
+          "output": "Striker_Gummy.png",
+          "source": "row05_col12.png"
+        },
+        {
+          "id": "row05_col13",
+          "materialId": "galaxy",
+          "output": "Striker_Galaxy.png",
+          "source": "row05_col13.png"
+        },
+        {
+          "id": "row05_col14",
+          "materialId": "holofoil",
+          "output": "Striker_Holofoil.png",
+          "source": "row05_col14.png"
+        }
+      ]
+    },
+    {
+      "id": "group-12-dream",
       "spriteId": "dream",
       "sprites": [
         {
           "id": "row02_col06",
-          "source": "row02_col06.png",
           "materialId": "base",
-          "output": "Dream_Base.png"
+          "output": "Dream_Base.png",
+          "source": "row02_col06.png"
         },
         {
           "id": "row02_col07",
-          "source": "row02_col07.png",
           "materialId": "gold",
-          "output": "Dream_Gold.png"
+          "output": "Dream_Gold.png",
+          "source": "row02_col07.png"
         },
         {
           "id": "row02_col08",
-          "source": "row02_col08.png",
           "materialId": "gummy",
-          "output": "Dream_Gummy.png"
+          "output": "Dream_Gummy.png",
+          "source": "row02_col08.png"
         },
         {
           "id": "row02_col09",
-          "source": "row02_col09.png",
           "materialId": "galaxy",
-          "output": "Dream_Galaxy.png"
+          "output": "Dream_Galaxy.png",
+          "source": "row02_col09.png"
         },
         {
           "id": "row02_col12",
-          "source": "row02_col12.png",
           "materialId": "cube",
-          "output": "Dream_Cube.png"
+          "output": "Dream_Cube.png",
+          "source": "row02_col12.png"
         }
       ]
     },
     {
-      "id": "group-mqz3ag0q",
-      "spriteId": "burnt-peanut",
-      "sprites": [
-        {
-          "id": "row02_col11",
-          "source": "row02_col11.png",
-          "materialId": "base",
-          "output": "BurntPeanut_Base.png"
-        }
-      ]
-    },
-    {
-      "id": "group-mqz3bjv9",
+      "id": "group-13-punk",
       "spriteId": "punk",
       "sprites": [
         {
           "id": "row03_col06",
-          "source": "row03_col06.png",
           "materialId": "base",
-          "output": "Punk_Base.png"
+          "output": "Punk_Base.png",
+          "source": "row03_col06.png"
         },
         {
           "id": "row03_col07",
-          "source": "row03_col07.png",
           "materialId": "gold",
-          "output": "Punk_Gold.png"
-        },
-        {
-          "id": "row03_col09",
-          "source": "row03_col09.png",
-          "materialId": "galaxy",
-          "output": "Punk_Galaxy.png"
+          "output": "Punk_Gold.png",
+          "source": "row03_col07.png"
         },
         {
           "id": "row03_col08",
-          "source": "row03_col08.png",
           "materialId": "gummy",
-          "output": "Punk_Gummy.png"
+          "output": "Punk_Gummy.png",
+          "source": "row03_col08.png"
+        },
+        {
+          "id": "row03_col09",
+          "materialId": "galaxy",
+          "output": "Punk_Galaxy.png",
+          "source": "row03_col09.png"
         },
         {
           "id": "row03_col10",
-          "source": "row03_col10.png",
           "materialId": "gem",
-          "output": "Punk_Gem.png"
+          "output": "Punk_Gem.png",
+          "source": "row03_col10.png"
         },
         {
           "id": "row03_col11",
-          "source": "row03_col11.png",
           "materialId": "cube",
-          "output": "Punk_Cube.png"
+          "output": "Punk_Cube.png",
+          "source": "row03_col11.png"
         }
       ]
     },
     {
-      "id": "group-mqz3fy5d",
+      "id": "group-14-boss",
+      "spriteId": "boss",
+      "sprites": [
+        {
+          "id": "row05_col06",
+          "materialId": "base",
+          "output": "Boss_Base.png",
+          "source": "row05_col06.png"
+        },
+        {
+          "id": "row05_col07",
+          "materialId": "gold",
+          "output": "Boss_Gold.png",
+          "source": "row05_col07.png"
+        },
+        {
+          "id": "row05_col08",
+          "materialId": "gummy",
+          "output": "Boss_Gummy.png",
+          "source": "row05_col08.png"
+        },
+        {
+          "id": "row05_col09",
+          "materialId": "galaxy",
+          "output": "Boss_Galaxy.png",
+          "source": "row05_col09.png"
+        },
+        {
+          "id": "boss-cube",
+          "materialId": "cube",
+          "output": "Boss_Cube.png"
+        }
+      ]
+    },
+    {
+      "id": "group-15-seven",
       "spriteId": "seven",
       "sprites": [
         {
           "id": "row07_col07",
-          "source": "row07_col07.png",
           "materialId": "base",
-          "output": "Seven_Base.png"
+          "output": "Seven_Base.png",
+          "source": "row07_col07.png"
         },
         {
           "id": "row07_col08",
-          "source": "row07_col08.png",
           "materialId": "gold",
-          "output": "Seven_Gold.png"
+          "output": "Seven_Gold.png",
+          "source": "row07_col08.png"
         },
         {
           "id": "row07_col09",
-          "source": "row07_col09.png",
           "materialId": "gummy",
-          "output": "Seven_Gummy.png"
+          "output": "Seven_Gummy.png",
+          "source": "row07_col09.png"
         },
         {
           "id": "row07_col10",
-          "source": "row07_col10.png",
           "materialId": "galaxy",
-          "output": "Seven_Galaxy.png"
+          "output": "Seven_Galaxy.png",
+          "source": "row07_col10.png"
         },
         {
           "id": "seven-holofoil",
@@ -913,175 +1144,258 @@
       ]
     },
     {
-      "id": "group-mqz3gb7o",
-      "spriteId": "aura",
+      "id": "group-16-peely",
+      "spriteId": "peely",
       "sprites": [
         {
-          "id": "row06_col06",
-          "source": "row06_col06.png",
+          "id": "peely-base",
           "materialId": "base",
-          "output": "Aura_Base.png"
+          "output": "PeekyPeely_Base.png"
         },
         {
-          "id": "row06_col07",
-          "source": "row06_col07.png",
+          "id": "peely-gold",
           "materialId": "gold",
-          "output": "Aura_Gold.png"
+          "output": "PeekyPeely_Gold.png"
         },
         {
-          "id": "row06_col08",
-          "source": "row06_col08.png",
+          "id": "peely-gummy",
           "materialId": "gummy",
-          "output": "Aura_Gummy.png"
+          "output": "PeekyPeely_Gummy.png"
         },
         {
-          "id": "row06_col09",
-          "source": "row06_col09.png",
+          "id": "peely-galaxy",
           "materialId": "galaxy",
-          "output": "Aura_Galaxy.png"
+          "output": "PeekyPeely_Galaxy.png"
         },
         {
-          "id": "row06_col10",
-          "source": "row06_col10.png",
-          "materialId": "gem",
-          "output": "Aura_Gem.png"
-        }
-      ]
-    },
-    {
-      "id": "group-mqz3gwlg",
-      "spriteId": "boss",
-      "sprites": [
-        {
-          "id": "row05_col06",
-          "source": "row05_col06.png",
-          "materialId": "base",
-          "output": "Boss_Base.png"
-        },
-        {
-          "id": "row05_col07",
-          "source": "row05_col07.png",
-          "materialId": "gold",
-          "output": "Boss_Gold.png"
-        },
-        {
-          "id": "row05_col08",
-          "source": "row05_col08.png",
-          "materialId": "gummy",
-          "output": "Boss_Gummy.png"
-        },
-        {
-          "id": "row05_col09",
-          "source": "row05_col09.png",
-          "materialId": "galaxy",
-          "output": "Boss_Galaxy.png"
-        }
-      ]
-    },
-    {
-      "id": "group-mqz3hc53",
-      "spriteId": "striker",
-      "sprites": [
-        {
-          "id": "row05_col10",
-          "source": "row05_col10.png",
-          "materialId": "base",
-          "output": "Striker_Base.png"
-        },
-        {
-          "id": "row05_col11",
-          "source": "row05_col11.png",
-          "materialId": "gold",
-          "output": "Striker_Gold.png"
-        },
-        {
-          "id": "row05_col12",
-          "source": "row05_col12.png",
-          "materialId": "gummy",
-          "output": "Striker_Gummy.png"
-        },
-        {
-          "id": "row05_col13",
-          "source": "row05_col13.png",
-          "materialId": "galaxy",
-          "output": "Striker_Galaxy.png"
-        },
-        {
-          "id": "row05_col14",
-          "source": "row05_col14.png",
+          "id": "peely-holofoil",
           "materialId": "holofoil",
-          "output": "Striker_Holofoil.png"
+          "output": "PeekyPeely_Holofoil.png"
         }
       ]
     },
     {
-      "id": "group-mqz3htul",
+      "id": "group-17-llama",
+      "spriteId": "llama",
+      "sprites": [
+        {
+          "id": "llama-base",
+          "materialId": "base",
+          "output": "LootinLlama_Base.png"
+        },
+        {
+          "id": "llama-gold",
+          "materialId": "gold",
+          "output": "LootinLlama_Gold.png"
+        },
+        {
+          "id": "llama-gummy",
+          "materialId": "gummy",
+          "output": "LootinLlama_Gummy.png"
+        },
+        {
+          "id": "llama-galaxy",
+          "materialId": "galaxy",
+          "output": "LootinLlama_Galaxy.png"
+        },
+        {
+          "id": "llama-gem",
+          "materialId": "gem",
+          "output": "LootinLlama_Gem.png"
+        }
+      ]
+    },
+    {
+      "id": "group-18-batman",
+      "spriteId": "batman",
+      "sprites": [
+        {
+          "id": "batman-base",
+          "materialId": "base",
+          "output": "Batman_Base.png"
+        },
+        {
+          "id": "batman-gold",
+          "materialId": "gold",
+          "output": "Batman_Gold.png"
+        },
+        {
+          "id": "batman-gummy",
+          "materialId": "gummy",
+          "output": "Batman_Gummy.png"
+        },
+        {
+          "id": "batman-galaxy",
+          "materialId": "galaxy",
+          "output": "Batman_Galaxy.png"
+        },
+        {
+          "id": "batman-holofoil",
+          "materialId": "holofoil",
+          "output": "Batman_Holofoil.png"
+        },
+        {
+          "id": "batman-cube",
+          "materialId": "cube",
+          "output": "Batman_Cube.png"
+        }
+      ]
+    },
+    {
+      "id": "group-19-grim",
       "spriteId": "grim",
       "sprites": [
         {
           "id": "row04_col12",
-          "source": "row04_col12.png",
           "materialId": "base",
-          "output": "Grim_Base.png"
+          "output": "Grim_Base.png",
+          "source": "row04_col12.png"
         },
         {
           "id": "row04_col13",
-          "source": "row04_col13.png",
           "materialId": "gold",
-          "output": "Grim_Gold.png"
+          "output": "Grim_Gold.png",
+          "source": "row04_col13.png"
         },
         {
           "id": "row04_col14",
-          "source": "row04_col14.png",
           "materialId": "gummy",
-          "output": "Grim_Gummy.png"
+          "output": "Grim_Gummy.png",
+          "source": "row04_col14.png"
         },
         {
           "id": "row04_col15",
-          "source": "row04_col15.png",
           "materialId": "galaxy",
-          "output": "Grim_Galaxy.png"
+          "output": "Grim_Galaxy.png",
+          "source": "row04_col15.png"
+        },
+        {
+          "id": "grim-holofoil",
+          "materialId": "holofoil",
+          "output": "Grim_Holofoil.png"
+        },
+        {
+          "id": "grim-gem",
+          "materialId": "gem",
+          "output": "Grim_Gem.png"
+        },
+        {
+          "id": "grim-cube",
+          "materialId": "cube",
+          "output": "Grim_Cube.png"
         }
       ]
     },
     {
-      "id": "group-mqz3ib7v",
-      "spriteId": "demon",
+      "id": "group-20-zero-point",
+      "spriteId": "zero-point",
       "sprites": [
         {
-          "id": "row04_col07",
-          "source": "row04_col07.png",
+          "id": "row07_col01",
           "materialId": "base",
-          "output": "Demon_Base.png"
+          "output": "ZeroPoint_Base.png",
+          "source": "row07_col01.png"
         },
         {
-          "id": "row04_col08",
-          "source": "row04_col08.png",
+          "id": "row07_col02",
           "materialId": "gold",
-          "output": "Demon_Gold.png"
+          "output": "ZeroPoint_Gold.png",
+          "source": "row07_col02.png"
         },
         {
-          "id": "row04_col09",
-          "source": "row04_col09.png",
+          "id": "row07_col03",
           "materialId": "gummy",
-          "output": "Demon_Gummy.png"
+          "output": "ZeroPoint_Gummy.png",
+          "source": "row07_col03.png"
         },
         {
-          "id": "row04_col10",
-          "source": "row04_col10.png",
+          "id": "row07_col04",
           "materialId": "galaxy",
-          "output": "Demon_Galaxy.png"
+          "output": "ZeroPoint_Galaxy.png",
+          "source": "row07_col04.png"
         },
         {
-          "id": "row04_col11",
-          "source": "row04_col11.png",
+          "id": "zero-point-holofoil",
+          "materialId": "holofoil",
+          "output": "ZeroPoint_Holofoil.png"
+        },
+        {
+          "id": "row07_col06",
           "materialId": "gem",
-          "output": "Demon_Gem.png"
+          "output": "ZeroPoint_Gem.png",
+          "source": "row07_col06.png"
+        },
+        {
+          "id": "zero-point-cube",
+          "materialId": "cube",
+          "output": "ZeroPoint_Cube.png"
+        },
+        {
+          "id": "row07_col11",
+          "materialId": "quack",
+          "output": "ZeroPoint_Quack.png",
+          "source": "row07_col11.png"
+        }
+      ]
+    },
+    {
+      "id": "group-21-burnt-peanut",
+      "spriteId": "burnt-peanut",
+      "sprites": [
+        {
+          "id": "row02_col11",
+          "materialId": "base",
+          "output": "BurntPeanut_Base.png",
+          "source": "row02_col11.png"
+        }
+      ]
+    },
+    {
+      "id": "group-22-vini-jr",
+      "spriteId": "vini-jr",
+      "sprites": [
+        {
+          "id": "vini-jr-base",
+          "materialId": "base",
+          "output": "ViniJr_Base.png"
+        }
+      ]
+    },
+    {
+      "id": "group-23-pollo",
+      "spriteId": "pollo",
+      "sprites": [
+        {
+          "id": "pollo-base",
+          "materialId": "base",
+          "output": "Pollo_Base.png"
+        }
+      ]
+    },
+    {
+      "id": "group-24-john-wick",
+      "spriteId": "john-wick",
+      "sprites": [
+        {
+          "id": "john-wick-base",
+          "materialId": "base",
+          "output": "JohnWick_Base.png"
+        }
+      ]
+    },
+    {
+      "id": "group-25-ironmouse",
+      "spriteId": "ironmouse",
+      "sprites": [
+        {
+          "id": "ironmouse-base",
+          "materialId": "base",
+          "output": "Ironmouse_Base.png"
         }
       ]
     }
   ],
-  "updatedAt": "2026-07-02T10:24:51.944814+00:00",
+  "updatedAt": "2026-08-12T14:47:24.239643+00:00",
   "catalog": [
     {
       "id": "row01_col01",
@@ -1092,7 +1406,7 @@
       "source": "sprites/row01_col01.png",
       "output": "sprites_named/Water_Base.png",
       "filename": "Water_Base.png",
-      "group_id": "group-01"
+      "group_id": "group-01-water"
     },
     {
       "id": "row01_col02",
@@ -1103,7 +1417,7 @@
       "source": "sprites/row01_col02.png",
       "output": "sprites_named/Water_Gold.png",
       "filename": "Water_Gold.png",
-      "group_id": "group-01"
+      "group_id": "group-01-water"
     },
     {
       "id": "row01_col03",
@@ -1114,7 +1428,7 @@
       "source": "sprites/row01_col03.png",
       "output": "sprites_named/Water_Gummy.png",
       "filename": "Water_Gummy.png",
-      "group_id": "group-01"
+      "group_id": "group-01-water"
     },
     {
       "id": "row01_col04",
@@ -1125,7 +1439,7 @@
       "source": "sprites/row01_col04.png",
       "output": "sprites_named/Water_Galaxy.png",
       "filename": "Water_Galaxy.png",
-      "group_id": "group-01"
+      "group_id": "group-01-water"
     },
     {
       "id": "row01_col05",
@@ -1136,7 +1450,7 @@
       "source": "sprites/row01_col05.png",
       "output": "sprites_named/Water_Holofoil.png",
       "filename": "Water_Holofoil.png",
-      "group_id": "group-01"
+      "group_id": "group-01-water"
     },
     {
       "id": "row01_col06",
@@ -1147,7 +1461,18 @@
       "source": "sprites/row01_col06.png",
       "output": "sprites_named/Water_Gem.png",
       "filename": "Water_Gem.png",
-      "group_id": "group-01"
+      "group_id": "group-01-water"
+    },
+    {
+      "id": "water-quack",
+      "spriteId": "water",
+      "sprite": "Water",
+      "materialId": "quack",
+      "material": "Quack",
+      "source": null,
+      "output": "sprites_named/Water_Quack.png",
+      "filename": "Water_Quack.png",
+      "group_id": "group-01-water"
     },
     {
       "id": "row02_col01",
@@ -1158,7 +1483,7 @@
       "source": "sprites/row02_col01.png",
       "output": "sprites_named/Earth_Base.png",
       "filename": "Earth_Base.png",
-      "group_id": "group-02"
+      "group_id": "group-02-earth"
     },
     {
       "id": "row02_col02",
@@ -1169,7 +1494,7 @@
       "source": "sprites/row02_col02.png",
       "output": "sprites_named/Earth_Gold.png",
       "filename": "Earth_Gold.png",
-      "group_id": "group-02"
+      "group_id": "group-02-earth"
     },
     {
       "id": "row02_col03",
@@ -1180,7 +1505,7 @@
       "source": "sprites/row02_col03.png",
       "output": "sprites_named/Earth_Gummy.png",
       "filename": "Earth_Gummy.png",
-      "group_id": "group-02"
+      "group_id": "group-02-earth"
     },
     {
       "id": "row02_col04",
@@ -1191,7 +1516,7 @@
       "source": "sprites/row02_col04.png",
       "output": "sprites_named/Earth_Galaxy.png",
       "filename": "Earth_Galaxy.png",
-      "group_id": "group-02"
+      "group_id": "group-02-earth"
     },
     {
       "id": "row02_col05",
@@ -1202,7 +1527,29 @@
       "source": "sprites/row02_col05.png",
       "output": "sprites_named/Earth_Gem.png",
       "filename": "Earth_Gem.png",
-      "group_id": "group-02"
+      "group_id": "group-02-earth"
+    },
+    {
+      "id": "earth-cube",
+      "spriteId": "earth",
+      "sprite": "Earth",
+      "materialId": "cube",
+      "material": "Cube",
+      "source": null,
+      "output": "sprites_named/Earth_Cube.png",
+      "filename": "Earth_Cube.png",
+      "group_id": "group-02-earth"
+    },
+    {
+      "id": "earth-quack",
+      "spriteId": "earth",
+      "sprite": "Earth",
+      "materialId": "quack",
+      "material": "Quack",
+      "source": null,
+      "output": "sprites_named/Earth_Quack.png",
+      "filename": "Earth_Quack.png",
+      "group_id": "group-02-earth"
     },
     {
       "id": "row03_col01",
@@ -1213,7 +1560,7 @@
       "source": "sprites/row03_col01.png",
       "output": "sprites_named/Fire_Base.png",
       "filename": "Fire_Base.png",
-      "group_id": "group-03"
+      "group_id": "group-03-fire"
     },
     {
       "id": "row03_col02",
@@ -1224,7 +1571,7 @@
       "source": "sprites/row03_col02.png",
       "output": "sprites_named/Fire_Gold.png",
       "filename": "Fire_Gold.png",
-      "group_id": "group-03"
+      "group_id": "group-03-fire"
     },
     {
       "id": "row03_col03",
@@ -1235,7 +1582,7 @@
       "source": "sprites/row03_col03.png",
       "output": "sprites_named/Fire_Gummy.png",
       "filename": "Fire_Gummy.png",
-      "group_id": "group-03"
+      "group_id": "group-03-fire"
     },
     {
       "id": "row03_col04",
@@ -1246,7 +1593,7 @@
       "source": "sprites/row03_col04.png",
       "output": "sprites_named/Fire_Galaxy.png",
       "filename": "Fire_Galaxy.png",
-      "group_id": "group-03"
+      "group_id": "group-03-fire"
     },
     {
       "id": "row03_col05",
@@ -1257,293 +1604,29 @@
       "source": "sprites/row03_col05.png",
       "output": "sprites_named/Fire_Holofoil.png",
       "filename": "Fire_Holofoil.png",
-      "group_id": "group-03"
+      "group_id": "group-03-fire"
     },
     {
-      "id": "row04_col01",
-      "spriteId": "duck",
-      "sprite": "Duck",
-      "materialId": "base",
-      "material": "Base",
-      "source": "sprites/row04_col01.png",
-      "output": "sprites_named/Duck_Base.png",
-      "filename": "Duck_Base.png",
-      "group_id": "group-04"
+      "id": "fire-cube",
+      "spriteId": "fire",
+      "sprite": "Fire",
+      "materialId": "cube",
+      "material": "Cube",
+      "source": null,
+      "output": "sprites_named/Fire_Cube.png",
+      "filename": "Fire_Cube.png",
+      "group_id": "group-03-fire"
     },
     {
-      "id": "row04_col02",
-      "spriteId": "duck",
-      "sprite": "Duck",
-      "materialId": "gold",
-      "material": "Gold",
-      "source": "sprites/row04_col02.png",
-      "output": "sprites_named/Duck_Gold.png",
-      "filename": "Duck_Gold.png",
-      "group_id": "group-04"
-    },
-    {
-      "id": "row04_col03",
-      "spriteId": "duck",
-      "sprite": "Duck",
-      "materialId": "gummy",
-      "material": "Gummy",
-      "source": "sprites/row04_col03.png",
-      "output": "sprites_named/Duck_Gummy.png",
-      "filename": "Duck_Gummy.png",
-      "group_id": "group-04"
-    },
-    {
-      "id": "row04_col04",
-      "spriteId": "duck",
-      "sprite": "Duck",
-      "materialId": "galaxy",
-      "material": "Galaxy",
-      "source": "sprites/row04_col04.png",
-      "output": "sprites_named/Duck_Galaxy.png",
-      "filename": "Duck_Galaxy.png",
-      "group_id": "group-04"
-    },
-    {
-      "id": "row04_col06",
-      "spriteId": "duck",
-      "sprite": "Duck",
-      "materialId": "gem",
-      "material": "Gem",
-      "source": "sprites/row04_col06.png",
-      "output": "sprites_named/Duck_Gem.png",
-      "filename": "Duck_Gem.png",
-      "group_id": "group-04"
-    },
-    {
-      "id": "row05_col01",
-      "spriteId": "ghost",
-      "sprite": "Ghost",
-      "materialId": "base",
-      "material": "Base",
-      "source": "sprites/row05_col01.png",
-      "output": "sprites_named/Ghost_Base.png",
-      "filename": "Ghost_Base.png",
-      "group_id": "group-05"
-    },
-    {
-      "id": "row05_col02",
-      "spriteId": "ghost",
-      "sprite": "Ghost",
-      "materialId": "gold",
-      "material": "Gold",
-      "source": "sprites/row05_col02.png",
-      "output": "sprites_named/Ghost_Gold.png",
-      "filename": "Ghost_Gold.png",
-      "group_id": "group-05"
-    },
-    {
-      "id": "row05_col03",
-      "spriteId": "ghost",
-      "sprite": "Ghost",
-      "materialId": "gummy",
-      "material": "Gummy",
-      "source": "sprites/row05_col03.png",
-      "output": "sprites_named/Ghost_Gummy.png",
-      "filename": "Ghost_Gummy.png",
-      "group_id": "group-05"
-    },
-    {
-      "id": "row05_col04",
-      "spriteId": "ghost",
-      "sprite": "Ghost",
-      "materialId": "galaxy",
-      "material": "Galaxy",
-      "source": "sprites/row05_col04.png",
-      "output": "sprites_named/Ghost_Galaxy.png",
-      "filename": "Ghost_Galaxy.png",
-      "group_id": "group-05"
-    },
-    {
-      "id": "row05_col05",
-      "spriteId": "ghost",
-      "sprite": "Ghost",
-      "materialId": "holofoil",
-      "material": "Holofoil",
-      "source": "sprites/row05_col05.png",
-      "output": "sprites_named/Ghost_Holofoil.png",
-      "filename": "Ghost_Holofoil.png",
-      "group_id": "group-05"
-    },
-    {
-      "id": "row06_col01",
-      "spriteId": "king",
-      "sprite": "King",
-      "materialId": "base",
-      "material": "Base",
-      "source": "sprites/row06_col01.png",
-      "output": "sprites_named/King_Base.png",
-      "filename": "King_Base.png",
-      "group_id": "group-06"
-    },
-    {
-      "id": "row06_col02",
-      "spriteId": "king",
-      "sprite": "King",
-      "materialId": "gold",
-      "material": "Gold",
-      "source": "sprites/row06_col02.png",
-      "output": "sprites_named/King_Gold.png",
-      "filename": "King_Gold.png",
-      "group_id": "group-06"
-    },
-    {
-      "id": "row06_col03",
-      "spriteId": "king",
-      "sprite": "King",
-      "materialId": "gummy",
-      "material": "Gummy",
-      "source": "sprites/row06_col03.png",
-      "output": "sprites_named/King_Gummy.png",
-      "filename": "King_Gummy.png",
-      "group_id": "group-06"
-    },
-    {
-      "id": "row06_col04",
-      "spriteId": "king",
-      "sprite": "King",
-      "materialId": "galaxy",
-      "material": "Galaxy",
-      "source": "sprites/row06_col04.png",
-      "output": "sprites_named/King_Galaxy.png",
-      "filename": "King_Galaxy.png",
-      "group_id": "group-06"
-    },
-    {
-      "id": "row06_col05",
-      "spriteId": "king",
-      "sprite": "King",
-      "materialId": "holofoil",
-      "material": "Holofoil",
-      "source": "sprites/row06_col05.png",
-      "output": "sprites_named/King_Holofoil.png",
-      "filename": "King_Holofoil.png",
-      "group_id": "group-06"
-    },
-    {
-      "id": "row07_col01",
-      "spriteId": "zero-point",
-      "sprite": "Zero Point",
-      "materialId": "base",
-      "material": "Base",
-      "source": "sprites/row07_col01.png",
-      "output": "sprites_named/ZeroPoint_Base.png",
-      "filename": "ZeroPoint_Base.png",
-      "group_id": "group-07"
-    },
-    {
-      "id": "row07_col02",
-      "spriteId": "zero-point",
-      "sprite": "Zero Point",
-      "materialId": "gold",
-      "material": "Gold",
-      "source": "sprites/row07_col02.png",
-      "output": "sprites_named/ZeroPoint_Gold.png",
-      "filename": "ZeroPoint_Gold.png",
-      "group_id": "group-07"
-    },
-    {
-      "id": "row07_col03",
-      "spriteId": "zero-point",
-      "sprite": "Zero Point",
-      "materialId": "gummy",
-      "material": "Gummy",
-      "source": "sprites/row07_col03.png",
-      "output": "sprites_named/ZeroPoint_Gummy.png",
-      "filename": "ZeroPoint_Gummy.png",
-      "group_id": "group-07"
-    },
-    {
-      "id": "row07_col04",
-      "spriteId": "zero-point",
-      "sprite": "Zero Point",
-      "materialId": "galaxy",
-      "material": "Galaxy",
-      "source": "sprites/row07_col04.png",
-      "output": "sprites_named/ZeroPoint_Galaxy.png",
-      "filename": "ZeroPoint_Galaxy.png",
-      "group_id": "group-07"
-    },
-    {
-      "id": "row07_col06",
-      "spriteId": "zero-point",
-      "sprite": "Zero Point",
-      "materialId": "gem",
-      "material": "Gem",
-      "source": "sprites/row07_col06.png",
-      "output": "sprites_named/ZeroPoint_Gem.png",
-      "filename": "ZeroPoint_Gem.png",
-      "group_id": "group-07"
-    },
-    {
-      "id": "row07_col11",
-      "spriteId": "zero-point",
-      "sprite": "Zero Point",
+      "id": "fire-quack",
+      "spriteId": "fire",
+      "sprite": "Fire",
       "materialId": "quack",
       "material": "Quack",
-      "source": "sprites/row07_col11.png",
-      "output": "sprites_named/ZeroPoint_Quack.png",
-      "filename": "ZeroPoint_Quack.png",
-      "group_id": "group-07"
-    },
-    {
-      "id": "row01_col07",
-      "spriteId": "air",
-      "sprite": "Air",
-      "materialId": "base",
-      "material": "Base",
-      "source": "sprites/row01_col07.png",
-      "output": "sprites_named/Air_Base.png",
-      "filename": "Air_Base.png",
-      "group_id": "group-mqz37r2e"
-    },
-    {
-      "id": "row01_col08",
-      "spriteId": "air",
-      "sprite": "Air",
-      "materialId": "gold",
-      "material": "Gold",
-      "source": "sprites/row01_col08.png",
-      "output": "sprites_named/Air_Gold.png",
-      "filename": "Air_Gold.png",
-      "group_id": "group-mqz37r2e"
-    },
-    {
-      "id": "row01_col09",
-      "spriteId": "air",
-      "sprite": "Air",
-      "materialId": "gummy",
-      "material": "Gummy",
-      "source": "sprites/row01_col09.png",
-      "output": "sprites_named/Air_Gummy.png",
-      "filename": "Air_Gummy.png",
-      "group_id": "group-mqz37r2e"
-    },
-    {
-      "id": "row01_col10",
-      "spriteId": "air",
-      "sprite": "Air",
-      "materialId": "galaxy",
-      "material": "Galaxy",
-      "source": "sprites/row01_col10.png",
-      "output": "sprites_named/Air_Galaxy.png",
-      "filename": "Air_Galaxy.png",
-      "group_id": "group-mqz37r2e"
-    },
-    {
-      "id": "air-holofoil",
-      "spriteId": "air",
-      "sprite": "Air",
-      "materialId": "holofoil",
-      "material": "Holofoil",
       "source": null,
-      "output": "sprites_named/Air_Holofoil.png",
-      "filename": "Air_Holofoil.png",
-      "group_id": "group-mqz37r2e"
+      "output": "sprites_named/Fire_Quack.png",
+      "filename": "Fire_Quack.png",
+      "group_id": "group-03-fire"
     },
     {
       "id": "row01_col12",
@@ -1554,7 +1637,7 @@
       "source": "sprites/row01_col12.png",
       "output": "sprites_named/Fishy_Base.png",
       "filename": "Fishy_Base.png",
-      "group_id": "group-mqz38mfk"
+      "group_id": "group-04-fishy"
     },
     {
       "id": "row01_col13",
@@ -1565,7 +1648,7 @@
       "source": "sprites/row01_col13.png",
       "output": "sprites_named/Fishy_Gold.png",
       "filename": "Fishy_Gold.png",
-      "group_id": "group-mqz38mfk"
+      "group_id": "group-04-fishy"
     },
     {
       "id": "fishy-gummy",
@@ -1576,7 +1659,7 @@
       "source": null,
       "output": "sprites_named/Fishy_Gummy.png",
       "filename": "Fishy_Gummy.png",
-      "group_id": "group-mqz38mfk"
+      "group_id": "group-04-fishy"
     },
     {
       "id": "row01_col14",
@@ -1587,392 +1670,183 @@
       "source": "sprites/row01_col14.png",
       "output": "sprites_named/Fishy_Galaxy.png",
       "filename": "Fishy_Galaxy.png",
-      "group_id": "group-mqz38mfk"
+      "group_id": "group-04-fishy"
     },
     {
-      "id": "row02_col06",
-      "spriteId": "dream",
-      "sprite": "Dream",
-      "materialId": "base",
-      "material": "Base",
-      "source": "sprites/row02_col06.png",
-      "output": "sprites_named/Dream_Base.png",
-      "filename": "Dream_Base.png",
-      "group_id": "group-mqz39sxq"
-    },
-    {
-      "id": "row02_col07",
-      "spriteId": "dream",
-      "sprite": "Dream",
-      "materialId": "gold",
-      "material": "Gold",
-      "source": "sprites/row02_col07.png",
-      "output": "sprites_named/Dream_Gold.png",
-      "filename": "Dream_Gold.png",
-      "group_id": "group-mqz39sxq"
-    },
-    {
-      "id": "row02_col08",
-      "spriteId": "dream",
-      "sprite": "Dream",
-      "materialId": "gummy",
-      "material": "Gummy",
-      "source": "sprites/row02_col08.png",
-      "output": "sprites_named/Dream_Gummy.png",
-      "filename": "Dream_Gummy.png",
-      "group_id": "group-mqz39sxq"
-    },
-    {
-      "id": "row02_col09",
-      "spriteId": "dream",
-      "sprite": "Dream",
-      "materialId": "galaxy",
-      "material": "Galaxy",
-      "source": "sprites/row02_col09.png",
-      "output": "sprites_named/Dream_Galaxy.png",
-      "filename": "Dream_Galaxy.png",
-      "group_id": "group-mqz39sxq"
-    },
-    {
-      "id": "row02_col12",
-      "spriteId": "dream",
-      "sprite": "Dream",
+      "id": "fishy-cube",
+      "spriteId": "fishy",
+      "sprite": "Fishy",
       "materialId": "cube",
       "material": "Cube",
-      "source": "sprites/row02_col12.png",
-      "output": "sprites_named/Dream_Cube.png",
-      "filename": "Dream_Cube.png",
-      "group_id": "group-mqz39sxq"
+      "source": null,
+      "output": "sprites_named/Fishy_Cube.png",
+      "filename": "Fishy_Cube.png",
+      "group_id": "group-04-fishy"
     },
     {
-      "id": "row02_col11",
-      "spriteId": "burnt-peanut",
-      "sprite": "Burnt Peanut",
+      "id": "row01_col07",
+      "spriteId": "air",
+      "sprite": "Air",
       "materialId": "base",
       "material": "Base",
-      "source": "sprites/row02_col11.png",
-      "output": "sprites_named/BurntPeanut_Base.png",
-      "filename": "BurntPeanut_Base.png",
-      "group_id": "group-mqz3ag0q"
+      "source": "sprites/row01_col07.png",
+      "output": "sprites_named/Air_Base.png",
+      "filename": "Air_Base.png",
+      "group_id": "group-05-air"
     },
     {
-      "id": "row03_col06",
-      "spriteId": "punk",
-      "sprite": "Punk",
-      "materialId": "base",
-      "material": "Base",
-      "source": "sprites/row03_col06.png",
-      "output": "sprites_named/Punk_Base.png",
-      "filename": "Punk_Base.png",
-      "group_id": "group-mqz3bjv9"
-    },
-    {
-      "id": "row03_col07",
-      "spriteId": "punk",
-      "sprite": "Punk",
+      "id": "row01_col08",
+      "spriteId": "air",
+      "sprite": "Air",
       "materialId": "gold",
       "material": "Gold",
-      "source": "sprites/row03_col07.png",
-      "output": "sprites_named/Punk_Gold.png",
-      "filename": "Punk_Gold.png",
-      "group_id": "group-mqz3bjv9"
+      "source": "sprites/row01_col08.png",
+      "output": "sprites_named/Air_Gold.png",
+      "filename": "Air_Gold.png",
+      "group_id": "group-05-air"
     },
     {
-      "id": "row03_col09",
-      "spriteId": "punk",
-      "sprite": "Punk",
-      "materialId": "galaxy",
-      "material": "Galaxy",
-      "source": "sprites/row03_col09.png",
-      "output": "sprites_named/Punk_Galaxy.png",
-      "filename": "Punk_Galaxy.png",
-      "group_id": "group-mqz3bjv9"
-    },
-    {
-      "id": "row03_col08",
-      "spriteId": "punk",
-      "sprite": "Punk",
+      "id": "row01_col09",
+      "spriteId": "air",
+      "sprite": "Air",
       "materialId": "gummy",
       "material": "Gummy",
-      "source": "sprites/row03_col08.png",
-      "output": "sprites_named/Punk_Gummy.png",
-      "filename": "Punk_Gummy.png",
-      "group_id": "group-mqz3bjv9"
+      "source": "sprites/row01_col09.png",
+      "output": "sprites_named/Air_Gummy.png",
+      "filename": "Air_Gummy.png",
+      "group_id": "group-05-air"
     },
     {
-      "id": "row03_col10",
-      "spriteId": "punk",
-      "sprite": "Punk",
-      "materialId": "gem",
-      "material": "Gem",
-      "source": "sprites/row03_col10.png",
-      "output": "sprites_named/Punk_Gem.png",
-      "filename": "Punk_Gem.png",
-      "group_id": "group-mqz3bjv9"
-    },
-    {
-      "id": "row03_col11",
-      "spriteId": "punk",
-      "sprite": "Punk",
-      "materialId": "cube",
-      "material": "Cube",
-      "source": "sprites/row03_col11.png",
-      "output": "sprites_named/Punk_Cube.png",
-      "filename": "Punk_Cube.png",
-      "group_id": "group-mqz3bjv9"
-    },
-    {
-      "id": "row07_col07",
-      "spriteId": "seven",
-      "sprite": "Seven",
-      "materialId": "base",
-      "material": "Base",
-      "source": "sprites/row07_col07.png",
-      "output": "sprites_named/Seven_Base.png",
-      "filename": "Seven_Base.png",
-      "group_id": "group-mqz3fy5d"
-    },
-    {
-      "id": "row07_col08",
-      "spriteId": "seven",
-      "sprite": "Seven",
-      "materialId": "gold",
-      "material": "Gold",
-      "source": "sprites/row07_col08.png",
-      "output": "sprites_named/Seven_Gold.png",
-      "filename": "Seven_Gold.png",
-      "group_id": "group-mqz3fy5d"
-    },
-    {
-      "id": "row07_col09",
-      "spriteId": "seven",
-      "sprite": "Seven",
-      "materialId": "gummy",
-      "material": "Gummy",
-      "source": "sprites/row07_col09.png",
-      "output": "sprites_named/Seven_Gummy.png",
-      "filename": "Seven_Gummy.png",
-      "group_id": "group-mqz3fy5d"
-    },
-    {
-      "id": "row07_col10",
-      "spriteId": "seven",
-      "sprite": "Seven",
+      "id": "row01_col10",
+      "spriteId": "air",
+      "sprite": "Air",
       "materialId": "galaxy",
       "material": "Galaxy",
-      "source": "sprites/row07_col10.png",
-      "output": "sprites_named/Seven_Galaxy.png",
-      "filename": "Seven_Galaxy.png",
-      "group_id": "group-mqz3fy5d"
+      "source": "sprites/row01_col10.png",
+      "output": "sprites_named/Air_Galaxy.png",
+      "filename": "Air_Galaxy.png",
+      "group_id": "group-05-air"
     },
     {
-      "id": "seven-holofoil",
-      "spriteId": "seven",
-      "sprite": "Seven",
+      "id": "air-holofoil",
+      "spriteId": "air",
+      "sprite": "Air",
       "materialId": "holofoil",
       "material": "Holofoil",
       "source": null,
-      "output": "sprites_named/Seven_Holofoil.png",
-      "filename": "Seven_Holofoil.png",
-      "group_id": "group-mqz3fy5d"
+      "output": "sprites_named/Air_Holofoil.png",
+      "filename": "Air_Holofoil.png",
+      "group_id": "group-05-air"
     },
     {
-      "id": "row06_col06",
-      "spriteId": "aura",
-      "sprite": "Aura",
+      "id": "row04_col01",
+      "spriteId": "duck",
+      "sprite": "Duck",
       "materialId": "base",
       "material": "Base",
-      "source": "sprites/row06_col06.png",
-      "output": "sprites_named/Aura_Base.png",
-      "filename": "Aura_Base.png",
-      "group_id": "group-mqz3gb7o"
+      "source": "sprites/row04_col01.png",
+      "output": "sprites_named/Duck_Base.png",
+      "filename": "Duck_Base.png",
+      "group_id": "group-06-duck"
     },
     {
-      "id": "row06_col07",
-      "spriteId": "aura",
-      "sprite": "Aura",
+      "id": "row04_col02",
+      "spriteId": "duck",
+      "sprite": "Duck",
       "materialId": "gold",
       "material": "Gold",
-      "source": "sprites/row06_col07.png",
-      "output": "sprites_named/Aura_Gold.png",
-      "filename": "Aura_Gold.png",
-      "group_id": "group-mqz3gb7o"
+      "source": "sprites/row04_col02.png",
+      "output": "sprites_named/Duck_Gold.png",
+      "filename": "Duck_Gold.png",
+      "group_id": "group-06-duck"
     },
     {
-      "id": "row06_col08",
-      "spriteId": "aura",
-      "sprite": "Aura",
+      "id": "row04_col03",
+      "spriteId": "duck",
+      "sprite": "Duck",
       "materialId": "gummy",
       "material": "Gummy",
-      "source": "sprites/row06_col08.png",
-      "output": "sprites_named/Aura_Gummy.png",
-      "filename": "Aura_Gummy.png",
-      "group_id": "group-mqz3gb7o"
+      "source": "sprites/row04_col03.png",
+      "output": "sprites_named/Duck_Gummy.png",
+      "filename": "Duck_Gummy.png",
+      "group_id": "group-06-duck"
     },
     {
-      "id": "row06_col09",
-      "spriteId": "aura",
-      "sprite": "Aura",
+      "id": "row04_col04",
+      "spriteId": "duck",
+      "sprite": "Duck",
       "materialId": "galaxy",
       "material": "Galaxy",
-      "source": "sprites/row06_col09.png",
-      "output": "sprites_named/Aura_Galaxy.png",
-      "filename": "Aura_Galaxy.png",
-      "group_id": "group-mqz3gb7o"
+      "source": "sprites/row04_col04.png",
+      "output": "sprites_named/Duck_Galaxy.png",
+      "filename": "Duck_Galaxy.png",
+      "group_id": "group-06-duck"
     },
     {
-      "id": "row06_col10",
-      "spriteId": "aura",
-      "sprite": "Aura",
+      "id": "row04_col06",
+      "spriteId": "duck",
+      "sprite": "Duck",
       "materialId": "gem",
       "material": "Gem",
-      "source": "sprites/row06_col10.png",
-      "output": "sprites_named/Aura_Gem.png",
-      "filename": "Aura_Gem.png",
-      "group_id": "group-mqz3gb7o"
+      "source": "sprites/row04_col06.png",
+      "output": "sprites_named/Duck_Gem.png",
+      "filename": "Duck_Gem.png",
+      "group_id": "group-06-duck"
     },
     {
-      "id": "row05_col06",
-      "spriteId": "boss",
-      "sprite": "Boss",
+      "id": "row05_col01",
+      "spriteId": "ghost",
+      "sprite": "Ghost",
       "materialId": "base",
       "material": "Base",
-      "source": "sprites/row05_col06.png",
-      "output": "sprites_named/Boss_Base.png",
-      "filename": "Boss_Base.png",
-      "group_id": "group-mqz3gwlg"
+      "source": "sprites/row05_col01.png",
+      "output": "sprites_named/Ghost_Base.png",
+      "filename": "Ghost_Base.png",
+      "group_id": "group-07-ghost"
     },
     {
-      "id": "row05_col07",
-      "spriteId": "boss",
-      "sprite": "Boss",
+      "id": "row05_col02",
+      "spriteId": "ghost",
+      "sprite": "Ghost",
       "materialId": "gold",
       "material": "Gold",
-      "source": "sprites/row05_col07.png",
-      "output": "sprites_named/Boss_Gold.png",
-      "filename": "Boss_Gold.png",
-      "group_id": "group-mqz3gwlg"
+      "source": "sprites/row05_col02.png",
+      "output": "sprites_named/Ghost_Gold.png",
+      "filename": "Ghost_Gold.png",
+      "group_id": "group-07-ghost"
     },
     {
-      "id": "row05_col08",
-      "spriteId": "boss",
-      "sprite": "Boss",
+      "id": "row05_col03",
+      "spriteId": "ghost",
+      "sprite": "Ghost",
       "materialId": "gummy",
       "material": "Gummy",
-      "source": "sprites/row05_col08.png",
-      "output": "sprites_named/Boss_Gummy.png",
-      "filename": "Boss_Gummy.png",
-      "group_id": "group-mqz3gwlg"
+      "source": "sprites/row05_col03.png",
+      "output": "sprites_named/Ghost_Gummy.png",
+      "filename": "Ghost_Gummy.png",
+      "group_id": "group-07-ghost"
     },
     {
-      "id": "row05_col09",
-      "spriteId": "boss",
-      "sprite": "Boss",
+      "id": "row05_col04",
+      "spriteId": "ghost",
+      "sprite": "Ghost",
       "materialId": "galaxy",
       "material": "Galaxy",
-      "source": "sprites/row05_col09.png",
-      "output": "sprites_named/Boss_Galaxy.png",
-      "filename": "Boss_Galaxy.png",
-      "group_id": "group-mqz3gwlg"
+      "source": "sprites/row05_col04.png",
+      "output": "sprites_named/Ghost_Galaxy.png",
+      "filename": "Ghost_Galaxy.png",
+      "group_id": "group-07-ghost"
     },
     {
-      "id": "row05_col10",
-      "spriteId": "striker",
-      "sprite": "Striker",
-      "materialId": "base",
-      "material": "Base",
-      "source": "sprites/row05_col10.png",
-      "output": "sprites_named/Striker_Base.png",
-      "filename": "Striker_Base.png",
-      "group_id": "group-mqz3hc53"
-    },
-    {
-      "id": "row05_col11",
-      "spriteId": "striker",
-      "sprite": "Striker",
-      "materialId": "gold",
-      "material": "Gold",
-      "source": "sprites/row05_col11.png",
-      "output": "sprites_named/Striker_Gold.png",
-      "filename": "Striker_Gold.png",
-      "group_id": "group-mqz3hc53"
-    },
-    {
-      "id": "row05_col12",
-      "spriteId": "striker",
-      "sprite": "Striker",
-      "materialId": "gummy",
-      "material": "Gummy",
-      "source": "sprites/row05_col12.png",
-      "output": "sprites_named/Striker_Gummy.png",
-      "filename": "Striker_Gummy.png",
-      "group_id": "group-mqz3hc53"
-    },
-    {
-      "id": "row05_col13",
-      "spriteId": "striker",
-      "sprite": "Striker",
-      "materialId": "galaxy",
-      "material": "Galaxy",
-      "source": "sprites/row05_col13.png",
-      "output": "sprites_named/Striker_Galaxy.png",
-      "filename": "Striker_Galaxy.png",
-      "group_id": "group-mqz3hc53"
-    },
-    {
-      "id": "row05_col14",
-      "spriteId": "striker",
-      "sprite": "Striker",
+      "id": "row05_col05",
+      "spriteId": "ghost",
+      "sprite": "Ghost",
       "materialId": "holofoil",
       "material": "Holofoil",
-      "source": "sprites/row05_col14.png",
-      "output": "sprites_named/Striker_Holofoil.png",
-      "filename": "Striker_Holofoil.png",
-      "group_id": "group-mqz3hc53"
-    },
-    {
-      "id": "row04_col12",
-      "spriteId": "grim",
-      "sprite": "Grim",
-      "materialId": "base",
-      "material": "Base",
-      "source": "sprites/row04_col12.png",
-      "output": "sprites_named/Grim_Base.png",
-      "filename": "Grim_Base.png",
-      "group_id": "group-mqz3htul"
-    },
-    {
-      "id": "row04_col13",
-      "spriteId": "grim",
-      "sprite": "Grim",
-      "materialId": "gold",
-      "material": "Gold",
-      "source": "sprites/row04_col13.png",
-      "output": "sprites_named/Grim_Gold.png",
-      "filename": "Grim_Gold.png",
-      "group_id": "group-mqz3htul"
-    },
-    {
-      "id": "row04_col14",
-      "spriteId": "grim",
-      "sprite": "Grim",
-      "materialId": "gummy",
-      "material": "Gummy",
-      "source": "sprites/row04_col14.png",
-      "output": "sprites_named/Grim_Gummy.png",
-      "filename": "Grim_Gummy.png",
-      "group_id": "group-mqz3htul"
-    },
-    {
-      "id": "row04_col15",
-      "spriteId": "grim",
-      "sprite": "Grim",
-      "materialId": "galaxy",
-      "material": "Galaxy",
-      "source": "sprites/row04_col15.png",
-      "output": "sprites_named/Grim_Galaxy.png",
-      "filename": "Grim_Galaxy.png",
-      "group_id": "group-mqz3htul"
+      "source": "sprites/row05_col05.png",
+      "output": "sprites_named/Ghost_Holofoil.png",
+      "filename": "Ghost_Holofoil.png",
+      "group_id": "group-07-ghost"
     },
     {
       "id": "row04_col07",
@@ -1983,7 +1857,7 @@
       "source": "sprites/row04_col07.png",
       "output": "sprites_named/Demon_Base.png",
       "filename": "Demon_Base.png",
-      "group_id": "group-mqz3ib7v"
+      "group_id": "group-08-demon"
     },
     {
       "id": "row04_col08",
@@ -1994,7 +1868,7 @@
       "source": "sprites/row04_col08.png",
       "output": "sprites_named/Demon_Gold.png",
       "filename": "Demon_Gold.png",
-      "group_id": "group-mqz3ib7v"
+      "group_id": "group-08-demon"
     },
     {
       "id": "row04_col09",
@@ -2005,7 +1879,7 @@
       "source": "sprites/row04_col09.png",
       "output": "sprites_named/Demon_Gummy.png",
       "filename": "Demon_Gummy.png",
-      "group_id": "group-mqz3ib7v"
+      "group_id": "group-08-demon"
     },
     {
       "id": "row04_col10",
@@ -2016,7 +1890,7 @@
       "source": "sprites/row04_col10.png",
       "output": "sprites_named/Demon_Galaxy.png",
       "filename": "Demon_Galaxy.png",
-      "group_id": "group-mqz3ib7v"
+      "group_id": "group-08-demon"
     },
     {
       "id": "row04_col11",
@@ -2027,8 +1901,800 @@
       "source": "sprites/row04_col11.png",
       "output": "sprites_named/Demon_Gem.png",
       "filename": "Demon_Gem.png",
-      "group_id": "group-mqz3ib7v"
+      "group_id": "group-08-demon"
+    },
+    {
+      "id": "row06_col01",
+      "spriteId": "king",
+      "sprite": "King",
+      "materialId": "base",
+      "material": "Base",
+      "source": "sprites/row06_col01.png",
+      "output": "sprites_named/King_Base.png",
+      "filename": "King_Base.png",
+      "group_id": "group-09-king"
+    },
+    {
+      "id": "row06_col02",
+      "spriteId": "king",
+      "sprite": "King",
+      "materialId": "gold",
+      "material": "Gold",
+      "source": "sprites/row06_col02.png",
+      "output": "sprites_named/King_Gold.png",
+      "filename": "King_Gold.png",
+      "group_id": "group-09-king"
+    },
+    {
+      "id": "row06_col03",
+      "spriteId": "king",
+      "sprite": "King",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": "sprites/row06_col03.png",
+      "output": "sprites_named/King_Gummy.png",
+      "filename": "King_Gummy.png",
+      "group_id": "group-09-king"
+    },
+    {
+      "id": "row06_col04",
+      "spriteId": "king",
+      "sprite": "King",
+      "materialId": "galaxy",
+      "material": "Galaxy",
+      "source": "sprites/row06_col04.png",
+      "output": "sprites_named/King_Galaxy.png",
+      "filename": "King_Galaxy.png",
+      "group_id": "group-09-king"
+    },
+    {
+      "id": "row06_col05",
+      "spriteId": "king",
+      "sprite": "King",
+      "materialId": "holofoil",
+      "material": "Holofoil",
+      "source": "sprites/row06_col05.png",
+      "output": "sprites_named/King_Holofoil.png",
+      "filename": "King_Holofoil.png",
+      "group_id": "group-09-king"
+    },
+    {
+      "id": "row06_col06",
+      "spriteId": "aura",
+      "sprite": "Aura",
+      "materialId": "base",
+      "material": "Base",
+      "source": "sprites/row06_col06.png",
+      "output": "sprites_named/Aura_Base.png",
+      "filename": "Aura_Base.png",
+      "group_id": "group-10-aura"
+    },
+    {
+      "id": "row06_col07",
+      "spriteId": "aura",
+      "sprite": "Aura",
+      "materialId": "gold",
+      "material": "Gold",
+      "source": "sprites/row06_col07.png",
+      "output": "sprites_named/Aura_Gold.png",
+      "filename": "Aura_Gold.png",
+      "group_id": "group-10-aura"
+    },
+    {
+      "id": "row06_col08",
+      "spriteId": "aura",
+      "sprite": "Aura",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": "sprites/row06_col08.png",
+      "output": "sprites_named/Aura_Gummy.png",
+      "filename": "Aura_Gummy.png",
+      "group_id": "group-10-aura"
+    },
+    {
+      "id": "row06_col09",
+      "spriteId": "aura",
+      "sprite": "Aura",
+      "materialId": "galaxy",
+      "material": "Galaxy",
+      "source": "sprites/row06_col09.png",
+      "output": "sprites_named/Aura_Galaxy.png",
+      "filename": "Aura_Galaxy.png",
+      "group_id": "group-10-aura"
+    },
+    {
+      "id": "row06_col10",
+      "spriteId": "aura",
+      "sprite": "Aura",
+      "materialId": "gem",
+      "material": "Gem",
+      "source": "sprites/row06_col10.png",
+      "output": "sprites_named/Aura_Gem.png",
+      "filename": "Aura_Gem.png",
+      "group_id": "group-10-aura"
+    },
+    {
+      "id": "row05_col10",
+      "spriteId": "striker",
+      "sprite": "Striker",
+      "materialId": "base",
+      "material": "Base",
+      "source": "sprites/row05_col10.png",
+      "output": "sprites_named/Striker_Base.png",
+      "filename": "Striker_Base.png",
+      "group_id": "group-11-striker"
+    },
+    {
+      "id": "row05_col11",
+      "spriteId": "striker",
+      "sprite": "Striker",
+      "materialId": "gold",
+      "material": "Gold",
+      "source": "sprites/row05_col11.png",
+      "output": "sprites_named/Striker_Gold.png",
+      "filename": "Striker_Gold.png",
+      "group_id": "group-11-striker"
+    },
+    {
+      "id": "row05_col12",
+      "spriteId": "striker",
+      "sprite": "Striker",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": "sprites/row05_col12.png",
+      "output": "sprites_named/Striker_Gummy.png",
+      "filename": "Striker_Gummy.png",
+      "group_id": "group-11-striker"
+    },
+    {
+      "id": "row05_col13",
+      "spriteId": "striker",
+      "sprite": "Striker",
+      "materialId": "galaxy",
+      "material": "Galaxy",
+      "source": "sprites/row05_col13.png",
+      "output": "sprites_named/Striker_Galaxy.png",
+      "filename": "Striker_Galaxy.png",
+      "group_id": "group-11-striker"
+    },
+    {
+      "id": "row05_col14",
+      "spriteId": "striker",
+      "sprite": "Striker",
+      "materialId": "holofoil",
+      "material": "Holofoil",
+      "source": "sprites/row05_col14.png",
+      "output": "sprites_named/Striker_Holofoil.png",
+      "filename": "Striker_Holofoil.png",
+      "group_id": "group-11-striker"
+    },
+    {
+      "id": "row02_col06",
+      "spriteId": "dream",
+      "sprite": "Dream",
+      "materialId": "base",
+      "material": "Base",
+      "source": "sprites/row02_col06.png",
+      "output": "sprites_named/Dream_Base.png",
+      "filename": "Dream_Base.png",
+      "group_id": "group-12-dream"
+    },
+    {
+      "id": "row02_col07",
+      "spriteId": "dream",
+      "sprite": "Dream",
+      "materialId": "gold",
+      "material": "Gold",
+      "source": "sprites/row02_col07.png",
+      "output": "sprites_named/Dream_Gold.png",
+      "filename": "Dream_Gold.png",
+      "group_id": "group-12-dream"
+    },
+    {
+      "id": "row02_col08",
+      "spriteId": "dream",
+      "sprite": "Dream",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": "sprites/row02_col08.png",
+      "output": "sprites_named/Dream_Gummy.png",
+      "filename": "Dream_Gummy.png",
+      "group_id": "group-12-dream"
+    },
+    {
+      "id": "row02_col09",
+      "spriteId": "dream",
+      "sprite": "Dream",
+      "materialId": "galaxy",
+      "material": "Galaxy",
+      "source": "sprites/row02_col09.png",
+      "output": "sprites_named/Dream_Galaxy.png",
+      "filename": "Dream_Galaxy.png",
+      "group_id": "group-12-dream"
+    },
+    {
+      "id": "row02_col12",
+      "spriteId": "dream",
+      "sprite": "Dream",
+      "materialId": "cube",
+      "material": "Cube",
+      "source": "sprites/row02_col12.png",
+      "output": "sprites_named/Dream_Cube.png",
+      "filename": "Dream_Cube.png",
+      "group_id": "group-12-dream"
+    },
+    {
+      "id": "row03_col06",
+      "spriteId": "punk",
+      "sprite": "Punk",
+      "materialId": "base",
+      "material": "Base",
+      "source": "sprites/row03_col06.png",
+      "output": "sprites_named/Punk_Base.png",
+      "filename": "Punk_Base.png",
+      "group_id": "group-13-punk"
+    },
+    {
+      "id": "row03_col07",
+      "spriteId": "punk",
+      "sprite": "Punk",
+      "materialId": "gold",
+      "material": "Gold",
+      "source": "sprites/row03_col07.png",
+      "output": "sprites_named/Punk_Gold.png",
+      "filename": "Punk_Gold.png",
+      "group_id": "group-13-punk"
+    },
+    {
+      "id": "row03_col08",
+      "spriteId": "punk",
+      "sprite": "Punk",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": "sprites/row03_col08.png",
+      "output": "sprites_named/Punk_Gummy.png",
+      "filename": "Punk_Gummy.png",
+      "group_id": "group-13-punk"
+    },
+    {
+      "id": "row03_col09",
+      "spriteId": "punk",
+      "sprite": "Punk",
+      "materialId": "galaxy",
+      "material": "Galaxy",
+      "source": "sprites/row03_col09.png",
+      "output": "sprites_named/Punk_Galaxy.png",
+      "filename": "Punk_Galaxy.png",
+      "group_id": "group-13-punk"
+    },
+    {
+      "id": "row03_col10",
+      "spriteId": "punk",
+      "sprite": "Punk",
+      "materialId": "gem",
+      "material": "Gem",
+      "source": "sprites/row03_col10.png",
+      "output": "sprites_named/Punk_Gem.png",
+      "filename": "Punk_Gem.png",
+      "group_id": "group-13-punk"
+    },
+    {
+      "id": "row03_col11",
+      "spriteId": "punk",
+      "sprite": "Punk",
+      "materialId": "cube",
+      "material": "Cube",
+      "source": "sprites/row03_col11.png",
+      "output": "sprites_named/Punk_Cube.png",
+      "filename": "Punk_Cube.png",
+      "group_id": "group-13-punk"
+    },
+    {
+      "id": "row05_col06",
+      "spriteId": "boss",
+      "sprite": "Boss",
+      "materialId": "base",
+      "material": "Base",
+      "source": "sprites/row05_col06.png",
+      "output": "sprites_named/Boss_Base.png",
+      "filename": "Boss_Base.png",
+      "group_id": "group-14-boss"
+    },
+    {
+      "id": "row05_col07",
+      "spriteId": "boss",
+      "sprite": "Boss",
+      "materialId": "gold",
+      "material": "Gold",
+      "source": "sprites/row05_col07.png",
+      "output": "sprites_named/Boss_Gold.png",
+      "filename": "Boss_Gold.png",
+      "group_id": "group-14-boss"
+    },
+    {
+      "id": "row05_col08",
+      "spriteId": "boss",
+      "sprite": "Boss",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": "sprites/row05_col08.png",
+      "output": "sprites_named/Boss_Gummy.png",
+      "filename": "Boss_Gummy.png",
+      "group_id": "group-14-boss"
+    },
+    {
+      "id": "row05_col09",
+      "spriteId": "boss",
+      "sprite": "Boss",
+      "materialId": "galaxy",
+      "material": "Galaxy",
+      "source": "sprites/row05_col09.png",
+      "output": "sprites_named/Boss_Galaxy.png",
+      "filename": "Boss_Galaxy.png",
+      "group_id": "group-14-boss"
+    },
+    {
+      "id": "boss-cube",
+      "spriteId": "boss",
+      "sprite": "Boss",
+      "materialId": "cube",
+      "material": "Cube",
+      "source": null,
+      "output": "sprites_named/Boss_Cube.png",
+      "filename": "Boss_Cube.png",
+      "group_id": "group-14-boss"
+    },
+    {
+      "id": "row07_col07",
+      "spriteId": "seven",
+      "sprite": "Seven",
+      "materialId": "base",
+      "material": "Base",
+      "source": "sprites/row07_col07.png",
+      "output": "sprites_named/Seven_Base.png",
+      "filename": "Seven_Base.png",
+      "group_id": "group-15-seven"
+    },
+    {
+      "id": "row07_col08",
+      "spriteId": "seven",
+      "sprite": "Seven",
+      "materialId": "gold",
+      "material": "Gold",
+      "source": "sprites/row07_col08.png",
+      "output": "sprites_named/Seven_Gold.png",
+      "filename": "Seven_Gold.png",
+      "group_id": "group-15-seven"
+    },
+    {
+      "id": "row07_col09",
+      "spriteId": "seven",
+      "sprite": "Seven",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": "sprites/row07_col09.png",
+      "output": "sprites_named/Seven_Gummy.png",
+      "filename": "Seven_Gummy.png",
+      "group_id": "group-15-seven"
+    },
+    {
+      "id": "row07_col10",
+      "spriteId": "seven",
+      "sprite": "Seven",
+      "materialId": "galaxy",
+      "material": "Galaxy",
+      "source": "sprites/row07_col10.png",
+      "output": "sprites_named/Seven_Galaxy.png",
+      "filename": "Seven_Galaxy.png",
+      "group_id": "group-15-seven"
+    },
+    {
+      "id": "seven-holofoil",
+      "spriteId": "seven",
+      "sprite": "Seven",
+      "materialId": "holofoil",
+      "material": "Holofoil",
+      "source": null,
+      "output": "sprites_named/Seven_Holofoil.png",
+      "filename": "Seven_Holofoil.png",
+      "group_id": "group-15-seven"
+    },
+    {
+      "id": "peely-base",
+      "spriteId": "peely",
+      "sprite": "Peeky Peely",
+      "materialId": "base",
+      "material": "Base",
+      "source": null,
+      "output": "sprites_named/PeekyPeely_Base.png",
+      "filename": "PeekyPeely_Base.png",
+      "group_id": "group-16-peely"
+    },
+    {
+      "id": "peely-gold",
+      "spriteId": "peely",
+      "sprite": "Peeky Peely",
+      "materialId": "gold",
+      "material": "Gold",
+      "source": null,
+      "output": "sprites_named/PeekyPeely_Gold.png",
+      "filename": "PeekyPeely_Gold.png",
+      "group_id": "group-16-peely"
+    },
+    {
+      "id": "peely-gummy",
+      "spriteId": "peely",
+      "sprite": "Peeky Peely",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": null,
+      "output": "sprites_named/PeekyPeely_Gummy.png",
+      "filename": "PeekyPeely_Gummy.png",
+      "group_id": "group-16-peely"
+    },
+    {
+      "id": "peely-galaxy",
+      "spriteId": "peely",
+      "sprite": "Peeky Peely",
+      "materialId": "galaxy",
+      "material": "Galaxy",
+      "source": null,
+      "output": "sprites_named/PeekyPeely_Galaxy.png",
+      "filename": "PeekyPeely_Galaxy.png",
+      "group_id": "group-16-peely"
+    },
+    {
+      "id": "peely-holofoil",
+      "spriteId": "peely",
+      "sprite": "Peeky Peely",
+      "materialId": "holofoil",
+      "material": "Holofoil",
+      "source": null,
+      "output": "sprites_named/PeekyPeely_Holofoil.png",
+      "filename": "PeekyPeely_Holofoil.png",
+      "group_id": "group-16-peely"
+    },
+    {
+      "id": "llama-base",
+      "spriteId": "llama",
+      "sprite": "Lootin' Llama",
+      "materialId": "base",
+      "material": "Base",
+      "source": null,
+      "output": "sprites_named/LootinLlama_Base.png",
+      "filename": "LootinLlama_Base.png",
+      "group_id": "group-17-llama"
+    },
+    {
+      "id": "llama-gold",
+      "spriteId": "llama",
+      "sprite": "Lootin' Llama",
+      "materialId": "gold",
+      "material": "Gold",
+      "source": null,
+      "output": "sprites_named/LootinLlama_Gold.png",
+      "filename": "LootinLlama_Gold.png",
+      "group_id": "group-17-llama"
+    },
+    {
+      "id": "llama-gummy",
+      "spriteId": "llama",
+      "sprite": "Lootin' Llama",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": null,
+      "output": "sprites_named/LootinLlama_Gummy.png",
+      "filename": "LootinLlama_Gummy.png",
+      "group_id": "group-17-llama"
+    },
+    {
+      "id": "llama-galaxy",
+      "spriteId": "llama",
+      "sprite": "Lootin' Llama",
+      "materialId": "galaxy",
+      "material": "Galaxy",
+      "source": null,
+      "output": "sprites_named/LootinLlama_Galaxy.png",
+      "filename": "LootinLlama_Galaxy.png",
+      "group_id": "group-17-llama"
+    },
+    {
+      "id": "llama-gem",
+      "spriteId": "llama",
+      "sprite": "Lootin' Llama",
+      "materialId": "gem",
+      "material": "Gem",
+      "source": null,
+      "output": "sprites_named/LootinLlama_Gem.png",
+      "filename": "LootinLlama_Gem.png",
+      "group_id": "group-17-llama"
+    },
+    {
+      "id": "batman-base",
+      "spriteId": "batman",
+      "sprite": "Batman",
+      "materialId": "base",
+      "material": "Base",
+      "source": null,
+      "output": "sprites_named/Batman_Base.png",
+      "filename": "Batman_Base.png",
+      "group_id": "group-18-batman"
+    },
+    {
+      "id": "batman-gold",
+      "spriteId": "batman",
+      "sprite": "Batman",
+      "materialId": "gold",
+      "material": "Gold",
+      "source": null,
+      "output": "sprites_named/Batman_Gold.png",
+      "filename": "Batman_Gold.png",
+      "group_id": "group-18-batman"
+    },
+    {
+      "id": "batman-gummy",
+      "spriteId": "batman",
+      "sprite": "Batman",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": null,
+      "output": "sprites_named/Batman_Gummy.png",
+      "filename": "Batman_Gummy.png",
+      "group_id": "group-18-batman"
+    },
+    {
+      "id": "batman-galaxy",
+      "spriteId": "batman",
+      "sprite": "Batman",
+      "materialId": "galaxy",
+      "material": "Galaxy",
+      "source": null,
+      "output": "sprites_named/Batman_Galaxy.png",
+      "filename": "Batman_Galaxy.png",
+      "group_id": "group-18-batman"
+    },
+    {
+      "id": "batman-holofoil",
+      "spriteId": "batman",
+      "sprite": "Batman",
+      "materialId": "holofoil",
+      "material": "Holofoil",
+      "source": null,
+      "output": "sprites_named/Batman_Holofoil.png",
+      "filename": "Batman_Holofoil.png",
+      "group_id": "group-18-batman"
+    },
+    {
+      "id": "batman-cube",
+      "spriteId": "batman",
+      "sprite": "Batman",
+      "materialId": "cube",
+      "material": "Cube",
+      "source": null,
+      "output": "sprites_named/Batman_Cube.png",
+      "filename": "Batman_Cube.png",
+      "group_id": "group-18-batman"
+    },
+    {
+      "id": "row04_col12",
+      "spriteId": "grim",
+      "sprite": "Grim",
+      "materialId": "base",
+      "material": "Base",
+      "source": "sprites/row04_col12.png",
+      "output": "sprites_named/Grim_Base.png",
+      "filename": "Grim_Base.png",
+      "group_id": "group-19-grim"
+    },
+    {
+      "id": "row04_col13",
+      "spriteId": "grim",
+      "sprite": "Grim",
+      "materialId": "gold",
+      "material": "Gold",
+      "source": "sprites/row04_col13.png",
+      "output": "sprites_named/Grim_Gold.png",
+      "filename": "Grim_Gold.png",
+      "group_id": "group-19-grim"
+    },
+    {
+      "id": "row04_col14",
+      "spriteId": "grim",
+      "sprite": "Grim",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": "sprites/row04_col14.png",
+      "output": "sprites_named/Grim_Gummy.png",
+      "filename": "Grim_Gummy.png",
+      "group_id": "group-19-grim"
+    },
+    {
+      "id": "row04_col15",
+      "spriteId": "grim",
+      "sprite": "Grim",
+      "materialId": "galaxy",
+      "material": "Galaxy",
+      "source": "sprites/row04_col15.png",
+      "output": "sprites_named/Grim_Galaxy.png",
+      "filename": "Grim_Galaxy.png",
+      "group_id": "group-19-grim"
+    },
+    {
+      "id": "grim-holofoil",
+      "spriteId": "grim",
+      "sprite": "Grim",
+      "materialId": "holofoil",
+      "material": "Holofoil",
+      "source": null,
+      "output": "sprites_named/Grim_Holofoil.png",
+      "filename": "Grim_Holofoil.png",
+      "group_id": "group-19-grim"
+    },
+    {
+      "id": "grim-gem",
+      "spriteId": "grim",
+      "sprite": "Grim",
+      "materialId": "gem",
+      "material": "Gem",
+      "source": null,
+      "output": "sprites_named/Grim_Gem.png",
+      "filename": "Grim_Gem.png",
+      "group_id": "group-19-grim"
+    },
+    {
+      "id": "grim-cube",
+      "spriteId": "grim",
+      "sprite": "Grim",
+      "materialId": "cube",
+      "material": "Cube",
+      "source": null,
+      "output": "sprites_named/Grim_Cube.png",
+      "filename": "Grim_Cube.png",
+      "group_id": "group-19-grim"
+    },
+    {
+      "id": "row07_col01",
+      "spriteId": "zero-point",
+      "sprite": "Zero Point",
+      "materialId": "base",
+      "material": "Base",
+      "source": "sprites/row07_col01.png",
+      "output": "sprites_named/ZeroPoint_Base.png",
+      "filename": "ZeroPoint_Base.png",
+      "group_id": "group-20-zero-point"
+    },
+    {
+      "id": "row07_col02",
+      "spriteId": "zero-point",
+      "sprite": "Zero Point",
+      "materialId": "gold",
+      "material": "Gold",
+      "source": "sprites/row07_col02.png",
+      "output": "sprites_named/ZeroPoint_Gold.png",
+      "filename": "ZeroPoint_Gold.png",
+      "group_id": "group-20-zero-point"
+    },
+    {
+      "id": "row07_col03",
+      "spriteId": "zero-point",
+      "sprite": "Zero Point",
+      "materialId": "gummy",
+      "material": "Gummy",
+      "source": "sprites/row07_col03.png",
+      "output": "sprites_named/ZeroPoint_Gummy.png",
+      "filename": "ZeroPoint_Gummy.png",
+      "group_id": "group-20-zero-point"
+    },
+    {
+      "id": "row07_col04",
+      "spriteId": "zero-point",
+      "sprite": "Zero Point",
+      "materialId": "galaxy",
+      "material": "Galaxy",
+      "source": "sprites/row07_col04.png",
+      "output": "sprites_named/ZeroPoint_Galaxy.png",
+      "filename": "ZeroPoint_Galaxy.png",
+      "group_id": "group-20-zero-point"
+    },
+    {
+      "id": "zero-point-holofoil",
+      "spriteId": "zero-point",
+      "sprite": "Zero Point",
+      "materialId": "holofoil",
+      "material": "Holofoil",
+      "source": null,
+      "output": "sprites_named/ZeroPoint_Holofoil.png",
+      "filename": "ZeroPoint_Holofoil.png",
+      "group_id": "group-20-zero-point"
+    },
+    {
+      "id": "row07_col06",
+      "spriteId": "zero-point",
+      "sprite": "Zero Point",
+      "materialId": "gem",
+      "material": "Gem",
+      "source": "sprites/row07_col06.png",
+      "output": "sprites_named/ZeroPoint_Gem.png",
+      "filename": "ZeroPoint_Gem.png",
+      "group_id": "group-20-zero-point"
+    },
+    {
+      "id": "zero-point-cube",
+      "spriteId": "zero-point",
+      "sprite": "Zero Point",
+      "materialId": "cube",
+      "material": "Cube",
+      "source": null,
+      "output": "sprites_named/ZeroPoint_Cube.png",
+      "filename": "ZeroPoint_Cube.png",
+      "group_id": "group-20-zero-point"
+    },
+    {
+      "id": "row07_col11",
+      "spriteId": "zero-point",
+      "sprite": "Zero Point",
+      "materialId": "quack",
+      "material": "Quack",
+      "source": "sprites/row07_col11.png",
+      "output": "sprites_named/ZeroPoint_Quack.png",
+      "filename": "ZeroPoint_Quack.png",
+      "group_id": "group-20-zero-point"
+    },
+    {
+      "id": "row02_col11",
+      "spriteId": "burnt-peanut",
+      "sprite": "Burnt Peanut",
+      "materialId": "base",
+      "material": "Base",
+      "source": "sprites/row02_col11.png",
+      "output": "sprites_named/BurntPeanut_Base.png",
+      "filename": "BurntPeanut_Base.png",
+      "group_id": "group-21-burnt-peanut"
+    },
+    {
+      "id": "vini-jr-base",
+      "spriteId": "vini-jr",
+      "sprite": "Vini Jr.",
+      "materialId": "base",
+      "material": "Base",
+      "source": null,
+      "output": "sprites_named/ViniJr_Base.png",
+      "filename": "ViniJr_Base.png",
+      "group_id": "group-22-vini-jr"
+    },
+    {
+      "id": "pollo-base",
+      "spriteId": "pollo",
+      "sprite": "Pollo",
+      "materialId": "base",
+      "material": "Base",
+      "source": null,
+      "output": "sprites_named/Pollo_Base.png",
+      "filename": "Pollo_Base.png",
+      "group_id": "group-23-pollo"
+    },
+    {
+      "id": "john-wick-base",
+      "spriteId": "john-wick",
+      "sprite": "John Wick",
+      "materialId": "base",
+      "material": "Base",
+      "source": null,
+      "output": "sprites_named/JohnWick_Base.png",
+      "filename": "JohnWick_Base.png",
+      "group_id": "group-24-john-wick"
+    },
+    {
+      "id": "ironmouse-base",
+      "spriteId": "ironmouse",
+      "sprite": "Ironmouse",
+      "materialId": "base",
+      "material": "Base",
+      "source": null,
+      "output": "sprites_named/Ironmouse_Base.png",
+      "filename": "Ironmouse_Base.png",
+      "group_id": "group-25-ironmouse"
     }
   ],
-  "total": 86
+  "total": 118
 }

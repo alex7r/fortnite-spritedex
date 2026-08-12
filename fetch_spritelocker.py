@@ -33,6 +33,13 @@ SPRITE_SLUG = {
     "striker": "soccer",
     "grim": "grimreaper",
     "demon": "demon",
+    "peely": "peely",
+    "llama": "llama",
+    "batman": "fossilmeal",
+    "vini-jr": "cokeparmesan",
+    "pollo": "companystargazer",
+    "john-wick": "fillergrunt",
+    "ironmouse": "pedicureantacid",
 }
 
 MATERIAL_SLUG = {

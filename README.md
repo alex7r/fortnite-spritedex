@@ -18,8 +18,8 @@
 
 ## Возможности
 
-- 86 вариантов (18 спрайтов), официальные названия (Water, Duck, Zero Point и т.д.)
-- Варианты: Base, Gold, Gummy, Galaxy, Gem, Holofoil
+- 118 вариантов (25 спрайтов), официальные названия (Water, Duck, Zero Point, Peeky Peely, Batman и т.д.)
+- Варианты: Base, Gold, Gummy, Galaxy, Gem, Holofoil, Cube, Quack
 - EN / RU — язык по настройкам браузера, можно переключить вручную
 - Прогресс в `localStorage` на устройстве
 - **Share** — короткая ссылка `?s=...` с текущей коллекцией (режим просмотра; чтобы редактировать — «Сохранить в память и редактировать»)
@@ -29,9 +29,11 @@
 
 ## HD-спрайты (Sprite Locker)
 
-Часть картинок взята с [spritelocker.com](https://spritelocker.com/) — там они заметно чётче. Скрипт скачивает доступные варианты (Base/Gold/Gummy/Galaxy); Gem, Holofoil, Air, Seven и прочие отсутствующие — из локального `sprites_named/`.
+Картинки скачиваются с [spritelocker.com](https://spritelocker.com/). Полная пересборка каталога и медиа:
 
 ```bash
+python3 sync_roster.py
+# или только HD по текущему sprites-config.json:
 python3 fetch_spritelocker.py
 ```
 
@@ -65,6 +67,7 @@ python3 -m http.server 8765
 | `sprites_hd/` | HD WebP с [Sprite Locker](https://spritelocker.com/) |
 | `sprites-hd-map.json` | Маппинг catalog id → HD файл |
 | `fetch_spritelocker.py` | Скачать HD-спрайты с spritelocker.com |
+| `sync_roster.py` | Синхронизация ростера + HD/PNG с Sprite Locker |
 | `i18n.js` | Переводы EN/RU |
 | `apply_labels.py` | Пересборка `sprites_named/` из конфига |
 
