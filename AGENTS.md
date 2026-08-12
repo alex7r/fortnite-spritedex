@@ -30,3 +30,4 @@ Or `./serve.sh`.
 - After UI changes, verify with a local `python3 -m http.server 8765` and open `/tracker.html`.
 - Prefer editing existing files over new frameworks.
 - Live site: https://alex7r.github.io/fortnite-spritedex/tracker.html
+- When the user says **push** / **commit и push**, merge (or commit) onto `main` and `git push origin main` — GitHub Pages auto-deploys from `main`. Feature branches/PRs are optional unless explicitly requested.
